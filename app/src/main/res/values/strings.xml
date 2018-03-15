@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">CultureGuide</string>
+    <string name="app_name">Culture Guide</string>
+
+    <string name="sign_in">Sign in</string>
+    <string name="sign_up">Sign up</string>
+    <string name="email">E-mail</string>
+    <string name="emailHint">example@Example.com</string>
+    <string name="password">Password</string>
+    <string name="createAccount">Don\'t have an account? Create One</string>
+
+
+
+
 </resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">دليل الثقافة</string>
+
+    <string name="sign_in">تسجيل الدخول</string>
+    <string name="sign_up">انشاء حساب</string>
+    <string name="email">البريد الالكتروني</string>
+    <string name="emailHint">example@Example.com</string>
+    <string name="password">كلمة الدخول</string>
+    <string name="createAccount">لا تمتلك حساب! انشأ واحدا</string>
+
+</resources>
