@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "162087700497",
+    "firebase_url": "https://cultureguide-92b93.firebaseio.com",
+    "project_id": "cultureguide-92b93",
+    "storage_bucket": "cultureguide-92b93.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:162087700497:android:03f360ac093d42c4",
+        "android_client_info": {
+          "package_name": "com.ghorabaa.cultureguide"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "162087700497-2mpip5cl3phgk0bk6t521ald4sequmqa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ghorabaa.cultureguide",
+            "certificate_hash": "78e68c07f5b92d4544eeffd91368f5f45a018bab"
+          }
+        },
+        {
+          "client_id": "162087700497-hv75bs4nj5d2ubafvqvkkm9ke835qct4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_ByJjOMp8CfaZkHkM6LqixP2oy5QZWTY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "162087700497-hv75bs4nj5d2ubafvqvkkm9ke835qct4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
