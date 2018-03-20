@@ -1,39 +1,32 @@
-package com.ghorabaa.cultureguide.Login;
+package com.ghorabaa.cultureguide.SignIn;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.ghorabaa.cultureguide.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends AppCompatActivity implements LoginContract.LoginView {
+public class MainActivity extends AppCompatActivity implements SignInContract.SignInView {
 
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "SignInActivity";
 
-    private LoginPresenter mPresenter;
+    private SignInPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mPresenter = new LoginPresenter(this);
+        mPresenter = new SignInPresenter(this);
 
         //Testing Login
         mPresenter.signIn("ahmed@gmail.com","password");
     }
 
     //Testing Functions
-    public void onLoginSuccess(){
+    public void onSignInSuccess(){
         Context context = getApplicationContext();
         CharSequence text = "Login Success";
         int duration = Toast.LENGTH_SHORT;
@@ -42,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements LoginContract.Log
         toast.show();
     }
 
-    public void onLoginFail(){
+    public void onSignInFail(){
         Context context = getApplicationContext();
         CharSequence text = "Login Failed";
         int duration = Toast.LENGTH_SHORT;
@@ -50,4 +43,6 @@ public class MainActivity extends AppCompatActivity implements LoginContract.Log
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
     }
+
+    public void ha(){};
 }

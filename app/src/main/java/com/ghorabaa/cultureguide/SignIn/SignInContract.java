@@ -1,13 +1,13 @@
-package com.ghorabaa.cultureguide.Login;
+package com.ghorabaa.cultureguide.SignIn;
 
 /**
  * Created by Ahmed Ibrahim on 3/19/18.
  */
 
-public interface LoginContract {
-    interface LoginView{
-        void onLoginSuccess();
-        void onLoginFail();
+public interface SignInContract {
+    interface SignInView {
+        void onSignInSuccess();
+        void onSignInFail();
     };
 
     interface LoginPresenter{

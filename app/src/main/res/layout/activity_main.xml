@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/backGround"
     android:orientation="vertical"
-    tools:context="com.ghorabaa.cultureguide.Login.MainActivity">
+    tools:context="com.ghorabaa.cultureguide.SignIn.MainActivity">
 
     <ImageView
         android:layout_width="200dp"
