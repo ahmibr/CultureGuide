@@ -7,6 +7,11 @@
     <string name="emailHint">example@Example.com</string>
     <string name="password">Password</string>
     <string name="createAccount">Don\'t have an account? Create One</string>
+    <string name="title_activity_addevent">Addevent</string>
+    <string name="title_activity_event_main_activty">EventMainActivty</string>
+    <string name="title_activity_create_event_activty">CreateEventActivty</string>
+    <string name="title_activity_remove_event">RemoveEvent</string>
+    <string name="title_activity_update_event_activty">UpdateEventActivty</string>
 
 
 </resources>
