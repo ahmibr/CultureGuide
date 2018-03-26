@@ -1,32 +1,37 @@
-package com.ghorabaa.cultureguide;
+package com.ghorabaa.cultureguide.EventPage;
 
 /**
  * Created by ruba on 18/03/18.
  */
+import com.ghorabaa.cultureguide.MEvent;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.ghorabaa.cultureguide.MEvent;
 
-public class EventManager {
+public class EventModel {
 
-    private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+    private DatabaseReference mDatabase ;
+    private static EventPresenter mpresenter;
 
 
+    private static final EventModel ourInstance = new EventModel();
 
-    private static final EventManager ourInstance = new EventManager();
 
-    public static EventManager getInstance() {
+    public static EventModel getInstance(EventPresenter presenter) { ourInstance.mpresenter=presenter;
         return ourInstance;
     }
 
-    private EventManager() {
+    private EventModel() {
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
     }
 
+
+
     public  void AddEvent( MEvent Event)
     {
-        Event.SetID(mDatabase.push().getKey()) ;
+        Event.SetID(mDatabase.push().getKey()) ;//give each event aunique id
         mDatabase.child("events").child(Event.GetID()).setValue(Event);
+
     }
 
 
@@ -35,6 +40,12 @@ public class EventManager {
     {
         mDatabase.child("events").child(Event.GetID()).setValue(null);
     }
+/*
+  parameter to change:name of parameter to be updated
+  value:a generic object with the new value
+
+
+ */
 
    public void UpdateEvent(MEvent Event,String ParameterToChange,Object value)
    {
