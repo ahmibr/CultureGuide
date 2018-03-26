@@ -7,7 +7,9 @@
     <string name="sign_up">انشاء حساب</string>
     <string name="email">البريد الالكتروني</string>
     <string name="emailHint">example@Example.com</string>
-    <string name="password">كلمة الدخول</string>
+    <string name="password">رمز الدخول</string>
     <string name="createAccount">لا تمتلك حساب! انشأ واحدا</string>
+    <string name="nameExample">الاسم</string>
+    <string name="confirmPassword">تاكيد رمز الدخول</string>
 
 </resources>
