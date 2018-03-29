@@ -7,6 +7,7 @@ import com.ghorabaa.cultureguide.MEvent;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+
 public class EventModel {
 
     private DatabaseReference mDatabase ;
@@ -29,8 +30,9 @@ public class EventModel {
 
     public  void AddEvent( MEvent Event)
     {
-        Event.SetID(mDatabase.push().getKey()) ;//give each event aunique id
+        Event.ID=(mDatabase.push().getKey()) ;//give each event a unique id
         mDatabase.child("events").child(Event.GetID()).setValue(Event);
+
 
     }
 
@@ -38,7 +40,7 @@ public class EventModel {
 
     public  void RemoveEvent(MEvent Event)
     {
-        mDatabase.child("events").child(Event.GetID()).setValue(null);
+        mDatabase.child("events").child(Event.GetID()).removeValue();
     }
 /*
   parameter to change:name of parameter to be updated

@@ -8,14 +8,14 @@ public interface EventContract {
     interface EventView{
 
 
-        boolean IsVerified();
+
         void onSuccess();
-        void onFail();
+        void onFail(Exception e);
 
 
 
 
-    };
+    }
 
 
 }

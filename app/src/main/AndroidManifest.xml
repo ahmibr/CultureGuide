@@ -10,39 +10,38 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".SignIn.MainActivity">
+             <!--<intent-filter>-->
+             <!--<action android:name="android.intent.action.MAIN" />-->
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
 
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
+             <!--<category android:name="android.intent.category.LAUNCHER" />-->
+             <!--</intent-filter>-->
         </activity>
         <activity android:name=".SignUp.SignUpActivity">
+        </activity>
+        <activity
+            android:name=".EventPage.CreateEventActivity">
+
+            android:label="@string/title_activity_addevent"
+            android:theme="@style/AppTheme.NoActionBar"
+
+        </activity>
+        <activity
+            android:name=".EventPage.EventMainActivity"
+            android:label="@string/title_activity_event_main_activty"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".EventPage.RemoveEventActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            android:label="@string/title_activity_remove_event"
+            android:theme="@style/AppTheme.NoActionBar"
         </activity>
         <activity
-            android:name=".AddEvent.AddeventActivty"
-            android:label="@string/title_activity_addevent"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".EventPage.EventMainActivty"
-            android:label="@string/title_activity_event_main_activty"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".EventPage.CreateEventActivty"
-            android:label="@string/title_activity_create_event_activty"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".EventPage.RemoveEventActivty"
-            android:label="@string/title_activity_remove_event"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".EventPage.UpdateEventActivty"
+            android:name=".EventPage.UpdateEventActivity"
             android:label="@string/title_activity_update_event_activty"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

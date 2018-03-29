@@ -1,5 +1,7 @@
 package com.ghorabaa.cultureguide.EventPage;
 
+import android.util.Log;
+
 import com.ghorabaa.cultureguide.MEvent;
 
 /**
@@ -13,11 +15,25 @@ public class RemoveEventPresenter extends EventPresenter {
         super(view);
 
     }
-    @Override
-    public void CallModel(MEvent Event)
-    {
 
-        mModel.RemoveEvent(Event);
+    @Override
+    public void RunPresenter(MEvent Event) {
+
+
+        try
+
+        {
+            super.mModel.RemoveEvent(Event);
+            mview.onSuccess();
+
+        } catch (Exception e)
+
+        {
+            mview.onFail(e);
+
+            Log.w("error:", e);
+
+        }
     }
 
 }
