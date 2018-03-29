@@ -20,15 +20,11 @@ abstract class EventPresenter {
 
     }
 
-public abstract void CallModel(MEvent Event);
 
-    public void RunPresenter(MEvent Event) {
-        if (mview.IsVerified()) {
-            CallModel(Event);
-            mview.onSuccess();
-        } else
-            mview.onFail();
-    }
+
+    public abstract void RunPresenter(MEvent Event) ;
+
+
 
 
 }

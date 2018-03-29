@@ -1,5 +1,7 @@
 package com.ghorabaa.cultureguide.EventPage;
 
+import android.util.Log;
+
 import com.ghorabaa.cultureguide.MEvent;
 
 /**
@@ -18,7 +20,28 @@ public class UpdateEventPresenter extends EventPresenter {
 
 
     @Override
-    public void CallModel(MEvent Event) {
-        mModel.UpdateEvent(Event,Prameter,value);
+    public void RunPresenter(MEvent Event) {
+
+        try
+
+        {
+            super.mModel.UpdateEvent(Event,Prameter,value);
+            mview.onSuccess();
+
+        }
+        catch(Exception e)
+
+        { mview.onFail(e);
+
+            Log.w("error:",e);}
+
+
+
+
+
+
+
     }
-}
+
+    }
+
