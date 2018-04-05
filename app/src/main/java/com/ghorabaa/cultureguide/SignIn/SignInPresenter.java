@@ -7,15 +7,20 @@ package com.ghorabaa.cultureguide.SignIn;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.ghorabaa.cultureguide.Authenticator;
+import com.ghorabaa.cultureguide.UserType;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 
 
 public class SignInPresenter {
 
-    private FirebaseAuth mAuth; //reference to authentication module in firebase.
+    private Authenticator mAuth; //reference to authentication module.
     private SignInContract.SignInView mView; //reference to view
     private final static String TAG = "LoginModule"; //Tag for log
 
@@ -24,32 +29,26 @@ public class SignInPresenter {
     {
         mView = view;
 
-        mAuth = FirebaseAuth.getInstance();
+       mAuth = new Authenticator(this);
     }
 
 
     public void signIn(String email,String password){
 
-        //Listener on Authentication process
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    mView.onSignInSuccess();
-                    Log.d(TAG, "signInWithEmail:Done");
-                }
-                else
-                {
-                    mView.onSignInFail();
-                    Log.w(TAG, "signInWithEmail:failure", task.getException());
-                }
-            }
-        });
+      mAuth.signIn(email, password);
+
+
     }
 
-    public static void signOut(){
-        FirebaseAuth.getInstance().signOut();
+    public void onSignInSuccess(UserType userType){
+        mView.onSignInSuccess();
     }
+
+    public void onSignInFail(){
+        mView.onSignInFail("Email and Password doesn't match");
+
+    }
+
 
     public void ha(){};
 }

@@ -29,15 +29,14 @@ public class MainActivity extends AppCompatActivity implements SignInContract.Si
     public void onSignInSuccess(){
         Context context = getApplicationContext();
         CharSequence text = "Login Success";
-        int duration = Toast.LENGTH_SHORT;
+        int duration = Toast.LENGTH_LONG;
 
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
     }
 
-    public void onSignInFail(){
+    public void onSignInFail(String text){
         Context context = getApplicationContext();
-        CharSequence text = "Login Failed";
         int duration = Toast.LENGTH_SHORT;
 
         Toast toast = Toast.makeText(context, text, duration);

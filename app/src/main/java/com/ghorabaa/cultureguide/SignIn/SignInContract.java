@@ -7,11 +7,7 @@ package com.ghorabaa.cultureguide.SignIn;
 public interface SignInContract {
     interface SignInView {
         void onSignInSuccess();
-        void onSignInFail();
+        void onSignInFail(String text);
     };
 
-    interface LoginPresenter{
-        void signIn(String email,String password);
-        void signOut();
-    }
 }
