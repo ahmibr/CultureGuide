@@ -9,7 +9,7 @@ import com.ghorabaa.cultureguide.UserType;
 public interface SignUpContract {
     interface SignUpView {
         void onSignUpSuccess();
-        void onSignUpFail();
+        void onSignUpFail(String errorMessage);
     };
 
     interface SignUpPresenter{

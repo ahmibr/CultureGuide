@@ -33,9 +33,9 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
         toast.show();
     }
 
-    public void onSignUpFail(){
+    public void onSignUpFail(String errorMessage){
         Context context = getApplicationContext();
-        CharSequence text = "Sign up Failed";
+        CharSequence text = errorMessage;
         int duration = Toast.LENGTH_SHORT;
 
         Toast toast = Toast.makeText(context, text, duration);

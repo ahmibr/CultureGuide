@@ -52,7 +52,10 @@
             android:layout_marginLeft="16dp"
 
             android:layout_marginRight="16dp"
-            android:hint="@string/emailHint" />
+            android:hint="@string/emailHint"
+
+            android:id="@+id/sign_in_email"
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -74,7 +77,10 @@
             android:layout_marginLeft="16dp"
 
             android:layout_marginRight="16dp"
-            android:hint="************" />
+            android:hint="************"
+
+            android:id="@+id/sign_in_password"
+            />
 
         <Button
             android:layout_width="wrap_content"
@@ -83,14 +89,18 @@
 
             android:layout_marginTop="25dp"
 
-            android:text="@string/sign_in" />
+            android:text="@string/sign_in"
+            android:onClick="onSignInClicked"
+            />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
 
-            android:text="@string/createAccount" />
+            android:text="@string/createAccount"
+            android:onClick="onSignUpClicked"
+            />
 
     </LinearLayout>
 

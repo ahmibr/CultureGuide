@@ -21,5 +21,8 @@
     <string name="title_activity_home_page">الصفحة الرئيسية</string>
     <string name="attend">احضر</string>
     <string name="event_created">أنشأت الايفينت</string>
+    <string name="sign_in_success">تسجيل بنجاح</string>
+    <string name="sign_in_fail">ايمايل او باسورد لا يتطابقون</string>
+    <string name="blank_field">برجاء ملأ البيانات الناقصة</string>
 
 </resources>
