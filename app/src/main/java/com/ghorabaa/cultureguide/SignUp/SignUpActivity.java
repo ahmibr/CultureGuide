@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.ghorabaa.cultureguide.HomePage;
 import com.ghorabaa.cultureguide.R;
+import com.ghorabaa.cultureguide.SignIn.SignInContract;
 import com.ghorabaa.cultureguide.UserType;
 
 public class SignUpActivity extends AppCompatActivity implements SignUpContract.SignUpView {
@@ -17,7 +18,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
 
     private static final String TAG = "SignUpActivity";
 
-    private SignUpPresenter mPresenter;
+    private SignUpContract.SignUpPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +26,10 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
         setContentView(R.layout.activity_main2);
 
         mPresenter = new SignUpPresenter(this);
+
     }
 
-    //Testing Functions
+
     public void onSignUpSuccess(){
         Context context = getApplicationContext();
         CharSequence text = "Sign Up Success";

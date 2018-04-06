@@ -10,7 +10,7 @@ public interface SignInContract {
         void onSignInFail();
     };
 
-    interface LoginPresenter{
+    interface SignInPresenter{
         void signIn(String email,String password);
     }
 }

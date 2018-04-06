@@ -4,7 +4,7 @@ package com.ghorabaa.cultureguide.EditProfile;
  * Created by Ahmed Ibrahim on 4/6/18.
  */
 
-public class EditOrgPresenter {
+public class EditOrgPresenter implements EditOrgContract.EditOrgPresenter{
 
     EditOrgModel mModel;
 

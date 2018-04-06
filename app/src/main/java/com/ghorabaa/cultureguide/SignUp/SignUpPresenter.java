@@ -4,20 +4,12 @@ package com.ghorabaa.cultureguide.SignUp;
  * Created by Ahmed Ibrahim on 3/16/18.
  */
 
-import android.support.annotation.NonNull;
-import android.util.Log;
 
-import com.ghorabaa.cultureguide.*;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.ghorabaa.cultureguide.UserType;
 
 
-public class SignUpPresenter {
+
+public class SignUpPresenter implements SignUpContract.SignUpPresenter{
 
     private SignUpContract.SignUpView mView; //Reference to View
     private SignUpModel mModel; //Sign Up Model object

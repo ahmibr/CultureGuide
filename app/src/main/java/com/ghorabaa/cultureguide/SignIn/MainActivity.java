@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity implements SignInContract.Si
 
     private static final String TAG = "SignInActivity";
 
-    private SignInPresenter mPresenter;
+    private SignInContract.SignInPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

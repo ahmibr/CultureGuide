@@ -9,4 +9,9 @@ public interface EditOrgContract {
         void onSuccess(String SuccessMessage);
         void onFail(String SuccessMessage);
     }
+    public interface EditOrgPresenter{
+        public void changeEmail(String email);
+        public void changePassword(String password);
+        public void changeName(String name);
+    }
 }

@@ -13,7 +13,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 
-public class SignInPresenter {
+public class SignInPresenter implements SignInContract.SignInPresenter{
 
     private FirebaseAuth mAuth; //reference to authentication module in firebase.
     private SignInContract.SignInView mView; //reference to view
