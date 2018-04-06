@@ -12,6 +12,5 @@ public interface SignInContract {
 
     interface LoginPresenter{
         void signIn(String email,String password);
-        void signOut();
     }
 }

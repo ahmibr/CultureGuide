@@ -47,9 +47,4 @@ public class SignInPresenter {
         });
     }
 
-    public static void signOut(){
-        FirebaseAuth.getInstance().signOut();
-    }
-
-    public void ha(){};
 }
