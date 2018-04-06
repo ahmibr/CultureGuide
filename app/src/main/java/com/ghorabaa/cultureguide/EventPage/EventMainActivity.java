@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.ghorabaa.cultureguide.R;
 
 
-public abstract class EventMainActivty extends AppCompatActivity implements EventContract.EventView {
+public class EventMainActivity extends AppCompatActivity implements EventContract.EventView {
     private static final String TAG = "EventActivity";
 
      protected EventPresenter mpresenter;
@@ -22,4 +22,15 @@ public abstract class EventMainActivty extends AppCompatActivity implements Even
         setContentView(R.layout.activity_event_main_activty);
     }
 
+
+
+    @Override
+    public void onSuccess() {
+
+    }
+
+    @Override
+    public void onFail(Exception e) {
+
+    }
 }

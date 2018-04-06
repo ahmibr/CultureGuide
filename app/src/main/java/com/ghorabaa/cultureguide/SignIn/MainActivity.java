@@ -22,8 +22,9 @@ public class MainActivity extends AppCompatActivity implements SignInContract.Si
         mPresenter = new SignInPresenter(this);
 
         //Testing Login
-        mPresenter.signIn("ahmed@gmail.com","password");
+        mPresenter.signIn("ahmed@gmail.com", "password");
     }
+
 
     //Testing Functions
     public void onSignInSuccess(){

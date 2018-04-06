@@ -7,61 +7,57 @@ package com.ghorabaa.cultureguide;
 import java.util.Date;
 public class MEvent {
 
-    private String description;
-    private String ID;
-    private String title;
-    private String location;
-    private int rating;
-    private Date EventDate;
+   public String description;
+    public String title;
+
+    public String location;
+    public int rating;
+    public Date EventDate;
+    public String ID;
 
     public String GetDescrption()
     {
      return this.description;
-     };
-    public String GetID()
-    {
-       return  this.ID;
-    };
+     }
+
     public String GetTitle()
     {
         return this.title;
-    };
+    }
     public String GetLocation()
     {
         return this.location;
-    };
+    }
     public int  GetRating()
     {
         return this.rating;
-    };
+    }
     public Date GetDate()
     {
         return this.EventDate;
-    };
+    }
     public void SetDescription(String descrption)
     {
         this.description=descrption;
-    };
-    public void SetID(String ID)
-    {
-        this.ID=ID;
-    };
+    }
+    public void SetID(String ID){this.ID=ID;}
+    public String  GetID(){return ID;}
     public void SetTitle(String Title)
     {
-        this.title=title;
-    };
+        this.title=Title;
+    }
     public void SetLocation(String Location)
     {
-      this.location=location;
-    };
+      this.location=Location;
+    }
     public void SetRating(int rating)
     {
       this.rating=rating;
-    };
+    }
     public void SetEventDate(Date EventDate)
     {
         this.EventDate=EventDate;
-    };
+    }
 
 
 }

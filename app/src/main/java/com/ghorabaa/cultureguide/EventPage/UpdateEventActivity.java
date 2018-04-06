@@ -9,24 +9,25 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Toast;
 
+import com.ghorabaa.cultureguide.MEvent;
 import com.ghorabaa.cultureguide.R;
 
-public class UpdateEventActivty extends EventMainActivty {
+public class UpdateEventActivity extends EventMainActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_event_activty);
+        mpresenter=new UpdateEventPresenter(this,"rate",4);
+        MEvent Event = new MEvent();
+        Event.ID="1";
+        mpresenter.RunPresenter(Event);
 
     }
 
-    @Override
-    public boolean IsVerified() {
 
 
-        // get the parameters to be updated from GUI
-        return true;
-    }
+
 
     @Override
     public void onSuccess() {
@@ -40,7 +41,7 @@ public class UpdateEventActivty extends EventMainActivty {
     }
 
     @Override
-    public void onFail() {
+    public void onFail(Exception e) {
 
         Context context = getApplicationContext();
         CharSequence text = "Failed to update event data";
