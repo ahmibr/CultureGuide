@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.ghorabaa.cultureguide.HomePage;
 import com.ghorabaa.cultureguide.R;
+import com.ghorabaa.cultureguide.SignUp.SignUpActivity;
 
 public class MainActivity extends AppCompatActivity implements SignInContract.SignInView {
 
@@ -72,6 +73,8 @@ public class MainActivity extends AppCompatActivity implements SignInContract.Si
     }
 
     public void onSignUpClicked(View view){
+
+        startActivity(new Intent(MainActivity.this, SignUpActivity.class));
 
     }
 }

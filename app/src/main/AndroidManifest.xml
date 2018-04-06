@@ -16,43 +16,46 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".SignUp.SignUpActivity">
-        </activity>
-
+        <activity android:name=".SignUp.SignUpActivity" />
         <activity
             android:name=".EventPage.CreateEventActivity"
             android:label="@string/title_activity_addevent"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".EventPage.EventMainActivity"
             android:label="@string/title_activity_event_main_activty"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity android:name=".EventPage.RemoveEventActivity">
             android:label="@string/title_activity_remove_event"
             android:theme="@style/AppTheme.NoActionBar"
         </activity>
-
         <activity
             android:name=".EventPage.UpdateEventActivity"
             android:label="@string/title_activity_update_event_activty"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".HomePage"
             android:label="@string/title_activity_home_page"
+            android:theme="@style/AppTheme.NoActionBar">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+
+        </activity>
+        <activity
+            android:name=".EditProfileOrganization"
+            android:label="@string/title_activity_edit_profile_organization"
             android:theme="@style/AppTheme.NoActionBar">
             <!--<intent-filter>-->
                 <!--<action android:name="android.intent.action.MAIN" />-->
 
                 <!--<category android:name="android.intent.category.LAUNCHER" />-->
             <!--</intent-filter>-->
-
         </activity>
-
     </application>
 
 </manifest>

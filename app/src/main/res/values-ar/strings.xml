@@ -24,5 +24,10 @@
     <string name="sign_in_success">تسجيل بنجاح</string>
     <string name="sign_in_fail">ايمايل او باسورد لا يتطابقون</string>
     <string name="blank_field">برجاء ملأ البيانات الناقصة</string>
+    <string name="description">الوصف</string>
+    <string name="organizationName">اسم المؤسسة</string>
+    <string name="categories">الخانات</string>
+    <string name="changePassword">غير الباسورد</string>
+    <string name="confirmNewPassword">اكد الباسورد</string>
 
 </resources>

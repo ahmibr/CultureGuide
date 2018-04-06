@@ -130,8 +130,6 @@ public class HomePagePosts extends RecyclerView.Adapter<HomePagePosts.EventPost>
 
             initialContent = postTitle.getText().toString();
 
-            Log.d("Bassel","Initial Content is " + initialContent);
-
             itemView.setOnClickListener(this);
 
             attendButton.setOnClickListener( new View.OnClickListener(){
@@ -170,7 +168,6 @@ public class HomePagePosts extends RecyclerView.Adapter<HomePagePosts.EventPost>
 
         @Override
         public void onClick(View v) {
-            Log.d("Bassel","Click happened");
             int clickedPosition = getAdapterPosition();
             mOnClickListener.onListItemClick(clickedPosition);
         }

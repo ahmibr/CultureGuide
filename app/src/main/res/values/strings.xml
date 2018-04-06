@@ -37,4 +37,15 @@
     <string name="attend">Attend</string>
     <string name="event_created">created event</string>
 
+    <!--edit profile related-->
+    <string name="editProfile">Edit Profile</string>
+    <string name="editEmail">Edit E-mail</string>
+    <string name="changePassword">Change Password</string>
+    <string name="confirmNewPassword">Confirm Password</string>
+    <string name="categories">Categories</string>
+    <string name="organizationName">Organization Name</string>
+    <string name="description">Description</string>
+    <string name="briefDescription">You can add organization vision, interests and activities</string>
+    <string name="title_activity_edit_profile_organization">EditProfileOrganization</string>
+
 </resources>

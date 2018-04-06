@@ -3,6 +3,7 @@ package com.ghorabaa.cultureguide.SignUp;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Toast;
 
 import com.ghorabaa.cultureguide.R;
@@ -40,5 +41,9 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
 
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
+    }
+
+    public void doneSignUp(View view){
+        Toast.makeText(view.getContext(),"Test",Toast.LENGTH_LONG);
     }
 }

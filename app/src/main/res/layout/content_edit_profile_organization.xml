@@ -4,12 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ghorabaa.cultureguide.SignUp.SignUpActivity">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.ghorabaa.cultureguide.EditProfileOrganization"
+    tools:showIn="@layout/app_bar_edit_profile_organization">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:background="@color/backGround">
+
+        <!--tools:showIn="@layout/edit_profile"-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,8 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:hint=""
-                android:id="@+id/organization_name"/>
+                android:hint="" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -41,7 +45,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="16dp"
-                android:text="@string/email"
+                android:text="@string/editEmail"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -50,8 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:hint="@string/email"
-                android:id="@+id/organization_email"/>
+                android:hint="currentEmail" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -59,7 +62,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="16dp"
-                android:text="@string/password"
+                android:text="@string/changePassword"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -68,8 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:hint="************"
-                android:id="@+id/organization_password"/>
+                android:hint="************" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -86,16 +88,47 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:hint="************"
-                android:id="@+id/organization_password_confirm"/>
+                android:hint="************" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/categories"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spinner1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/btn_dropdown"
+                android:spinnerMode="dropdown"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/description"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:hint="@string/briefDescription" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/sign_up"
-                android:id="@+id/edit_profile"
-                android:onClick="doneSignUp"/>
+                android:text="@string/editProfile" />
 
         </LinearLayout>
 

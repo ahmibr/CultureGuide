@@ -174,8 +174,5 @@ public class HomePage extends AppCompatActivity
         mToast = Toast.makeText(this, toastMessage, Toast.LENGTH_LONG);
 
         mToast.show();
-
-        //mAdapter.
-
     }
 }
