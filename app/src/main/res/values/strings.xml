@@ -3,6 +3,7 @@
 
     <string name="sign_in">Sign in</string>
     <string name="sign_up">Sign up</string>
+    <string name="sign_out">Sign out</string>
     <string name="email">E-mail</string>
     <string name="emailHint">example@Example.com</string>
     <string name="password">Password</string>
@@ -12,6 +13,24 @@
     <string name="title_activity_create_event_activty">CreateEventActivty</string>
     <string name="title_activity_remove_event">RemoveEvent</string>
     <string name="title_activity_update_event_activty">UpdateEventActivty</string>
+    <string name="title_activity_home_page">Home Page</string>
 
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+
+
+    <!--Strings of the drawer-->
+    <string name="exit">Exit</string>
+    <string name="home_page">Home Page</string>
+    <string name="create_Event">Create Event</string>
+    <string name="edit_profile">Edit Profile</string>
+
+
+    <!--Strings of Home Page-->
+    <string name="attend">Attend</string>
+    <string name="event_created">created event</string>
 
 </resources>

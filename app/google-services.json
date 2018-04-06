@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "162087700497-532jd9lf2h13oo9oe815fccre7rln959.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ghorabaa.cultureguide",
+            "certificate_hash": "d3bdfeeabe433610d712ff2de14ec04294824edf"
+          }
+        },
+        {
           "client_id": "162087700497-2mpip5cl3phgk0bk6t521ald4sequmqa.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
