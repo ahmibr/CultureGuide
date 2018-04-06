@@ -19,51 +19,54 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUpPresenter {
 
-    private FirebaseAuth mAuth; //reference to authentication module in firebase.
-    private SignUpContract.SignUpView mView; //reference to view
-    private SignUpModel mModel;
+    private SignUpContract.SignUpView mView; //Reference to View
+    private SignUpModel mModel; //Sign Up Model object
 
-    private final static String TAG = "SignUpModule"; //Tag for log
+    private final static String TAG = "SignUpModule"; //Tag for Log(Debugging)
 
 
+    /**
+     * SignUp Presenter Constructor
+     * @param view Activity that handles callbacks
+     */
     public SignUpPresenter(SignUpContract.SignUpView view)
     {
         mView = view;
-        mAuth = FirebaseAuth.getInstance();
         mModel = new SignUpModel(this);
     }
 
-    void signUp(final String name,final String email, String password,final UserType type){
+    /**
+     * Registers new user in authentication web service and database
+     * @param name name of the registered user
+     * @param email email of the registered user
+     * @param password password of the registered user
+     * @param type type of user (Regular,Organization,Admin)
+     * @see UserType Enum
+     *
+     * @callback view.onSuccessRegister: In case of Success
+     * @callback presenter.onFailRegister: In case of Failure, with Error message
+     * @return none
+     */
+    public void signUp(final String name,final String email, String password,final UserType type){
 
-
-        mAuth.createUserWithEmailAndPassword(email,password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "createUserWithEmail:success");
-
-                            mModel.register(new User(mAuth.getCurrentUser().getUid(),name,email,type));
-
-
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
-
-                            mView.onSignUpFail();
-                        }
-
-                        // ...
-                    }
-                });
-
-
-
+        mModel.register(name, email, password, type);
     }
 
-    public void onCompleteRegister(){
+    /**
+     * Callback from Model, when sign up succeeds
+     */
+    public void onSignUpSuccess(){
+        //notify view
         mView.onSignUpSuccess();
+    }
+
+    /**
+     * Callback from Model, when sign up fails
+     * @param errorMessage Error occurred during sign up process
+     */
+    public void onSignUpFail(String errorMessage){
+        //notify view
+        mView.onSignUpFail(errorMessage);
     }
 
 }
