@@ -5,6 +5,7 @@ package com.ghorabaa.cultureguide.EditProfile;
  */
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -36,6 +37,8 @@ public class EditOrgModel {
     }
 
     public void changeEmail(final String newEmail){
+
+        Log.d("Bassel" , "Reached editorg model");
 
         if(mUser==null)
             return;
@@ -73,6 +76,8 @@ public class EditOrgModel {
 
         DatabaseReference db = FirebaseDatabase.getInstance().getReference("organization");
         db.child(mUser.getUid()).child("name").setValue(newName);
+
+        mPresenter.onSuccess("Name changed Successfully");
     }
 
     public void changePassword(final String newPassword){

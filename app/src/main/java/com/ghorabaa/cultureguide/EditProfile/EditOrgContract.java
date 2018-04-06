@@ -6,8 +6,8 @@ package com.ghorabaa.cultureguide.EditProfile;
 
 public interface EditOrgContract {
     public interface EditOrgView{
-        void onSuccess(String SuccessMessage);
-        void onFail(String SuccessMessage);
+        void onSuccess(String successMessage);
+        void onFail(String failMessage);
     }
     public interface EditOrgPresenter{
         public void changeEmail(String email);

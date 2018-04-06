@@ -29,5 +29,7 @@
     <string name="categories">الخانات</string>
     <string name="changePassword">غير الباسورد</string>
     <string name="confirmNewPassword">اكد الباسورد</string>
+    <string name="title_activity_edit_profile_organization">تعديل حساب المؤسسة</string>
+    <string name="edit">تعديل</string>
 
 </resources>

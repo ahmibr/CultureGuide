@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.ghorabaa.cultureguide.EditProfileOrganization"
+    tools:context="com.ghorabaa.cultureguide.EditProfile.EditOrgActivity"
     tools:showIn="@layout/app_bar_edit_profile_organization">
 
     <ScrollView
@@ -32,12 +32,30 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <EditText
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:hint="" />
+                android:orientation="horizontal"
+                >
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:hint=""
+                    android:id="@+id/edit_org_name"
+                    android:layout_weight="9"
+                    />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/edit"
+                    android:layout_weight="1"
+                    android:onClick="changeOrgName"
+                    />
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -49,12 +67,28 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <EditText
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:hint="currentEmail" />
+                android:orientation="horizontal"
+                >
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:hint="currentEmail"
+                    android:id="@+id/edit_org_email"
+                    android:layout_weight="5"
+                    />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/edit"
+                    android:layout_weight="1"
+                    android:onClick="changeOrgEmail"
+                    />
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -71,7 +105,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:hint="************" />
+                android:hint="************"
+                android:id="@+id/edit_org_password_1"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -83,52 +118,71 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <EditText
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:hint="************" />
+                android:orientation="horizontal"
+                >
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:hint="************"
+                    android:layout_weight="5"
+                    android:id="@+id/edit_org_password_2"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/edit"
+                    android:layout_weight="1"
+                    android:onClick="changeOrgPassword"
+                    />
+            </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/categories"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+            <!--TODO add this commented section-->
 
-            <Spinner
-                android:id="@+id/spinner1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:drawable/btn_dropdown"
-                android:spinnerMode="dropdown"/>
+            <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="8dp"-->
+            <!--android:layout_marginRight="8dp"-->
+            <!--android:layout_marginTop="16dp"-->
+            <!--android:text="@string/categories"-->
+            <!--android:textSize="18sp"-->
+            <!--android:textStyle="bold" />-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/description"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+            <!--<Spinner-->
+            <!--android:id="@+id/spinner1"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@android:drawable/btn_dropdown"-->
+            <!--android:spinnerMode="dropdown"/>-->
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:hint="@string/briefDescription" />
+            <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="8dp"-->
+            <!--android:layout_marginRight="8dp"-->
+            <!--android:layout_marginTop="16dp"-->
+            <!--android:text="@string/description"-->
+            <!--android:textSize="18sp"-->
+            <!--android:textStyle="bold" />-->
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/editProfile" />
+            <!--<EditText-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="16dp"-->
+            <!--android:layout_marginRight="16dp"-->
+            <!--android:hint="@string/briefDescription" />-->
+
+            <!--<Button-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:text="@string/editProfile"-->
+            <!--android:onClick="test"-->
+            <!--/>-->
 
         </LinearLayout>
 

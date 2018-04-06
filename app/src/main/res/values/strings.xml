@@ -46,6 +46,8 @@
     <string name="organizationName">Organization Name</string>
     <string name="description">Description</string>
     <string name="briefDescription">You can add organization vision, interests and activities</string>
-    <string name="title_activity_edit_profile_organization">EditProfileOrganization</string>
+    <string name="title_activity_edit_profile_organization">Edit Profile Organization</string>
+
+    <string name="edit">edit</string>
 
 </resources>

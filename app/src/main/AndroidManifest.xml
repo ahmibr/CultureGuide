@@ -47,7 +47,7 @@
 
         </activity>
         <activity
-            android:name=".EditProfileOrganization"
+            android:name=".EditProfile.EditOrgActivity"
             android:label="@string/title_activity_edit_profile_organization"
             android:theme="@style/AppTheme.NoActionBar">
             <!--<intent-filter>-->
