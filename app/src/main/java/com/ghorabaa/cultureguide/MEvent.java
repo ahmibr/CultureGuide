@@ -15,6 +15,8 @@ public class MEvent {
     public Date EventDate;
     public String ID;
 
+    public String organizationCreatedIt;
+
     public String GetDescrption()
     {
      return this.description;

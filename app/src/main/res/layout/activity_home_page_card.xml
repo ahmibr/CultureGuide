@@ -22,21 +22,33 @@
             android:text="@string/event_created"
             android:textSize="18dp"
             android:textStyle="bold"
-            android:id="@+id/postTitle"/>
+            android:id="@+id/post_title"/>
 
         <ImageButton
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:src="@drawable/egyption_culture"
-            android:id="@+id/postImage"/>
+            android:id="@+id/post_image"/>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="time"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:id="@+id/post_time"
+            android:textStyle="bold"
+            />
 
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/attend"
             android:layout_gravity="right"
             android:drawableRight="@drawable/ic_event_black_24dp"
-            android:id="@+id/postAttend"
+            android:id="@+id/post_attend"
             />
 
     </LinearLayout>

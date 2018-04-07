@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ghorabaa.cultureguide.MEvent;
 import com.ghorabaa.cultureguide.R;
 
 import java.sql.Struct;
@@ -49,9 +50,8 @@ public class HomePagePosts extends RecyclerView.Adapter<HomePagePosts.EventPost>
 
     private static int viewHolderCount;
 
-    //private OrganizationEventCardInfo[] organizationEventCardsInfo;
 
-    List<OrganizationEventCardInfo> organizationsEventsInfo;
+    List<MEvent> organizationsEventsInfo;
 
 
     /**
@@ -67,16 +67,25 @@ public class HomePagePosts extends RecyclerView.Adapter<HomePagePosts.EventPost>
         viewHolderCount = 0;
 
         //TODO delete this chunk of test code after testing and merging with back
-        organizationsEventsInfo = new ArrayList<OrganizationEventCardInfo>();
+//        organizationsEventsInfo = new ArrayList<MEvent>();
+//
+//        MEvent o = new MEvent();
+//        o.organizationName = "XYZ";
+//        o.title = "ABC";
+//        organizationsEventsInfo.add( o );
+//        o = new MEvent();
+//        o.organizationName = "سصط";
+//        o.title = "ابت";
+//        organizationsEventsInfo.add( o );
+    }
 
-        OrganizationEventCardInfo o = new OrganizationEventCardInfo();
-        o.organizationName = "XYZ";
-        o.eventName = "ABC";
-        organizationsEventsInfo.add( o );
-        o = new OrganizationEventCardInfo();
-        o.organizationName = "سصط";
-        o.eventName = "ابت";
-        organizationsEventsInfo.add( o );
+    public HomePagePosts(List<MEvent> cardsInfo , ListItemClickListener listener) {
+        mNumberItems = cardsInfo.size();
+        mOnClickListener = listener;
+        viewHolderCount = 0;
+
+        //TODO delete this chunk of test code after testing and merging with back
+        organizationsEventsInfo = cardsInfo;
     }
 
     @Override
@@ -107,16 +116,22 @@ public class HomePagePosts extends RecyclerView.Adapter<HomePagePosts.EventPost>
         return mNumberItems;
     }
 
+    public void setNumberOfPosts(int count){
+        mNumberItems = count;
+    }
+
     class EventPost extends  RecyclerView.ViewHolder
             implements View.OnClickListener {
 
         //The views in the frameLayout
         TextView postTitle;
+        TextView postTime;
 
         ImageButton postAppearance;
 
         Button attendButton;
 
+        String id;
 
         int position;
         String initialContent;
@@ -124,9 +139,12 @@ public class HomePagePosts extends RecyclerView.Adapter<HomePagePosts.EventPost>
         public EventPost(View itemView) {
             super(itemView);
 
-            postTitle = (TextView) itemView.findViewById(R.id.postTitle);
-            postAppearance = (ImageButton) itemView.findViewById(R.id.postImage);
-            attendButton = (Button) itemView.findViewById(R.id.postAttend);
+            postTitle = (TextView) itemView.findViewById(R.id.post_title);
+            postAppearance = (ImageButton) itemView.findViewById(R.id.post_image);
+            attendButton = (Button) itemView.findViewById(R.id.post_attend);
+            postTime = (TextView) itemView.findViewById(R.id.post_time);
+
+            attendButton.setClickable(false);
 
             initialContent = postTitle.getText().toString();
 
@@ -136,7 +154,7 @@ public class HomePagePosts extends RecyclerView.Adapter<HomePagePosts.EventPost>
                 @Override
                 public void onClick(View view) {
 
-                    String toastText = organizationsEventsInfo.get(position%2).organizationName + " created " + organizationsEventsInfo.get(position%2).eventName;
+                    String toastText = organizationsEventsInfo.get(position).title + " created " + organizationsEventsInfo.get(position).title;
                     Toast.makeText(view.getContext(),toastText,Toast.LENGTH_LONG).show();
                 }
             } );
@@ -152,15 +170,24 @@ public class HomePagePosts extends RecyclerView.Adapter<HomePagePosts.EventPost>
          * @param orgnizationName
          * @param eventName
          */
-        public void setPostValues(String orgnizationName,String eventName){
+        public void setPostValues(String orgnizationName,String eventName,String eventTime){
             postTitle.setText(orgnizationName + " " + initialContent + " " + eventName);
+            postTime.setText(eventTime);
         }
 
         public void bindValue ( int position ) {
             this.position = position;
 
-            setPostValues( organizationsEventsInfo.get(position%2).organizationName + Integer.toString(position)
-                    , organizationsEventsInfo.get(position%2).eventName + Integer.toString(position * 3));
+            id = organizationsEventsInfo.get(position).ID;
+
+            String date = "";
+            if(organizationsEventsInfo.get(position).EventDate != null){
+                date = organizationsEventsInfo.get(position).EventDate.toString();
+            }
+
+            setPostValues( organizationsEventsInfo.get(position).organizationCreatedIt
+                    , organizationsEventsInfo.get(position).title
+                    , date);
         }
 
         //TODO please implement the onClick of the imageButton and attend + find a way of saving the event in the view
@@ -171,12 +198,5 @@ public class HomePagePosts extends RecyclerView.Adapter<HomePagePosts.EventPost>
             int clickedPosition = getAdapterPosition();
             mOnClickListener.onListItemClick(clickedPosition);
         }
-    }
-
-    public class OrganizationEventCardInfo {
-        public String organizationName;
-        public String eventName;
-
-        public String time;
     }
 }

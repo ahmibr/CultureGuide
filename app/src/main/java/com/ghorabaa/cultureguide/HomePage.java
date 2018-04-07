@@ -19,6 +19,10 @@ import android.widget.Toast;
 import com.ghorabaa.cultureguide.EditProfile.EditOrgActivity;
 import com.ghorabaa.cultureguide.Utilities.HomePagePosts;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 public class HomePage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener  , HomePagePosts.ListItemClickListener {
 
@@ -69,7 +73,7 @@ public class HomePage extends AppCompatActivity
         /*
          * The HomePagePostsAdapeter is responsible for displaying each item in the list.
          */
-        mAdapter = new HomePagePosts(20, this);
+        mAdapter = new HomePagePosts(0, this);
         mPosts.setAdapter(mAdapter);
     }
 
@@ -115,23 +119,6 @@ public class HomePage extends AppCompatActivity
             startActivity(new Intent(HomePage.this, EditOrgActivity.class));
         }
 
-//        if (id == R.id.nav_camera) {
-//            // Handle the camera action
-//        } else if (id == R.id.nav_gallery) {
-//
-//        } else if (id == R.id.nav_slideshow) {
-//
-//        }  else if (id == R.id.nav_share) {
-//
-//        }
-//        } else if (id == R.id.nav_send) {
-//
-//        }
-
-//        else if (id == R.id.nav_manage) {
-//
-//        }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -172,10 +159,22 @@ public class HomePage extends AppCompatActivity
 
 
     public void testPosts(View view){
-
-        String toastMessage = "Item #" + "bassel" + " clicked.";
+        String toastMessage = "Go to create event";
         mToast = Toast.makeText(this, toastMessage, Toast.LENGTH_LONG);
 
         mToast.show();
+    }
+
+    /**
+     * Created by BasselMostafa
+     *
+     * call this function to show posts of events on home screen
+     *
+     * @param cardsInfo array of MEvents classes
+     */
+
+    public void showCards(List<MEvent> cardsInfo){
+        mAdapter = new HomePagePosts(cardsInfo,this);
+        mPosts.setAdapter(mAdapter);
     }
 }
