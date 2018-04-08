@@ -6,15 +6,18 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.ghorabaa.cultureguide.MEvent;
-import com.ghorabaa.cultureguide.R;
+
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 public class CreateEventActivity extends EventMainActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_event_activty);
-        mpresenter=new CreateEventPresenter(this);
+        //setContentView(R.layout.activity_create_event_activty);
+       /*mpresenter=new CreateEventPresenter(this);
         MEvent Event=new MEvent();
         Date MyDate= new Date();
 
@@ -24,11 +27,25 @@ public class CreateEventActivity extends EventMainActivity {
         Event.location="Giza";
         Event.rating=5;
         Event.title="ARTS";
+        Event.organizationCreatedIt="dxZCPcOYXuTaMYumAy58pPGMdiC3";
 
 
         mpresenter.RunPresenter(Event);
+*/
+       mpresenter=new RetrieveEventPresenter(this);
+       String Id="dxZCPcOYXuTaMYumAy58pPGMdiC3";
+        List<MEvent> Events=new ArrayList<MEvent>();
+        Events=( (RetrieveEventPresenter) mpresenter).GetEvent(Id);
+        Context context = getApplicationContext();
+        CharSequence text = Events.get(0).description;
+        int duration = Toast.LENGTH_SHORT;
 
-            }
+        //Toast toast = Toast.makeText(context, text, duration);
+       // toast.show();
+
+
+
+    }
 
 
 

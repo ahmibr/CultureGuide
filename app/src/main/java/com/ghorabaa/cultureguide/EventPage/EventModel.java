@@ -3,9 +3,21 @@ package com.ghorabaa.cultureguide.EventPage;
 /**
  * Created by ruba on 18/03/18.
  */
+import android.support.annotation.NonNull;
+
 import com.ghorabaa.cultureguide.MEvent;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 
 public class EventModel {
@@ -55,5 +67,28 @@ public class EventModel {
    }
 
 
+  public List<MEvent> GetEvents(String OrganiztionID)
+  {
+       final List<MEvent>Events=new ArrayList<MEvent>();
 
+      mDatabase.child("events").child("organizationCreatedIt").equalTo(OrganiztionID).addValueEventListener(new ValueEventListener() {
+          @Override
+          public void onDataChange(DataSnapshot dataSnapshot) {
+
+         Events.add(dataSnapshot.getValue(MEvent.class));
+
+
+          }
+
+          @Override
+          public void onCancelled(DatabaseError databaseError) {
+
+          }
+
+
+      });
+
+
+      return Events;
+  }
 }

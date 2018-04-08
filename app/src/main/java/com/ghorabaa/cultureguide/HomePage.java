@@ -1,5 +1,6 @@
 package com.ghorabaa.cultureguide;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,19 +18,20 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.ghorabaa.cultureguide.EditProfile.EditOrgActivity;
+import com.ghorabaa.cultureguide.EventPage.EventContract;
+import com.ghorabaa.cultureguide.EventPage.RetrieveEventPresenter;
 import com.ghorabaa.cultureguide.Utilities.HomePagePosts;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class HomePage extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener  , HomePagePosts.ListItemClickListener {
+public  class HomePage extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener  , HomePagePosts.ListItemClickListener ,EventContract.EventView{
 
     //TODO remove this toast after testing
     //Used for Testing Processes
     private Toast mToast;
-
     RecyclerView mPosts;
     HomePagePosts mAdapter;
 
@@ -75,6 +77,14 @@ public class HomePage extends AppCompatActivity
          */
         mAdapter = new HomePagePosts(0, this);
         mPosts.setAdapter(mAdapter);
+
+        RetrieveEventPresenter mpresenter = new RetrieveEventPresenter( this);
+        String Id="dxZCPcOYXuTaMYumAy58pPGMdiC3";
+        List<MEvent> Events;
+        Events= mpresenter.GetEvent(Id);
+        showCards(Events);
+
+
     }
 
     @Override
@@ -174,7 +184,19 @@ public class HomePage extends AppCompatActivity
      */
 
     public void showCards(List<MEvent> cardsInfo){
+
+
         mAdapter = new HomePagePosts(cardsInfo,this);
         mPosts.setAdapter(mAdapter);
+    }
+
+    @Override
+    public void onSuccess() {
+
+    }
+
+    @Override
+    public void onFail(Exception e) {
+
     }
 }
