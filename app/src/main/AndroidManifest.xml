@@ -17,10 +17,18 @@
             <!--</intent-filter>-->
         </activity>
         <activity android:name=".SignUp.SignUpActivity" />
-        <activity
-            android:name=".EventPage.CreateEventActivity"
+
+
+
+        <activity android:name=".EventPage.CreateEventActivity"
             android:label="@string/title_activity_addevent"
             android:theme="@style/AppTheme.NoActionBar" />
+
+
+
+
+
+
         <activity
             android:name=".EventPage.EventMainActivity"
             android:label="@string/title_activity_event_main_activty"
