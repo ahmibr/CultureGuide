@@ -2,7 +2,7 @@ package com.ghorabaa.cultureguide.EventPage;
 
 import com.ghorabaa.cultureguide.MEvent;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 /**
@@ -20,12 +20,12 @@ public class RetrieveEventPresenter extends EventPresenter {
     @Override
     public void RunPresenter(MEvent Event) {
 
-    };
-
-    public List<MEvent> GetEvent(String organizationID)
-    {
-         List<MEvent>Events=new ArrayList<MEvent>();
-        mModel.GetEvents(organizationID);
-        return Events;
     }
+
+
+    public void RunRetrival(String organizationID)
+    {
+        mModel.GetEvents(organizationID);
+    }
+
 }

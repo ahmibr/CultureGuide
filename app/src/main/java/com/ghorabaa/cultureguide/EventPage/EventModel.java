@@ -4,6 +4,7 @@ package com.ghorabaa.cultureguide.EventPage;
  * Created by ruba on 18/03/18.
  */
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.ghorabaa.cultureguide.MEvent;
 import com.google.firebase.database.ChildEventListener;
@@ -67,7 +68,7 @@ public class EventModel {
    }
 
 
-  public List<MEvent> GetEvents(String OrganiztionID)
+  public void GetEvents(String OrganiztionID)
   {
        final List<MEvent>Events=new ArrayList<MEvent>();
 
@@ -76,6 +77,7 @@ public class EventModel {
           public void onDataChange(DataSnapshot dataSnapshot) {
 
          Events.add(dataSnapshot.getValue(MEvent.class));
+              mpresenter. HandleRetrived(Events);
 
 
           }
@@ -89,6 +91,6 @@ public class EventModel {
       });
 
 
-      return Events;
+
   }
 }

@@ -8,7 +8,10 @@ import android.os.Bundle;
 
 import android.widget.Toast;
 
+import com.ghorabaa.cultureguide.MEvent;
 import com.ghorabaa.cultureguide.R;
+
+import java.util.List;
 
 
 public class EventMainActivity extends AppCompatActivity implements EventContract.EventView {
@@ -31,6 +34,11 @@ public class EventMainActivity extends AppCompatActivity implements EventContrac
 
     @Override
     public void onFail(Exception e) {
+
+    }
+
+    @Override
+    public void onRetrieve(List<MEvent> Events) {
 
     }
 }
