@@ -32,16 +32,10 @@ public class CreateEventActivity extends EventMainActivity {
 
         mpresenter.RunPresenter(Event);
 */
-       mpresenter=new RetrieveEventPresenter(this);
-       String Id="dxZCPcOYXuTaMYumAy58pPGMdiC3";
-        List<MEvent> Events=new ArrayList<MEvent>();
-        Events=( (RetrieveEventPresenter) mpresenter).GetEvent(Id);
-        Context context = getApplicationContext();
-        CharSequence text = Events.get(0).description;
-        int duration = Toast.LENGTH_SHORT;
+
 
         //Toast toast = Toast.makeText(context, text, duration);
-       // toast.show();
+        //toast.show();
 
 
 

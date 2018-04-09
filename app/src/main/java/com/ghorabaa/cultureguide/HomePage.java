@@ -80,9 +80,8 @@ public  class HomePage extends AppCompatActivity
 
         RetrieveEventPresenter mpresenter = new RetrieveEventPresenter( this);
         String Id="dxZCPcOYXuTaMYumAy58pPGMdiC3";
-        List<MEvent> Events;
-        Events= mpresenter.GetEvent(Id);
-        showCards(Events);
+        mpresenter.RunRetrival(Id);
+
 
 
     }
@@ -197,6 +196,13 @@ public  class HomePage extends AppCompatActivity
 
     @Override
     public void onFail(Exception e) {
+
+    }
+
+    @Override
+    public void onRetrieve(List<MEvent> Events) {
+        //showCards(Events);
+
 
     }
 }
