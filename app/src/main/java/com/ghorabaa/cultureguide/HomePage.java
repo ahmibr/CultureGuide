@@ -43,15 +43,6 @@ public  class HomePage extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -66,11 +57,6 @@ public  class HomePage extends AppCompatActivity
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         mPosts.setLayoutManager(layoutManager);
 
-        /*
-         * Use this setting to improve performance if you know that changes in content do not
-         * change the child layout size in the RecyclerView
-         */
-        //mPosts.setHasFixedSize(true);
 
         /*
          * The HomePagePostsAdapeter is responsible for displaying each item in the list.
@@ -167,11 +153,36 @@ public  class HomePage extends AppCompatActivity
     }
 
 
+    /**
+     * This function tests show cards.
+     * TODO delete after merging with back
+     * @param view
+     */
     public void testPosts(View view){
-        String toastMessage = "Go to create event";
+        String toastMessage = "Hard Coded refresh posts";
         mToast = Toast.makeText(this, toastMessage, Toast.LENGTH_LONG);
 
         mToast.show();
+
+        List<MEvent> eventsTests = new ArrayList<>();
+        MEvent event = new MEvent();
+        event.EventDate = new Date(0);
+        event.title = "Event_Test_1";
+        event.organizationCreatedIt = "Organization_1";
+        eventsTests.add(event);
+
+        event = new MEvent();
+        event.EventDate = new Date(1);
+        event.title = "Event_Test_2";
+        event.organizationCreatedIt = "Organization_2";
+        eventsTests.add(event);
+
+        event = new MEvent();
+        event.title = "Event_Test_3";
+        event.organizationCreatedIt = "Organization_3";
+        eventsTests.add(event);
+
+        showCards(eventsTests);
     }
 
     /**

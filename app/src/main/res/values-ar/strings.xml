@@ -31,5 +31,6 @@
     <string name="confirmNewPassword">اكد الباسورد</string>
     <string name="title_activity_edit_profile_organization">تعديل حساب المؤسسة</string>
     <string name="edit">تعديل</string>
+    <string name="refreshPosts">تحديث</string>
 
 </resources>

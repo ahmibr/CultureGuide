@@ -36,6 +36,7 @@
     <!--Strings of Home Page-->
     <string name="attend">Attend</string>
     <string name="event_created">created event</string>
+    <string name="refreshPosts">refresh</string>
 
     <!--edit profile related-->
     <string name="editProfile">Edit Profile</string>

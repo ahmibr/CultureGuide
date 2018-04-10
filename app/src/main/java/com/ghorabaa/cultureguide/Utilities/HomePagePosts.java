@@ -67,16 +67,6 @@ public class HomePagePosts extends RecyclerView.Adapter<HomePagePosts.EventPost>
         viewHolderCount = 0;
 
         //TODO delete this chunk of test code after testing and merging with back
-//        organizationsEventsInfo = new ArrayList<MEvent>();
-//
-//        MEvent o = new MEvent();
-//        o.organizationName = "XYZ";
-//        o.title = "ABC";
-//        organizationsEventsInfo.add( o );
-//        o = new MEvent();
-//        o.organizationName = "سصط";
-//        o.title = "ابت";
-//        organizationsEventsInfo.add( o );
     }
 
     public HomePagePosts(List<MEvent> cardsInfo , ListItemClickListener listener) {

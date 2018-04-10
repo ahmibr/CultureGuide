@@ -38,10 +38,16 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_event_black_24dp"
                 android:id="@+id/createEventHomePage"
-                android:onClick="testPosts"
                 />
 
         </LinearLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/refreshPosts"
+            android:id="@+id/refreshPosts"
+            android:onClick="testPosts"
+            />
 
         <!--<include layout="@layout/activity_home_page_card"/>-->
         <!--<include layout="@layout/activity_home_page_card"/>-->
