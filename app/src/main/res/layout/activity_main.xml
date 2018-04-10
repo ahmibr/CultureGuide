@@ -80,6 +80,7 @@
             android:hint="************"
 
             android:id="@+id/sign_in_password"
+            android:inputType="textPassword"
             />
 
         <Button
