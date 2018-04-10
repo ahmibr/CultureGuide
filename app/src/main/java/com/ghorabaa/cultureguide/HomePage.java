@@ -20,6 +20,8 @@ import android.widget.Toast;
 import com.ghorabaa.cultureguide.EditProfile.EditOrgActivity;
 import com.ghorabaa.cultureguide.EventPage.EventContract;
 import com.ghorabaa.cultureguide.EventPage.RetrieveEventPresenter;
+import com.ghorabaa.cultureguide.SignIn.MainActivity;
+import com.ghorabaa.cultureguide.SignUp.SignUpActivity;
 import com.ghorabaa.cultureguide.Utilities.HomePagePosts;
 
 import java.util.ArrayList;
@@ -112,6 +114,11 @@ public  class HomePage extends AppCompatActivity
 
         if (id == R.id.nav_edit_profile) {
             startActivity(new Intent(HomePage.this, EditOrgActivity.class));
+        }
+        else if (id == R.id.nav_sign_out){
+            //Todo Attach signout in presenter
+            startActivity(new Intent(HomePage.this, MainActivity.class));
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

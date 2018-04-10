@@ -1,10 +1,10 @@
 package com.ghorabaa.cultureguide.SignIn;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -20,26 +20,37 @@ public class MainActivity extends AppCompatActivity implements SignInContract.Si
 
     private SignInContract.SignInPresenter mPresenter;
 
+    private ProgressDialog progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         mPresenter = new SignInPresenter(this);
+
+        progressBar = new ProgressDialog(this);
+
     }
 
 
-    //Testing Functions
+    //Checking login Function(Success)
     public void onSignInSuccess(){
+        
+        progressBar.dismiss();
         String text = getResources().getString(R.string.sign_in_success);
         int duration = Toast.LENGTH_LONG;
 
         printToast(text, duration);
 
         startActivity(new Intent(MainActivity.this, HomePage.class));
+        finish();
     }
 
+    //Checking login Function(Fail)
     public void onSignInFail(){
+
+        progressBar.dismiss();
         String text = getResources().getString(R.string.sign_in_fail);
         int duration = Toast.LENGTH_LONG;
 
@@ -48,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements SignInContract.Si
 
     public void onSignInClicked(View view){
 
-        //TODo add loading spinner until sign in Sucssess or fail
+        showProgressBar("Signing in","Please wait while signing in...");
 
         String email = ((EditText)findViewById(R.id.sign_in_email)).getText().toString();
 
@@ -66,15 +77,23 @@ public class MainActivity extends AppCompatActivity implements SignInContract.Si
         mPresenter.signIn(email,password);
     }
 
-    public void printToast(String message,int duration){
+    public void onSignUpClicked(View view){
+
+        startActivity(new Intent(MainActivity.this, SignUpActivity.class));
+        finish();
+    }
+
+    private void printToast(String message,int duration){
         Context context = getApplicationContext();
         Toast toast = Toast.makeText(context, message, duration);
         toast.show();
     }
 
-    public void onSignUpClicked(View view){
-
-        startActivity(new Intent(MainActivity.this, SignUpActivity.class));
-
+    private void showProgressBar(String title,String message){
+        progressBar.setTitle(title);
+        progressBar.setMessage(message);
+        progressBar.setCancelable(false); // disable dismiss by tapping outside of the dialog
+        progressBar.show();
     }
+
 }

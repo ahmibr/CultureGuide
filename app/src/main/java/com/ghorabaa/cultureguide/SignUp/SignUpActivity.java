@@ -1,5 +1,6 @@
 package com.ghorabaa.cultureguide.SignUp;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 
 import com.ghorabaa.cultureguide.HomePage;
 import com.ghorabaa.cultureguide.R;
+import com.ghorabaa.cultureguide.SignIn.MainActivity;
 import com.ghorabaa.cultureguide.SignIn.SignInContract;
 import com.ghorabaa.cultureguide.UserType;
 
@@ -20,6 +22,8 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
 
     private SignUpContract.SignUpPresenter mPresenter;
 
+    private ProgressDialog progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,10 +31,12 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
 
         mPresenter = new SignUpPresenter(this);
 
+        progressBar = new ProgressDialog(this);
     }
 
 
     public void onSignUpSuccess(){
+        progressBar.dismiss();
         Context context = getApplicationContext();
         CharSequence text = "Sign Up Success";
         int duration = Toast.LENGTH_SHORT;
@@ -39,16 +45,23 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
         toast.show();
 
         startActivity(new Intent(SignUpActivity.this, HomePage.class));
-
+        finish();
     }
 
     public void onSignUpFail(String errorMessage){
+        progressBar.dismiss();
         Context context = getApplicationContext();
         CharSequence text = errorMessage;
         int duration = Toast.LENGTH_SHORT;
 
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
+    }
+
+    @Override
+    public void onBackPressed() {
+       startActivity(new Intent(SignUpActivity.this,MainActivity.class));
+       finish();
     }
 
     public void doneSignUp(View view){
@@ -73,6 +86,14 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
             return;
         }
 
+        showProgressBar("Signing up","Please wait while signing up...");
         mPresenter.signUp(name,email,password,UserType.Organization);
+    }
+
+    private void showProgressBar(String title,String message){
+        progressBar.setTitle(title);
+        progressBar.setMessage(message);
+        progressBar.setCancelable(false); // disable dismiss by tapping outside of the dialog
+        progressBar.show();
     }
 }
