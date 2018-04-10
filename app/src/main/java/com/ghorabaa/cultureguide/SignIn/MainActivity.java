@@ -59,8 +59,6 @@ public class MainActivity extends AppCompatActivity implements SignInContract.Si
 
     public void onSignInClicked(View view){
 
-        showProgressBar("Signing in","Please wait while signing in...");
-
         String email = ((EditText)findViewById(R.id.sign_in_email)).getText().toString();
 
         String password = ((EditText)findViewById(R.id.sign_in_password)).getText().toString();
@@ -73,6 +71,8 @@ public class MainActivity extends AppCompatActivity implements SignInContract.Si
             printToast(blankFieldError,Toast.LENGTH_LONG);
             return;
         }
+
+        showProgressBar("Signing in","Please wait while signing in...");
 
         mPresenter.signIn(email,password);
     }
