@@ -69,7 +69,8 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:hint="************"
-                android:id="@+id/organization_password"/>
+                android:id="@+id/organization_password"
+                android:inputType="textPassword"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -87,7 +88,8 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:hint="************"
-                android:id="@+id/organization_password_confirm"/>
+                android:id="@+id/organization_password_confirm"
+                android:inputType="textPassword"/>
 
             <Button
                 android:layout_width="wrap_content"

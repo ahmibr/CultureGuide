@@ -106,7 +106,8 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:hint="************"
-                android:id="@+id/edit_org_password_1"/>
+                android:id="@+id/edit_org_password_1"
+                android:inputType="textPassword"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -130,7 +131,8 @@
                     android:layout_marginRight="16dp"
                     android:hint="************"
                     android:layout_weight="5"
-                    android:id="@+id/edit_org_password_2"/>
+                    android:id="@+id/edit_org_password_2"
+                    android:inputType="textPassword"/>
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
