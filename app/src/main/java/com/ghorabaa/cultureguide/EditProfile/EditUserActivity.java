@@ -1,39 +1,46 @@
 package com.ghorabaa.cultureguide.EditProfile;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ghorabaa.cultureguide.R;
 
-public class EditOrgActivity extends AppCompatActivity
-        implements EditProfileContract.EditProfileView {
+import java.util.ArrayList;
 
-    private EditProfileContract.EditProfilePresenter mPresenter;
+public class EditUserActivity extends AppCompatActivity implements EditProfileContract.EditProfileView{
 
     private ProgressDialog progressBar;
 
+    private EditUserPresenter mPresenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_profile_organization);
+        setContentView(R.layout.activity_edit_user);
 
-        mPresenter = new EditOrgPresenter(this);
+        mPresenter = new EditUserPresenter(this);
 
         progressBar = new ProgressDialog(this);
-    }
 
+        ArrayList<String> interests = new ArrayList<>();
+
+        interests.add("فن تجريدي");
+        interests.add("فنون تشكيلية");
+        ((EditUserPresenter)mPresenter).updateInterests(interests);
+    }
 
 
 
     @Override
     public void onSuccess(String successMessage) {
+
         progressBar.dismiss();
-        printToast(successMessage,Toast.LENGTH_LONG);
+        printToast(successMessage, Toast.LENGTH_LONG);
     }
 
     @Override
