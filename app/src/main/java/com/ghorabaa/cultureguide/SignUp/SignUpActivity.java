@@ -29,7 +29,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        mPresenter = new SignUpPresenter(this);
+        mPresenter = new SignUpPresenter(this,getApplicationContext());
 
         progressBar = new ProgressDialog(this);
     }

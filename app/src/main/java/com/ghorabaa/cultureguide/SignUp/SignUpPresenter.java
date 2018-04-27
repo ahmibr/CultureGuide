@@ -5,8 +5,12 @@ package com.ghorabaa.cultureguide.SignUp;
  */
 
 
+import android.content.Context;
+
 import com.ghorabaa.cultureguide.UserType;
 
+
+import java.util.ArrayList;
 
 
 public class SignUpPresenter implements SignUpContract.SignUpPresenter{
@@ -21,10 +25,10 @@ public class SignUpPresenter implements SignUpContract.SignUpPresenter{
      * SignUp Presenter Constructor
      * @param view Activity that handles callbacks
      */
-    public SignUpPresenter(SignUpContract.SignUpView view)
+    public SignUpPresenter(SignUpContract.SignUpView view, Context context)
     {
         mView = view;
-        mModel = new SignUpModel(this);
+        mModel = new SignUpModel(this,context);
     }
 
     /**
