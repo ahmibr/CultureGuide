@@ -7,15 +7,16 @@ package com.ghorabaa.cultureguide;
 import java.util.Date;
 public class MEvent {
 
-   public String description;
-    public String title;
+   private String description;
+   private String title;
+   private String location;
+    private int rating;
+    private Long EventDate;
+    private String ID;
+    private String OrgID;
+    private String CatID;
+    private String CatName;
 
-    public String location;
-    public int rating;
-    public Date EventDate;
-    public String ID;
-
-    public String organizationCreatedIt;
 
 
     public String GetDescrption()
@@ -35,9 +36,15 @@ public class MEvent {
     {
         return this.rating;
     }
-    public Date GetDate()
+    public String GetDate()
     {
-        return this.EventDate;
+
+       String year=Long.toString(this.EventDate/10000);
+       String Month =Long.toString((this.EventDate%10000)/100);
+       String Day=Long.toString(((this.EventDate%10000)/100)/10);
+
+
+        return year+"-"+Month+"-"+Day;
     }
     public void SetDescription(String descrption)
     {
@@ -57,10 +64,15 @@ public class MEvent {
     {
       this.rating=rating;
     }
-    public void SetEventDate(Date EventDate)
+    public void SetEventDate(Long EventDate)
     {
         this.EventDate=EventDate;
     }
-
+    public String  GetOrgID(){return OrgID;}
+    public String  GetCatID(){return CatID;}
+    public void SetCatName(String CatName)
+    {
+        this.CatName=CatName;
+    }
 
 }

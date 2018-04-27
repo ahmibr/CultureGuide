@@ -23,6 +23,7 @@ public class EventMainActivity extends AppCompatActivity implements EventContrac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_main_activty);
+        mpresenter.SetContext(getApplicationContext());
     }
 
 
@@ -33,12 +34,10 @@ public class EventMainActivity extends AppCompatActivity implements EventContrac
     }
 
     @Override
-    public void onFail(Exception e) {
+    public void onFail() {
 
     }
 
-    @Override
-    public void onRetrieve(List<MEvent> Events) {
 
-    }
+
 }

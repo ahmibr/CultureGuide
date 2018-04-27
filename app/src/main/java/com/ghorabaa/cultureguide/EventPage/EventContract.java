@@ -11,8 +11,8 @@ public interface EventContract {
 
 
         void onSuccess();
-        void onFail(Exception e);
-        void onRetrieve(List<MEvent>Events);
+        void onFail();
+
 
 
 

@@ -17,21 +17,18 @@ public class CreateEventActivity extends EventMainActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_create_event_activty);
-       /*mpresenter=new CreateEventPresenter(this);
+       mpresenter=new CreateEventPresenter(this);
         MEvent Event=new MEvent();
         Date MyDate= new Date();
 
-        Event.description="art event";
+        Event.SetDescription("art event");
 
-        Event.EventDate=MyDate;
-        Event.location="Giza";
-        Event.rating=5;
-        Event.title="ARTS";
-        Event.organizationCreatedIt="dxZCPcOYXuTaMYumAy58pPGMdiC3";
-
-
+        Event.SetEventDate((long) 20181030);
+        Event.SetLocation("Giza");
+        Event.SetTitle("Applied art");
+        Event.SetCatName("ARTS");
         mpresenter.RunPresenter(Event);
-*/
+
 
 
         //Toast toast = Toast.makeText(context, text, duration);
@@ -56,10 +53,10 @@ public class CreateEventActivity extends EventMainActivity {
     }
 
     @Override
-    public void onFail(Exception e) {
+    public void onFail() {
         Context context = getApplicationContext();
-        CharSequence text = e.getMessage();
         int duration = Toast.LENGTH_SHORT;
+        String text="failed to add event";
 
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();

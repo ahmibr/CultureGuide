@@ -23,22 +23,8 @@ public class CreateEventPresenter extends EventPresenter {
 
     @Override
     public void RunPresenter(MEvent Event) {
-        try
 
-        {
             super.mModel.AddEvent(Event);
-            mview.onSuccess();
-
-        }
-        catch(Exception e)
-
-        { mview.onFail(e);
-
-        Log.w("error:",e);}
-
-
-
-
 
 
 

@@ -3,39 +3,45 @@ package com.ghorabaa.cultureguide.EventPage;
 /**
  * Created by ruba on 18/03/18.
  */
-import android.support.annotation.NonNull;
+
 import android.util.Log;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.ghorabaa.cultureguide.MEvent;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import com.ghorabaa.cultureguide.Utilities.Authenticator;
+import com.ghorabaa.cultureguide.Utilities.DBConnection;
+import com.google.firebase.database.DatabaseReference;
+import android.content.Context;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 
 public class EventModel {
 
     private DatabaseReference mDatabase ;
     private static EventPresenter mpresenter;
+    private DBConnection DBManger;
+    private static Context context;
 
 
-    private static final EventModel ourInstance = new EventModel();
+    private static  EventModel ourInstance;
 
-
-    public static EventModel getInstance(EventPresenter presenter) { ourInstance.mpresenter=presenter;
+    public static EventModel getInstance(EventPresenter presenter,Context Mcontext) {
+        if(ourInstance==null) {
+            ourInstance = new EventModel();
+            ourInstance.mpresenter = presenter;
+            ourInstance.context = Mcontext;
+        }
         return ourInstance;
     }
 
     private EventModel() {
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        DBManger=DBConnection.getInstance(context);
+
 
     }
 
@@ -43,54 +49,137 @@ public class EventModel {
 
     public  void AddEvent( MEvent Event)
     {
-        Event.ID=(mDatabase.push().getKey()) ;//give each event a unique id
-        mDatabase.child("events").child(Event.GetID()).setValue(Event);
+
+        String query="Insert into Event (OID,Title,CategoryID,Date,Description,Location)"+ "values("+
+               "'" +Authenticator.getID()+"'"+","+"'"+Event.GetTitle()+"'"+","+"'"+Event.GetCatID()+
+                "'"+","+Event.GetDate()+"'"+","+"'"+Event.GetDescrption()+"'"+","+"'"+Event.GetLocation()+"'"+")";
+
+       DBManger.executeQuery(query);
+
+
 
 
     }
 
 
 
-    public  void RemoveEvent(MEvent Event)
+    public  void RemoveEvent(int ID)
     {
-        mDatabase.child("events").child(Event.GetID()).removeValue();
+        String query="Delete from Event where EID ="+ID;
+        DBManger.executeQuery(query);
     }
-/*
-  parameter to change:name of parameter to be updated
-  value:a generic object with the new value
 
-
- */
-
-   public void UpdateEvent(MEvent Event,String ParameterToChange,Object value)
+   public void UpdateEventTitle(String Title ,int ID)
    {
-       mDatabase.child("events").child(Event.GetID()).child(ParameterToChange).setValue(value);
+       String query="UPDATE Event SET Title = "+Title+"WHERE ID ="+ID;
+       DBManger.executeQuery(query);
+
    }
 
+    public void UpdateEventLocation(String location ,int ID)
+    {
+        String query="UPDATE Event SET Location = "+location+"WHERE ID ="+ID;
+        DBManger.executeQuery(query);
 
-  public void GetEvents(String OrganiztionID)
-  {
-       final List<MEvent>Events=new ArrayList<MEvent>();
+    }
 
-      mDatabase.child("events").child("organizationCreatedIt").equalTo(OrganiztionID).addValueEventListener(new ValueEventListener() {
-          @Override
-          public void onDataChange(DataSnapshot dataSnapshot) {
-
-         Events.add(dataSnapshot.getValue(MEvent.class));
-              mpresenter. HandleRetrived(Events);
-
-
-          }
-
-          @Override
-          public void onCancelled(DatabaseError databaseError) {
-
-          }
+    public void UpdateEventCat(String category ,int ID)
+    {
+        String query="UPDATE Event SET CategoryID = "+category+"WHERE ID ="+ID;
+        DBManger.executeQuery(query);
 
 
-      });
+    }
+
+    public void UpdateEventDes(String describtion ,int ID)
+    {
+        String query="UPDATE Event SET Description = "+describtion+"WHERE ID ="+ID;
+        DBManger.executeQuery(query);
+
+    }
+    public void UpdateEventDate(Long date ,int ID)
+    {
+        String query="UPDATE Event SET Date = "+date+"WHERE ID ="+ID;
+        DBManger.executeQuery(query);
+    }
+
+    public String GetCatName(int ID)
+    {
+        final String[] CatName = new String[1];
+
+        String query="SELECT Name from Category where ID ="+ID;
+        Response.Listener<String> onSuccess = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                try {
+
+                    JSONArray result = new JSONArray(response);
+
+                    CatName[0] = result.getJSONObject(0).getString("Name");
+
+
+                } catch (JSONException e) {
+                    Log.w("error msg",e.getMessage());
+                }
+
+
+            }
+        };
+
+        return CatName[0];
+    }
+
+
+    public MEvent GetEvent(int index)
+    {  final MEvent Event =new MEvent();
+        String query =" select * from Event where ID = "+index;
+
+        Response.Listener<String> onSuccess = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                try {
+                    JSONArray result = new JSONArray(response);
+
+                    String Title = result.getJSONObject(0).getString("Title");
+                    String Description = result.getJSONObject(0).getString("Description");
+                    String location = result.getJSONObject(0).getString("Location");
+                    String Date = result.getJSONObject(0).getString("Date");
+                    String CategoryID=result.getJSONObject(0).getString("CategoryID");
+                    String CatName=GetCatName(Integer.parseInt(CategoryID));
+                    Event.SetTitle(Title);
+                    Event.SetDescription(Description);
+                    Event.SetLocation(location);
+                    //Event.SetEventDate(Date);
+                    Event.SetCatName(CatName);
+                    mpresenter.onSuccess();
+
+
+                }
+                catch (JSONException e) {
+                   Log.w("error msg",e.getMessage());
+                }
+
+            }
+
+
+        };
+
+DBManger.executeQuery(query,onSuccess, new Response.ErrorListener() {
+    @Override
+    public void onErrorResponse(VolleyError error) {
+
+    }
+});
+
+
+     return Event;
+
+    }
 
 
 
-  }
+
+
 }

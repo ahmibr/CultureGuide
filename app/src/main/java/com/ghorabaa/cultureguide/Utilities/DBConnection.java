@@ -24,6 +24,7 @@ public class DBConnection {
     private static final String DB_PASSWORD = "password";
     private static Context context = null;
     private static DBConnection myInstance = null;
+
     private static RequestQueue mRequestQueue;
     private DBConnection(Context context){
         this.context = context;
