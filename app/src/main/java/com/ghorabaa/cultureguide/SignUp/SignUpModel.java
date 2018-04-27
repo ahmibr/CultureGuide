@@ -79,28 +79,48 @@ public class SignUpModel {
                     if(result.length()==0){
 
                         String pass = PasswordEncrypter.encrypt(password);
-                        String query = "INSERT INTO USERS(EMAIL,PASSWORD,TYPE) VALUES ('" +
+                        String query = "INSERT INTO Users(Email,Password,Type) VALUES ('" +
                                 email+"','"+
                                 pass+"','"+
                                 type.toString()+"')";
 
+                        final Response.Listener<String> cacheUser = new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                try {
+                                    JSONObject result = new JSONObject(response);
+
+                                    String name = result.getString("Name");
+                                    int id = result.getInt("ID");
+                                    String email = result.getString("Email");
+
+                                    cacheUserData(id,name,email);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        };
 
                         Response.Listener<String> dbInsertion = new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
+                                Log.d("Register",response);
+                                if(response.equals("true")) {
+                                    switch (type) {
+                                        case Regular:
+                                            registerRegular(name,email);
+                                            break;
 
-                                switch(type) {
-                                    case Regular:
-                                        registerRegular(name);
-                                        break;
+                                        case Organization:
+                                            registerOrganization(name,email);
+                                            break;
 
-                                    case Organization:
-                                        registerOrganization(name);
-                                        break;
-
-                                    default:
-                                        break;
+                                        default:
+                                            break;
+                                    }
                                 }
+                                else
+                                    mPresenter.onSignUpFail("Sign Up Failed");
                             }
                         };
                         db.executeQuery(query,dbInsertion,onFail);
@@ -115,7 +135,7 @@ public class SignUpModel {
             }
         };
 
-        String checkEmailQuery = "SELECT * FROM USERS WHERE EMAIL = '"+email+"'";
+        String checkEmailQuery = "SELECT * FROM Users WHERE Email = '"+email+"'";
         db.executeQuery(checkEmailQuery,onCheckEmail,onFail);
 
 
@@ -128,10 +148,37 @@ public class SignUpModel {
      *
      * @return none
      */
-    private void registerRegular(final String name){
-        String query = "INSERT INTO AppUser(NAME) VALUES('"+name+"')";
+    private void registerRegular(final String name,final String email){
+        String query = "INSERT INTO AppUser(Name,Email) VALUES('"+name+"','"+email+"')";
         db.executeQuery(query);
-        mPresenter.onSignUpSuccess();
+        String getInfo = "SELECT * FROM AppUser WHERE Email = '"+email+"'";
+        Response.Listener<String> onSuccess = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONArray result = new JSONArray(response);
+
+                    String name = result.getJSONObject(0).getString("Name");
+                    int id = result.getJSONObject(0).getInt("ID");
+                    String email = result.getJSONObject(0).getString("Email");
+
+
+                    cacheUserData(id,name,email);
+                    mPresenter.onSignUpSuccess();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        db.executeQuery(getInfo, onSuccess, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+
+
     }
 
     /**
@@ -140,10 +187,41 @@ public class SignUpModel {
      *
      * @return none
      */
-    private void registerOrganization(final String name){
-        String query = "INSERT INTO Organization(NAME) VALUES('"+name+"')";
+    private void registerOrganization(final String name,final String email){
+        String query = "INSERT INTO Organization(Name,Email) VALUES('"+name+"','"+email+"')";
         db.executeQuery(query);
-        mPresenter.onSignUpSuccess();
+        String getInfo = "SELECT * FROM Organization WHERE Email = '"+email+"'";
+        Response.Listener<String> onSuccess = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONArray result = new JSONArray(response);
+
+                    String name = result.getJSONObject(0).getString("Name");
+                    int id = result.getJSONObject(0).getInt("ID");
+                    String email = result.getJSONObject(0).getString("Email");
+
+                    mPresenter.onSignUpSuccess();
+                    cacheUserData(id,name,email);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        db.executeQuery(getInfo, onSuccess, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+    }
+
+    private void cacheUserData(final int id,final String name,final String email){
+        Authenticator.setEmail(email);
+        Authenticator.setID(id);
+        Authenticator.setName(name);
+        Authenticator.setLoggedIn(true);
     }
 
 }

@@ -22,14 +22,17 @@ import com.ghorabaa.cultureguide.EventPage.EventContract;
 import com.ghorabaa.cultureguide.EventPage.RetrieveEventPresenter;
 import com.ghorabaa.cultureguide.SignIn.MainActivity;
 import com.ghorabaa.cultureguide.SignUp.SignUpActivity;
+import com.ghorabaa.cultureguide.Utilities.Authenticator;
 import com.ghorabaa.cultureguide.Utilities.HomePagePosts;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.TimerTask;
 
 public  class HomePage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener  , HomePagePosts.ListItemClickListener ,EventContract.EventView{
+
 
     //TODO remove this toast after testing
     //Used for Testing Processes
@@ -40,6 +43,7 @@ public  class HomePage extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        Toast.makeText(getApplicationContext(), Authenticator.getEmail(),Toast.LENGTH_LONG).show();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

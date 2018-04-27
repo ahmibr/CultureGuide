@@ -1,6 +1,7 @@
 package com.ghorabaa.cultureguide.Utilities;
 
 import android.content.Context;
+import android.os.Handler;
 import android.service.notification.NotificationListenerService;
 import android.support.design.widget.Snackbar;
 import android.support.v4.graphics.ColorUtils;
@@ -20,6 +21,7 @@ import com.ghorabaa.cultureguide.R;
 import java.sql.Struct;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TimerTask;
 
 import static android.content.ContentValues.TAG;
 

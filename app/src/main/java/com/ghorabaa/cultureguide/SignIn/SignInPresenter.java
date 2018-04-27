@@ -4,47 +4,51 @@ package com.ghorabaa.cultureguide.SignIn;
  * Created by Ahmed Ibrahim on 3/16/18.
  */
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
+import com.ghorabaa.cultureguide.UserType;
 
 
 public class SignInPresenter implements SignInContract.SignInPresenter{
 
-    private FirebaseAuth mAuth; //reference to authentication module in firebase.
+    private SignInModel mModel;
     private SignInContract.SignInView mView; //reference to view
     private final static String TAG = "LoginModule"; //Tag for log
 
 
-    public SignInPresenter(SignInContract.SignInView view)
+    public SignInPresenter(SignInContract.SignInView view, Context context)
     {
         mView = view;
 
-        mAuth = FirebaseAuth.getInstance();
+        mModel = new SignInModel(this,context);
     }
 
 
     public void signIn(String email,String password){
+        mModel.SignIn(email,password);
+    }
 
-        //Listener on Authentication process
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    mView.onSignInSuccess();
-                    Log.d(TAG, "signInWithEmail:Done");
-                }
-                else
-                {
-                    mView.onSignInFail();
-                    Log.w(TAG, "signInWithEmail:failure", task.getException());
-                }
-            }
-        });
+    public void onSignInSuccess(UserType type){
+        mView.onSignInSuccess();
+        switch (type){
+            case Regular:
+                mView.routeRegular();
+                break;
+            case Organization:
+                mView.routeOrganization();
+                break;
+            case Admin:
+                mView.routeAdmin();
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void onSignInFail(String errorMessage){
+        mView.onSignInFail(errorMessage);
     }
 
 }

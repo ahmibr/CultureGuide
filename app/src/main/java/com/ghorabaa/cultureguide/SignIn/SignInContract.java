@@ -7,7 +7,10 @@ package com.ghorabaa.cultureguide.SignIn;
 public interface SignInContract {
     interface SignInView {
         void onSignInSuccess();
-        void onSignInFail();
+        void onSignInFail(String errorMessage);
+        void routeRegular();
+        void routeOrganization();
+        void routeAdmin();
     };
 
     interface SignInPresenter{

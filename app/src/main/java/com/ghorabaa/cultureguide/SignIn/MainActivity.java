@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements SignInContract.Si
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mPresenter = new SignInPresenter(this);
+        mPresenter = new SignInPresenter(this,getApplicationContext());
 
         progressBar = new ProgressDialog(this);
 
@@ -43,18 +43,36 @@ public class MainActivity extends AppCompatActivity implements SignInContract.Si
 
         printToast(text, duration);
 
+    }
+
+    //Checking login Function(Fail)
+    public void onSignInFail(String errorMessage){
+
+        progressBar.dismiss();
+        int duration = Toast.LENGTH_LONG;
+
+        printToast(errorMessage,duration);
+    }
+
+    @Override
+    public void routeRegular() {
+
+        //Todo add regular user activity
+        //startActivity(new Intent(MainActivity.this, HomePage.class));
+        //finish();
+    }
+
+    @Override
+    public void routeOrganization() {
         startActivity(new Intent(MainActivity.this, HomePage.class));
         finish();
     }
 
-    //Checking login Function(Fail)
-    public void onSignInFail(){
-
-        progressBar.dismiss();
-        String text = getResources().getString(R.string.sign_in_fail);
-        int duration = Toast.LENGTH_LONG;
-
-        printToast(text,duration);
+    @Override
+    public void routeAdmin() {
+        //Todo add admin activity
+//        startActivity(new Intent(MainActivity.this, HomePage.class));
+//        finish();
     }
 
     public void onSignInClicked(View view){

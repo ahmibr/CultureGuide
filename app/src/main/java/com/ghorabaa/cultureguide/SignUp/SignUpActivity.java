@@ -87,7 +87,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
         }
 
         showProgressBar("Signing up","Please wait while signing up...");
-        mPresenter.signUp(name,email,password,UserType.Organization);
+        mPresenter.signUp(name,email,password,UserType.Regular);
     }
 
     private void showProgressBar(String title,String message){
