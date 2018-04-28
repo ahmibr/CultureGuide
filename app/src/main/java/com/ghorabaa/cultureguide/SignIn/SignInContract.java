@@ -5,7 +5,7 @@ package com.ghorabaa.cultureguide.SignIn;
  */
 
 public interface SignInContract {
-    interface SignInView {
+    interface View {
         void onSignInSuccess();
         void onSignInFail(String errorMessage);
         void routeRegular();
@@ -13,7 +13,7 @@ public interface SignInContract {
         void routeAdmin();
     };
 
-    interface SignInPresenter{
+    interface Presenter {
         void signIn(String email,String password);
     }
 }

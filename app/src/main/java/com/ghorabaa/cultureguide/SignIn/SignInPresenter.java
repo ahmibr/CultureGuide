@@ -5,20 +5,18 @@ package com.ghorabaa.cultureguide.SignIn;
  */
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.ghorabaa.cultureguide.UserType;
 
 
-public class SignInPresenter implements SignInContract.SignInPresenter{
+public class SignInPresenter implements SignInContract.Presenter {
 
     private SignInModel mModel;
-    private SignInContract.SignInView mView; //reference to view
+    private SignInContract.View mView; //reference to view
     private final static String TAG = "LoginModule"; //Tag for log
 
 
-    public SignInPresenter(SignInContract.SignInView view, Context context)
+    public SignInPresenter(SignInContract.View view, Context context)
     {
         mView = view;
 

@@ -10,12 +10,9 @@ import android.content.Context;
 import com.ghorabaa.cultureguide.UserType;
 
 
-import java.util.ArrayList;
+public class SignUpPresenter implements SignUpContract.Presenter {
 
-
-public class SignUpPresenter implements SignUpContract.SignUpPresenter{
-
-    private SignUpContract.SignUpView mView; //Reference to View
+    private SignUpContract.View mView; //Reference to View
     private SignUpModel mModel; //Sign Up Model object
 
     private final static String TAG = "SignUpModule"; //Tag for Log(Debugging)
@@ -25,7 +22,7 @@ public class SignUpPresenter implements SignUpContract.SignUpPresenter{
      * SignUp Presenter Constructor
      * @param view Activity that handles callbacks
      */
-    public SignUpPresenter(SignUpContract.SignUpView view, Context context)
+    public SignUpPresenter(SignUpContract.View view, Context context)
     {
         mView = view;
         mModel = new SignUpModel(this,context);

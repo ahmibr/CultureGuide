@@ -5,20 +5,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.ghorabaa.cultureguide.HomePage;
 import com.ghorabaa.cultureguide.R;
 import com.ghorabaa.cultureguide.SignUp.SignUpActivity;
+import com.ghorabaa.cultureguide.UserHomepage.UserHomepage;
 
-public class MainActivity extends AppCompatActivity implements SignInContract.SignInView {
+public class MainActivity extends AppCompatActivity implements SignInContract.View {
 
 
     private static final String TAG = "SignInActivity";
 
-    private SignInContract.SignInPresenter mPresenter;
+    private SignInContract.Presenter mPresenter;
 
     private ProgressDialog progressBar;
 
@@ -56,10 +56,8 @@ public class MainActivity extends AppCompatActivity implements SignInContract.Si
 
     @Override
     public void routeRegular() {
-
-        //Todo add regular user activity
-        //startActivity(new Intent(MainActivity.this, HomePage.class));
-        //finish();
+        startActivity(new Intent(this, UserHomepage.class));
+        finish();
     }
 
     @Override
@@ -75,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements SignInContract.Si
 //        finish();
     }
 
-    public void onSignInClicked(View view){
+    public void onSignInClicked(android.view.View view){
 
         String email = ((EditText)findViewById(R.id.sign_in_email)).getText().toString();
 
@@ -95,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements SignInContract.Si
         mPresenter.signIn(email,password);
     }
 
-    public void onSignUpClicked(View view){
+    public void onSignUpClicked(android.view.View view){
 
         startActivity(new Intent(MainActivity.this, SignUpActivity.class));
         finish();
