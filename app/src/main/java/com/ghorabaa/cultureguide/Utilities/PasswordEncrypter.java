@@ -10,6 +10,7 @@ import java.security.MessageDigest;
 
 public class PasswordEncrypter {
 
+    private PasswordEncrypter(){};
     public static String encrypt(String text) {
 
         try {

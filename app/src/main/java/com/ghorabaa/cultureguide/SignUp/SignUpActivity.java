@@ -5,22 +5,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.ghorabaa.cultureguide.HomePage;
 import com.ghorabaa.cultureguide.R;
 import com.ghorabaa.cultureguide.SignIn.MainActivity;
-import com.ghorabaa.cultureguide.SignIn.SignInContract;
 import com.ghorabaa.cultureguide.UserType;
 
-public class SignUpActivity extends AppCompatActivity implements SignUpContract.SignUpView {
+public class SignUpActivity extends AppCompatActivity implements SignUpContract.View {
 
 
     private static final String TAG = "SignUpActivity";
 
-    private SignUpContract.SignUpPresenter mPresenter;
+    private SignUpContract.Presenter mPresenter;
 
     private ProgressDialog progressBar;
 
@@ -64,7 +62,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
        finish();
     }
 
-    public void doneSignUp(View view){
+    public void doneSignUp(android.view.View view){
 
         String name = ((EditText)findViewById(R.id.organization_name)).getText().toString();
 

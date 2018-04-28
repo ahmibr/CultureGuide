@@ -7,12 +7,12 @@ import com.ghorabaa.cultureguide.UserType;
  */
 
 public interface SignUpContract {
-    interface SignUpView {
+    interface View {
         void onSignUpSuccess();
         void onSignUpFail(String errorMessage);
     };
 
-    interface SignUpPresenter{
+    interface Presenter {
         void signUp(String name,String email, String password,UserType type);
     }
 }
