@@ -10,6 +10,8 @@ public interface SignUpContract {
     interface View {
         void onSignUpSuccess();
         void onSignUpFail(String errorMessage);
+        void routeRegular();
+        void routeOrganization();
     };
 
     interface Presenter {

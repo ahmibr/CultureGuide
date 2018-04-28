@@ -48,9 +48,18 @@ public class SignUpPresenter implements SignUpContract.Presenter {
     /**
      * Callback from Model, when sign up succeeds
      */
-    public void onSignUpSuccess(){
-        //notify view
+    public void onSignUpSuccess(UserType type){
         mView.onSignUpSuccess();
+        switch (type){
+            case Regular:
+                mView.routeRegular();
+                break;
+            case Organization:
+                mView.routeOrganization();
+                break;
+            default:
+                break;
+        }
     }
 
     /**

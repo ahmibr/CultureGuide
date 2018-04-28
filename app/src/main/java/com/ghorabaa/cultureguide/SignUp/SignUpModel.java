@@ -139,9 +139,8 @@ public class SignUpModel {
                     int id = result.getJSONObject(0).getInt("ID");
                     String email = result.getJSONObject(0).getString("Email");
 
-
                     cacheUserData(id,name,email);
-                    mPresenter.onSignUpSuccess();
+                    mPresenter.onSignUpSuccess(UserType.Regular);
                 } catch (JSONException e) {
                     mPresenter.onSignUpFail("Error");
                     e.printStackTrace();
@@ -175,9 +174,8 @@ public class SignUpModel {
                     String name = result.getJSONObject(0).getString("Name");
                     int id = result.getJSONObject(0).getInt("ID");
                     String email = result.getJSONObject(0).getString("Email");
-
-                    mPresenter.onSignUpSuccess();
                     cacheUserData(id,name,email);
+                    mPresenter.onSignUpSuccess(UserType.Organization);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

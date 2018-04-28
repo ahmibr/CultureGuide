@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.ghorabaa.cultureguide.HomePage;
 import com.ghorabaa.cultureguide.R;
 import com.ghorabaa.cultureguide.SignIn.MainActivity;
+import com.ghorabaa.cultureguide.UserHomepage.UserHomepage;
 import com.ghorabaa.cultureguide.UserType;
 
 public class SignUpActivity extends AppCompatActivity implements SignUpContract.View {
@@ -85,7 +86,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
         }
 
         showProgressBar("Signing up","Please wait while signing up...");
-        mPresenter.signUp(name,email,password,UserType.Regular);
+        mPresenter.signUp(name,email,password,UserType.Organization);
     }
 
     private void showProgressBar(String title,String message){
@@ -93,5 +94,17 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
         progressBar.setMessage(message);
         progressBar.setCancelable(false); // disable dismiss by tapping outside of the dialog
         progressBar.show();
+    }
+
+    @Override
+    public void routeRegular() {
+        startActivity(new Intent(this, UserHomepage.class));
+        finish();
+    }
+
+    @Override
+    public void routeOrganization() {
+        startActivity(new Intent(this, HomePage.class));
+        finish();
     }
 }
