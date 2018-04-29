@@ -31,6 +31,13 @@ public class SignUpModel {
     //Tag for Log(Debugging)
     final static private String TAG = "SignUpModel";
 
+    final Response.ErrorListener onFail = new Response.ErrorListener() {
+        @Override
+        public void onErrorResponse(VolleyError error) {
+            mPresenter.onSignUpFail("Connection error");
+        }
+    };
+
     /**
      * Constructor of SignUp Model
      * @param presenter The presenter attached to the model, to handle callbacks
@@ -64,81 +71,46 @@ public class SignUpModel {
         }
 
 
-        final Response.ErrorListener onFail = new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                mPresenter.onSignUpFail("Connection error");
-            }
-        };
+
 
         Response.Listener<String> onCheckEmail = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                try {
-                    JSONArray result = new JSONArray(response);
-                    if(result.length()==0){
-
-                        String pass = PasswordEncrypter.encrypt(password);
-                        String query = "INSERT INTO Users(Email,Password,Type) VALUES ('" +
-                                email+"','"+
-                                pass+"','"+
-                                type.toString()+"')";
-
-                        final Response.Listener<String> cacheUser = new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                try {
-                                    JSONObject result = new JSONObject(response);
-
-                                    String name = result.getString("Name");
-                                    int id = result.getInt("ID");
-                                    String email = result.getString("Email");
-
-                                    cacheUserData(id,name,email);
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                        };
-
-                        Response.Listener<String> dbInsertion = new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                Log.d("Register",response);
-                                if(response.equals("true")) {
-                                    switch (type) {
-                                        case Regular:
-                                            registerRegular(name,email);
-                                            break;
-
-                                        case Organization:
-                                            registerOrganization(name,email);
-                                            break;
-
-                                        default:
-                                            break;
-                                    }
-                                }
-                                else
-                                    mPresenter.onSignUpFail("Sign Up Failed");
-                            }
-                        };
-                        db.executeQuery(query,dbInsertion,onFail);
-                    }
-                    else
-                    {
+                switch (response){
+                    case "true":
+                        insertByType(name,email,type);
+                        break;
+                    case "false":
                         mPresenter.onSignUpFail("This email is already registered!");
-                    }
-                } catch (JSONException e) {
-                    mPresenter.onSignUpFail("An error has occurred");
+                        break;
+                    default:
+                        mPresenter.onSignUpFail("An error has occurred!");
+                        break;
                 }
             }
         };
 
-        String checkEmailQuery = "SELECT * FROM Users WHERE Email = '"+email+"'";
-        db.executeQuery(checkEmailQuery,onCheckEmail,onFail);
+        String query = "INSERT INTO Users VALUES ('%s','%s','%s')";
+        query = String.format(query,email, PasswordEncrypter.encrypt(password),type.toString());
+
+        db.executeQuery(query,onCheckEmail,onFail);
 
 
+    }
+
+    private void insertByType(String name,String email,UserType type) {
+        switch (type) {
+            case Regular:
+                registerRegular(name, email);
+                break;
+
+            case Organization:
+                registerOrganization(name, email);
+                break;
+
+            default:
+                break;
+        }
     }
 
 
@@ -149,12 +121,17 @@ public class SignUpModel {
      * @return none
      */
     private void registerRegular(final String name,final String email){
-        String query = "INSERT INTO AppUser(Name,Email) VALUES('"+name+"','"+email+"')";
+        String query = "INSERT INTO AppUser(Name,Email) VALUES('%s','%s')";
+        query = String.format(query,name,email);
         db.executeQuery(query);
-        String getInfo = "SELECT * FROM AppUser WHERE Email = '"+email+"'";
+
+        String getInfo = "SELECT * FROM AppUser WHERE Email = '%s'";
+        getInfo = String.format(getInfo,email);
+        Log.d("Model",getInfo);
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                Log.d(response,response);
                 try {
                     JSONArray result = new JSONArray(response);
 
@@ -162,25 +139,18 @@ public class SignUpModel {
                     int id = result.getJSONObject(0).getInt("ID");
                     String email = result.getJSONObject(0).getString("Email");
 
-
                     cacheUserData(id,name,email);
-                    mPresenter.onSignUpSuccess();
+                    mPresenter.onSignUpSuccess(UserType.Regular);
                 } catch (JSONException e) {
+                    mPresenter.onSignUpFail("Error");
                     e.printStackTrace();
                 }
             }
         };
-        db.executeQuery(getInfo, onSuccess, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
 
-            }
-        });
-
-
+        db.executeQuery(getInfo, onSuccess,onFail);
 
     }
-
     /**
      * Saves new Organization user info into the database
      * @param name  name of the user
@@ -188,9 +158,13 @@ public class SignUpModel {
      * @return none
      */
     private void registerOrganization(final String name,final String email){
-        String query = "INSERT INTO Organization(Name,Email) VALUES('"+name+"','"+email+"')";
+        String query = "INSERT INTO Organization(Name,Email) VALUES('%s','%s')";
+        query = String.format(query,name,email);
         db.executeQuery(query);
-        String getInfo = "SELECT * FROM Organization WHERE Email = '"+email+"'";
+
+        String getInfo = "SELECT * FROM Organization WHERE Email = '%s'";
+        getInfo = String.format(getInfo,email);
+
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -200,20 +174,15 @@ public class SignUpModel {
                     String name = result.getJSONObject(0).getString("Name");
                     int id = result.getJSONObject(0).getInt("ID");
                     String email = result.getJSONObject(0).getString("Email");
-
-                    mPresenter.onSignUpSuccess();
                     cacheUserData(id,name,email);
+                    mPresenter.onSignUpSuccess(UserType.Organization);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
         };
-        db.executeQuery(getInfo, onSuccess, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
 
-            }
-        });
+        db.executeQuery(getInfo, onSuccess, onFail);
 
     }
 
