@@ -18,12 +18,15 @@ public class EventMainActivity extends AppCompatActivity implements EventContrac
     private static final String TAG = "EventActivity";
 
      protected EventPresenter mpresenter;
+     protected Context Appcontext=getApplicationContext();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_main_activty);
-        mpresenter.SetContext(getApplicationContext());
+
+        mpresenter=new EventPresenter(this,Appcontext);
     }
 
 

@@ -54,7 +54,13 @@ public class EventModel {
                "'" +Authenticator.getID()+"'"+","+"'"+Event.GetTitle()+"'"+","+"'"+Event.GetCatID()+
                 "'"+","+Event.GetDate()+"'"+","+"'"+Event.GetDescrption()+"'"+","+"'"+Event.GetLocation()+"'"+")";
 
-       DBManger.executeQuery(query);
+        try {
+            DBManger.executeQuery(query);
+
+
+        } catch (Exception e) {
+            Log.w("error msg", e.getMessage());
+        }
 
 
 
@@ -66,27 +72,50 @@ public class EventModel {
     public  void RemoveEvent(int ID)
     {
         String query="Delete from Event where EID ="+ID;
-        DBManger.executeQuery(query);
+        try {
+            DBManger.executeQuery(query);
+
+
+        } catch (Exception e) {
+            Log.w("error msg", e.getMessage());
+        }
     }
 
    public void UpdateEventTitle(String Title ,int ID)
    {
        String query="UPDATE Event SET Title = "+Title+"WHERE ID ="+ID;
-       DBManger.executeQuery(query);
+       try {
+           DBManger.executeQuery(query);
+
+
+       } catch (Exception e) {
+           Log.w("error msg", e.getMessage());
+       }
 
    }
 
     public void UpdateEventLocation(String location ,int ID)
     {
         String query="UPDATE Event SET Location = "+location+"WHERE ID ="+ID;
-        DBManger.executeQuery(query);
+        try {
+            DBManger.executeQuery(query);
 
+
+        } catch (Exception e) {
+            Log.w("error msg", e.getMessage());
+        }
     }
 
     public void UpdateEventCat(String category ,int ID)
     {
         String query="UPDATE Event SET CategoryID = "+category+"WHERE ID ="+ID;
-        DBManger.executeQuery(query);
+        try {
+            DBManger.executeQuery(query);
+
+
+        } catch (Exception e) {
+            Log.w("error msg", e.getMessage());
+        }
 
 
     }
@@ -94,14 +123,35 @@ public class EventModel {
     public void UpdateEventDes(String describtion ,int ID)
     {
         String query="UPDATE Event SET Description = "+describtion+"WHERE ID ="+ID;
-        DBManger.executeQuery(query);
+        try {
+            DBManger.executeQuery(query);
 
+
+        } catch (Exception e) {
+            Log.w("error msg", e.getMessage());
+        }
     }
     public void UpdateEventDate(Long date ,int ID)
     {
-        String query="UPDATE Event SET Date = "+date+"WHERE ID ="+ID;
-        DBManger.executeQuery(query);
-    }
+        final String query="UPDATE Event SET Date = "+date+"WHERE ID ="+ID;
+
+
+                try {
+                    DBManger.executeQuery(query);
+
+
+                } catch (Exception e) {
+                    Log.w("error msg", e.getMessage());
+                }
+
+
+
+
+
+            }
+
+
+
 
     public String GetCatName(int ID)
     {
@@ -126,14 +176,53 @@ public class EventModel {
 
             }
         };
+        DBManger.executeQuery(query,onSuccess, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
 
         return CatName[0];
     }
 
+    public int GetEventRate(int EventID) {
 
-    public MEvent GetEvent(int index)
-    {  final MEvent Event =new MEvent();
+        final String[] rate = new String[1];
+        String query = "select rate from AVG(Rate) where EID= " + EventID;
+        Response.Listener<String> onSuccess = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                try {
+
+                    JSONArray result = new JSONArray(response);
+
+               rate[0] = result.getJSONObject(0).getString("Rate");
+
+
+                } catch (JSONException e) {
+                    Log.w("error msg", e.getMessage());
+                }
+
+
+
+            }
+        };
+        DBManger.executeQuery(query,onSuccess, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        return Integer.parseInt(rate[0]);
+    }
+
+    public MEvent GetEvent(final int index)
+    {
         String query =" select * from Event where ID = "+index;
+        final MEvent[] Event = new MEvent[1];
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
@@ -142,17 +231,13 @@ public class EventModel {
                 try {
                     JSONArray result = new JSONArray(response);
 
-                    String Title = result.getJSONObject(0).getString("Title");
-                    String Description = result.getJSONObject(0).getString("Description");
-                    String location = result.getJSONObject(0).getString("Location");
-                    String Date = result.getJSONObject(0).getString("Date");
-                    String CategoryID=result.getJSONObject(0).getString("CategoryID");
-                    String CatName=GetCatName(Integer.parseInt(CategoryID));
-                    Event.SetTitle(Title);
-                    Event.SetDescription(Description);
-                    Event.SetLocation(location);
-                    //Event.SetEventDate(Date);
-                    Event.SetCatName(CatName);
+
+                    Event[0] =new MEvent(result);
+                    String CatName=GetCatName(Event[0].GetCatID());
+
+
+                    Event[0].SetCatName(CatName);
+                    Event[0].SetRating(GetEventRate(index));
                     mpresenter.onSuccess();
 
 
@@ -174,12 +259,11 @@ DBManger.executeQuery(query,onSuccess, new Response.ErrorListener() {
 });
 
 
-     return Event;
+     return Event[0];
 
     }
 
 
-
-
-
+    private class Event {
+    }
 }

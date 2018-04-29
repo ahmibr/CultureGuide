@@ -14,10 +14,10 @@ public class RemoveEventActivity extends EventMainActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_remove_event);
-        mpresenter=new RemoveEventPresenter(this);
-        MEvent Event=new MEvent();
-        Event.ID="0";
-        mpresenter.RunPresenter(Event);
+        mpresenter=new EventPresenter( this,super.Appcontext);
+        int ID=2;
+
+        mpresenter.RemoveEventFun(2);
 
     }
 
@@ -25,7 +25,7 @@ public class RemoveEventActivity extends EventMainActivity{
 
 
     @Override
-    public void onFail(Exception e) {
+    public void onFail() {
         Context context = getApplicationContext();
         CharSequence text = "Failed to remove event";
         int duration = Toast.LENGTH_SHORT;
