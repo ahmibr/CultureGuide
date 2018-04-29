@@ -70,7 +70,8 @@
             <!-- </intent-filter> -->
         </activity>
         <activity android:name=".UserHomepage.Main3Activity" />
-        <activity android:name=".UserHomepage.UserHomepage"></activity>
+        <activity android:name=".UserHomepage.UserHomepage" />
+        <activity android:name=".UserEventPage.UserEventPage"></activity>
     </application>
 
 </manifest>
