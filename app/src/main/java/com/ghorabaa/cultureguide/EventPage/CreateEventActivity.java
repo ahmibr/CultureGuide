@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import com.ghorabaa.cultureguide.MEvent;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,22 +18,24 @@ public class CreateEventActivity extends EventMainActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_create_event_activty);
-       mpresenter=new CreateEventPresenter(this);
+       mpresenter=new EventPresenter(this,super.Appcontext) ;
         MEvent Event=new MEvent();
-        Date MyDate= new Date();
 
         Event.SetDescription("art event");
 
-        Event.SetEventDate((long) 20181030);
+        try {
+            Event.SetEventDate( "20181030122618");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         Event.SetLocation("Giza");
         Event.SetTitle("Applied art");
         Event.SetCatName("ARTS");
-        mpresenter.RunPresenter(Event);
+        mpresenter.CreatePresenterFun(Event);
 
 
 
-        //Toast toast = Toast.makeText(context, text, duration);
-        //toast.show();
+
 
 
 

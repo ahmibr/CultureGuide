@@ -1,6 +1,5 @@
 package com.ghorabaa.cultureguide;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,16 +18,14 @@ import android.widget.Toast;
 
 import com.ghorabaa.cultureguide.EditProfile.EditOrgActivity;
 import com.ghorabaa.cultureguide.EventPage.EventContract;
-import com.ghorabaa.cultureguide.EventPage.RetrieveEventPresenter;
 import com.ghorabaa.cultureguide.SignIn.MainActivity;
-import com.ghorabaa.cultureguide.SignUp.SignUpActivity;
 import com.ghorabaa.cultureguide.Utilities.Authenticator;
 import com.ghorabaa.cultureguide.Utilities.HomePagePosts;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.TimerTask;
 
 public  class HomePage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener  , HomePagePosts.ListItemClickListener ,EventContract.EventView{
@@ -70,9 +67,6 @@ public  class HomePage extends AppCompatActivity
         mAdapter = new HomePagePosts(0, this);
         mPosts.setAdapter(mAdapter);
 
-        RetrieveEventPresenter mpresenter = new RetrieveEventPresenter( this);
-        String Id="dxZCPcOYXuTaMYumAy58pPGMdiC3";
-        mpresenter.RunRetrival(Id);
 
 
 
@@ -169,31 +163,34 @@ public  class HomePage extends AppCompatActivity
      * TODO delete after merging with back
      * @param view
      */
-    public void testPosts(View view){
+    public void testPosts(View view) throws ParseException {
         String toastMessage = "Hard Coded refresh posts";
         mToast = Toast.makeText(this, toastMessage, Toast.LENGTH_LONG);
 
         mToast.show();
 
         List<MEvent> eventsTests = new ArrayList<>();
-        MEvent event = new MEvent();
-        event.EventDate = new Date(0);
-        event.title = "Event_Test_1";
-        event.organizationCreatedIt = "Organization_1";
+      /*  MEvent event =new MEvent();
+        event.SetEventDate("2018/10/30 12:26:18");
+        event.SetTitle( "Event_Test_1");
+        event.SetOrgID(1);
         eventsTests.add(event);
 
         event = new MEvent();
-        event.EventDate = new Date(1);
-        event.title = "Event_Test_2";
-        event.organizationCreatedIt = "Organization_2";
+        event.SetEventDate("2018/11/30 12:26:18");
+        event.SetTitle( "Event_Test_2");
+        event.SetOrgID(2);
         eventsTests.add(event);
+
 
         event = new MEvent();
-        event.title = "Event_Test_3";
-        event.organizationCreatedIt = "Organization_3";
+        event.SetEventDate("2018/12/30 12:26:18");
+        event.SetTitle( "Event_Test_3");
+        event.SetOrgID(3);
         eventsTests.add(event);
 
-        showCards(eventsTests);
+        showCards(eventsTests);*/
+
     }
 
     /**
@@ -217,14 +214,9 @@ public  class HomePage extends AppCompatActivity
     }
 
     @Override
-    public void onFail(Exception e) {
+    public void onFail() {
 
     }
 
-    @Override
-    public void onRetrieve(List<MEvent> Events) {
-        //showCards(Events);
 
-
-    }
 }

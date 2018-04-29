@@ -18,10 +18,13 @@ public class UpdateEventActivity extends EventMainActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_event_activty);
-        mpresenter=new UpdateEventPresenter(this,"rate",4);
-        MEvent Event = new MEvent();
-        Event.ID="1";
-        mpresenter.RunPresenter(Event);
+        mpresenter=new EventPresenter(this,super.Appcontext) ;
+
+        int funcid=1;
+        String title="art";
+        int eventid=1;
+        mpresenter.UpdatePresenterFun(funcid,title,eventid);
+
 
     }
 
@@ -41,7 +44,7 @@ public class UpdateEventActivity extends EventMainActivity {
     }
 
     @Override
-    public void onFail(Exception e) {
+    public void onFail() {
 
         Context context = getApplicationContext();
         CharSequence text = "Failed to update event data";

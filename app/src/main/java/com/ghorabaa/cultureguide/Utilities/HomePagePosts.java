@@ -123,7 +123,7 @@ public class HomePagePosts extends RecyclerView.Adapter<HomePagePosts.EventPost>
 
         Button attendButton;
 
-        String id;
+        int id;
 
         int position;
         String initialContent;
@@ -146,7 +146,7 @@ public class HomePagePosts extends RecyclerView.Adapter<HomePagePosts.EventPost>
                 @Override
                 public void onClick(View view) {
 
-                    String toastText = organizationsEventsInfo.get(position).title + " created " + organizationsEventsInfo.get(position).title;
+                    String toastText = organizationsEventsInfo.get(position).GetTitle() + " created " + organizationsEventsInfo.get(position).GetTitle();
                     Toast.makeText(view.getContext(),toastText,Toast.LENGTH_LONG).show();
                 }
             } );
@@ -162,7 +162,7 @@ public class HomePagePosts extends RecyclerView.Adapter<HomePagePosts.EventPost>
          * @param orgnizationName
          * @param eventName
          */
-        public void setPostValues(String orgnizationName,String eventName,String eventTime){
+        public void setPostValues(String orgnizationName, String eventName, String eventTime){
             postTitle.setText(orgnizationName + " " + initialContent + " " + eventName);
             postTime.setText(eventTime);
         }
@@ -170,15 +170,15 @@ public class HomePagePosts extends RecyclerView.Adapter<HomePagePosts.EventPost>
         public void bindValue ( int position ) {
             this.position = position;
 
-            id = organizationsEventsInfo.get(position).ID;
+            id = organizationsEventsInfo.get(position).GetID();
 
             String date = "";
-            if(organizationsEventsInfo.get(position).EventDate != null){
-                date = organizationsEventsInfo.get(position).EventDate.toString();
+            if(organizationsEventsInfo.get(position).GetDate() != null){
+                date = organizationsEventsInfo.get(position).GetDate().toString();
             }
 
-            setPostValues( organizationsEventsInfo.get(position).organizationCreatedIt
-                    , organizationsEventsInfo.get(position).title
+            setPostValues( Authenticator.getName()
+                    , organizationsEventsInfo.get(position).GetTitle()
                     , date);
         }
 
