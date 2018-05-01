@@ -36,6 +36,13 @@
             android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:onClick="onViewEventsClicked"
+            android:text="@string/events"/>
+
+        <Button
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:onClick="onViewAdminsClicked"
             android:text="@string/admins"/>
 

@@ -2,8 +2,12 @@ package com.ghorabaa.cultureguide.AdminViewUser;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Pair;
+import android.widget.Toast;
 
 import com.ghorabaa.cultureguide.R;
+
+import java.util.ArrayList;
 
 public class AdminViewUserActivity extends AppCompatActivity implements AdminViewUserContract.View {
 
@@ -16,5 +20,20 @@ public class AdminViewUserActivity extends AppCompatActivity implements AdminVie
 
         mPresenter = new AdminViewUserPresenter(this, getApplicationContext());
         mPresenter.retrieveUsers();
+    }
+
+    @Override
+    public void onRetrieve(ArrayList<Pair<String, String>> users) {
+
+        for(int i=0; i<users.size(); i++){
+
+            Toast.makeText(getApplicationContext(), users.get(i).first + " " + users.get(i).second, Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    public void onFail(String errorMessage) {
+
+        Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_LONG).show();
     }
 }
