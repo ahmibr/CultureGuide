@@ -74,6 +74,8 @@
         <activity android:name=".UserHomepage.Main3Activity" />
         <activity android:name=".UserHomepage.UserHomepage" />
         <activity android:name=".UserEventPage.UserEventPage"></activity>
+        <activity android:name=".AdminHomepage.AdminHomepageActivity" />
+        <activity android:name=".AdminViewCategory.AdminViewCategoryActivity"></activity>
     </application>
 
 </manifest>
