@@ -29,10 +29,6 @@ public class UserHomepage extends AppCompatActivity implements UserHomepageContr
 
     }
 
-    @Override
-    public void onRetrieve(String events) {
-        Toast.makeText(getApplicationContext(),events,Toast.LENGTH_LONG).show();
-    }
 
     @Override
     public void onFail(String errorMessage) {

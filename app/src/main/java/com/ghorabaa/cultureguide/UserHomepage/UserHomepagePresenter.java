@@ -45,9 +45,6 @@ public class UserHomepagePresenter implements UserHomepageContract.Presenter {
         mView.onRetrieve(events);
     }
 
-    public void onRetrievingEvents(String events){
-        mView.onRetrieve(events);
-    }
 
     public void onFail(String errorMessage){
         mView.onFail(errorMessage);

@@ -12,7 +12,6 @@ import java.util.ArrayList;
 public interface UserHomepageContract {
     interface View{
         void onRetrieve(ArrayList<MEvent> events);
-        void onRetrieve(String events);
         void onFail(String errorMessage);
     }
     interface Presenter{

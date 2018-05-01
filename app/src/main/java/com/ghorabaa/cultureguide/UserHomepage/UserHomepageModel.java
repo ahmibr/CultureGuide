@@ -30,24 +30,27 @@ public class UserHomepageModel {
         db = DBConnection.getInstance(context);
     }
 
-    public void getUpcomingEvents(){
-        String query = "SELECT * FROM Event WHERE (Date > %d) AND (CategoryID IN (SELECT CID FROM Subscription WHERE UID = %d) )";
-
-        final Time currentTime = new Time();
-        currentTime.setToNow();
-        long lCurrentTime = currentTime.toMillis(false);
-
-        query = String.format(query,lCurrentTime, Authenticator.getID());
+    private void getEvents(String query){
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 ArrayList<MEvent> currentEvents = new ArrayList<>();
-
-                mPresenter.onRetrievingEvents(response);
-                return;
-                //TODO Send currentEvents to presenter, after filling it
-
+                try {
+                    JSONArray result = new JSONArray(response);
+                    for(int i=0;i<result.length();++i){
+                        MEvent added = new MEvent();
+                        JSONObject event = result.getJSONObject(i);
+                        added.SetID(event.getInt("EID"));
+                        added.SetDescription(event.getString("Description"));
+                        added.SetOrgID(event.getInt("OID"));
+                        added.SetTitle(event.getString("Title"));
+                        currentEvents.add(added);
+                    }
+                    mPresenter.onRetrievingEvents(currentEvents);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         };
 
@@ -58,6 +61,16 @@ public class UserHomepageModel {
             }
         });
 
+
+    }
+    public void getUpcomingEvents(){
+        String query = "SELECT * FROM Event WHERE (Date > %d) AND (CategoryID IN (SELECT CID FROM Subscription WHERE UID = %d) )";
+        final Time currentTime = new Time();
+        currentTime.setToNow();
+        long lCurrentTime = currentTime.toMillis(false);
+
+        query = String.format(query,lCurrentTime, Authenticator.getID());
+        getEvents(query);
     }
 
     public void getPastEvent(){
@@ -69,24 +82,7 @@ public class UserHomepageModel {
 
         query = String.format(query,lCurrentTime, Authenticator.getID());
 
-        Response.Listener<String> onSuccess = new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                ArrayList<MEvent> currentEvents = new ArrayList<>();
-
-                mPresenter.onRetrievingEvents(response);
-                return;
-                //TODO Send currentEvents to presenter, after filling it
-
-            }
-        };
-
-        db.executeQuery(query, onSuccess, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                mPresenter.onFail("Connection Error");
-            }
-        });
+        getEvents(query);
     }
 
     public void getFavouriteEvent(){
@@ -98,23 +94,6 @@ public class UserHomepageModel {
 
         query = String.format(query,lCurrentTime, Authenticator.getID());
 
-        Response.Listener<String> onSuccess = new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                ArrayList<MEvent> currentEvents = new ArrayList<>();
-
-                mPresenter.onRetrievingEvents(response);
-                return;
-                //TODO Send currentEvents to presenter, after filling it
-
-            }
-        };
-
-        db.executeQuery(query, onSuccess, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                mPresenter.onFail("Connection Error");
-            }
-        });
+        getEvents(query);
     }
 }
