@@ -18,6 +18,8 @@ import android.widget.Toast;
 
 import com.ghorabaa.cultureguide.EditProfile.EditOrgActivity;
 import com.ghorabaa.cultureguide.EventPage.EventContract;
+import com.ghorabaa.cultureguide.EventPage.EventMainActivity;
+import com.ghorabaa.cultureguide.EventPage.EventPresenter;
 import com.ghorabaa.cultureguide.SignIn.MainActivity;
 import com.ghorabaa.cultureguide.Utilities.Authenticator;
 import com.ghorabaa.cultureguide.Utilities.HomePagePosts;
@@ -33,6 +35,7 @@ public  class HomePage extends AppCompatActivity
 
     //TODO remove this toast after testing
     //Used for Testing Processes
+
     private Toast mToast;
     RecyclerView mPosts;
     HomePagePosts mAdapter;
@@ -40,8 +43,9 @@ public  class HomePage extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        Toast.makeText(getApplicationContext(), Authenticator.getEmail(),Toast.LENGTH_LONG).show();
         super.onCreate(savedInstanceState);
+        Toast.makeText(getApplicationContext(), Authenticator.getEmail(),Toast.LENGTH_LONG).show();
+
         setContentView(R.layout.activity_home_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -54,7 +58,6 @@ public  class HomePage extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
         mPosts = (RecyclerView) findViewById(R.id.HomepageEvents);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -66,7 +69,30 @@ public  class HomePage extends AppCompatActivity
          */
         mAdapter = new HomePagePosts(0, this);
         mPosts.setAdapter(mAdapter);
+         EventPresenter mpresenter= new EventPresenter(this,getApplicationContext());
+       // mpresenter.getEventFun(4);
+        MEvent Event =new MEvent();
 
+        Event.setDescription("applied art event");
+
+
+        Event.SetEventDate(1525162706);
+
+        Event.setLocation("Giza");
+        Event.SetTitle("Applied art");
+        Event.setCatName("ARTS");
+        Event.setCatID(1);
+        try {
+            //mpresenter.CreatePresenterFun(Event);
+            //mpresenter.UpdatePresenterFun(1,"applied art",3);
+        }
+
+        catch (Exception e)
+        {
+            Log.w("home page error",e.getMessage());
+        }
+       // mpresenter.RemoveEventFun(2);
+mpresenter.getEventFun(4);
 
 
 
@@ -214,8 +240,33 @@ public  class HomePage extends AppCompatActivity
     }
 
     @Override
+    public void onSuccess(String msg) {
+        mToast=Toast.makeText(this,msg, Toast.LENGTH_LONG);
+
+        mToast.show();
+
+
+    }
+
+    @Override
+    public void onFail(String msg) {
+
+        mToast=Toast.makeText(this,msg, Toast.LENGTH_LONG);
+
+        mToast.show();
+
+    }
+
+    @Override
     public void onFail() {
 
+    }
+
+    @Override
+    public void onRetrive(MEvent event) {
+     mToast=Toast.makeText(this,event.getDescrption() , Toast.LENGTH_LONG);
+
+        mToast.show();
     }
 
 

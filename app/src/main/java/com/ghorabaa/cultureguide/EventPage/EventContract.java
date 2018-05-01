@@ -11,7 +11,10 @@ public interface EventContract {
 
 
         void onSuccess();
+        void onSuccess(String msg);
+        void onFail(String msg);
         void onFail();
+        void onRetrive(MEvent event);
 
 
 

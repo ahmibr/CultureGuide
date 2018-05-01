@@ -29,7 +29,12 @@ public class EventMainActivity extends AppCompatActivity implements EventContrac
         mpresenter=new EventPresenter(this,Appcontext);
     }
 
+@Override
+public void  onRetrive(MEvent event)
+{
 
+
+}
 
     @Override
     public void onSuccess() {
@@ -37,10 +42,15 @@ public class EventMainActivity extends AppCompatActivity implements EventContrac
     }
 
     @Override
-    public void onFail() {
+    public void onSuccess(String msg) {
 
     }
 
+    @Override
+    public void onFail(String msg) {
+
+    }
+   public void onFail(){};
 
 
 }

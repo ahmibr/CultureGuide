@@ -15,6 +15,7 @@ public class EventPresenter {
     protected EventContract.EventView mview;
     protected EventModel mModel;
     protected Context PContext;
+    protected MEvent pEvent;
 
     public EventPresenter(EventContract.EventView view,Context context) {
 
@@ -36,9 +37,9 @@ public class EventPresenter {
     }
 
 
-    public void onFail(){
+    public void onFail(String msg){
         //notify view
-        mview.onFail();
+        mview.onFail(msg);
     }
 
     public void CreatePresenterFun(MEvent Event)
@@ -73,11 +74,28 @@ public class EventPresenter {
     }
 
 
-    public MEvent GetEventFun(int index)
-    {   MEvent Event;
-        Event=mModel.GetEvent(index);
-        return Event;
 
+    public void onRetrive(MEvent event)
+    {
+        mview.onRetrive(event);
+        pEvent=event;
+    }
+
+
+    public void getEventFun(int ID)
+    {
+        mModel.GetEvent(ID);
+    }
+
+
+    public void onFail(){
+        //notify view
+        mview.onFail();
+    }
+
+    public void onSuccess(String msg)
+    {
+        mview.onSuccess(msg);
     }
 
 }

@@ -6,16 +6,12 @@ package com.ghorabaa.cultureguide;
 
 import android.util.Log;
 
-import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
 import java.util.Date;
-import java.util.Locale;
 
-import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
+
 public class MEvent {
 
    private String description;
@@ -29,71 +25,69 @@ public class MEvent {
     private String CatName;
     public MEvent(){};
 
-     public MEvent(JSONArray Event)
+     public MEvent(JSONObject Event)
      {
 
          try {
 
-             String Title = Event.getJSONObject(0).getString("Title");
-             String Description = Event.getJSONObject(0).getString("Description");
-             String location = Event.getJSONObject(0).getString("Location");
-             String Date = Event.getJSONObject(0).getString("Date");
-             String CategoryID=Event.getJSONObject(0).getString("CategoryID");
+             String Title = Event.getString("Title");
+             String Description = Event.getString("Description");
+             String location = Event.getString("Location");
+             String Date = Event.getString("Date");
+             String CategoryID=Event.getString("CategoryID");
              SetTitle(Title);
-             SetDescription(Description);
-             SetLocation(location);
+             setDescription(Description);
+             setLocation(location);
 
-             SetEventDate(Date);
-             SetCatName(CatName);
+             SetEventDate(Long.parseLong(Date));
+             setCatName(CatName);
 
 
 
          }
          catch (JSONException e) {
              Log.w("error msg",e.getMessage());
-         } catch (ParseException e) {
-             e.printStackTrace();
          }
      }
 
-    public String GetDescrption()
+    public String getDescrption()
     {
      return this.description;
      }
 
-    public String GetTitle()
+    public String getTitle()
     {
         return this.title;
     }
-    public String GetLocation()
+    public String getLocation()
     {
         return this.location;
     }
-    public int  GetRating()
+    public int getRating()
     {
         return this.rating;
     }
-    public Date GetDate()
+    public Date getDate()
     {
          return EventDate;}
 
 
 
-    public void SetDescription(String descrption)
+    public void setDescription(String descrption)
     {
         this.description=descrption;
     }
     public void SetID(int ID){this.ID=ID;}
-    public int  GetID(){return ID;}
+    public int getID(){return ID;}
     public void SetTitle(String Title)
     {
         this.title=Title;
     }
-    public void SetLocation(String Location)
+    public void setLocation(String Location)
     {
       this.location=Location;
     }
-    public void SetRating(int rating)
+    public void setRating(int rating)
     {
        if(rating>=0&&rating<=5)
 
@@ -101,19 +95,25 @@ public class MEvent {
 
 
     }
-    public void SetEventDate(String EventDate) throws ParseException {
-        DateFormat format =  new SimpleDateFormat(" yyMMddHHmmssZ");
-            Date dummy=format.parse(EventDate);
-            Date date=new Date();
+    public void SetEventDate(long EventDate) {
+
+        Date dummy = new Date(EventDate);
+        SimpleDateFormat dateformat = new SimpleDateFormat("MMM dd, yyyy HH:mm");
+        Date date= new Date();
             if(dummy.after(date) )
 
-            {this.EventDate=format.parse(EventDate);}
+            {this.EventDate=dummy;}
     }
-    public int  GetOrgID(){return OrgID;}
-    public int  GetCatID(){return CatID;}
-    public void SetCatName(String CatName)
+    public int getOrgID(){return OrgID;}
+    public int getCatID(){return CatID;}
+    public void setCatName(String CatName)
     {
         this.CatName=CatName;
     }
     public void SetOrgID(int OrgID){this.OrgID=OrgID;}
+    public String getCatName(){ return CatName;}
+    public void setCatID(int ID)
+    {
+        this.CatID=ID;
+    }
 }
