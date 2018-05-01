@@ -5,4 +5,12 @@ package com.ghorabaa.cultureguide.AdminViewUser;
  */
 
 public interface AdminViewUserContract {
+    interface View{
+
+    }
+
+    interface Presenter{
+
+        void retrieveUsers();
+    }
 }

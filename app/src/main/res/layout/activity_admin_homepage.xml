@@ -8,14 +8,36 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:onClick="onViewCategoriesClicked"
-            android:text="Categories"/>
+            android:text="@string/categories"/>
+
+        <Button
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:onClick="onViewUsersClicked"
+            android:text="@string/users"/>
+
+        <Button
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="onViewOrganizationsClicked"
+            android:text="@string/organizations"/>
+
+        <Button
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="onViewAdminsClicked"
+            android:text="@string/admins"/>
 
     </LinearLayout>
 

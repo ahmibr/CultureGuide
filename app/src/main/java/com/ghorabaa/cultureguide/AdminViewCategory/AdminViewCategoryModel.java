@@ -15,7 +15,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 /**
- * Created by Ahmed Ibrahim on 4/30/18.
+ * Created by megem on 4/30/18.
  */
 
 public class AdminViewCategoryModel {

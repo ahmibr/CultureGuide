@@ -5,7 +5,7 @@ import android.util.Pair;
 import java.util.ArrayList;
 
 /**
- * Created by Ahmed Ibrahim on 4/30/18.
+ * Created by megem on 4/30/18.
  */
 
 public interface AdminViewCategoryContract {
@@ -18,7 +18,7 @@ public interface AdminViewCategoryContract {
     interface Presenter{
 
         void retrieveCategories();
-
+        void onRetrieve(ArrayList<Pair<Integer, String> > categoriesList);
         void onFail(String errorMessage);
     }
 }

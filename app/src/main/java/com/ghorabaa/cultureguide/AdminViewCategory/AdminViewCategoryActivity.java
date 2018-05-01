@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class AdminViewCategoryActivity extends AppCompatActivity implements AdminViewCategoryContract.View {
 
     private AdminViewCategoryContract.Presenter mPresenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +27,9 @@ public class AdminViewCategoryActivity extends AppCompatActivity implements Admi
     public void onRetrieve(ArrayList<Pair<Integer, String> > categoriesList){
 
         for (int i=0; i<categoriesList.size(); i++)
+        {
             Toast.makeText(getApplicationContext(),categoriesList.get(i).second,Toast.LENGTH_LONG).show();
+        }
     }
 
     public void onSuccess(String success){

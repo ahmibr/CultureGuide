@@ -9,7 +9,7 @@ import com.ghorabaa.cultureguide.AdminHomepage.AdminHomepageModel;
 import java.util.ArrayList;
 
 /**
- * Created by Ahmed Ibrahim on 4/30/18.
+ * Created by megem on 4/30/18.
  */
 
 public class AdminViewCategoryPresenter implements AdminViewCategoryContract.Presenter{

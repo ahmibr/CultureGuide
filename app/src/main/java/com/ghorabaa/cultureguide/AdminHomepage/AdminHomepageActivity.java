@@ -3,8 +3,12 @@ package com.ghorabaa.cultureguide.AdminHomepage;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
+import com.ghorabaa.cultureguide.AdminViewAdmins.AdminViewAdminActivity;
 import com.ghorabaa.cultureguide.AdminViewCategory.AdminViewCategoryActivity;
+import com.ghorabaa.cultureguide.AdminViewOrganization.AdminViewOrganizationActivity;
+import com.ghorabaa.cultureguide.AdminViewUser.AdminViewUserActivity;
 import com.ghorabaa.cultureguide.R;
 
 public class AdminHomepageActivity extends AppCompatActivity implements AdminHomepageContract.View {
@@ -26,21 +30,22 @@ public class AdminHomepageActivity extends AppCompatActivity implements AdminHom
 
     }
 
-    /*public void onViewAdminsClicked(android.view.View view){
+    public void onViewUsersClicked(View view) {
 
-        startActivity(new Intent(this,ViewAdmins.class ));
+        startActivity(new Intent(this, AdminViewUserActivity.class));
         finish();
     }
 
-    public void onViewUsersClicked(android.view.View view){
+    public void onViewAdminsClicked(android.view.View view){
 
-        startActivity(new Intent(this, ViewUsers.class));
+        startActivity(new Intent(this, AdminViewAdminActivity.class ));
         finish();
     }
 
-    public void onViewOrganizations(anroid.view.View view){
 
-        startActivity(new Intent(this, ViewOrganizations.class));
+    public void onViewOrganizationsClicked(android.view.View view){
+
+        startActivity(new Intent(this, AdminViewOrganizationActivity.class));
         finish();
-    }*/
+    }
 }

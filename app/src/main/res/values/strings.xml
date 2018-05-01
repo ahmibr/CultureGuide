@@ -49,6 +49,10 @@
     <string name="briefDescription">You can add organization vision, interests and activities</string>
     <string name="title_activity_edit_profile_organization">Edit Profile Organization</string>
 
+    <!--Admin HomePage Relateed-->
     <string name="edit">edit</string>
+    <string name="users">Users</string>
+    <string name="admins">Admins</string>
+    <string name="organizations">Organizations</string>
 
 </resources>
