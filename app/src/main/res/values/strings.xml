@@ -22,7 +22,7 @@
 
 
     <!--Code Wise Strings-->
-    <string name="sign_in_success">Succssful sign in</string>
+    <string name="sign_in_success">Successful sign in</string>
     <string name="sign_in_fail">Email or password doesn\'t match</string>
     <string name="blank_field">Please fill empty blank field</string>
 
