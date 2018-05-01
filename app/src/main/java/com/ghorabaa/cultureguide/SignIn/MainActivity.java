@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.ghorabaa.cultureguide.AdminHomepage.AdminHomepageActivity;
 import com.ghorabaa.cultureguide.HomePage;
 import com.ghorabaa.cultureguide.R;
 import com.ghorabaa.cultureguide.SignUp.SignUpActivity;
@@ -68,9 +69,8 @@ public class MainActivity extends AppCompatActivity implements SignInContract.Vi
 
     @Override
     public void routeAdmin() {
-        //Todo add admin activity
-//        startActivity(new Intent(MainActivity.this, HomePage.class));
-//        finish();
+        startActivity(new Intent(MainActivity.this, AdminHomepageActivity.class));
+        finish();
     }
 
     public void onSignInClicked(android.view.View view){
