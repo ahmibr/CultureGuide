@@ -44,7 +44,7 @@ public  class HomePage extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        Toast.makeText(getApplicationContext(), Authenticator.getEmail(),Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), Authenticator.getEmail(), Toast.LENGTH_LONG).show();
 
         setContentView(R.layout.activity_home_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -69,37 +69,39 @@ public  class HomePage extends AppCompatActivity
          */
         mAdapter = new HomePagePosts(0, this);
         mPosts.setAdapter(mAdapter);
-         EventPresenter mpresenter= new EventPresenter(this,getApplicationContext());
-       // mpresenter.getEventFun(4);
-        MEvent Event =new MEvent();
+        EventPresenter mpresenter = new EventPresenter(this, getApplicationContext());
 
-        Event.setDescription("applied art event");
-
-
-        Event.SetEventDate(1525162706);
-
-        Event.setLocation("Giza");
-        Event.SetTitle("Applied art");
-        Event.setCatName("ARTS");
-        Event.setCatID(1);
+        MEvent Event = new MEvent();
+        Event.setDescription(" les miserable");
         try {
-            //mpresenter.CreatePresenterFun(Event);
-            //mpresenter.UpdatePresenterFun(1,"applied art",3);
+            Event.setEventDate("2018-06-27 09:31:00 GMT-04:00");
+        } catch (Exception e) {
+
+            Log.w("home page error:", e.getMessage());
         }
 
-        catch (Exception e)
-        {
-            Log.w("home page error",e.getMessage());
-        }
-       // mpresenter.RemoveEventFun(2);
-mpresenter.getEventFun(4);
+        Event.setLocation("Cairo");
+        Event.SetTitle("les miserables");
+        Event.setCatID(5);
+        Event.SetOrgID(1);
+       //mpresenter.CreatePresenterFun(Event);
+        //mpresenter.RemoveEventFun(13);
+
+
+        //mpresenter.UpdatePresenterFun(1, "origins-Dan Brown", 11);
+        //mpresenter.UpdatePresenterFun(2,"3",5);
+        //mpresenter.UpdatePresenterFun(3,"Dan Brown book review ",11);
+        //mpresenter.UpdatePresenterFun(4,"portsaid",10);
+        //mpresenter.UpdatePresenterFun(5,"2019-06-27 09:31:00 GMT-04:00",3);
+
+        mpresenter.getEventFun(4);
+
 
 
 
     }
 
-    @Override
-    public void onBackPressed() {
+        public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
@@ -264,7 +266,10 @@ mpresenter.getEventFun(4);
 
     @Override
     public void onRetrive(MEvent event) {
-     mToast=Toast.makeText(this,event.getDescrption() , Toast.LENGTH_LONG);
+    mToast=Toast.makeText(this,event.getDescrption() , Toast.LENGTH_LONG);
+
+        mToast.show();
+        mToast=Toast.makeText(this,event.getCatID() , Toast.LENGTH_LONG);
 
         mToast.show();
     }

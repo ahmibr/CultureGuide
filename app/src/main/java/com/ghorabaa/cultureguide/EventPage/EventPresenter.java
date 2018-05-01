@@ -5,6 +5,10 @@ import com.ghorabaa.cultureguide.MEvent;
 
 
 import android.content.Context;
+import android.util.Log;
+
+import java.util.Date;
+
 /**
  * Created by ruba on 26/03/18.
  */
@@ -15,11 +19,14 @@ public class EventPresenter {
     protected EventContract.EventView mview;
     protected EventModel mModel;
     protected Context PContext;
-    protected MEvent pEvent;
+    public MEvent pEvent=new MEvent();
+
+
 
     public EventPresenter(EventContract.EventView view,Context context) {
 
         mview = view;
+
         PContext=context;
         mModel = EventModel.getInstance(this,PContext);
 
@@ -49,23 +56,26 @@ public class EventPresenter {
 
 
     public void UpdatePresenterFun(int FuncID,String Paramter,int EventID)
-    {
+    {  try {
         switch (FuncID) {
             case 1:
-               mModel.UpdateEventTitle(Paramter,EventID);
+                mModel.UpdateEventTitle(Paramter, EventID);
             case 2:
-                mModel.UpdateEventCat(Paramter,EventID);
+                mModel.UpdateEventCat(Paramter, EventID);
             case 3:
-               mModel.UpdateEventDes(Paramter,EventID);
+                mModel.UpdateEventDes(Paramter, EventID);
             case 4:
-                mModel.UpdateEventLocation(Paramter,EventID);
+                mModel.UpdateEventLocation(Paramter, EventID);
             case 5:
-                mModel.UpdateEventDate(Long.parseLong(Paramter),EventID);
-
+                mModel.UpdateEventDate(Paramter, EventID);
 
 
         }
-
+    }
+    catch (Exception e)
+    {
+        Log.w("presenter error",e.getMessage());
+    }
     }
 
     public void RemoveEventFun(int ID)
@@ -76,15 +86,32 @@ public class EventPresenter {
 
 
     public void onRetrive(MEvent event)
+
     {
+
         mview.onRetrive(event);
-        pEvent=event;
+
     }
+
+    public void onRetrive()
+
+    {
+
+        mview.onRetrive(pEvent);
+
+    }
+
 
 
     public void getEventFun(int ID)
     {
         mModel.GetEvent(ID);
+    }
+    public void getCatName(int ID){mModel.GetCatName(ID);}
+
+    public void getEventOrg(int ID) {
+
+        mModel.getEventOrg(ID);
     }
 
 
@@ -97,6 +124,7 @@ public class EventPresenter {
     {
         mview.onSuccess(msg);
     }
+
 
 }
 

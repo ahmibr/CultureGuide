@@ -6,7 +6,12 @@ package com.ghorabaa.cultureguide;
 
 import android.util.Log;
 
+import com.ghorabaa.cultureguide.EventPage.EventPresenter;
+
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.DateTimeException;
 import java.util.Date;
 
 import org.json.JSONException;
@@ -18,15 +23,16 @@ public class MEvent {
    private String title;
    private String location;
     private int rating;
-    private Date EventDate;
+    private Long EventDate;
     private int ID;
     private int OrgID;
     private int CatID;
     private String CatName;
+    private  String OrgName;
+
     public MEvent(){};
 
-     public MEvent(JSONObject Event)
-     {
+     public MEvent(JSONObject Event) throws Exception {
 
          try {
 
@@ -39,9 +45,8 @@ public class MEvent {
              setDescription(Description);
              setLocation(location);
 
-             SetEventDate(Long.parseLong(Date));
-             setCatName(CatName);
-
+            setEventDate(Date);
+            setCatID(Integer.parseInt(CategoryID));
 
 
          }
@@ -67,8 +72,9 @@ public class MEvent {
     {
         return this.rating;
     }
-    public Date getDate()
+    public Long getDate()
     {
+
          return EventDate;}
 
 
@@ -95,14 +101,14 @@ public class MEvent {
 
 
     }
-    public void SetEventDate(long EventDate) {
+    public void SetEventDate(long EventDate) throws Exception {
 
-        Date dummy = new Date(EventDate);
-        SimpleDateFormat dateformat = new SimpleDateFormat("MMM dd, yyyy HH:mm");
-        Date date= new Date();
-            if(dummy.after(date) )
 
-            {this.EventDate=dummy;}
+        Date dummy= new Date(EventDate);
+        this.EventDate= validateDate(dummy);
+
+
+
     }
     public int getOrgID(){return OrgID;}
     public int getCatID(){return CatID;}
@@ -115,5 +121,47 @@ public class MEvent {
     public void setCatID(int ID)
     {
         this.CatID=ID;
+    }
+    public void  setEventDate(String Date) throws Exception {
+
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss z");
+        try {
+            Date date = format.parse(Date);
+
+              this.EventDate= validateDate(date);
+
+        } catch (ParseException e) {
+            Log.w("setEventDate error ",e.getMessage());
+        }
+
+
+
+
+    }
+
+    public   static  Long  validateDate(Date date) throws Exception {
+
+        Long dummyLong=date.getTime();
+        Date dummy =new Date(dummyLong);
+        Date now= new Date();
+        if(dummy.after(now))
+
+        {
+           return dummyLong ;
+
+        }
+        else
+            throw (new Exception("this date has passed") );
+
+    }
+
+    public void setOrgName(String OrgName)
+    {
+        this.OrgName=OrgName;
+    }
+
+    public String getOrgName ()
+    {
+        return this.OrgName;
     }
 }
