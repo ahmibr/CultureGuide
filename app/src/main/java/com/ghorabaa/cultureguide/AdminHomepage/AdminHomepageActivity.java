@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.ghorabaa.cultureguide.AdminViewAdmins.AdminViewAdminActivity;
 import com.ghorabaa.cultureguide.AdminViewCategory.AdminViewCategoryActivity;
+import com.ghorabaa.cultureguide.AdminViewEvent.AdminViewEventActivity;
 import com.ghorabaa.cultureguide.AdminViewOrganization.AdminViewOrganizationActivity;
 import com.ghorabaa.cultureguide.AdminViewUser.AdminViewUserActivity;
 import com.ghorabaa.cultureguide.R;
@@ -46,6 +47,12 @@ public class AdminHomepageActivity extends AppCompatActivity implements AdminHom
     public void onViewOrganizationsClicked(android.view.View view){
 
         startActivity(new Intent(this, AdminViewOrganizationActivity.class));
+        finish();
+    }
+
+    public void onViewEventsClicked(View view) {
+
+        startActivity(new Intent(this, AdminViewEventActivity.class));
         finish();
     }
 }

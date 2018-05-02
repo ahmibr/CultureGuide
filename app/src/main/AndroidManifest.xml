@@ -78,7 +78,8 @@
         <activity android:name=".AdminViewCategory.AdminViewCategoryActivity" />
         <activity android:name=".AdminViewUser.AdminViewUserActivity" />
         <activity android:name=".AdminViewAdmins.AdminViewAdminActivity" />
-        <activity android:name=".AdminViewOrganization.AdminViewOrganizationActivity"></activity>
+        <activity android:name=".AdminViewOrganization.AdminViewOrganizationActivity" />
+        <activity android:name=".AdminViewEvent.AdminViewEventActivity"></activity>
     </application>
 
 </manifest>

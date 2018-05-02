@@ -54,5 +54,6 @@
     <string name="users">Users</string>
     <string name="admins">Admins</string>
     <string name="organizations">Organizations</string>
+    <string name="events">Events</string>
 
 </resources>
