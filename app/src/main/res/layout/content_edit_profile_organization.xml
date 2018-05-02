@@ -43,7 +43,7 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
                     android:hint="new name"
-                    android:eventID="@+eventID/edit_org_name"
+                    android:id="@+id/edit_org_name"
                     android:layout_weight="9"
                     />
 
@@ -78,7 +78,7 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
                     android:hint="new email"
-                    android:eventID="@+eventID/edit_org_email"
+                    android:id="@+id/edit_org_email"
                     android:layout_weight="5"
                     />
                 <Button
@@ -106,7 +106,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:hint="************"
-                android:eventID="@+eventID/edit_org_password_1"
+                android:id="@+id/edit_org_password_1"
                 android:inputType="textPassword"/>
 
             <TextView
@@ -131,7 +131,7 @@
                     android:layout_marginRight="16dp"
                     android:hint="************"
                     android:layout_weight="5"
-                    android:eventID="@+eventID/edit_org_password_2"
+                    android:id="@+id/edit_org_password_2"
                     android:inputType="textPassword"/>
                 <Button
                     android:layout_width="wrap_content"
@@ -155,7 +155,7 @@
             <!--android:textStyle="bold" />-->
 
             <!--<Spinner-->
-            <!--andreventIDd:ideventID@+id/spinner1"-->
+            <!--android:id="@+id/spinner1"-->
             <!--android:layout_width="match_parent"-->
             <!--android:layout_height="wrap_content"-->
             <!--android:background="@android:drawable/btn_dropdown"-->

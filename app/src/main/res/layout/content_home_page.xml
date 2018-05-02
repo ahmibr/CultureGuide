@@ -37,7 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_event_black_24dp"
-                android:eventID="@+eventID/createEventHomePage"
+                android:id="@+id/createEventHomePage"
                 />
 
         </LinearLayout>
@@ -45,7 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/refreshPosts"
-            android:eventID="@+eventID/refreshPosts"
+            android:id="@+id/refreshPosts"
             android:onClick="testPosts"
             />
 
@@ -57,7 +57,7 @@
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:eventID="@+eventID/HomepageEvents"/>
+            android:id="@+id/HomepageEvents"/>
 
     </LinearLayout>
 
