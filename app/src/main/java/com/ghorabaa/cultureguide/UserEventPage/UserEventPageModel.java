@@ -121,6 +121,7 @@ public class UserEventPageModel {
 
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    mPresenter.onRetrieveFriendsListFail("An error has occurred!");
                 }
             }
         };
@@ -128,7 +129,7 @@ public class UserEventPageModel {
         Response.ErrorListener onFail = new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                mPresenter.onFailFriendsList("Connection error!");
+                mPresenter.onRetrieveFriendsListFail("Connection error!");
             }
         };
         db.executeQuery(query, onSuccess, onFail);
@@ -136,7 +137,13 @@ public class UserEventPageModel {
     }
     public void inviteFriend(int index){
 
-        int id = friendsList.get(index).getId();
+        int id;
+        try {
+            id = friendsList.get(index).getId();
+        }catch (Exception e){
+            mPresenter.onInviteFail("An error has occurred!");
+            return;
+        }
         String query = "INSERT INTO Invite(UID,IUID,EID) VALUES(%d,%d,%d)";
         query = String.format(query,Authenticator.getID(),id,mEvent.GetID());
 
@@ -230,6 +237,7 @@ public class UserEventPageModel {
                         mPresenter.showAddOrg();
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    mPresenter.onAddOrgFail("An error has occurred!");
                 }
 
             }
