@@ -22,7 +22,7 @@ public class EditOrgActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile_organization);
 
-        mPresenter = new EditOrgPresenter(this);
+        mPresenter = new EditOrgPresenter(this,getApplicationContext());
 
         progressBar = new ProgressDialog(this);
     }
