@@ -304,43 +304,11 @@ public class EventModel {
 
     }
 
-            public void GetCatName(int ID) {
-
-                String query = "SELECT Name from Category where ID =" + ID;
-                Response.Listener<String> onSuccess = new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                        try {
-                            String CatName;
-
-
-                            JSONArray result = new JSONArray(response);
-
-                            CatName = result.getJSONObject(0).getString("Name");
-                           mpresenter.pEvent.setCatName(CatName);
-                          mpresenter.onSuccess(mpresenter.pEvent.getCatName());
-                        } catch (JSONException e) {
-                            Log.w("error msg", e.getMessage());
-                        }
-
-
-                    }
-                };
-                DBManger.executeQuery(query, onSuccess, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                    }
-                });
-
-
-            }
 
             public void GetEventRate(final int EventID) {
 
 
-                String query = "select rate from AVG(Rate) where EID= " + EventID;
+                String query = "SELECT AVG(Rate) FROM Rate WHERE Rate.EID= " + EventID;
                 Response.Listener<String> onSuccess = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -372,7 +340,7 @@ public class EventModel {
 
 
             public void GetEvent(final int index) {
-                String query = " select * from Event where EID = " + index;
+                String query = " SELECT Event.EID,Title,Description,Event.Date,Location,Category.Name as CatName,Category.ID as CatID,Organization.Name,Organization.ID as OrgID FROM `Event`,`Category`,`Organization` WHERE Event.CategoryID=Category.ID&& Event.OID=Organization.ID&& Event.EID= " + index;
 
 
                 Response.Listener<String> onSuccess = new Response.Listener<String>() {
@@ -383,8 +351,8 @@ public class EventModel {
                             JSONArray result = new JSONArray(response);
                             JSONObject objectResult = result.getJSONObject(0);
                             MEvent Event = new MEvent(objectResult);
-                            mpresenter.pEvent=Event;
-                            mpresenter.onRetrive(mpresenter.pEvent);
+
+                            mpresenter.onRetrive(Event);
 
 
 
@@ -414,12 +382,7 @@ public class EventModel {
             }
 
 
-            public void getEventOrg(int ID)
-            {
-                GetEvent(ID);
-                GetCatName(mpresenter.pEvent.getID());
-                mpresenter.onRetrive();
-            }
+
 
 }
 

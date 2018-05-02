@@ -19,7 +19,7 @@ public class EventPresenter {
     protected EventContract.EventView mview;
     protected EventModel mModel;
     protected Context PContext;
-    public MEvent pEvent=new MEvent();
+
 
 
 
@@ -93,13 +93,7 @@ public class EventPresenter {
 
     }
 
-    public void onRetrive()
 
-    {
-
-        mview.onRetrive(pEvent);
-
-    }
 
 
 
@@ -107,12 +101,9 @@ public class EventPresenter {
     {
         mModel.GetEvent(ID);
     }
-    public void getCatName(int ID){mModel.GetCatName(ID);}
+    public void GetRate(int ID){mModel.GetEventRate(ID);}
 
-    public void getEventOrg(int ID) {
 
-        mModel.getEventOrg(ID);
-    }
 
 
     public void onFail(){

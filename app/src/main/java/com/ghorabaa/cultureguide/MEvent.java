@@ -40,19 +40,28 @@ public class MEvent {
              String Description = Event.getString("Description");
              String location = Event.getString("Location");
              String Date = Event.getString("Date");
-             String CategoryID=Event.getString("CategoryID");
+             String CategoryID=Event.getString("CatID");
+             String CategoryName=Event.getString("CatName");
+             String OrgID=Event.getString("OrgID");
+             String OrgName=Event.getString("Name");
+
              SetTitle(Title);
              setDescription(Description);
              setLocation(location);
 
             setEventDate(Date);
             setCatID(Integer.parseInt(CategoryID));
+            setCatName( CategoryName);
+            setOrgName( OrgName);
+            setOrgID(Integer.parseInt(OrgID));
 
 
          }
          catch (JSONException e) {
              Log.w("error msg",e.getMessage());
          }
+
+
      }
 
     public String getDescrption()
@@ -164,4 +173,5 @@ public class MEvent {
     {
         return this.OrgName;
     }
+    public void setOrgID(int ID){this.OrgID=ID;}
 }

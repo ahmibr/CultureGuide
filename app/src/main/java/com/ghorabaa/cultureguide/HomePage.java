@@ -95,6 +95,7 @@ public  class HomePage extends AppCompatActivity
         //mpresenter.UpdatePresenterFun(5,"2019-06-27 09:31:00 GMT-04:00",3);
 
         mpresenter.getEventFun(4);
+        mpresenter.GetRate(3);
 
 
 
@@ -266,10 +267,13 @@ public  class HomePage extends AppCompatActivity
 
     @Override
     public void onRetrive(MEvent event) {
-    mToast=Toast.makeText(this,event.getDescrption() , Toast.LENGTH_LONG);
+    mToast=Toast.makeText(this,event.getCatName() , Toast.LENGTH_LONG);
 
         mToast.show();
-        mToast=Toast.makeText(this,event.getCatID() , Toast.LENGTH_LONG);
+        mToast=Toast.makeText(this,event.getOrgName() , Toast.LENGTH_LONG);
+        mToast.show();
+
+        mToast=Toast.makeText(this,event.getRating() , Toast.LENGTH_LONG);
 
         mToast.show();
     }
