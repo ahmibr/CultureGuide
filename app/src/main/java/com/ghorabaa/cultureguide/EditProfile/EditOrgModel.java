@@ -1,5 +1,7 @@
 package com.ghorabaa.cultureguide.EditProfile;
 
+import android.content.Context;
+
 import com.google.firebase.database.FirebaseDatabase;
 
 /**
@@ -8,9 +10,9 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class EditOrgModel extends EditProfileModel {
 
-    public EditOrgModel(EditOrgPresenter presenter) {
-        super(presenter);
-        db = db = FirebaseDatabase.getInstance().getReference("organization");
+    public EditOrgModel(EditOrgPresenter presenter, Context context) {
+        super(presenter,context);
+        tableName = "Organization";
     }
 
 }

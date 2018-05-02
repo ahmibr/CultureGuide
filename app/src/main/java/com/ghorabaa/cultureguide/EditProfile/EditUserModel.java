@@ -1,5 +1,6 @@
 package com.ghorabaa.cultureguide.EditProfile;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -14,20 +15,15 @@ import java.util.ArrayList;
 
 public class EditUserModel extends EditProfileModel {
 
-    public EditUserModel(EditUserPresenter presenter) {
-        super(presenter);
-        db = FirebaseDatabase.getInstance().getReference("user");
+    public EditUserModel(EditUserPresenter presenter, Context context) {
+        super(presenter,context);
+        tableName = "AppUser";
     }
 
-    public void updateInterest(ArrayList<String> interests){
+    public void getInterests(){
 
+    }
+    public void addInterest(int index){
 
-        Task<Void> addingTask = db.child("0").child("interests").setValue(interests);
-        addingTask.addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                mPresenter.onSuccess("Interests updated successfully!");
-            }
-        });
     }
 }
