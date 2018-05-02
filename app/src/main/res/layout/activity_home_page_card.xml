@@ -22,13 +22,13 @@
             android:text="@string/event_created"
             android:textSize="18dp"
             android:textStyle="bold"
-            android:id="@+id/post_title"/>
+            android:eventID="@+eventID/post_title"/>
 
         <ImageButton
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:src="@drawable/egyption_culture"
-            android:id="@+id/post_image"/>
+            android:eventID="@+eventID/post_image"/>
 
 
 
@@ -38,7 +38,7 @@
             android:text="time"
             android:textSize="20sp"
             android:layout_gravity="center"
-            android:id="@+id/post_time"
+            android:eventID="@+eventID/post_time"
             android:textStyle="bold"
             />
 
@@ -48,7 +48,7 @@
             android:text="@string/attend"
             android:layout_gravity="right"
             android:drawableRight="@drawable/ic_event_black_24dp"
-            android:id="@+id/post_attend"
+            android:eventID="@+eventID/post_attend"
             />
 
     </LinearLayout>

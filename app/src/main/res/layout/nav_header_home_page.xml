@@ -15,7 +15,7 @@
     <!--android:background="@drawable/side_nav_bar"-->
 
     <ImageView
-        android:id="@+id/imageView"
+        android:eventID="@+eventID/imageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:paddingTop="@dimen/nav_header_vertical_spacing"

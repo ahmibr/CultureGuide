@@ -54,7 +54,7 @@
             android:layout_marginRight="16dp"
             android:hint="@string/emailHint"
 
-            android:id="@+id/sign_in_email"
+            android:eventID="@+eventID/sign_in_email"
             />
 
         <TextView
@@ -79,7 +79,7 @@
             android:layout_marginRight="16dp"
             android:hint="************"
 
-            android:id="@+id/sign_in_password"
+            android:eventID="@+eventID/sign_in_password"
             android:inputType="textPassword"
             />
 

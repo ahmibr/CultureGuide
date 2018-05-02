@@ -19,13 +19,16 @@ public class UserHomepagePresenter implements UserHomepageContract.Presenter {
     private UserHomepageContract.View mView;
     private UserHomepageModel mModel;
     private ArrayList<MEvent> currentEvents;
+    private EventRetrievalType currentType;
 
     UserHomepagePresenter(UserHomepageContract.View view, Context context){
         mView = view;
         mModel = new UserHomepageModel(this,context);
+        currentType = EventRetrievalType.Upcoming;
     }
 
     public void retrieveEvents(EventRetrievalType type){
+        currentType = type;
         switch (type){
             case Favourite:
                 mModel.getFavouriteEvent();
@@ -45,6 +48,9 @@ public class UserHomepagePresenter implements UserHomepageContract.Presenter {
         mView.onRetrieve(events);
     }
 
+    public void refresh(){
+        retrieveEvents(currentType);
+    }
 
     public void onFail(String errorMessage){
         mView.onFail(errorMessage);

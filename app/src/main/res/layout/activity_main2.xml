@@ -33,7 +33,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:hint=""
-                android:id="@+id/organization_name"/>
+                android:eventID="@+eventID/organization_name"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -51,7 +51,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:hint="@string/email"
-                android:id="@+id/organization_email"/>
+                android:eventID="@+eventID/organization_email"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -69,7 +69,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:hint="************"
-                android:id="@+id/organization_password"
+                android:eventID="@+eventID/organization_password"
                 android:inputType="textPassword"/>
 
             <TextView
@@ -88,7 +88,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:hint="************"
-                android:id="@+id/organization_password_confirm"
+                android:eventID="@+eventID/organization_password_confirm"
                 android:inputType="textPassword"/>
 
             <Button
@@ -96,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/sign_up"
-                android:id="@+id/edit_profile"
+                android:eventID="@+eventID/edit_profile"
                 android:onClick="doneSignUp"/>
 
         </LinearLayout>

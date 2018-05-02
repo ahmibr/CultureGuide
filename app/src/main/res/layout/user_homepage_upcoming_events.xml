@@ -15,12 +15,12 @@
             android:text="@string/refreshPosts"
             android:drawableRight="@drawable/ic_refresh_black_24dp"
             android:layout_gravity="center"
-            android:id="@+id/upcoming_events_refresh"/>
+            android:eventID="@+eventID/upcoming_events_refresh"/>
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/upcoming_events"/>
+            android:eventID="@+eventID/upcoming_events"/>
 
     </LinearLayout>
 

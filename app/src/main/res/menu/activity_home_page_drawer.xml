@@ -5,15 +5,15 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home_page"
+            android:eventID="@+eventID/nav_home_page"
             android:icon="@drawable/ic_home_black_24dp"
             android:title="@string/home_page" />
         <item
-            android:id="@+id/nav_create_event"
+            android:eventID="@+eventID/nav_create_event"
             android:icon="@drawable/ic_event_black_24dp"
             android:title="@string/create_Event" />
         <item
-            android:id="@+id/nav_edit_profile"
+            android:eventID="@+eventID/nav_edit_profile"
             android:icon="@drawable/ic_person_black_24dp"
             android:title="@string/edit_profile" />
     </group>
@@ -21,11 +21,11 @@
     <item android:title="@string/exit">
         <menu>
             <item
-                android:id="@+id/nav_sign_out"
+                android:eventID="@+eventID/nav_sign_out"
                 android:icon="@drawable/ic_exit_to_app_black_24dp"
                 android:title="@string/sign_out" />
             <!--<item-->
-                <!--android:id="@+id/nav_send"-->
+                <!--andreventIDd:ideventID@+id/nav_send"-->
                 <!--android:icon="@drawable/ic_menu_send"-->
                 <!--android:title="To be deeted" />-->
         </menu>
