@@ -4,8 +4,15 @@ package com.ghorabaa.cultureguide.EditProfile;
  * Created by Ahmed Ibrahim on 4/5/18.
  */
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.ghorabaa.cultureguide.Utilities.Authenticator;
+import com.ghorabaa.cultureguide.Utilities.DBConnection;
+import com.ghorabaa.cultureguide.Utilities.EmailValidator;
+import com.ghorabaa.cultureguide.Utilities.PasswordEncrypter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -18,84 +25,114 @@ import com.google.firebase.database.FirebaseDatabase;
 
 abstract class EditProfileModel {
 
-    protected FirebaseAuth mAuth;
 
     protected EditProfilePresenter mPresenter;
 
-    protected FirebaseUser mUser;
+    protected String tableName;
 
-    protected DatabaseReference db;
+    protected Context mContext;
 
-    public EditProfileModel(EditProfilePresenter presenter){
+    protected DBConnection db;
 
-        mAuth = FirebaseAuth.getInstance();
-
-        mUser = mAuth.getCurrentUser();
+    public EditProfileModel(EditProfilePresenter presenter, Context context){
 
         mPresenter = presenter;
+
+        mContext = context;
+
+        db = DBConnection.getInstance(context);
     }
 
     public void changeEmail(final String newEmail){
 
-        if(mUser==null)
+        if(!EmailValidator.validate(newEmail)){
+            mPresenter.onFail("Please enter valid email form!");
             return;
+        }
+        String query = "UPDATE Users SET Email = '%s' WHERE ID = %d";
+        query = String.format(query,newEmail, Authenticator.getID());
 
-        mUser.updateEmail(newEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
+        Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
-            public void onComplete(@NonNull Task<Void> task) {
-
-                if(task.isSuccessful()) {
-                    db.child(mUser.getUid()).child("email").setValue(newEmail);
-                    mPresenter.onSuccess("Email Changed Successfully");
-                }
-                else
+            public void onResponse(String response) {
+                if(response.equals("true"))
                 {
-
-                    //Invalid email format
-                    if(task.getException() instanceof FirebaseAuthInvalidCredentialsException)
-                        mPresenter.onFail("Invalid email format!");
-
-                    //Email already used
-                     else if(task.getException() instanceof FirebaseAuthUserCollisionException)
-                        mPresenter.onFail("This email is already registered!");
-
-                     else
-                         mPresenter.onFail("Email Change Failed");
+                    mPresenter.onSuccess("Email changed successfully");
+                    Authenticator.setEmail(newEmail);
                 }
+                else if(response.equals("false"))
+                    mPresenter.onFail("This email is already registered!");
+                else
+                    mPresenter.onFail("An error has occurred!");
             }
-        });
+        };
+
+        Response.ErrorListener onFail = new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                mPresenter.onFail("Connection Error!");
+            }
+        };
+
+        db.executeQuery(query,onSuccess,onFail);
     }
 
     public void changeName(final String newName){
-        if(mUser==null)
-            return;
 
-        db.child(mUser.getUid()).child("name").setValue(newName);
+        String query = "UPDATE %s SET Name = '%s' WHERE ID = %d";
+        query = String.format(query,tableName,newName, Authenticator.getID());
 
-        mPresenter.onSuccess("Name changed Successfully");
+        Response.Listener<String> onSuccess = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if(response.equals("true"))
+                {
+                    mPresenter.onSuccess("Name changed successfully");
+                    Authenticator.setName(newName);
+                }
+                else
+                    mPresenter.onFail("An error has occurred!");
+            }
+        };
+
+        Response.ErrorListener onFail = new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                mPresenter.onFail("Connection Error!");
+            }
+        };
+
+        db.executeQuery(query,onSuccess,onFail);
+
     }
 
     public void changePassword(final String newPassword){
 
-        if(mUser==null)
+        if(newPassword.length()<6){
+            mPresenter.onFail("Password should be at least 6 characters!");
             return;
-        mUser.updatePassword(newPassword).addOnCompleteListener(new OnCompleteListener<Void>() {
+        }
+        String query = "UPDATE Users SET Password = '%s' WHERE ID = %d";
+        query = String.format(query, PasswordEncrypter.encrypt(newPassword), Authenticator.getID());
+
+        Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
-            public void onComplete(@NonNull Task<Void> task) {
-               if(task.isSuccessful())
-               {
-                   mPresenter.onSuccess("Password Changed Successfully");
-               }
-               else
-               {
-                   //Weak Password (Less than 6 Characters)
-                   if(task.getException() instanceof FirebaseAuthWeakPasswordException)
-                       mPresenter.onFail("Password should be at least 6 characters!");
-                   else
-                       mPresenter.onFail("Change Password Failed");
-               }
+            public void onResponse(String response) {
+                if(response.equals("true"))
+                    mPresenter.onSuccess("Password changed successfully");
+                else
+                    mPresenter.onFail("An error has occurred!");
             }
-        });
+        };
+
+        Response.ErrorListener onFail = new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                mPresenter.onFail("Connection Error!");
+            }
+        };
+
+        db.executeQuery(query,onSuccess,onFail);
     }
 
 }

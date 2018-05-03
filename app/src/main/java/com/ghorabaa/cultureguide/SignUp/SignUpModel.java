@@ -62,8 +62,10 @@ public class SignUpModel {
      */
     public void register(final String name, final String email, final String password, final UserType type){
 
-         //TODO check email form
-
+        if(!EmailValidator.validate(email)){
+            mPresenter.onSignUpFail("Please enter valid email form!");
+            return;
+        }
         if(password.length()<6)
         {
             mPresenter.onSignUpFail("Password should be at least 6 characters!");

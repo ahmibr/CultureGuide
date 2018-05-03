@@ -23,7 +23,7 @@ public class EditUserActivity extends AppCompatActivity implements EditProfileCo
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_user);
 
-        mPresenter = new EditUserPresenter(this);
+        mPresenter = new EditUserPresenter(this,getApplicationContext());
 
         progressBar = new ProgressDialog(this);
 
