@@ -17,14 +17,15 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.ghorabaa.cultureguide.EditProfile.EditOrgActivity;
-import com.ghorabaa.cultureguide.EventPage.EventContract;
+import com.ghorabaa.cultureguide.EventPageBaseModel.EventContract;
+import com.ghorabaa.cultureguide.EventPageBaseModel.EventMainActivity;
+import com.ghorabaa.cultureguide.EventPageBaseModel.EventPresenter;
 import com.ghorabaa.cultureguide.SignIn.MainActivity;
 import com.ghorabaa.cultureguide.Utilities.Authenticator;
 import com.ghorabaa.cultureguide.Utilities.HomePagePosts;
 
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public  class HomePage extends AppCompatActivity
@@ -33,6 +34,7 @@ public  class HomePage extends AppCompatActivity
 
     //TODO remove this toast after testing
     //Used for Testing Processes
+
     private Toast mToast;
     RecyclerView mPosts;
     HomePagePosts mAdapter;
@@ -40,8 +42,9 @@ public  class HomePage extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        Toast.makeText(getApplicationContext(), Authenticator.getEmail(),Toast.LENGTH_LONG).show();
         super.onCreate(savedInstanceState);
+        Toast.makeText(getApplicationContext(), Authenticator.getEmail(), Toast.LENGTH_LONG).show();
+
         setContentView(R.layout.activity_home_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -54,7 +57,6 @@ public  class HomePage extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
         mPosts = (RecyclerView) findViewById(R.id.HomepageEvents);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -66,14 +68,40 @@ public  class HomePage extends AppCompatActivity
          */
         mAdapter = new HomePagePosts(0, this);
         mPosts.setAdapter(mAdapter);
+        EventPresenter mpresenter = new EventPresenter(this, getApplicationContext());
+
+        MEvent Event = new MEvent();
+        Event.setDescription(" les miserable");
+        try {
+            Event.setEventDate("2018-06-27 09:31:00 GMT-04:00");
+        } catch (Exception e) {
+
+            Log.w("home page error:", e.getMessage());
+        }
+
+        Event.setLocation("Cairo");
+        Event.SetTitle("les miserables");
+        Event.setCatID(5);
+        Event.SetOrgID(1);
+       //mpresenter.CreatePresenterFun(Event);
+        //mpresenter.RemoveEventFun(13);
+
+
+        //mpresenter.UpdatePresenterFun(1, "origins-Dan Brown", 11);
+        //mpresenter.UpdatePresenterFun(2,"3",5);
+        //mpresenter.UpdatePresenterFun(3,"Dan Brown book review ",11);
+        //mpresenter.UpdatePresenterFun(4,"portsaid",10);
+        //mpresenter.UpdatePresenterFun(5,"2019-06-27 09:31:00 GMT-04:00",3);
+
+        mpresenter.getEventFun(4);
+        mpresenter.GetRate(3);
 
 
 
 
     }
 
-    @Override
-    public void onBackPressed() {
+        public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
@@ -214,8 +242,39 @@ public  class HomePage extends AppCompatActivity
     }
 
     @Override
+    public void onSuccess(String msg) {
+        mToast=Toast.makeText(this,msg, Toast.LENGTH_LONG);
+
+        mToast.show();
+
+
+    }
+
+    @Override
+    public void onFail(String msg) {
+
+        mToast=Toast.makeText(this,msg, Toast.LENGTH_LONG);
+
+        mToast.show();
+
+    }
+
+    @Override
     public void onFail() {
 
+    }
+
+    @Override
+    public void onRetrive(MEvent event) {
+    mToast=Toast.makeText(this,event.getCatName() , Toast.LENGTH_LONG);
+
+        mToast.show();
+        mToast=Toast.makeText(this,event.getOrgName() , Toast.LENGTH_LONG);
+        mToast.show();
+
+        mToast=Toast.makeText(this,event.getRating() , Toast.LENGTH_LONG);
+
+        mToast.show();
     }
 
 

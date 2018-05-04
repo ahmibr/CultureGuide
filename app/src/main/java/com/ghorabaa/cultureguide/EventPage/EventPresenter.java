@@ -1,10 +1,12 @@
-package com.ghorabaa.cultureguide.EventPage;
+package com.ghorabaa.cultureguide.OrganizationEventPage;
 
 
 import com.ghorabaa.cultureguide.MEvent;
 
 
 import android.content.Context;
+import android.util.Log;
+
 /**
  * Created by ruba on 26/03/18.
  */
@@ -16,9 +18,13 @@ public class EventPresenter {
     protected EventModel mModel;
     protected Context PContext;
 
+
+
+
     public EventPresenter(EventContract.EventView view,Context context) {
 
         mview = view;
+
         PContext=context;
         mModel = EventModel.getInstance(this,PContext);
 
@@ -36,9 +42,9 @@ public class EventPresenter {
     }
 
 
-    public void onFail(){
+    public void onFail(String msg){
         //notify view
-        mview.onFail();
+        mview.onFail(msg);
     }
 
     public void CreatePresenterFun(MEvent Event)
@@ -48,23 +54,26 @@ public class EventPresenter {
 
 
     public void UpdatePresenterFun(int FuncID,String Paramter,int EventID)
-    {
+    {  try {
         switch (FuncID) {
             case 1:
-               mModel.UpdateEventTitle(Paramter,EventID);
+                mModel.UpdateEventTitle(Paramter, EventID);
             case 2:
-                mModel.UpdateEventCat(Paramter,EventID);
+                mModel.UpdateEventCat(Paramter, EventID);
             case 3:
-               mModel.UpdateEventDes(Paramter,EventID);
+                mModel.UpdateEventDes(Paramter, EventID);
             case 4:
-                mModel.UpdateEventLocation(Paramter,EventID);
+                mModel.UpdateEventLocation(Paramter, EventID);
             case 5:
-                mModel.UpdateEventDate(Long.parseLong(Paramter),EventID);
-
+                mModel.UpdateEventDate(Paramter, EventID);
 
 
         }
-
+    }
+    catch (Exception e)
+    {
+        Log.w("presenter error",e.getMessage());
+    }
     }
 
     public void RemoveEventFun(int ID)
@@ -73,12 +82,38 @@ public class EventPresenter {
     }
 
 
-    public MEvent GetEventFun(int index)
-    {   MEvent Event;
-        Event=mModel.GetEvent(index);
-        return Event;
+
+    public void onRetrive(MEvent event)
+
+    {
+
+        mview.onRetrive(event);
 
     }
+
+
+
+
+
+    public void getEventFun(int ID)
+    {
+        mModel.GetEvent(ID);
+    }
+    public void GetRate(int ID){mModel.GetEventRate(ID);}
+
+
+
+
+    public void onFail(){
+        //notify view
+        mview.onFail();
+    }
+
+    public void onSuccess(String msg)
+    {
+        mview.onSuccess(msg);
+    }
+
 
 }
 

@@ -1,10 +1,6 @@
 package com.ghorabaa.cultureguide.Utilities;
 
 import android.content.Context;
-import android.os.Handler;
-import android.service.notification.NotificationListenerService;
-import android.support.design.widget.Snackbar;
-import android.support.v4.graphics.ColorUtils;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,10 +14,7 @@ import android.widget.Toast;
 import com.ghorabaa.cultureguide.MEvent;
 import com.ghorabaa.cultureguide.R;
 
-import java.sql.Struct;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.TimerTask;
 
 import static android.content.ContentValues.TAG;
 
@@ -146,7 +139,7 @@ public class HomePagePosts extends RecyclerView.Adapter<HomePagePosts.EventPost>
                 @Override
                 public void onClick(View view) {
 
-                    String toastText = organizationsEventsInfo.get(position).GetTitle() + " created " + organizationsEventsInfo.get(position).GetTitle();
+                    String toastText = organizationsEventsInfo.get(position).getTitle() + " created " + organizationsEventsInfo.get(position).getTitle();
                     Toast.makeText(view.getContext(),toastText,Toast.LENGTH_LONG).show();
                 }
             } );
@@ -170,15 +163,15 @@ public class HomePagePosts extends RecyclerView.Adapter<HomePagePosts.EventPost>
         public void bindValue ( int position ) {
             this.position = position;
 
-            id = organizationsEventsInfo.get(position).GetID();
+            id = organizationsEventsInfo.get(position).getID();
 
             String date = "";
-            if(organizationsEventsInfo.get(position).GetDate() != null){
-                date = organizationsEventsInfo.get(position).GetDate().toString();
+            if(organizationsEventsInfo.get(position).getDate() != null){
+                date = organizationsEventsInfo.get(position).getDate().toString();
             }
 
             setPostValues( Authenticator.getName()
-                    , organizationsEventsInfo.get(position).GetTitle()
+                    , organizationsEventsInfo.get(position).getTitle()
                     , date);
         }
 
