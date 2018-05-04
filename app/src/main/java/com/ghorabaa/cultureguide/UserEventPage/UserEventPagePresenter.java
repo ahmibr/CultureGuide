@@ -17,6 +17,7 @@ public class UserEventPagePresenter implements UserEventPageContract.Presenter {
     private UserEventPageModel mModel;
 
     public UserEventPagePresenter(UserEventPageContract.View view, Context context, int id) {
+        mView = view;
         mModel = new UserEventPageModel(this, context, id);
     }
 
