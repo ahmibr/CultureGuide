@@ -28,14 +28,11 @@ public class UserEventPageModel {
     private MEvent mEvent;
     private int eventID;
 
-    ArrayList<Friend> friendsList;
-
     UserEventPageModel(UserEventPagePresenter presenter,Context context,int eventID){
         mPresenter = presenter;
         mContext = context;
         db = DBConnection.getInstance(context);
         this.eventID = eventID;
-        friendsList = new ArrayList<>();
     }
 
     void retrieveEvent(){
@@ -124,79 +121,6 @@ public class UserEventPageModel {
         db.executeQuery(query,onSuccess,onFail);
     }
 
-    void retrieveFriendsList(){
-        String query = "SELECT * FROM Friend,AppUser WHERE UID = %d AND FUID = AppUser.ID";
-        query = String.format(query,Authenticator.getID());
-
-        Response.Listener<String> onSuccess = new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-
-                //Forever alone
-                friendsList.clear();
-
-                try {
-                    JSONArray result = new JSONArray(response);
-
-                    for(int i=0;i<result.length();++i){
-                        int id = result.getJSONObject(i).getInt("FUID");
-                        String email = result.getJSONObject(0).getString("Email");
-                        String name = result.getJSONObject(0).getString("Name");
-                        Friend friend = new Friend(id,email,name);
-                        friendsList.add(friend);
-                    }
-
-                    mPresenter.onRetrieveFriendsList(friendsList);
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    mPresenter.onRetrieveFriendsListFail("An error has occurred!");
-                }
-            }
-        };
-
-        Response.ErrorListener onFail = new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                mPresenter.onRetrieveFriendsListFail("Connection error!");
-            }
-        };
-        db.executeQuery(query, onSuccess, onFail);
-
-    }
-    public void inviteFriend(int index){
-
-        int id;
-        try {
-            id = friendsList.get(index).getId();
-        }catch (Exception e){
-            mPresenter.onInviteFail("An error has occurred!");
-            return;
-        }
-        String query = "INSERT INTO Invite(UID,IUID,EID) VALUES(%d,%d,%d)";
-        query = String.format(query,Authenticator.getID(),id,mEvent.getID());
-
-        Response.Listener<String> onSuccess = new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                if(response.equals("true"))
-                    mPresenter.onInviteSuccess();
-                else if(response.equals("false"))
-                    mPresenter.onInviteFail("You already invited this friend!");
-                else
-                    mPresenter.onInviteFail("An error has occurred!");
-            }
-        };
-
-        Response.ErrorListener onFail = new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                mPresenter.onInviteFail("Connection Error!");
-            }
-        };
-
-        db.executeQuery(query,onSuccess,onFail);
-    }
 
     public void retrieveRate(){
         String query = "SELECT AVG(Rate) AS Average FROM Rate WHERE EID = %d";

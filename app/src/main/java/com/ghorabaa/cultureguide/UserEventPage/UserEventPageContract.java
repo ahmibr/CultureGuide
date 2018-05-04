@@ -17,13 +17,9 @@ public interface UserEventPageContract {
         void onAttendFail(String errorMessage);
         void onRateSuccess();
         void onRateFail(String errorMessage);
-        void onInviteSuccess();
-        void onInviteFail(String errorMessage);
         void onRetrieveRate(int rate);
         void onAddOrgSuccess();
         void onAddOrgFail(String errorMessage);
-        void onRetrieveFriendsList(ArrayList<Friend> friendsList);
-        void onRetrieveFriendsListFail(String errorMessage);
         void showAddOrgButton();
         void showAttendButton();
     }
@@ -31,8 +27,6 @@ public interface UserEventPageContract {
     interface Presenter{
         void retrieveEvent();
         void rate(int rate);
-        void retrieveFriendsList();
-        void inviteFriend(int index);
         void updateRate();
         void addOrgToFavorite();
         void checkOrgState();

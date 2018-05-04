@@ -28,7 +28,7 @@ public class UserEventPage extends AppCompatActivity implements UserEventPageCon
 
     Button mInviteFriend;
 
-    int mEventID;
+    private int mEventID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,15 +106,6 @@ public class UserEventPage extends AppCompatActivity implements UserEventPageCon
         //event is deleted, or connection error. make a toast
     }
 
-    @Override
-    public void onInviteSuccess() {
-        //make a toast, lock invite for user
-    }
-
-    @Override
-    public void onInviteFail(String errorMessage) {
-        //make a toast, lock invite for user
-    }
 
     @Override
     public void onRetrieveRate(int rate) {
@@ -131,10 +122,6 @@ public class UserEventPage extends AppCompatActivity implements UserEventPageCon
         //make a toast
     }
 
-    @Override
-    public void onRetrieveFriendsList(ArrayList<Friend> friendsList) {
-        //show it to user, with invite user next to each one
-    }
 
     @Override
     public void showAddOrgButton() {
@@ -145,11 +132,5 @@ public class UserEventPage extends AppCompatActivity implements UserEventPageCon
     public void showAttendButton() {
 
     }
-
-    @Override
-    public void onRetrieveFriendsListFail(String errorMessage) {
-
-    }
-
 
 }
