@@ -5,7 +5,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ghorabaa.cultureguide.HomePage;
@@ -23,6 +28,12 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
 
     private ProgressDialog progressBar;
 
+    Spinner mSignUpOptions;
+
+    TextView mSignUpName;
+
+    UserType mUserType;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +42,40 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
         mPresenter = new SignUpPresenter(this,getApplicationContext());
 
         progressBar = new ProgressDialog(this);
+
+        mSignUpOptions = (Spinner) findViewById(R.id.sign_up_options);
+        String[] signUpOptions = { getResources().getString(R.string.user) , getResources().getString(R.string.organization)};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                R.layout.spinner_layout_style, signUpOptions);
+        //adapter.setDropDownViewResource(android.R.layout.);
+        mSignUpOptions.setAdapter(adapter);
+
+        mSignUpName = (TextView)findViewById(R.id.sign_up_name);
+
+        mSignUpOptions.setSelection(0);
+        mUserType = UserType.Regular;
+
+        mSignUpOptions.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                switch (i){
+                    case 0:
+                        mUserType = UserType.Regular;
+                        mSignUpName.setText(R.string.userName);
+                        break;
+                    case 1:
+                        mUserType = UserType.Organization;
+                        mSignUpName.setText(R.string.organizationName);
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
     }
 
 
@@ -86,7 +131,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
         }
 
         showProgressBar("Signing up","Please wait while signing up...");
-        mPresenter.signUp(name,email,password,UserType.Organization);
+        mPresenter.signUp(name,email,password,mUserType);
     }
 
     private void showProgressBar(String title,String message){
