@@ -69,7 +69,7 @@ public class InviteFriends extends AppCompatActivity implements InviteFriendsCon
     @Override
     public void onRetrieveFriendsListFail(String errorMessage) {
         //make a toast and close activity
-        Toast.makeText(this, "Connection Error" , Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, errorMessage , Toast.LENGTH_SHORT).show();
         finish();
     }
 
