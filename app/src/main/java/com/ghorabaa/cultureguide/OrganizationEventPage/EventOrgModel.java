@@ -11,8 +11,9 @@ import com.android.volley.VolleyError;
 import com.ghorabaa.cultureguide.EventPageBaseModel;
 import com.ghorabaa.cultureguide.MEvent;
 
+import com.ghorabaa.cultureguide.Utilities.Authenticator;
 import com.ghorabaa.cultureguide.Utilities.DBConnection;
-import com.google.firebase.database.DatabaseReference;
+
 import android.content.Context;
 
 import org.json.JSONArray;
@@ -27,8 +28,8 @@ import java.util.Locale;
 
 public class EventOrgModel extends EventPageBaseModel {
 
-    private DatabaseReference mDatabase;
-    private static EventPresenter mpresenter;
+
+    private static EventOrgPresnter mpresenter;
     private static DBConnection DBManger;
     private static Context context;
    
@@ -36,7 +37,7 @@ public class EventOrgModel extends EventPageBaseModel {
 
     private static EventOrgModel ourInstance;
 
-    public static EventOrgModel getInstance(EventPresenter presenter, Context Mcontext, int eventID) {
+    public static EventOrgModel getInstance(EventOrgPresnter presenter, Context Mcontext, int eventID) {
         if (ourInstance == null) {
             ourInstance = new EventOrgModel(DBManger,eventID);
             ourInstance.mpresenter = presenter;
@@ -61,11 +62,11 @@ public class EventOrgModel extends EventPageBaseModel {
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                if(response=="true")
+                if(response.equals("true"))
 
                     mpresenter.onSuccess("Event created");
 
-                else if(response=="false")
+                else if(response.equals("false"))
                     mpresenter.onFail(" Insert a valid  category or organization");
 
                 else
@@ -84,8 +85,6 @@ public class EventOrgModel extends EventPageBaseModel {
         });
 
 
-        //DBManger.executeQuery(query);
-        mpresenter.onSuccess("event created");
 
 
     }
@@ -96,11 +95,11 @@ public class EventOrgModel extends EventPageBaseModel {
        Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                if(response=="true")
+                if(response.equals("true"))
 
                     mpresenter.onSuccess("event deleted");
 
-                else if(response=="false")
+                else if(response.equals("false"))
                     mpresenter.onFail("there is no event with this ID");
                 else
                     mpresenter.onFail("no response");
@@ -116,8 +115,7 @@ public class EventOrgModel extends EventPageBaseModel {
                 mpresenter.onFail("connection error");
             }
         });
-        //DBManger.executeQuery(query);
-        mpresenter.onSuccess("event removed");
+
 
     }
 
@@ -126,19 +124,16 @@ public class EventOrgModel extends EventPageBaseModel {
         String query = "UPDATE Event SET Title ='%s' WHERE EID = %d";
         query = String.format(Locale.ENGLISH,query, Title, eventID);
 
-        //DBManger.executeQuery(query);
 
 
-
-
-      Response.Listener<String> onSuccess = new Response.Listener<String>() {
+     Response.Listener<String> onSuccess = new Response.Listener<String>() {
            @Override
            public void onResponse(String response) {
-               if(response=="true")
+               if(response.equals("true"))
 
                    mpresenter.onSuccess("event updated");
 
-               else if (response=="false")
+               else if (response.equals("false"))
                    mpresenter.onFail("please enter a valid event ID");
                else
                    mpresenter.onFail("no response");
@@ -151,27 +146,34 @@ public class EventOrgModel extends EventPageBaseModel {
        DBManger.executeQuery(query,onSuccess, new Response.ErrorListener() {
            @Override
            public void onErrorResponse(VolleyError error) {
+               mpresenter.onFail("connection error");
 
            }
        });
 
-        mpresenter.onSuccess("event updated");
+
     }
+
+
+
+
+
+
+
 
     public void UpdateEventLocation(String location) {
         String query = "UPDATE Event SET Location ='%s' WHERE EID = %d";
         query=String.format(Locale.ENGLISH,query,location, eventID);
-        //DBManger.executeQuery(query);
 
 
        Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                if(response=="true")
+                if(response.equals("true"))
 
-                    mpresenter.onSuccess();
+                    mpresenter.onSuccess("event updated");
 
-                else if(response=="false")
+                else if(response.equals("false"))
                     mpresenter.onFail("there is no event with this ID");
                 else
                     mpresenter.onFail("no response");
@@ -186,22 +188,26 @@ public class EventOrgModel extends EventPageBaseModel {
             }
         });
 
-        mpresenter.onSuccess("event updated");
+
     }
+
+
+
+
+
 
     public void UpdateEventCat(String category) {
         String query = "UPDATE Event SET CategoryID =%s WHERE EID = %d";
         query = String.format(Locale.ENGLISH,query, category,  eventID);
-        //DBManger.executeQuery(query);
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                if(response=="true")
+                if(response.equals("true"))
 
-                    mpresenter.onSuccess();
+                    mpresenter.onSuccess("event updated");
 
-                else if(response=="false")
+                else if(response.equals("false"))
                     mpresenter.onFail("there is no event with this ID");
                 else
                     mpresenter.onFail("no response");
@@ -220,24 +226,23 @@ public class EventOrgModel extends EventPageBaseModel {
         });
 
 
-        mpresenter.onSuccess("event updated");
 
     }
 
     public void UpdateEventDes(String describtion) {
         String query = "UPDATE Event SET Description = '%s' WHERE EID = %d";
         query = String.format(Locale.ENGLISH,query, describtion,  eventID);
-        //DBManger.executeQuery(query);
+
 
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                if(response=="true")
+                if(response.equals("true"))
 
-                    mpresenter.onSuccess();
+                    mpresenter.onSuccess("event updated");
 
-                else if(response=="false")
+                else if(response.equals("false"))
                     mpresenter.onFail("there is no event with this ID");
                 else
                     mpresenter.onFail("no response ");
@@ -255,7 +260,7 @@ public class EventOrgModel extends EventPageBaseModel {
             }
         });
 
-        mpresenter.onSuccess("event updated");
+
     }
 
 
@@ -268,16 +273,16 @@ public class EventOrgModel extends EventPageBaseModel {
               Long validDate= MEvent.validateDate(dummy);
             String query = "UPDATE Event SET Date = %tQ WHERE EID = %d ";
             query=String.format(Locale.ENGLISH,query,validDate, eventID);
-            //DBManger.executeQuery(query);
+
 
        Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                if(response=="true")
+                if(response.equals("true"))
 
-                    mpresenter.onSuccess();
+                    mpresenter.onSuccess("event updated");
 
-                else if(response=="false")
+                else if(response.equals("false"))
                     mpresenter.onFail("there is no event with this ID");
                 else
                     mpresenter.onFail("no response ");
@@ -313,15 +318,12 @@ public class EventOrgModel extends EventPageBaseModel {
                     public void onResponse(String response) {
 
                         try {
-                            MEvent Event = new MEvent();
-                            Event.SetID(eventID);
+
                             JSONArray result = new JSONArray(response);
                             int rate;
 
                             rate = Integer.parseInt(result.getJSONObject(0).getString("Rate"));
-                            Event.setRating(rate);
-                            mpresenter.onRetrive(Event);
-
+                            passToPresenter(rate);
                         } catch (JSONException e) {
                             Log.w("error msg", e.getMessage());
                         }
@@ -335,102 +337,109 @@ public class EventOrgModel extends EventPageBaseModel {
 
                     }
                 });
-            }
-
-
-            public void GetEvent() {
-                String query = " SELECT Event.EID,Title,Description,Event.Date,Location,Category.Name as CatName,Category.ID as CatID,Organization.Name,Organization.ID as OrgID FROM `Event`,`Category`,`Organization` WHERE Event.CategoryID=Category.ID&& Event.OID=Organization.ID&& Event.EID= " + eventID;
-
-
-                Response.Listener<String> onSuccess = new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                        try {
-                            JSONArray result = new JSONArray(response);
-                            JSONObject objectResult = result.getJSONObject(0);
-                            MEvent Event = new MEvent(objectResult);
-
-                            mpresenter.onRetrive(Event);
-
-
-
-
-                        } catch (JSONException e) {
-                            Log.w("json error msg", e.getMessage());
-                            mpresenter.onFail(" event not found");
-                        } catch (Exception e) {
-                            Log.w("json error msg", e.getMessage());
-                            mpresenter.onFail("un supported date");
-                        }
-
-                    }
-
-
-                };
-
-                DBManger.executeQuery(query, onSuccess, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                    }
-                });
-
-
 
             }
 
-            public void getMostcrowded()
-            {
-
-                String query = " SELECT A.eventID, A.AttendTimes" +
-                        "FROM (SELECT EID as eventID,COUNT(EID) as AttendTimes FROM Attend GROUP BY EID)as A " +
-                        "HAVING A.AttendTimes=(SELECT MAX(A.AttendTimes) FROM   (SELECT EID as eventID,COUNT(EID) as AttendTimes FROM Attend GROUP BY EID) as A)" ;
-
-
-                Response.Listener<String> onSuccess = new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                        try {
-                            JSONArray result = new JSONArray(response);
-                            JSONObject objectResult = result.getJSONObject(0);
-                            MEvent Event = new MEvent(objectResult);
-
-                            mpresenter.onRetrive(Event);
 
 
 
+    public void getMostcrowded()
+    {
 
-                        } catch (JSONException e) {
-                            Log.w("json error msg", e.getMessage());
-                            mpresenter.onFail(" event not found");
-                        } catch (Exception e) {
-                            Log.w("json error msg", e.getMessage());
-                            mpresenter.onFail("un supported date");
-                        }
+        String query = "SELECT * \n" +
+                "FROM( \n" +
+                " SELECT Organization.ID as OrganizationID,Event.EID as EventID,COUNT(Event.EID) as Attendees FROM Event JOIN Organization ON Event.OID=Organization.ID JOIN Attend on Event.EID=Attend.EID GROUP BY Organization.ID,Event.EID) as A\n" +
+                "WHERE A.OrganizationID=9\n" +
+                "HAVING A.Attendees= (SELECT MAX(A.Attendees) FROM (SELECT Organization.ID as OrganizationID,Event.EID as EventID,COUNT(Event.EID) as Attendees FROM Event JOIN Organization ON Event.OID=Organization.ID JOIN Attend on Event.EID=Attend.EID GROUP BY Organization.ID,Event.EID) as A)";
 
-                    }
+        Response.Listener<String> onSuccess = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                try {
+                    JSONArray result = new JSONArray(response);
+                    JSONObject objectResult = result.getJSONObject(0);
+                    int EID=Integer.parseInt(objectResult.getString("EventID"));
 
 
-                };
+                   passToPresenter(EID);
 
-                DBManger.executeQuery(query, onSuccess, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
 
-                    }
-                });
 
+
+                } catch (JSONException e) {
+                    Log.w("json error msg", e.getMessage());
+                    mpresenter.onFail(" event not found");
+                } catch (Exception e) {
+                    Log.w("json error msg", e.getMessage());
+                    mpresenter.onFail("un supported date");
+                }
 
             }
+
+
+        };
+
+        DBManger.executeQuery(query, onSuccess, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+
+    }
+
 
 
     public void getmostrated()
     {
-        String query = " SELECT A.eventID, A.AttendTimes" +
-                "FROM (SELECT EID as eventID,COUNT(EID) as AttendTimes FROM Attend GROUP BY EID)as A " +
-                "HAVING A.AttendTimes=(SELECT MAX(A.AttendTimes) FROM   (SELECT EID as eventID,COUNT(EID) as AttendTimes FROM Attend GROUP BY EID) as A)" ;
+        String query = "SELECT A.EID ,A.average\n" +
+                "FROM (SELECT AVG(Rate) as average ,Rate.EID From Rate  GROUP BY EID) as A join Event on Event.EID=A.EID\n" +
+                "WHERE Event.OID=9\n" +
+                "HAVING A.average=(SELECT MAX(A.average))\n";
+
+        Response.Listener<String> onSuccess = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                try {
+                    JSONArray result = new JSONArray(response);
+                    JSONObject objectResult = result.getJSONObject(0);
+
+                    int ID=(Integer.parseInt(objectResult.getString("EID")));
+
+                    passToPresenter(ID);
+
+
+
+
+                } catch (JSONException e) {
+                    Log.w("json error msg", e.getMessage());
+                    onRetrieveFail(" event not found");
+                } catch (Exception e) {
+                    Log.w("json error msg", e.getMessage());
+                    onRetrieveFail("un supported date");
+                }
+
+            }
+
+
+        };
+
+        DBManger.executeQuery(query, onSuccess, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+    }
+
+
+
+    public void retrieveEvent(){
+        String query = " SELECT Event.EID,Title,Description,Event.Date,Location,Category.Name as CatName,Category.ID as CatID,Organization.Name,Organization.ID as OrgID FROM `Event`,`Category`,`Organization` WHERE Event.CategoryID=Category.ID&& Event.OID=Organization.ID&& Event.EID= %d";
+        query = String.format(query,eventID);
 
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
@@ -440,9 +449,10 @@ public class EventOrgModel extends EventPageBaseModel {
                 try {
                     JSONArray result = new JSONArray(response);
                     JSONObject objectResult = result.getJSONObject(0);
-                    MEvent Event = new MEvent(objectResult);
+                    MEvent Event= new MEvent(objectResult);
 
-                    mpresenter.onRetrive(Event);
+
+                     passToPresenter(Event);
 
 
 
@@ -468,10 +478,20 @@ public class EventOrgModel extends EventPageBaseModel {
         });
     }
 
+
+
+
     @Override
     public void passToPresenter(MEvent mEvent) {
         mpresenter.onRetrive(mEvent);
-        
+
+
+    }
+
+
+    public void passToPresenter(int ID)
+    {
+        mpresenter.onRetrive(ID);
     }
 
     @Override

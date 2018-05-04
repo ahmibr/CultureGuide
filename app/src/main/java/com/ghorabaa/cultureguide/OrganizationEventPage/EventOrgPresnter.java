@@ -29,16 +29,21 @@ public class EventOrgPresnter extends EventPresenter {
     public void UpdatePresenterFun(int FuncID,String Paramter)
     {  try {
         switch (FuncID) {
-            case 1:
-                ( (EventOrgModel)mModel).UpdateEventTitle(Paramter);
+           case 1:
+             ( (EventOrgModel)mModel).UpdateEventTitle(Paramter);
+             break;
             case 2:
-                ( (EventOrgModel)mModel).UpdateEventCat(Paramter);
+            ( (EventOrgModel)mModel).UpdateEventCat(Paramter);
+                break;
             case 3:
-                ( (EventOrgModel)mModel).UpdateEventDes(Paramter);
+             ( (EventOrgModel)mModel).UpdateEventDes(Paramter);
+                break;
             case 4:
-                ( (EventOrgModel)mModel).UpdateEventLocation(Paramter);
+              ( (EventOrgModel)mModel).UpdateEventLocation(Paramter);
+                break;
             case 5:
-                ( (EventOrgModel)mModel).UpdateEventDate(Paramter);
+              ( (EventOrgModel)mModel).UpdateEventDate(Paramter);
+                break;
 
 
         }
@@ -53,6 +58,17 @@ public class EventOrgPresnter extends EventPresenter {
     {
         ( (EventOrgModel)mModel).RemoveEvent();
     }
+
+    public void getMostCrowded() {  ((EventOrgModel) mModel).getMostcrowded();}
+    public void getEventFun(){((EventOrgModel) mModel).retrieveEvent();}
+    public void getMostrated() {  ((EventOrgModel) mModel).getmostrated();}
+    public void getRate(){((EventOrgModel) mModel).GetEventRate();}
+
+    public void onRetrive(int ID)
+    {
+        mview.onRetrive(ID);
+    }
+
 
 
 

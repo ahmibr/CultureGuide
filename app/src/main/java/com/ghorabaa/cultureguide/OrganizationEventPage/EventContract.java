@@ -15,6 +15,8 @@ public interface EventContract {
         void onFail(String msg);
         void onFail();
         void onRetrive(MEvent event);
+        int geteventID();
+        void onRetrive(int ID);
 
 
 
