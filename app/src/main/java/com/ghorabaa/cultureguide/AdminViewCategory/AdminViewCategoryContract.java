@@ -20,5 +20,6 @@ public interface AdminViewCategoryContract {
         void retrieveCategories();
         void onRetrieve(ArrayList<Pair<Integer, String> > categoriesList);
         void onFail(String errorMessage);
+        void retrieveCategory(int id);
     }
 }

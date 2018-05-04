@@ -31,9 +31,56 @@ public class AdminViewEventModel {
         db = DBConnection.getInstance(mContext);
     }
 
-    public void retrieveEvents() {
+    public void getEvents() {
 
         String query = "SELECT EID, Title FROM Event";
+
+        Response.Listener onSuccess = new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+
+                ArrayList<Pair<Integer, String> > events = new ArrayList<>();
+
+                try
+                {
+                    JSONArray result = new JSONArray(response);
+
+                    for(int i=0; i<result.length(); i++)
+                    {
+                        JSONObject event = result.getJSONObject(i);
+                        int id = event.getInt("EID");
+                        String title = event.getString("Title");
+                        Pair<Integer, String> p = new Pair<>(id, title);
+                        events.add(p);
+                    }
+
+                    mPresenter.onRetrieve(events);
+                }
+
+                catch (JSONException e) {
+                    e.printStackTrace();
+                    mPresenter.onFail("An error has ocurred");
+                }
+            }
+        };
+
+        Response.ErrorListener onFail = new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                mPresenter.onFail("Connection Error");
+            }
+
+        };
+
+        db.executeQuery(query, onSuccess, onFail);
+    }
+
+    public void getEvent(int id) {
+
+        String query = "SELECT EID, Title FROM Event WHERE EID = %d";
+        query = String.format(query, id);
 
         Response.Listener onSuccess = new Response.Listener<String>() {
 

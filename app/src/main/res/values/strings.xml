@@ -55,5 +55,6 @@
     <string name="admins">Admins</string>
     <string name="organizations">Organizations</string>
     <string name="events">Events</string>
+    <string name="search">Search</string>
 
 </resources>

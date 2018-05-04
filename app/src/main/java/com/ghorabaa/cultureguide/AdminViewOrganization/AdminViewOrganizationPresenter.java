@@ -36,4 +36,9 @@ public class AdminViewOrganizationPresenter implements AdminViewOrganizationCont
 
         mView.onFail(errorMessage);
     }
+
+    @Override
+    public void retrieveOrganization(String email) {
+        mModel.getOrganization(email);
+    }
 }

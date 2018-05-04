@@ -3,6 +3,8 @@ package com.ghorabaa.cultureguide.AdminViewCategory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Pair;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.Response;
@@ -43,4 +45,17 @@ public class AdminViewCategoryActivity extends AppCompatActivity implements Admi
         Toast.makeText(getApplicationContext(),errorMessage,Toast.LENGTH_LONG).show();
     }
 
+    public void onSearchClicked(View view) {
+
+        try {
+
+            int id = Integer.parseInt(((EditText) findViewById(R.id.category_id)).getText().toString());
+            mPresenter.retrieveCategory(id);
+        }
+
+        catch(Exception e){
+
+            Toast.makeText(getApplication(), "Please enter a valid ID", Toast.LENGTH_LONG).show();
+        }
+    }
 }

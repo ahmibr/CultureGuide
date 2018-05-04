@@ -1,7 +1,6 @@
 package com.ghorabaa.cultureguide.AdminViewAdmins;
 
 import android.content.Context;
-import android.util.Pair;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -60,6 +59,50 @@ public class AdminViewAdminModel {
 
             }
 
+        };
+
+        Response.ErrorListener onFail = new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                mPresenter.onFail("Connection Error");
+            }
+        };
+
+        db.executeQuery(query,onSuccess,onFail);
+    }
+
+    public void getAdmin(String email) {
+
+        String query = "SELECT Email FROM Users WHERE Email = '%s'";
+        query = String.format(query, email);
+
+        Response.Listener onSuccess = new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+
+                ArrayList<String> admins = new ArrayList<>();
+
+                try {
+                    JSONArray result = new JSONArray(response);
+
+                    //TODO test both cases with loop and without
+                    for(int i=0; i<result.length(); i++)
+                    {
+                        JSONObject admin = result.getJSONObject(i);
+                        String email = admin.getString("Email");
+                        admins.add(email);
+                    }
+
+                    mPresenter.onRetrieve(admins);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    mPresenter.onFail("An error has occurred!");
+                }
+            }
         };
 
         Response.ErrorListener onFail = new Response.ErrorListener() {

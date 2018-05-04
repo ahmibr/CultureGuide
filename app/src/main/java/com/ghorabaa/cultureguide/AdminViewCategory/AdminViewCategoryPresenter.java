@@ -39,4 +39,10 @@ public class AdminViewCategoryPresenter implements AdminViewCategoryContract.Pre
 
         mView.onFail(errorMessage);
     }
+
+    @Override
+    public void retrieveCategory(int id) {
+
+        mModel.getCategory(id);
+    }
 }

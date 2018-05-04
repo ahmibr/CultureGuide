@@ -21,5 +21,6 @@ public interface AdminViewEventContract {
         void retrieveEvents();
         void onRetrieve(ArrayList<Pair<Integer, String>> events);
         void onFail(String errorMessage);
+        void retrieveEvent(int id);
     }
 }

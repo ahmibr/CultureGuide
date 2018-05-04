@@ -38,4 +38,10 @@ public class AdminViewUserPresenter implements AdminViewUserContract.Presenter {
         mView.onFail(errorMessage);
 
     }
+
+    @Override
+    public void retrieveUser(String email) {
+
+        mModel.getUser(email);
+    }
 }

@@ -76,4 +76,52 @@ public class AdminViewOrganizationModel {
 
         db.executeQuery(query, onSuccess, onFail);
     }
+
+    public void getOrganization(String email) {
+
+        String query = "SELECT Email, Name FROM Organization WHERE Email = '%s";
+        query = String.format(query, email);
+
+        Response.Listener<String> onSuccess = new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+
+                ArrayList<Pair<String, String> > organizations = new ArrayList<>();
+
+                try {
+
+                    JSONArray result = new JSONArray(response);
+
+                    for(int i=0; i<result.length(); i++)
+                    {
+                        JSONObject organization = result.getJSONObject(i);
+                        String email = organization.getString("Email");
+                        String name = organization.getString("Name");
+                        Pair<String, String> p = new Pair<>(email, name);
+                        organizations.add(p);
+                    }
+
+                    mPresenter.onRetrieve(organizations);
+
+                } catch (JSONException e) {
+
+                    e.printStackTrace();
+                    mPresenter.onFail("An error has occurred");
+
+                }
+            }
+        };
+
+        Response.ErrorListener onFail = new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                mPresenter.onFail("Connection Error");
+            }
+        };
+
+        db.executeQuery(query, onSuccess, onFail);
+
+    }
 }

@@ -3,6 +3,8 @@ package com.ghorabaa.cultureguide.AdminViewEvent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Pair;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.ghorabaa.cultureguide.R;
@@ -35,5 +37,18 @@ public class AdminViewEventActivity extends AppCompatActivity implements AdminVi
     public void onFail(String errorMessage) {
 
         Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_LONG).show();
+    }
+
+    public void onSearchClicked(View view) {
+
+        try{
+            int id = Integer.parseInt(((EditText) findViewById(R.id.event_id)).getText().toString());
+            mPresenter.retrieveEvent(id);
+        }
+
+        catch (Exception e)
+        {
+            Toast.makeText(getApplicationContext(),"Please enter a valid ID", Toast.LENGTH_LONG).show();
+        }
     }
 }

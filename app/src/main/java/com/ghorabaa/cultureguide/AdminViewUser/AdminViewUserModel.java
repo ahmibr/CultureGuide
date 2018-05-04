@@ -30,9 +30,54 @@ public class AdminViewUserModel {
         mPresenter = presenter;
     }
 
-    public void getUsers() {
-
+    public void getUsers()
+    {
         String query = "SELECT Email, Name FROM AppUser";
+
+        Response.Listener onSucccess = new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+
+                ArrayList<Pair<String, String> > users = new ArrayList<>();
+
+                try {
+                    JSONArray result = new JSONArray(response);
+
+                    for(int i=0; i<result.length(); i++)
+                    {
+                        JSONObject user = result.getJSONObject(i);
+                        String email = user.getString("Email");
+                        String name = user.getString("Name");
+                        Pair<String, String> p = new Pair<>(email, name);
+                        users.add(p);
+                    }
+
+                    mPresenter.onRetrieve(users);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    mPresenter.onFail("An error has occurred");
+                }
+            }
+        };
+
+        Response.ErrorListener onFail = new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                mPresenter.onFail("Connection Error");
+            }
+        };
+
+        db.executeQuery(query, onSucccess, onFail);
+    }
+
+    public void getUser(String email)
+    {
+        String query = "SELECT Email, Name FROM AppUser WHERE Email = %s";
+        query = String.format(query, email);
 
         Response.Listener onSucccess = new Response.Listener<String>() {
 

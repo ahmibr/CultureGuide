@@ -27,32 +27,26 @@ public class AdminHomepageActivity extends AppCompatActivity implements AdminHom
     public void onViewCategoriesClicked(android.view.View view){
 
         startActivity(new Intent(this, AdminViewCategoryActivity.class));
-        finish();
-
     }
 
     public void onViewUsersClicked(View view) {
 
         startActivity(new Intent(this, AdminViewUserActivity.class));
-        finish();
     }
 
     public void onViewAdminsClicked(android.view.View view){
 
         startActivity(new Intent(this, AdminViewAdminActivity.class ));
-        finish();
     }
 
 
     public void onViewOrganizationsClicked(android.view.View view){
 
         startActivity(new Intent(this, AdminViewOrganizationActivity.class));
-        finish();
     }
 
     public void onViewEventsClicked(View view) {
 
         startActivity(new Intent(this, AdminViewEventActivity.class));
-        finish();
     }
 }

@@ -32,4 +32,10 @@ public class AdminViewAdminPresenter implements AdminViewAdminContract.Presenter
     public void onFail(String errorMessage) {
         mView.onFail(errorMessage);
     }
+
+    @Override
+    public void retrieveAdmin(String email) {
+
+        mModel.getAdmin(email);
+    }
 }

@@ -3,6 +3,8 @@ package com.ghorabaa.cultureguide.AdminViewUser;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Pair;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.ghorabaa.cultureguide.R;
@@ -35,5 +37,11 @@ public class AdminViewUserActivity extends AppCompatActivity implements AdminVie
     public void onFail(String errorMessage) {
 
         Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_LONG).show();
+    }
+
+    public void onSearchClicked(View view) {
+
+        String email = ((EditText) findViewById(R.id.user_email)).getText().toString();
+        mPresenter.retrieveUser(email);
     }
 }

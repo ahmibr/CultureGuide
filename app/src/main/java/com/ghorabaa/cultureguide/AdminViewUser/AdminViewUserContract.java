@@ -20,5 +20,6 @@ public interface AdminViewUserContract {
         void retrieveUsers();
         void onRetrieve(ArrayList<Pair<String, String>> users);
         void onFail(String errorMessage);
+        void retrieveUser(String email);
     }
 }

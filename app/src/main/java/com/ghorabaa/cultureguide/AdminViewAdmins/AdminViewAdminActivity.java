@@ -2,6 +2,8 @@ package com.ghorabaa.cultureguide.AdminViewAdmins;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.ghorabaa.cultureguide.R;
@@ -35,5 +37,11 @@ public class AdminViewAdminActivity extends AppCompatActivity implements AdminVi
     public void onFail(String errorMessage) {
 
         Toast.makeText(getApplicationContext(),errorMessage,Toast.LENGTH_LONG).show();
+    }
+
+    public void onSearchClicked(View view) {
+
+        String email = ((EditText)findViewById(R.id.admin_email)).getText().toString();
+        mPresenter.retrieveAdmin(email);
     }
 }

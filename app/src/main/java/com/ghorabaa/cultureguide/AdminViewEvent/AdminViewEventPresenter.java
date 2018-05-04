@@ -3,8 +3,6 @@ package com.ghorabaa.cultureguide.AdminViewEvent;
 import android.content.Context;
 import android.util.Pair;
 
-import com.ghorabaa.cultureguide.AdminViewOrganization.AdminViewOrganizationModel;
-
 import java.util.ArrayList;
 
 /**
@@ -25,7 +23,7 @@ public class AdminViewEventPresenter implements AdminViewEventContract.Presenter
     @Override
     public void retrieveEvents() {
 
-        mModel.retrieveEvents();
+        mModel.getEvents();
     }
 
     @Override
@@ -38,5 +36,11 @@ public class AdminViewEventPresenter implements AdminViewEventContract.Presenter
     public void onFail(String errorMessage) {
 
         mView.onFail(errorMessage);
+    }
+
+    @Override
+    public void retrieveEvent(int id) {
+
+        mModel.getEvent(id);
     }
 }
