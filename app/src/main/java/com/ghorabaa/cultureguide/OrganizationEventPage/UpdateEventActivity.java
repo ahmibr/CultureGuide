@@ -4,29 +4,32 @@ import android.content.Context;
 import android.os.Bundle;
 import android.widget.Toast;
 
-
 import com.ghorabaa.cultureguide.R;
 
-public class RemoveEventActivity extends EventMainActivity{
+public class UpdateEventActivity extends EventMainActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_remove_event);
-        mpresenter=new EventPresenter( this,super.Appcontext);
-        int ID=2;
+        setContentView(R.layout.activity_update_event_activty);
+        mpresenter=new EventPresenter(this,super.Appcontext) ;
 
-        mpresenter.RemoveEventFun(2);
+        int funcid=1;
+        String title="art";
+        int eventid=1;
+        ((EventOrgPresnter)mpresenter).UpdatePresenterFun(funcid,title);
+
 
     }
 
 
 
 
+
     @Override
-    public void onFail() {
+    public void onSuccess() {
         Context context = getApplicationContext();
-        CharSequence text = "Failed to remove event";
+        CharSequence text = "event data updated successfully";
         int duration = Toast.LENGTH_SHORT;
 
         Toast toast = Toast.makeText(context, text, duration);
@@ -35,10 +38,10 @@ public class RemoveEventActivity extends EventMainActivity{
     }
 
     @Override
-    public void onSuccess() {
+    public void onFail() {
 
         Context context = getApplicationContext();
-        CharSequence text = "event removed successfully";
+        CharSequence text = "Failed to update event data";
         int duration = Toast.LENGTH_SHORT;
 
         Toast toast = Toast.makeText(context, text, duration);

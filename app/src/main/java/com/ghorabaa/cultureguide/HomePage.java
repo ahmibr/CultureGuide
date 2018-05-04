@@ -17,9 +17,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.ghorabaa.cultureguide.EditProfile.EditOrgActivity;
-import com.ghorabaa.cultureguide.EventPageBaseModel.EventContract;
-import com.ghorabaa.cultureguide.EventPageBaseModel.EventMainActivity;
-import com.ghorabaa.cultureguide.EventPageBaseModel.EventPresenter;
+import com.ghorabaa.cultureguide.OrganizationEventPage.*;
 import com.ghorabaa.cultureguide.SignIn.MainActivity;
 import com.ghorabaa.cultureguide.Utilities.Authenticator;
 import com.ghorabaa.cultureguide.Utilities.HomePagePosts;
@@ -93,8 +91,8 @@ public  class HomePage extends AppCompatActivity
         //mpresenter.UpdatePresenterFun(4,"portsaid",10);
         //mpresenter.UpdatePresenterFun(5,"2019-06-27 09:31:00 GMT-04:00",3);
 
-        mpresenter.getEventFun(4);
-        mpresenter.GetRate(3);
+        mpresenter.getEventFun();
+        mpresenter.GetRate();
 
 
 

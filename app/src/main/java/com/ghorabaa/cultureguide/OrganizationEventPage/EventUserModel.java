@@ -1,4 +1,4 @@
-package com.ghorabaa.cultureguide.EventPage;
+package com.ghorabaa.cultureguide.OrganizationEventPage;
 
 import android.content.Context;
 
@@ -14,23 +14,25 @@ public class EventUserModel extends EventPageBaseModel {
     private static EventPresenter mpresenter;
 
     private static Context context;
-    private int EventID;
+    private static DBConnection DBManger;
+
 
 
     private static EventUserModel ourInstance;
 
-    public static EventUserModel getInstance(EventPresenter presenter, Context Mcontext, DBConnection db, int eventID) {
+    public static EventUserModel getInstance(EventPresenter presenter, Context Mcontext, int eventID) {
         if (ourInstance == null) {
-            ourInstance = new EventUserModel( db,  eventID);
+            ourInstance = new EventUserModel( DBManger,  eventID);
             ourInstance.mpresenter = presenter;
             ourInstance.context = Mcontext;
-            ourInstance.EventID=eventID;
+            DBManger=DBConnection.getInstance(context);
+
         }
         return ourInstance;
     }
 
     private EventUserModel(DBConnection db, int eventID) {
-        super(db,eventID,context);
+        super(db,eventID);
 
 
 

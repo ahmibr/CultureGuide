@@ -6,12 +6,9 @@ package com.ghorabaa.cultureguide;
 
 import android.util.Log;
 
-import com.ghorabaa.cultureguide.EventPage.EventPresenter;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.DateTimeException;
 import java.util.Date;
 
 import org.json.JSONException;

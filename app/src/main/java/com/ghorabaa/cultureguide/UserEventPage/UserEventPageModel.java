@@ -47,7 +47,7 @@ public class UserEventPageModel {
 
     void rateEvent(int rate){
         String query = "INSERT INTO Rate(UID, EID, Rate) VALUES(%d, %d, %d) ON DUPLICATE KEY UPDATE Rate = %d";
-        query = String.format(query, Authenticator.getID(),mEvent.GetID(),rate);
+        query = String.format(query, Authenticator.getID(),mEvent.getID(),rate);
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
@@ -71,7 +71,7 @@ public class UserEventPageModel {
 
     void attendEvent(){
         String query = "INSERT INTO ATTEND(UID,EID) VALUES(?,?)";
-        query = String.format(query,Authenticator.getID(),mEvent.GetID());
+        query = String.format(query,Authenticator.getID(),mEvent.getID());
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
@@ -145,7 +145,7 @@ public class UserEventPageModel {
             return;
         }
         String query = "INSERT INTO Invite(UID,IUID,EID) VALUES(%d,%d,%d)";
-        query = String.format(query,Authenticator.getID(),id,mEvent.GetID());
+        query = String.format(query,Authenticator.getID(),id,mEvent.getID());
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
@@ -200,7 +200,7 @@ public class UserEventPageModel {
 
     public void addOrgToFavorite(){
         String query = "INSERT INTO Favorite(UID,OID) VALUES(%d,%d)";
-        query = String.format(query,Authenticator.getID(),mEvent.GetOrgID());
+        query = String.format(query,Authenticator.getID(),mEvent.getOrgID());
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
@@ -226,7 +226,7 @@ public class UserEventPageModel {
 
     public void checkOrgState() {
         String query = "SELECT * FROM Favorite WHERE UID = %d AND OID = %d";
-        query = String.format(query,Authenticator.getID(),mEvent.GetOrgID());
+        query = String.format(query,Authenticator.getID(),mEvent.getOrgID());
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
