@@ -32,6 +32,16 @@ public void  onRetrive(MEvent event)
 }
 
     @Override
+    public int geteventID() {
+        return 0;
+    }
+
+    @Override
+    public void onRetrive(int ID) {
+
+    }
+
+    @Override
     public void onSuccess() {
 
     }

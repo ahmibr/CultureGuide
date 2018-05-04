@@ -66,11 +66,6 @@ public class EventPresenter {
 
 
 
-    public void getEventFun()
-    {
-        mModel.retrieveEvent();
-    }
-    public void GetRate(){mModel.GetEventRate();}
 
 
 
@@ -90,7 +85,9 @@ public class EventPresenter {
 
 public int getid()
 {
-    return 0;
+
+
+    return mview.geteventID();
 }
 
 }
