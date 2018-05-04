@@ -23,11 +23,12 @@ public class UserHomepageModel {
     private UserHomepagePresenter mPresenter;
     private Context mContext;
     private DBConnection db;
-
+    private ArrayList<MEvent> currentEvents;
     UserHomepageModel(UserHomepagePresenter presenter,Context context){
         mPresenter = presenter;
         mContext = context;
         db = DBConnection.getInstance(context);
+        currentEvents = new ArrayList<>();
     }
 
     private void getEvents(String query){
@@ -35,7 +36,7 @@ public class UserHomepageModel {
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                ArrayList<MEvent> currentEvents = new ArrayList<>();
+                currentEvents.clear();
                 try {
                     JSONArray result = new JSONArray(response);
                     for(int i=0;i<result.length();++i){
