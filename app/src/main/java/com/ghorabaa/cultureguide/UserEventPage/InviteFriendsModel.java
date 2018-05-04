@@ -49,8 +49,8 @@ public class InviteFriendsModel {
 
                     for(int i=0;i<result.length();++i){
                         int id = result.getJSONObject(i).getInt("FUID");
-                        String email = result.getJSONObject(0).getString("Email");
-                        String name = result.getJSONObject(0).getString("Name");
+                        String email = result.getJSONObject(i).getString("Email");
+                        String name = result.getJSONObject(i).getString("Name");
                         Friend friend = new Friend(id,email,name);
                         friendsList.add(friend);
                     }
