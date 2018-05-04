@@ -12,6 +12,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by Ahmed Ibrahim on 5/4/18.
@@ -35,7 +36,7 @@ public class InviteFriendsModel {
 
     void retrieveFriendsList(){
         String query = "SELECT * FROM Friend,AppUser WHERE UID = %d AND FUID = AppUser.ID";
-        query = String.format(query, Authenticator.getID());
+        query = String.format(Locale.ENGLISH,query, Authenticator.getID());
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
@@ -84,7 +85,7 @@ public class InviteFriendsModel {
             return;
         }
         String query = "INSERT INTO Invite(UID,IUID,EID) VALUES(%d,%d,%d)";
-        query = String.format(query,Authenticator.getID(),id,eventID);
+        query = String.format(Locale.ENGLISH,query,Authenticator.getID(),id,eventID);
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override

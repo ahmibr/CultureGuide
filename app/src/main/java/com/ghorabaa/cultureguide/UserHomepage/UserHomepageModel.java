@@ -2,6 +2,7 @@ package com.ghorabaa.cultureguide.UserHomepage;
 
 import android.content.Context;
 import android.text.format.Time;
+import android.util.Log;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -14,6 +15,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by Ahmed Ibrahim on 4/28/18.
@@ -70,7 +72,8 @@ public class UserHomepageModel {
         currentTime.setToNow();
         long lCurrentTime = currentTime.toMillis(false);
 
-        query = String.format(query,lCurrentTime, Authenticator.getID());
+        query = String.format(Locale.ENGLISH,query,lCurrentTime, Authenticator.getID());
+        Log.e("query",query);
         getEvents(query);
     }
 
@@ -81,7 +84,7 @@ public class UserHomepageModel {
         currentTime.setToNow();
         long lCurrentTime = currentTime.toMillis(false);
 
-        query = String.format(query,lCurrentTime, Authenticator.getID());
+        query = String.format(Locale.ENGLISH,query,lCurrentTime, Authenticator.getID());
 
         getEvents(query);
     }
@@ -93,7 +96,7 @@ public class UserHomepageModel {
         currentTime.setToNow();
         long lCurrentTime = currentTime.toMillis(false);
 
-        query = String.format(query,lCurrentTime, Authenticator.getID());
+        query = String.format(Locale.ENGLISH,query,lCurrentTime, Authenticator.getID());
 
         getEvents(query);
     }

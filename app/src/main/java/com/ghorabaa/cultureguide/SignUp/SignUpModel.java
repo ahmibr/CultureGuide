@@ -16,6 +16,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Locale;
+
 /**
  * Created by Ahmed Ibrahim on 3/20/18.
  */
@@ -93,7 +95,7 @@ public class SignUpModel {
         };
 
         String query = "INSERT INTO Users VALUES ('%s','%s','%s')";
-        query = String.format(query,email, PasswordEncrypter.encrypt(password),type.toString());
+        query = String.format(Locale.ENGLISH,query,email, PasswordEncrypter.encrypt(password),type.toString());
 
         db.executeQuery(query,onCheckEmail,onFail);
 
@@ -124,7 +126,7 @@ public class SignUpModel {
      */
     private void registerRegular(final String name,final String email){
         String query = "INSERT INTO AppUser(Name,Email) VALUES('%s','%s')";
-        query = String.format(query,name,email);
+        query = String.format(Locale.ENGLISH,query,name,email);
         db.executeQuery(query);
 
         String getInfo = "SELECT * FROM AppUser WHERE Email = '%s'";
@@ -161,7 +163,7 @@ public class SignUpModel {
      */
     private void registerOrganization(final String name,final String email){
         String query = "INSERT INTO Organization(Name,Email) VALUES('%s','%s')";
-        query = String.format(query,name,email);
+        query = String.format(Locale.ENGLISH,query,name,email);
         db.executeQuery(query);
 
         String getInfo = "SELECT * FROM Organization WHERE Email = '%s'";

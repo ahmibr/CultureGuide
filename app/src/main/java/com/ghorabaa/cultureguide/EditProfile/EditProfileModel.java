@@ -23,6 +23,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Locale;
+
 abstract class EditProfileModel {
 
 
@@ -50,7 +52,7 @@ abstract class EditProfileModel {
             return;
         }
         String query = "UPDATE Users SET Email = '%s' WHERE ID = %d";
-        query = String.format(query,newEmail, Authenticator.getID());
+        query = String.format(Locale.ENGLISH,query,newEmail, Authenticator.getID());
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
@@ -80,7 +82,7 @@ abstract class EditProfileModel {
     public void changeName(final String newName){
 
         String query = "UPDATE %s SET Name = '%s' WHERE ID = %d";
-        query = String.format(query,tableName,newName, Authenticator.getID());
+        query = String.format(Locale.ENGLISH,query,tableName,newName, Authenticator.getID());
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
@@ -113,7 +115,7 @@ abstract class EditProfileModel {
             return;
         }
         String query = "UPDATE Users SET Password = '%s' WHERE ID = %d";
-        query = String.format(query, PasswordEncrypter.encrypt(newPassword), Authenticator.getID());
+        query = String.format(Locale.ENGLISH,query, PasswordEncrypter.encrypt(newPassword), Authenticator.getID());
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override

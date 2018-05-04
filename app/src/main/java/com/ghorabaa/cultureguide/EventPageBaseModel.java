@@ -11,6 +11,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Locale;
+
 /**
  * Created by ruba on 03/05/18.
  */
@@ -27,7 +29,7 @@ public abstract class EventPageBaseModel {
 
     public void retrieveEvent(){
         String query = " SELECT Event.EID,Title,Description,Event.Date,Location,Category.Name as CatName,Category.ID as CatID,Organization.Name,Organization.ID as OrgID FROM `Event`,`Category`,`Organization` WHERE Event.CategoryID=Category.ID&& Event.OID=Organization.ID&& Event.EID= %d";
-        query = String.format(query,eventID);
+        query = String.format(Locale.ENGLISH,query,eventID);
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override

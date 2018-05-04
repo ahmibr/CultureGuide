@@ -15,6 +15,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by Ahmed Ibrahim on 4/28/18.
@@ -37,7 +38,7 @@ public class UserEventPageModel {
 
     void retrieveEvent(){
         String query = "SELECT Event.EID,Title,Description,Event.Date,Location,Category.Name as CatName,Category.ID as CatID,Organization.Name,Organization.ID as OrgID FROM `Event`,`Category`,`Organization` WHERE Event.EID= %d && Event.CategoryID=Category.ID && Event.OID=Organization.ID";
-        query = String.format(query,eventID);
+        query = String.format(Locale.ENGLISH,query,eventID);
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
@@ -73,7 +74,7 @@ public class UserEventPageModel {
 
     void rateEvent(int rate){
         String query = "INSERT INTO Rate(UID, EID, Rate) VALUES(%d, %d, %d) ON DUPLICATE KEY UPDATE Rate = %d";
-        query = String.format(query, Authenticator.getID(),mEvent.getID(),rate);
+        query = String.format(Locale.ENGLISH,query, Authenticator.getID(),mEvent.getID(),rate);
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
@@ -97,7 +98,7 @@ public class UserEventPageModel {
 
     void attendEvent(){
         String query = "INSERT INTO ATTEND(UID,EID) VALUES(?,?)";
-        query = String.format(query,Authenticator.getID(),mEvent.getID());
+        query = String.format(Locale.ENGLISH,query,Authenticator.getID(),mEvent.getID());
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
@@ -124,7 +125,7 @@ public class UserEventPageModel {
 
     public void retrieveRate(){
         String query = "SELECT AVG(Rate) AS Average FROM Rate WHERE EID = %d";
-        query = String.format(query, eventID);
+        query = String.format(Locale.ENGLISH,query, eventID);
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
@@ -153,7 +154,7 @@ public class UserEventPageModel {
 
     public void addOrgToFavorite(){
         String query = "INSERT INTO Favorite(UID,OID) VALUES(%d,%d)";
-        query = String.format(query,Authenticator.getID(),mEvent.getOrgID());
+        query = String.format(Locale.ENGLISH,query,Authenticator.getID(),mEvent.getOrgID());
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
@@ -179,7 +180,7 @@ public class UserEventPageModel {
 
     public void checkOrgState() {
         String query = "SELECT * FROM Favorite WHERE UID = %d AND OID = %d";
-        query = String.format(query,Authenticator.getID(),mEvent.getOrgID());
+        query = String.format(Locale.ENGLISH,query,Authenticator.getID(),mEvent.getOrgID());
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
@@ -208,7 +209,7 @@ public class UserEventPageModel {
 
     void checkAttendState(){
         String query = "SELECT * FROM Attend WHERE UID = %d AND EID = %d";
-        query = String.format(query,Authenticator.getID(),mEvent.getID());
+        query = String.format(Locale.ENGLISH,query,Authenticator.getID(),mEvent.getID());
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override

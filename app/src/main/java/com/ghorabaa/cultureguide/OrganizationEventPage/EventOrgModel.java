@@ -22,6 +22,7 @@ import org.json.JSONObject;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 
 public class EventOrgModel extends EventPageBaseModel {
@@ -55,7 +56,7 @@ public class EventOrgModel extends EventPageBaseModel {
     public void AddEvent(MEvent Event) {
 
         String query = "INSERT INTO Event( OID, Title, CategoryID, Date, Description, Location) Values(%d,'%s',%d,%tQ,'%s','%s')";
-        query = String.format(query, Event.getOrgID(), Event.getTitle(), Event.getCatID(), Event.getDate(), Event.getDescrption(), Event.getLocation());
+        query = String.format(Locale.ENGLISH,query, Event.getOrgID(), Event.getTitle(), Event.getCatID(), Event.getDate(), Event.getDescrption(), Event.getLocation());
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
@@ -123,7 +124,7 @@ public class EventOrgModel extends EventPageBaseModel {
     public void UpdateEventTitle(String Title) {
 
         String query = "UPDATE Event SET Title ='%s' WHERE EID = %d";
-        query = String.format(query, Title, eventID);
+        query = String.format(Locale.ENGLISH,query, Title, eventID);
 
         //DBManger.executeQuery(query);
 
@@ -159,7 +160,7 @@ public class EventOrgModel extends EventPageBaseModel {
 
     public void UpdateEventLocation(String location) {
         String query = "UPDATE Event SET Location ='%s' WHERE EID = %d";
-        query=String.format(query,location, eventID);
+        query=String.format(Locale.ENGLISH,query,location, eventID);
         //DBManger.executeQuery(query);
 
 
@@ -190,7 +191,7 @@ public class EventOrgModel extends EventPageBaseModel {
 
     public void UpdateEventCat(String category) {
         String query = "UPDATE Event SET CategoryID =%s WHERE EID = %d";
-        query = String.format(query, category,  eventID);
+        query = String.format(Locale.ENGLISH,query, category,  eventID);
         //DBManger.executeQuery(query);
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
@@ -225,7 +226,7 @@ public class EventOrgModel extends EventPageBaseModel {
 
     public void UpdateEventDes(String describtion) {
         String query = "UPDATE Event SET Description = '%s' WHERE EID = %d";
-        query = String.format(query, describtion,  eventID);
+        query = String.format(Locale.ENGLISH,query, describtion,  eventID);
         //DBManger.executeQuery(query);
 
 
@@ -266,7 +267,7 @@ public class EventOrgModel extends EventPageBaseModel {
 
               Long validDate= MEvent.validateDate(dummy);
             String query = "UPDATE Event SET Date = %tQ WHERE EID = %d ";
-            query=String.format(query,validDate, eventID);
+            query=String.format(Locale.ENGLISH,query,validDate, eventID);
             //DBManger.executeQuery(query);
 
        Response.Listener<String> onSuccess = new Response.Listener<String>() {
