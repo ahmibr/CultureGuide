@@ -105,10 +105,14 @@ public class UserEventPagePresenter implements UserEventPageContract.Presenter {
 
 
     public void showAddOrg() {
-        mView.showAddOrg();
+        mView.showAddOrgButton();
     }
 
     public void onRetrieveFriendsListFail(String errorMessage) {
         mView.onRetrieveFriendsListFail(errorMessage);
+    }
+
+    public void showAttendButton() {
+        mView.showAttendButton();
     }
 }

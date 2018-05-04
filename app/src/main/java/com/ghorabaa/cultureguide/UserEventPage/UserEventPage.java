@@ -81,7 +81,12 @@ public class UserEventPage extends AppCompatActivity implements UserEventPageCon
     }
 
     @Override
-    public void showAddOrg() {
+    public void showAddOrgButton() {
+
+    }
+
+    @Override
+    public void showAttendButton() {
 
     }
 

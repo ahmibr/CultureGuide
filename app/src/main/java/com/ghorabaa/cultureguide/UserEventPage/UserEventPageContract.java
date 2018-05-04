@@ -24,7 +24,8 @@ public interface UserEventPageContract {
         void onAddOrgFail(String errorMessage);
         void onRetrieveFriendsList(ArrayList<Friend> friendsList);
         void onRetrieveFriendsListFail(String errorMessage);
-        void showAddOrg();
+        void showAddOrgButton();
+        void showAttendButton();
     }
 
     interface Presenter{
@@ -35,5 +36,7 @@ public interface UserEventPageContract {
         void updateRate();
         void addOrgToFavorite();
         void checkOrgState();
+
+
     }
 }
