@@ -130,7 +130,7 @@ public class SignUpModel {
         db.executeQuery(query);
 
         String getInfo = "SELECT * FROM AppUser WHERE Email = '%s'";
-        getInfo = String.format(getInfo,email);
+        getInfo = String.format(Locale.ENGLISH,getInfo,email);
         Log.d("Model",getInfo);
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
@@ -167,7 +167,7 @@ public class SignUpModel {
         db.executeQuery(query);
 
         String getInfo = "SELECT * FROM Organization WHERE Email = '%s'";
-        getInfo = String.format(getInfo,email);
+        getInfo = String.format(Locale.ENGLISH,getInfo,email);
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
