@@ -1,4 +1,4 @@
-package com.ghorabaa.cultureguide.EventPage;
+package com.ghorabaa.cultureguide.OrganizationEventPage;
 
 
 import com.ghorabaa.cultureguide.MEvent;
@@ -6,8 +6,6 @@ import com.ghorabaa.cultureguide.MEvent;
 
 import android.content.Context;
 import android.util.Log;
-
-import java.util.Date;
 
 /**
  * Created by ruba on 26/03/18.

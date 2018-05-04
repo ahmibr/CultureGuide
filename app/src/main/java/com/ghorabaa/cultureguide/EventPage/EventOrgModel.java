@@ -32,6 +32,7 @@ public class EventModel {
     private static EventPresenter mpresenter;
     private DBConnection DBManger;
     private static Context context;
+    private int EventID;
 
 
     private static EventModel ourInstance;
@@ -58,7 +59,7 @@ public class EventModel {
         String query = "INSERT INTO Event( OID, Title, CategoryID, Date, Description, Location) Values(%d,'%s',%d,%tQ,'%s','%s')";
         query = String.format(query, Event.getOrgID(), Event.getTitle(), Event.getCatID(), Event.getDate(), Event.getDescrption(), Event.getLocation());
 
-       /* Response.Listener<String> onSuccess = new Response.Listener<String>() {
+        Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 if(response=="true")
@@ -69,7 +70,7 @@ public class EventModel {
                     mpresenter.onFail(" Insert a valid  category or organization");
 
                 else
-                    mpresenter.onFail("معرفش");
+                    mpresenter.onFail("no response");
             }
 
         };
@@ -78,21 +79,22 @@ public class EventModel {
         DBManger.executeQuery(query,onSuccess, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                mpresenter.onFail("connection error");
 
             }
-        });*/
+        });
 
 
-        DBManger.executeQuery(query);
+        //DBManger.executeQuery(query);
         mpresenter.onSuccess("event created");
 
 
     }
 
 
-    public void RemoveEvent(int ID) {
-        String query = "Delete from Event where EID = " + ID;
-       /* Response.Listener<String> onSuccess = new Response.Listener<String>() {
+    public void RemoveEvent() {
+        String query = "Delete from Event where EID = " + EventID;
+       Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 if(response=="true")
@@ -102,7 +104,7 @@ public class EventModel {
                 else if(response=="false")
                     mpresenter.onFail("there is no event with this ID");
                 else
-                    mpresenter.onFail("معرفش");
+                    mpresenter.onFail("no response");
 
 
             }
@@ -112,25 +114,25 @@ public class EventModel {
         DBManger.executeQuery(query,onSuccess, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                mpresenter.onFail("connection error");
             }
-        });*/
-        DBManger.executeQuery(query);
+        });
+        //DBManger.executeQuery(query);
         mpresenter.onSuccess("event removed");
 
     }
 
-    public void UpdateEventTitle(String Title, int ID) {
+    public void UpdateEventTitle(String Title) {
 
         String query = "UPDATE Event SET Title ='%s' WHERE EID = %d";
-        query = String.format(query, Title, ID);
+        query = String.format(query, Title, EventID);
 
-        DBManger.executeQuery(query);
-        mpresenter.onSuccess("event updated");
-
+        //DBManger.executeQuery(query);
 
 
-     /*  Response.Listener<String> onSuccess = new Response.Listener<String>() {
+
+
+      Response.Listener<String> onSuccess = new Response.Listener<String>() {
            @Override
            public void onResponse(String response) {
                if(response=="true")
@@ -140,7 +142,7 @@ public class EventModel {
                else if (response=="false")
                    mpresenter.onFail("please enter a valid event ID");
                else
-                   mpresenter.onFail("معرفش");
+                   mpresenter.onFail("no response");
 
 
            }
@@ -152,18 +154,18 @@ public class EventModel {
            public void onErrorResponse(VolleyError error) {
 
            }
-       });*/
+       });
 
-
+        mpresenter.onSuccess("event updated");
     }
 
-    public void UpdateEventLocation(String location, int ID) {
+    public void UpdateEventLocation(String location) {
         String query = "UPDATE Event SET Location ='%s' WHERE EID = %d";
-        query=String.format(query,location,ID);
-        DBManger.executeQuery(query);
-        mpresenter.onSuccess("event updated");
+        query=String.format(query,location, EventID);
+        //DBManger.executeQuery(query);
 
-       /* Response.Listener<String> onSuccess = new Response.Listener<String>() {
+
+       Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 if(response=="true")
@@ -173,7 +175,7 @@ public class EventModel {
                 else if(response=="false")
                     mpresenter.onFail("there is no event with this ID");
                 else
-                    mpresenter.onFail("معرفش");
+                    mpresenter.onFail("no response");
             }
 
         };
@@ -181,19 +183,19 @@ public class EventModel {
         DBManger.executeQuery(query,onSuccess, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                mpresenter.onFail("connection error");
             }
-        });*/
+        });
 
-
+        mpresenter.onSuccess("event updated");
     }
 
-    public void UpdateEventCat(String category, int ID) {
+    public void UpdateEventCat(String category) {
         String query = "UPDATE Event SET CategoryID =%s WHERE EID = %d";
-        query = String.format(query, category, ID);
-        DBManger.executeQuery(query);
-        mpresenter.onSuccess("event updated");
-       /* Response.Listener<String> onSuccess = new Response.Listener<String>() {
+        query = String.format(query, category,  EventID);
+        //DBManger.executeQuery(query);
+
+        Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 if(response=="true")
@@ -203,7 +205,7 @@ public class EventModel {
                 else if(response=="false")
                     mpresenter.onFail("there is no event with this ID");
                 else
-                    mpresenter.onFail("معرفش");
+                    mpresenter.onFail("no response");
 
 
             }
@@ -213,22 +215,23 @@ public class EventModel {
         DBManger.executeQuery(query,onSuccess, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                mpresenter.onFail("connection error");
 
             }
-        });*/
+        });
 
 
-
+        mpresenter.onSuccess("event updated");
 
     }
 
-    public void UpdateEventDes(String describtion, int ID) {
+    public void UpdateEventDes(String describtion) {
         String query = "UPDATE Event SET Description = '%s' WHERE EID = %d";
-        query = String.format(query, describtion, ID);
-        DBManger.executeQuery(query);
-        mpresenter.onSuccess("event updated");
+        query = String.format(query, describtion,  EventID);
+        //DBManger.executeQuery(query);
 
-        /*Response.Listener<String> onSuccess = new Response.Listener<String>() {
+
+        Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 if(response=="true")
@@ -238,7 +241,7 @@ public class EventModel {
                 else if(response=="false")
                     mpresenter.onFail("there is no event with this ID");
                 else
-                    mpresenter.onFail("معرفش");
+                    mpresenter.onFail("no response ");
 
 
             }
@@ -248,15 +251,16 @@ public class EventModel {
         DBManger.executeQuery(query,onSuccess, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                mpresenter.onFail("connection error ");
 
             }
-        });*/
+        });
 
-
+        mpresenter.onSuccess("event updated");
     }
 
 
-    public void UpdateEventDate(String date ,int ID) throws Exception {
+    public void UpdateEventDate(String date ) throws Exception {
 
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss z");
         try {
@@ -264,21 +268,10 @@ public class EventModel {
 
               Long validDate= MEvent.validateDate(dummy);
             String query = "UPDATE Event SET Date = %tQ WHERE EID = %d ";
-            query=String.format(query,validDate,ID);
-            DBManger.executeQuery(query);
-            mpresenter.onSuccess("event updated");
+            query=String.format(query,validDate, EventID);
+            //DBManger.executeQuery(query);
 
-
-        } catch (ParseException e) {
-            Log.w("setEvent string ",e.getMessage());
-        }
-
-
-
-
-
-
-       /* Response.Listener<String> onSuccess = new Response.Listener<String>() {
+       Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 if(response=="true")
@@ -288,7 +281,7 @@ public class EventModel {
                 else if(response=="false")
                     mpresenter.onFail("there is no event with this ID");
                 else
-                    mpresenter.onFail("معرفش");
+                    mpresenter.onFail("no response ");
 
 
             }
@@ -298,14 +291,21 @@ public class EventModel {
         DBManger.executeQuery(query,onSuccess, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                mpresenter.onFail("connection error ");
 
             }
-        });*/
+        });
+
+        mpresenter.onSuccess("event updated");
+        } catch (ParseException e) {
+            Log.w("setEvent string ",e.getMessage());
+            mpresenter.onFail("wrong date format");
+        }
 
     }
 
 
-            public void GetEventRate(final int EventID) {
+    public void GetEventRate() {
 
 
                 String query = "SELECT AVG(Rate) FROM Rate WHERE Rate.EID= " + EventID;
@@ -339,8 +339,8 @@ public class EventModel {
             }
 
 
-            public void GetEvent(final int index) {
-                String query = " SELECT Event.EID,Title,Description,Event.Date,Location,Category.Name as CatName,Category.ID as CatID,Organization.Name,Organization.ID as OrgID FROM `Event`,`Category`,`Organization` WHERE Event.CategoryID=Category.ID&& Event.OID=Organization.ID&& Event.EID= " + index;
+            public void GetEvent() {
+                String query = " SELECT Event.EID,Title,Description,Event.Date,Location,Category.Name as CatName,Category.ID as CatID,Organization.Name,Organization.ID as OrgID FROM `Event`,`Category`,`Organization` WHERE Event.CategoryID=Category.ID&& Event.OID=Organization.ID&& Event.EID= " + EventID;
 
 
                 Response.Listener<String> onSuccess = new Response.Listener<String>() {
@@ -381,8 +381,93 @@ public class EventModel {
 
             }
 
+            public void getMostcrowded()
+            {
+
+                String query = " SELECT A.EventID, A.AttendTimes" +
+                        "FROM (SELECT EID as EventID,COUNT(EID) as AttendTimes FROM Attend GROUP BY EID)as A " +
+                        "HAVING A.AttendTimes=(SELECT MAX(A.AttendTimes) FROM   (SELECT EID as EventID,COUNT(EID) as AttendTimes FROM Attend GROUP BY EID) as A)" ;
 
 
+                Response.Listener<String> onSuccess = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            JSONArray result = new JSONArray(response);
+                            JSONObject objectResult = result.getJSONObject(0);
+                            MEvent Event = new MEvent(objectResult);
+
+                            mpresenter.onRetrive(Event);
+
+
+
+
+                        } catch (JSONException e) {
+                            Log.w("json error msg", e.getMessage());
+                            mpresenter.onFail(" event not found");
+                        } catch (Exception e) {
+                            Log.w("json error msg", e.getMessage());
+                            mpresenter.onFail("un supported date");
+                        }
+
+                    }
+
+
+                };
+
+                DBManger.executeQuery(query, onSuccess, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+
+
+            }
+
+
+    public void getmostrated()
+    {
+        String query = " SELECT A.EventID, A.AttendTimes" +
+                "FROM (SELECT EID as EventID,COUNT(EID) as AttendTimes FROM Attend GROUP BY EID)as A " +
+                "HAVING A.AttendTimes=(SELECT MAX(A.AttendTimes) FROM   (SELECT EID as EventID,COUNT(EID) as AttendTimes FROM Attend GROUP BY EID) as A)" ;
+
+
+        Response.Listener<String> onSuccess = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                try {
+                    JSONArray result = new JSONArray(response);
+                    JSONObject objectResult = result.getJSONObject(0);
+                    MEvent Event = new MEvent(objectResult);
+
+                    mpresenter.onRetrive(Event);
+
+
+
+
+                } catch (JSONException e) {
+                    Log.w("json error msg", e.getMessage());
+                    mpresenter.onFail(" event not found");
+                } catch (Exception e) {
+                    Log.w("json error msg", e.getMessage());
+                    mpresenter.onFail("un supported date");
+                }
+
+            }
+
+
+        };
+
+        DBManger.executeQuery(query, onSuccess, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+    }
 
 }
 

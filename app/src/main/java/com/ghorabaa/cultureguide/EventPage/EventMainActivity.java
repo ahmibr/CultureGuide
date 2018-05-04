@@ -1,17 +1,12 @@
-package com.ghorabaa.cultureguide.EventPage;
+package com.ghorabaa.cultureguide.OrganizationEventPage;
 
 import android.os.Bundle;
 
 import android.support.v7.app.AppCompatActivity;
 import android.content.Context;
-import android.os.Bundle;
-
-import android.widget.Toast;
 
 import com.ghorabaa.cultureguide.MEvent;
 import com.ghorabaa.cultureguide.R;
-
-import java.util.List;
 
 
 public class EventMainActivity extends AppCompatActivity implements EventContract.EventView {

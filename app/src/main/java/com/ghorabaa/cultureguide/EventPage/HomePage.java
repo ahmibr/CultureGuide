@@ -17,16 +17,15 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.ghorabaa.cultureguide.EditProfile.EditOrgActivity;
-import com.ghorabaa.cultureguide.EventPage.EventContract;
-import com.ghorabaa.cultureguide.EventPage.EventMainActivity;
-import com.ghorabaa.cultureguide.EventPage.EventPresenter;
+import com.ghorabaa.cultureguide.EventPageBaseModel.EventContract;
+import com.ghorabaa.cultureguide.EventPageBaseModel.EventMainActivity;
+import com.ghorabaa.cultureguide.EventPageBaseModel.EventPresenter;
 import com.ghorabaa.cultureguide.SignIn.MainActivity;
 import com.ghorabaa.cultureguide.Utilities.Authenticator;
 import com.ghorabaa.cultureguide.Utilities.HomePagePosts;
 
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public  class HomePage extends AppCompatActivity

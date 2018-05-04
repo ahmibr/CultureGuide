@@ -1,10 +1,10 @@
-package com.ghorabaa.cultureguide.EventPage;
+package com.ghorabaa.cultureguide.OrganizationEventPage;
 
 /**
  * Created by ruba on 26/03/18.
  */
 import com.ghorabaa.cultureguide.MEvent;
-import java.util.List;
+
 public interface EventContract {
     interface EventView{
 

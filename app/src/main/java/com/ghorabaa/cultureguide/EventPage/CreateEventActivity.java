@@ -1,4 +1,4 @@
-package com.ghorabaa.cultureguide.EventPage;
+package com.ghorabaa.cultureguide.OrganizationEventPage;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.ghorabaa.cultureguide.MEvent;
-
-import java.text.ParseException;
 
 public class CreateEventActivity extends EventMainActivity {
 
