@@ -36,7 +36,7 @@ public interface UserEventPageContract {
         void updateRate();
         void addOrgToFavorite();
         void checkOrgState();
-
+        void checkAttendState();
 
     }
 }

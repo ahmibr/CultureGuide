@@ -91,6 +91,11 @@ public class UserEventPagePresenter implements UserEventPageContract.Presenter {
         mModel.checkOrgState();
     }
 
+    @Override
+    public void checkAttendState() {
+     mModel.checkAttendState();
+    }
+
     public void onAddOrgSuccess() {
         mView.onAddOrgSuccess();
     }
