@@ -1,7 +1,9 @@
 package com.ghorabaa.cultureguide.OrganizationEventPage;
 
 
+import com.ghorabaa.cultureguide.EventPageBaseModel;
 import com.ghorabaa.cultureguide.MEvent;
+import com.ghorabaa.cultureguide.Utilities.DBConnection;
 
 
 import android.content.Context;
@@ -15,18 +17,21 @@ public class EventPresenter {
 
 
     protected EventContract.EventView mview;
-    protected EventModel mModel;
+    
+    protected EventPageBaseModel mModel;
     protected Context PContext;
 
 
 
 
-    public EventPresenter(EventContract.EventView view,Context context) {
+    public EventPresenter(EventContract.EventView view, Context context) {
 
         mview = view;
-
         PContext=context;
-        mModel = EventModel.getInstance(this,PContext);
+
+
+
+        
 
     }
 
@@ -47,40 +52,6 @@ public class EventPresenter {
         mview.onFail(msg);
     }
 
-    public void CreatePresenterFun(MEvent Event)
-    {
-        mModel.AddEvent(Event);
-    }
-
-
-    public void UpdatePresenterFun(int FuncID,String Paramter,int EventID)
-    {  try {
-        switch (FuncID) {
-            case 1:
-                mModel.UpdateEventTitle(Paramter, EventID);
-            case 2:
-                mModel.UpdateEventCat(Paramter, EventID);
-            case 3:
-                mModel.UpdateEventDes(Paramter, EventID);
-            case 4:
-                mModel.UpdateEventLocation(Paramter, EventID);
-            case 5:
-                mModel.UpdateEventDate(Paramter, EventID);
-
-
-        }
-    }
-    catch (Exception e)
-    {
-        Log.w("presenter error",e.getMessage());
-    }
-    }
-
-    public void RemoveEventFun(int ID)
-    {
-        mModel.RemoveEvent(ID);
-    }
-
 
 
     public void onRetrive(MEvent event)
@@ -95,11 +66,11 @@ public class EventPresenter {
 
 
 
-    public void getEventFun(int ID)
+    public void getEventFun()
     {
-        mModel.GetEvent(ID);
+        mModel.retrieveEvent();
     }
-    public void GetRate(int ID){mModel.GetEventRate(ID);}
+    public void GetRate(){mModel.GetEventRate();}
 
 
 
@@ -114,6 +85,13 @@ public class EventPresenter {
         mview.onSuccess(msg);
     }
 
+
+
+
+public int getid()
+{
+    return 0;
+}
 
 }
 

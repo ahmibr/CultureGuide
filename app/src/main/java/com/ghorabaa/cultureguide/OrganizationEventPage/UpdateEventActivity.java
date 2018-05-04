@@ -17,7 +17,7 @@ public class UpdateEventActivity extends EventMainActivity {
         int funcid=1;
         String title="art";
         int eventid=1;
-        mpresenter.UpdatePresenterFun(funcid,title,eventid);
+        ((EventOrgPresnter)mpresenter).UpdatePresenterFun(funcid,title);
 
 
     }

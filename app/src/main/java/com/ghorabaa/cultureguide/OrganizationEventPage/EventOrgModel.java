@@ -1,4 +1,4 @@
-package com.ghorabaa.cultureguide.EventPage;
+package com.ghorabaa.cultureguide.OrganizationEventPage;
 
 /**
  * Created by ruba on 18/03/18.
@@ -8,9 +8,9 @@ import android.util.Log;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.ghorabaa.cultureguide.EventPageBaseModel;
 import com.ghorabaa.cultureguide.MEvent;
 
-import com.ghorabaa.cultureguide.Utilities.Authenticator;
 import com.ghorabaa.cultureguide.Utilities.DBConnection;
 import com.google.firebase.database.DatabaseReference;
 import android.content.Context;
@@ -19,35 +19,33 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.sql.Date;
-import java.sql.PreparedStatement;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 
-public class EventModel {
+public class EventOrgModel extends EventPageBaseModel {
 
     private DatabaseReference mDatabase;
     private static EventPresenter mpresenter;
-    private DBConnection DBManger;
+    private static DBConnection DBManger;
     private static Context context;
-    private int EventID;
+   
 
 
-    private static EventModel ourInstance;
+    private static EventOrgModel ourInstance;
 
-    public static EventModel getInstance(EventPresenter presenter, Context Mcontext) {
+    public static EventOrgModel getInstance(EventPresenter presenter, Context Mcontext, int eventID) {
         if (ourInstance == null) {
-            ourInstance = new EventModel();
+            ourInstance = new EventOrgModel(DBManger,eventID);
             ourInstance.mpresenter = presenter;
             ourInstance.context = Mcontext;
         }
         return ourInstance;
     }
 
-    private EventModel() {
-
+    private EventOrgModel(DBConnection db, int eventID) {
+        super(db,eventID);
         DBManger = DBConnection.getInstance(context);
 
 
@@ -93,7 +91,7 @@ public class EventModel {
 
 
     public void RemoveEvent() {
-        String query = "Delete from Event where EID = " + EventID;
+        String query = "Delete from Event where EID = " + eventID;
        Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -125,7 +123,7 @@ public class EventModel {
     public void UpdateEventTitle(String Title) {
 
         String query = "UPDATE Event SET Title ='%s' WHERE EID = %d";
-        query = String.format(query, Title, EventID);
+        query = String.format(query, Title, eventID);
 
         //DBManger.executeQuery(query);
 
@@ -161,7 +159,7 @@ public class EventModel {
 
     public void UpdateEventLocation(String location) {
         String query = "UPDATE Event SET Location ='%s' WHERE EID = %d";
-        query=String.format(query,location, EventID);
+        query=String.format(query,location, eventID);
         //DBManger.executeQuery(query);
 
 
@@ -192,7 +190,7 @@ public class EventModel {
 
     public void UpdateEventCat(String category) {
         String query = "UPDATE Event SET CategoryID =%s WHERE EID = %d";
-        query = String.format(query, category,  EventID);
+        query = String.format(query, category,  eventID);
         //DBManger.executeQuery(query);
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
@@ -227,7 +225,7 @@ public class EventModel {
 
     public void UpdateEventDes(String describtion) {
         String query = "UPDATE Event SET Description = '%s' WHERE EID = %d";
-        query = String.format(query, describtion,  EventID);
+        query = String.format(query, describtion,  eventID);
         //DBManger.executeQuery(query);
 
 
@@ -268,7 +266,7 @@ public class EventModel {
 
               Long validDate= MEvent.validateDate(dummy);
             String query = "UPDATE Event SET Date = %tQ WHERE EID = %d ";
-            query=String.format(query,validDate, EventID);
+            query=String.format(query,validDate, eventID);
             //DBManger.executeQuery(query);
 
        Response.Listener<String> onSuccess = new Response.Listener<String>() {
@@ -308,14 +306,14 @@ public class EventModel {
     public void GetEventRate() {
 
 
-                String query = "SELECT AVG(Rate) FROM Rate WHERE Rate.EID= " + EventID;
+                String query = "SELECT AVG(Rate) FROM Rate WHERE Rate.EID= " + eventID;
                 Response.Listener<String> onSuccess = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
 
                         try {
                             MEvent Event = new MEvent();
-                            Event.SetID(EventID);
+                            Event.SetID(eventID);
                             JSONArray result = new JSONArray(response);
                             int rate;
 
@@ -340,7 +338,7 @@ public class EventModel {
 
 
             public void GetEvent() {
-                String query = " SELECT Event.EID,Title,Description,Event.Date,Location,Category.Name as CatName,Category.ID as CatID,Organization.Name,Organization.ID as OrgID FROM `Event`,`Category`,`Organization` WHERE Event.CategoryID=Category.ID&& Event.OID=Organization.ID&& Event.EID= " + EventID;
+                String query = " SELECT Event.EID,Title,Description,Event.Date,Location,Category.Name as CatName,Category.ID as CatID,Organization.Name,Organization.ID as OrgID FROM `Event`,`Category`,`Organization` WHERE Event.CategoryID=Category.ID&& Event.OID=Organization.ID&& Event.EID= " + eventID;
 
 
                 Response.Listener<String> onSuccess = new Response.Listener<String>() {
@@ -384,9 +382,9 @@ public class EventModel {
             public void getMostcrowded()
             {
 
-                String query = " SELECT A.EventID, A.AttendTimes" +
-                        "FROM (SELECT EID as EventID,COUNT(EID) as AttendTimes FROM Attend GROUP BY EID)as A " +
-                        "HAVING A.AttendTimes=(SELECT MAX(A.AttendTimes) FROM   (SELECT EID as EventID,COUNT(EID) as AttendTimes FROM Attend GROUP BY EID) as A)" ;
+                String query = " SELECT A.eventID, A.AttendTimes" +
+                        "FROM (SELECT EID as eventID,COUNT(EID) as AttendTimes FROM Attend GROUP BY EID)as A " +
+                        "HAVING A.AttendTimes=(SELECT MAX(A.AttendTimes) FROM   (SELECT EID as eventID,COUNT(EID) as AttendTimes FROM Attend GROUP BY EID) as A)" ;
 
 
                 Response.Listener<String> onSuccess = new Response.Listener<String>() {
@@ -429,9 +427,9 @@ public class EventModel {
 
     public void getmostrated()
     {
-        String query = " SELECT A.EventID, A.AttendTimes" +
-                "FROM (SELECT EID as EventID,COUNT(EID) as AttendTimes FROM Attend GROUP BY EID)as A " +
-                "HAVING A.AttendTimes=(SELECT MAX(A.AttendTimes) FROM   (SELECT EID as EventID,COUNT(EID) as AttendTimes FROM Attend GROUP BY EID) as A)" ;
+        String query = " SELECT A.eventID, A.AttendTimes" +
+                "FROM (SELECT EID as eventID,COUNT(EID) as AttendTimes FROM Attend GROUP BY EID)as A " +
+                "HAVING A.AttendTimes=(SELECT MAX(A.AttendTimes) FROM   (SELECT EID as eventID,COUNT(EID) as AttendTimes FROM Attend GROUP BY EID) as A)" ;
 
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
@@ -467,6 +465,17 @@ public class EventModel {
 
             }
         });
+    }
+
+    @Override
+    public void passToPresenter(MEvent mEvent) {
+        mpresenter.onRetrive(mEvent);
+        
+    }
+
+    @Override
+    public void onRetrieveFail(String errorMessage) {
+        mpresenter.onFail(errorMessage);
     }
 
 }

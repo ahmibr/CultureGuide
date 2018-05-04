@@ -24,7 +24,7 @@ public class CreateEventActivity extends EventMainActivity {
         Event.setLocation("Giza");
         Event.SetTitle("Applied art");
         Event.setCatName("ARTS");
-        mpresenter.CreatePresenterFun(Event);
+        ((EventOrgPresnter)mpresenter).CreatePresenterFun(Event);
 
 
 

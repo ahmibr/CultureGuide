@@ -16,7 +16,7 @@ public class RemoveEventActivity extends EventMainActivity{
         mpresenter=new EventPresenter( this,super.Appcontext);
         int ID=2;
 
-        mpresenter.RemoveEventFun(2);
+        ((EventOrgPresnter) mpresenter).RemoveEventFun();
 
     }
 

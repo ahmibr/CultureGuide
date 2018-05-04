@@ -42,7 +42,7 @@ public class UserHomepageModel {
                         MEvent added = new MEvent();
                         JSONObject event = result.getJSONObject(i);
                         added.SetID(event.getInt("EID"));
-                        added.SetDescription(event.getString("Description"));
+                        added.setDescription(event.getString("Description"));
                         added.SetOrgID(event.getInt("OID"));
                         added.SetTitle(event.getString("Title"));
                         currentEvents.add(added);
