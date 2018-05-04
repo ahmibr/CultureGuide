@@ -80,6 +80,7 @@
         <activity android:name=".AdminViewAdmins.AdminViewAdminActivity" />
         <activity android:name=".AdminViewOrganization.AdminViewOrganizationActivity" />
         <activity android:name=".AdminViewEvent.AdminViewEventActivity"></activity>
+        <activity android:name=".UserEventPage.InviteFriends"/>
     </application>
 
 </manifest>
