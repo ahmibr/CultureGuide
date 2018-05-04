@@ -50,9 +50,7 @@ public class InviteFriends extends AppCompatActivity implements InviteFriendsCon
 
                         for (int i = 0 ; i < rowParent.getChildCount(); i++){
                             if(rowParent.getChildAt(i) == row) {
-                                Toast.makeText(view.getContext(), "Invited " + friendsList.get(i).getName() , Toast.LENGTH_SHORT).show();
                                 mPresenter.inviteFriend(i);
-
                                 inviteButton.setEnabled(false);
                             }
                         }
@@ -63,37 +61,28 @@ public class InviteFriends extends AppCompatActivity implements InviteFriendsCon
                     Toast.makeText(view.getContext(), index, Toast.LENGTH_LONG).show();
                 }
             });
-
-            //TextView friendName = (TextView) findViewById(R.id.invite_friends_name);
-            //friendName.setText(friendsList.get(i).getName());
-
             mFriendParent.addView(rowView, mFriendParent.getChildCount());
 
-
-            //TODO complete add invite button logic here
-//            Button inviteButton = (Button) findViewById(R.id.invite_friends_invite_button);
-//            inviteButton.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Toast.makeText(view.getContext(),view.getId() + " test " , Toast.LENGTH_LONG).show();
-//                }
-//            });
         }
     }
 
     @Override
     public void onRetrieveFriendsListFail(String errorMessage) {
         //make a toast and close activity
+        Toast.makeText(this, "Connection Error" , Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     @Override
     public void onInviteSuccess() {
         //make a toast, lock invite for user
+        Toast.makeText(this, "Friend Invited" , Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onInviteFail(String errorMessage) {
         //make a toast, lock invite for user
+        Toast.makeText(this,errorMessage,Toast.LENGTH_LONG).show();
     }
 
 }
