@@ -6,14 +6,15 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.ghorabaa.cultureguide.MEvent;
+import com.ghorabaa.cultureguide.R;
 
 public class CreateEventActivity extends EventMainActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_create_event_activty);
-       mpresenter=new EventPresenter(this,super.Appcontext) ;
+        setContentView(R.layout.activity_create_event_activty);
+       /*mpresenter=new EventPresenter(this,super.Appcontext) ;
         MEvent Event=new MEvent();
 
         Event.setDescription("art event");
@@ -24,7 +25,7 @@ public class CreateEventActivity extends EventMainActivity {
         Event.setLocation("Giza");
         Event.SetTitle("Applied art");
         Event.setCatName("ARTS");
-        ((EventOrgPresnter)mpresenter).CreatePresenterFun(Event);
+        ((EventOrgPresnter)mpresenter).CreatePresenterFun(Event);*/
 
 
 

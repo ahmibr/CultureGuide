@@ -52,8 +52,7 @@
         </activity>
         <activity
             android:name=".EditProfile.EditOrgActivity"
-            android:label="@string/title_activity_edit_profile_organization"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:label="@string/title_activity_edit_profile_organization">
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
@@ -72,7 +71,10 @@
             <!-- </intent-filter> -->
         </activity>
         <activity android:name=".UserHomepage.Main3Activity" />
-        <activity android:name=".UserHomepage.UserHomepage" />
+        <activity android:name=".UserHomepage.UserHomepage"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
         <activity android:name=".UserEventPage.UserEventPage" />
         <activity android:name=".AdminHomepage.AdminHomepageActivity" />
         <activity android:name=".AdminViewCategory.AdminViewCategoryActivity" />

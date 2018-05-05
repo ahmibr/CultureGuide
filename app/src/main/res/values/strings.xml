@@ -14,12 +14,14 @@
     <string name="title_activity_remove_event">RemoveEvent</string>
     <string name="title_activity_update_event_activty">UpdateEventActivty</string>
     <string name="title_activity_home_page">Home Page</string>
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="action_settings">Settings</string>
-
+    <string name="signing_in">Signing in</string>
+    <string name="signing_up">Signing up</string>
+    <string name="wait">Please wait...</string>
+    <string name="blank_fields">Please fill blank fields</string>
+    <string name="password_not_matching">Passwords don\'t match</string>
 
     <!--Code Wise Strings-->
     <string name="sign_in_success">Successful sign in</string>
@@ -31,7 +33,9 @@
     <string name="home_page">Home Page</string>
     <string name="create_Event">Create Event</string>
     <string name="edit_profile">Edit Profile</string>
-
+    <string name="friends">Friends</string>
+    <string name="invitations">Invitations</string>
+    <string name="favorites">Favorites</string>
 
     <!--Strings of Home Page-->
     <string name="attend">Attend</string>
@@ -53,12 +57,27 @@
     <string name="briefDescription">You can add organization vision, interests and activities</string>
     <string name="title_activity_edit_profile_organization">Edit Profile Organization</string>
 
-    <!--Admin HomePage Relateed-->
+    <!--AdOrgHomePagePage Relateed-->
     <string name="edit">edit</string>
     <string name="users">Users</string>
     <string name="admins">Admins</string>
     <string name="organizations">Organizations</string>
     <string name="events">Events</string>
     <string name="search">Search</string>
+
+    <!--Fragments-->
+    <string name="upcoming_events">Upcoming Events</string>
+    <string name="past_events">Past Events</string>
+    <string name="favorite_events">favorite Events</string>
+
+    <!--Event page-->
+    <string name="name">Name</string>
+    <string name="about">About</string>
+    <string name="location">Location</string>
+    <string name="date">Date</string>
+    <string name="rating">Rating</string>
+    <string name="rate_event">Rate Event</string>
+    <string name="invite_friend">Invite Friends</string>
+    <string name="invite">Invite</string>
 
 </resources>

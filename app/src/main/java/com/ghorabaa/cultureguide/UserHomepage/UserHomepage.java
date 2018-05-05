@@ -1,19 +1,31 @@
 package com.ghorabaa.cultureguide.UserHomepage;
 
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.ghorabaa.cultureguide.EventRetrievalType;
 import com.ghorabaa.cultureguide.MEvent;
 import com.ghorabaa.cultureguide.R;
+import com.ghorabaa.cultureguide.SignIn.MainActivity;
 import com.ghorabaa.cultureguide.Utilities.SectionsPagesAdapter;
 
 import java.util.ArrayList;
 
-public class UserHomepage extends AppCompatActivity implements UserHomepageContract.View{
+public class UserHomepage extends AppCompatActivity implements UserHomepageContract.View,
+        NavigationView.OnNavigationItemSelectedListener {
 
     private UserHomepageContract.Presenter mPresenter;
 
@@ -44,21 +56,30 @@ public class UserHomepage extends AppCompatActivity implements UserHomepageContr
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.user_tab_lay_out);
         tabLayout.setupWithViewPager(mViewPager);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.user_tool_bar);
+        setSupportActionBar(toolbar);
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.user_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.user_nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
     public void onRetrieve(ArrayList<MEvent> events) {
         switch (requestedType){
             case Past:
-                Toast.makeText(this,"Requested Past events " + events.size(),Toast.LENGTH_LONG).show();
                 mPastEvents.showCards(events);
                 break;
             case Upcoming:
-                Toast.makeText(this,"Requested Upcoming events " + events.size(),Toast.LENGTH_LONG).show();
                 mUpcomingEvents.showCards(events);
                 break;
             case Favourite:
-                Toast.makeText(this,"Requested Favorite events " + events.size(),Toast.LENGTH_LONG).show();
                 mFavoriteEvents.showCards(events);
                 break;
         }
@@ -67,9 +88,9 @@ public class UserHomepage extends AppCompatActivity implements UserHomepageContr
     private void setupViewPager (ViewPager viewPager){
         SectionsPagesAdapter adapter = new SectionsPagesAdapter(getSupportFragmentManager());
 
-        adapter.addFragment(mUpcomingEvents, "Upcoming Events");
-        adapter.addFragment(mPastEvents,"Past Events");
-        adapter.addFragment(mFavoriteEvents, "Favorite Events");
+        adapter.addFragment(mUpcomingEvents, getResources().getString(R.string.upcoming_events));
+        adapter.addFragment(mPastEvents,getResources().getString(R.string.past_events));
+        adapter.addFragment(mFavoriteEvents, getResources().getString(R.string.favorite_events));
 
         viewPager.setAdapter(adapter);
     }
@@ -92,5 +113,37 @@ public class UserHomepage extends AppCompatActivity implements UserHomepageContr
     @Override
     public void onFail(String errorMessage) {
         Toast.makeText(getApplicationContext(),errorMessage,Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.nav_edit_profile) {
+
+        }
+        else if(id == R.id.nav_friends) {
+
+        }
+        else if (id == R.id.nav_sign_out){
+            //Todo Attach signout in presenter
+            startActivity(new Intent(UserHomepage.this, MainActivity.class));
+            finish();
+        }else if (id == R.id.nav_invitations){
+            //Todo Add invitations logic
+        }else if (id == R.id.nav_favorites){
+            //Todo Add favorites logic
+        }else if (id == R.id.nav_friends){
+            //Todo Add friends logic
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.user_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 }

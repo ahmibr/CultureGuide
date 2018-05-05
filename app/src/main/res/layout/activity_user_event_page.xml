@@ -46,7 +46,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="NAME:"
+                            android:text="@string/name"
                             android:layout_gravity="center"
                             android:textSize="25sp"
                             />
@@ -79,7 +79,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="30sp"
-                android:text="About:"
+                android:text="@string/about"
                 />
 
             <TextView
@@ -96,7 +96,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="30sp"
-                android:text="Location:"
+                android:text="@string/location"
                 />
 
             <TextView
@@ -113,7 +113,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="30sp"
-                android:text="Date:"
+                android:text="@string/date"
                 />
 
             <TextView
@@ -129,7 +129,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="30sp"
-                android:text="Rating:"
+                android:text="@string/rating"
                 />
 
             <TextView
@@ -154,7 +154,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="25dp"
-                    android:text="Rate Event : "
+                    android:text="@string/rate_event"
                     android:layout_gravity="center"
                     android:textStyle="bold"
                     />
@@ -177,7 +177,7 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Invite Friend"
+                android:text="@string/invite_friend"
                 android:textSize="20sp"
                 android:id="@+id/event_page_invite_friend"/>
 

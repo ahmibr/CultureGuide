@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.ghorabaa.cultureguide.HomePage"
+    tools:context="com.ghorabaa.cultureguide.OrgHomePage"
     tools:showIn="@layout/app_bar_home_page"
     android:background="@color/backGround"
     >
@@ -38,6 +38,7 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_event_black_24dp"
                 android:id="@+id/createEventHomePage"
+                android:onClick="createEvent"
                 />
 
         </LinearLayout>
@@ -46,13 +47,8 @@
             android:layout_height="wrap_content"
             android:text="@string/refreshPosts"
             android:id="@+id/refreshPosts"
-            android:onClick="testPosts"
+            android:onClick="refreshPosts"
             />
-
-        <!--<include layout="@layout/activity_home_page_card"/>-->
-        <!--<include layout="@layout/activity_home_page_card"/>-->
-        <!--<include layout="@layout/activity_home_page_card"/>-->
-        <!--<include layout="@layout/activity_home_page_card"/>-->
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"

@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.ghorabaa.cultureguide.AdminHomepage.AdminHomepageActivity;
 import com.ghorabaa.cultureguide.HomePage;
+import com.ghorabaa.cultureguide.HomePage;
 import com.ghorabaa.cultureguide.R;
 import com.ghorabaa.cultureguide.SignUp.SignUpActivity;
 import com.ghorabaa.cultureguide.UserHomepage.UserHomepage;
@@ -88,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements SignInContract.Vi
             return;
         }
 
-        showProgressBar("Signing in","Please wait while signing in...");
+        showProgressBar(getResources().getString(R.string.signing_in),getResources().getString(R.string.wait));
 
         mPresenter.signIn(email,password);
     }

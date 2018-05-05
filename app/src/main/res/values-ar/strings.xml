@@ -36,5 +36,24 @@
     <string name="organization">مؤسسة</string>
     <string name="user">مستخدم</string>
     <string name="sign_up_as">تسجيل دخول كـ</string>
+    <string name="friends">الأصدقاء</string>
+    <string name="favorite_events">الايفينتات المفضلة</string>
+    <string name="past_events">الايفنتات الماضية</string>
+    <string name="upcoming_events">الايفنتات القادمة</string>
+    <string name="signing_in">تسجيل الدخول</string>
+    <string name="blank_fields">برجاء ملء الفراغات</string>
+    <string name="password_not_matching">كلمات السر لا تطابق</string>
+    <string name="signing_up">انشاء اكونت</string>
+    <string name="wait">برجاء الانتظار</string>
+    <string name="invite_friend">ادع الاصدقاء</string>
+    <string name="rate_event">قيم الايفينت</string>
+    <string name="rating">التقييم</string>
+    <string name="date">التاريخ</string>
+    <string name="location">المكان</string>
+    <string name="about">عن الايفينت</string>
+    <string name="name">الأسم</string>
+    <string name="invite">ادع</string>
+    <string name="favorites">التفضيلات</string>
+    <string name="invitations">الدعوات</string>
 
 </resources>

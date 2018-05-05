@@ -30,9 +30,6 @@ public  class HomePage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener  , HomePagePosts.ListItemClickListener ,EventContract.EventView{
 
 
-    //TODO remove this toast after testing
-    //Used for Testing Processes
-
     private Toast mToast;
     RecyclerView mPosts;
     HomePagePosts mAdapter;
@@ -60,52 +57,19 @@ public  class HomePage extends AppCompatActivity
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         mPosts.setLayoutManager(layoutManager);
 
-
         /*
          * The HomePagePostsAdapeter is responsible for displaying each item in the list.
          */
         mAdapter = new HomePagePosts(0, this);
         mPosts.setAdapter(mAdapter);
+
+
         EventOrgPresnter mpresenter = new EventOrgPresnter(this, getApplicationContext());
         mpresenter.retrieveEvents();
-// for testing
-      /*  MEvent Event = new MEvent();
-        Event.setDescription("Animation movie ");
-        try {
-            Event.setEventDate("2018-06-27 09:31:00 GMT-04:00");
-        } catch (Exception e) {
-
-            Log.w("home page error:", e.getMessage());
-        }
-
-        Event.setLocation("Cairo");
-        Event.SetTitle("the princess and the frog");
-        Event.setCatID(5);
-        Event.SetOrgID(Authenticator.getID());
-        mpresenter.CreatePresenterFun(Event);
-
-       mpresenter.RemoveEventFun();
-
-
-        mpresenter.UpdatePresenterFun(1, "HunchBack of NotreDame  ");
-        mpresenter.UpdatePresenterFun(2,"4");
-        mpresenter.UpdatePresenterFun(3,"Disney Animation movie ");
-        mpresenter.UpdatePresenterFun(4,"Luxor");
-        mpresenter.UpdatePresenterFun(5,"2018-06-27 09:31:00 GMT-04:00");
-        mpresenter.UpdatePresenterFun(1, "وبكينا يوم غني الاخرون    ");*/
-
-
-        //mpresenter.getMostCrowded();
-        //mpresenter.getMostrated();
-        //mpresenter.getRate();
-         //mpresenter.getEventFun();
-
-
-
 
     }
 
-        public void onBackPressed() {
+    public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
@@ -130,7 +94,6 @@ public  class HomePage extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
 
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -149,11 +112,17 @@ public  class HomePage extends AppCompatActivity
             //Todo Attach signout in presenter
             startActivity(new Intent(HomePage.this, MainActivity.class));
             finish();
+        }else if (id == R.id.nav_create_event){
+            createEvent(null);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    void createEvent(View view){
+        startActivity(new Intent(HomePage.this, CreateEventActivity.class));
     }
 
     /**
@@ -163,66 +132,12 @@ public  class HomePage extends AppCompatActivity
      */
     @Override
     public void onListItemClick(int clickedItemIndex) {
-        Log.d("Bassel","Click happened");
-        /*
-         * Even if a Toast isn't showing, it's okay to cancel it. Doing so
-         * ensures that our new Toast will show immediately, rather than
-         * being delayed while other pending Toasts are shown.
-         *
-         * Comment out these three lines, run the app, and click on a bunch of
-         * different items if you're not sure what I'm talking about.
-         */
-        if (mToast != null) {
-            mToast.cancel();
-        }
 
-        // COMPLETED (12) Show a Toast when an item is clicked, displaying that item number that was clicked
-        /*
-         * Create a Toast and store it in our Toast field.
-         * The Toast that shows up will have a message similar to the following:
-         *
-         *                     Item #42 clicked.
-         */
-        String toastMessage = "Item #" + clickedItemIndex + " clicked.";
-        mToast = Toast.makeText(this, toastMessage, Toast.LENGTH_LONG);
-
-        mToast.show();
     }
 
-
-    /**
-     * This function tests show cards.
-     * TODO delete after merging with back
-     * @param view
-     */
-    public void testPosts(View view) throws ParseException {
-        String toastMessage = "Hard Coded refresh posts";
-        mToast = Toast.makeText(this, toastMessage, Toast.LENGTH_LONG);
-
-        mToast.show();
-
-        List<MEvent> eventsTests = new ArrayList<>();
-      /*  MEvent event =new MEvent();
-        event.SetEventDate("2018/10/30 12:26:18");
-        event.SetTitle( "Event_Test_1");
-        event.SetOrgID(1);
-        eventsTests.add(event);
-
-        event = new MEvent();
-        event.SetEventDate("2018/11/30 12:26:18");
-        event.SetTitle( "Event_Test_2");
-        event.SetOrgID(2);
-        eventsTests.add(event);
-
-
-        event = new MEvent();
-        event.SetEventDate("2018/12/30 12:26:18");
-        event.SetTitle( "Event_Test_3");
-        event.SetOrgID(3);
-        eventsTests.add(event);
-
-        showCards(eventsTests);*/
-
+    public void refreshPosts(View view){
+        EventOrgPresnter mpresenter = new EventOrgPresnter(this, getApplicationContext());
+        mpresenter.retrieveEvents();
     }
 
     /**
@@ -232,10 +147,7 @@ public  class HomePage extends AppCompatActivity
      *
      * @param cardsInfo array of MEvents classes
      */
-
     public void showCards(List<MEvent> cardsInfo){
-
-
         mAdapter = new HomePagePosts(cardsInfo,this);
         mPosts.setAdapter(mAdapter);
     }
@@ -250,8 +162,6 @@ public  class HomePage extends AppCompatActivity
         mToast=Toast.makeText(this,msg, Toast.LENGTH_LONG);
 
         mToast.show();
-
-
     }
 
     @Override
@@ -260,7 +170,6 @@ public  class HomePage extends AppCompatActivity
         mToast=Toast.makeText(this,msg, Toast.LENGTH_LONG);
 
         mToast.show();
-
     }
 
     @Override
@@ -270,7 +179,7 @@ public  class HomePage extends AppCompatActivity
 
     @Override
     public void onRetrieve(MEvent event) {
-    mToast=Toast.makeText(this,event.getCatName() , Toast.LENGTH_LONG);
+        mToast=Toast.makeText(this,event.getCatName() , Toast.LENGTH_LONG);
 
         mToast.show();
         mToast=Toast.makeText(this,event.getOrgName() , Toast.LENGTH_LONG);
@@ -278,34 +187,22 @@ public  class HomePage extends AppCompatActivity
 
         mToast=Toast.makeText(this,event.getTitle() , Toast.LENGTH_LONG);
         mToast.show();
-
-
     }
 
     @Override
     public void onRetrieve(ArrayList<MEvent> events) {
-        //TODO fill this, Bassel
-        //Toast.makeText(getApplicationContext(),Integer.toString(events.size()),Toast.LENGTH_LONG).show();
+        showCards(events);
     }
 
     // To be exchanged with the EventID through intents and passed to presenter
     @Override
     public int geteventID() {
-
         return 16;
     }
 
     @Override
     public void onRetrieve(int ID) {
-
-
         mToast=Toast.makeText(this,"the most crowded event is"+ID , Toast.LENGTH_LONG);
         mToast.show();
-
-
-
     }
-
-
-
 }
