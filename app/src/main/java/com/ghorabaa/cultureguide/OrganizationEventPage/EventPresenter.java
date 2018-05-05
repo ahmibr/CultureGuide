@@ -3,11 +3,9 @@ package com.ghorabaa.cultureguide.OrganizationEventPage;
 
 import com.ghorabaa.cultureguide.EventPageBaseModel;
 import com.ghorabaa.cultureguide.MEvent;
-import com.ghorabaa.cultureguide.Utilities.DBConnection;
 
 
 import android.content.Context;
-import android.util.Log;
 
 /**
  * Created by ruba on 26/03/18.
@@ -58,7 +56,7 @@ public class EventPresenter {
 
     {
 
-        mview.onRetrive(event);
+        mview.onRetrieve(event);
 
     }
 

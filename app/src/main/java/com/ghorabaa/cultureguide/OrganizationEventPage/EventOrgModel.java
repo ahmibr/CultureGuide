@@ -23,6 +23,7 @@ import org.json.JSONObject;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Locale;
 
 
@@ -32,7 +33,7 @@ public class EventOrgModel extends EventPageBaseModel {
     private static EventOrgPresnter mpresenter;
     private static DBConnection DBManger;
     private static Context context;
-   
+    private static ArrayList<MEvent> mEvents;
 
 
     private static EventOrgModel ourInstance;
@@ -42,6 +43,7 @@ public class EventOrgModel extends EventPageBaseModel {
             ourInstance = new EventOrgModel(DBManger,eventID);
             ourInstance.mpresenter = presenter;
             ourInstance.context = Mcontext;
+            mEvents = new ArrayList<>();
         }
         return ourInstance;
     }
@@ -53,7 +55,39 @@ public class EventOrgModel extends EventPageBaseModel {
 
     }
 
+    public void retrieveEvents(){
+        String query = "SELECT * From Event WHERE OID = %d";
+        query = String.format(Locale.ENGLISH,query,Authenticator.getID());
+        Response.Listener<String> onSuccess = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                mEvents.clear();
+                try {
+                    JSONArray result = new JSONArray(response);
+                    for(int i=0;i<result.length();++i){
+                        MEvent added = new MEvent();
+                        JSONObject event = result.getJSONObject(i);
+                        added.SetID(event.getInt("EID"));
+                        added.setDescription(event.getString("Description"));
+                        added.SetOrgID(event.getInt("OID"));
+                        added.SetTitle(event.getString("Title"));
+                        mEvents.add(added);
+                    }
+                    mpresenter.onRetrieve(mEvents);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Log.d("Here","retrieve");
+                }
+            }
+        };
 
+        DBManger.executeQuery(query, onSuccess, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                mpresenter.onFail("Connection Error");
+            }
+        });
+    }
     public void AddEvent(MEvent Event) {
 
         String query = "INSERT INTO Event( OID, Title, CategoryID, Date, Description, Location) Values(%d,'%s',%d,%tQ,'%s','%s')";

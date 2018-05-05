@@ -5,6 +5,8 @@ import android.util.Log;
 
 import com.ghorabaa.cultureguide.MEvent;
 
+import java.util.ArrayList;
+
 /**
  * Created by ruba on 04/05/18.
  */
@@ -19,7 +21,7 @@ public class EventOrgPresnter extends EventPresenter {
 
 
 
-
+    public void retrieveEvents(){((EventOrgModel)mModel).retrieveEvents();}
     public void CreatePresenterFun(MEvent Event)
     {
         ( (EventOrgModel)mModel).AddEvent(Event);
@@ -66,10 +68,16 @@ public class EventOrgPresnter extends EventPresenter {
 
     public void onRetrive(int ID)
     {
-        mview.onRetrive(ID);
+        mview.onRetrieve(ID);
     }
 
+    public void onRetrieve(MEvent mEvent){
+        mview.onRetrieve(mEvent);
+    }
 
+    public void onRetrieve(ArrayList<MEvent> mEvents){
+        mview.onRetrieve(mEvents);
+    }
 
 
 }

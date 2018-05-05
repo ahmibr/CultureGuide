@@ -67,7 +67,7 @@ public  class HomePage extends AppCompatActivity
         mAdapter = new HomePagePosts(0, this);
         mPosts.setAdapter(mAdapter);
         EventOrgPresnter mpresenter = new EventOrgPresnter(this, getApplicationContext());
-
+        mpresenter.retrieveEvents();
 // for testing
       /*  MEvent Event = new MEvent();
         Event.setDescription("Animation movie ");
@@ -97,7 +97,7 @@ public  class HomePage extends AppCompatActivity
 
         //mpresenter.getMostCrowded();
         //mpresenter.getMostrated();
-        mpresenter.getRate();
+        //mpresenter.getRate();
          //mpresenter.getEventFun();
 
 
@@ -269,7 +269,7 @@ public  class HomePage extends AppCompatActivity
     }
 
     @Override
-    public void onRetrive(MEvent event) {
+    public void onRetrieve(MEvent event) {
     mToast=Toast.makeText(this,event.getCatName() , Toast.LENGTH_LONG);
 
         mToast.show();
@@ -281,7 +281,14 @@ public  class HomePage extends AppCompatActivity
 
 
     }
-// To be exchanged with the EventID through intents and passed to presenter
+
+    @Override
+    public void onRetrieve(ArrayList<MEvent> events) {
+        //TODO fill this, Bassel
+        //Toast.makeText(getApplicationContext(),Integer.toString(events.size()),Toast.LENGTH_LONG).show();
+    }
+
+    // To be exchanged with the EventID through intents and passed to presenter
     @Override
     public int geteventID() {
 
@@ -289,7 +296,7 @@ public  class HomePage extends AppCompatActivity
     }
 
     @Override
-    public void onRetrive(int ID) {
+    public void onRetrieve(int ID) {
 
 
         mToast=Toast.makeText(this,"the most crowded event is"+ID , Toast.LENGTH_LONG);

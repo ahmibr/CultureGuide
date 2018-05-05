@@ -5,6 +5,8 @@ package com.ghorabaa.cultureguide.OrganizationEventPage;
  */
 import com.ghorabaa.cultureguide.MEvent;
 
+import java.util.ArrayList;
+
 public interface EventContract {
     interface EventView{
 
@@ -14,9 +16,10 @@ public interface EventContract {
         void onSuccess(String msg);
         void onFail(String msg);
         void onFail();
-        void onRetrive(MEvent event);
+        void onRetrieve(MEvent event);
+        void onRetrieve(ArrayList<MEvent> events);
         int geteventID();
-        void onRetrive(int ID);
+        void onRetrieve(int ID);
 
 
 

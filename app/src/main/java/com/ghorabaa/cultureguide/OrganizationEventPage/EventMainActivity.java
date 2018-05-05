@@ -4,9 +4,12 @@ import android.os.Bundle;
 
 import android.support.v7.app.AppCompatActivity;
 import android.content.Context;
+import android.widget.Toast;
 
 import com.ghorabaa.cultureguide.MEvent;
 import com.ghorabaa.cultureguide.R;
+
+import java.util.ArrayList;
 
 
 public class EventMainActivity extends AppCompatActivity implements EventContract.EventView {
@@ -25,11 +28,16 @@ public class EventMainActivity extends AppCompatActivity implements EventContrac
     }
 
 @Override
-public void  onRetrive(MEvent event)
+public void onRetrieve(MEvent event)
 {
 
 
 }
+
+    @Override
+    public void onRetrieve(ArrayList<MEvent> events) {
+        Toast.makeText(getApplicationContext(),Integer.toString(events.size()),Toast.LENGTH_LONG).show();
+    }
 
     @Override
     public int geteventID() {
@@ -37,7 +45,7 @@ public void  onRetrive(MEvent event)
     }
 
     @Override
-    public void onRetrive(int ID) {
+    public void onRetrieve(int ID) {
 
     }
 
