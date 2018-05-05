@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.ghorabaa.cultureguide.EditProfile.EditUserActivity;
 import com.ghorabaa.cultureguide.EventRetrievalType;
 import com.ghorabaa.cultureguide.MEvent;
 import com.ghorabaa.cultureguide.R;
@@ -120,7 +121,7 @@ public class UserHomepage extends AppCompatActivity implements UserHomepageContr
         int id = item.getItemId();
 
         if (id == R.id.nav_edit_profile) {
-
+            startActivity(new Intent(UserHomepage.this, EditUserActivity.class));
         }
         else if(id == R.id.nav_friends) {
 

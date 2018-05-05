@@ -25,7 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Locale;
 
-abstract class EditProfileModel {
+abstract class EditProfileBaseModel {
 
 
     protected EditProfilePresenter mPresenter;
@@ -36,13 +36,15 @@ abstract class EditProfileModel {
 
     protected DBConnection db;
 
-    public EditProfileModel(EditProfilePresenter presenter, Context context){
+    public EditProfileBaseModel(EditProfilePresenter presenter, Context context, String tableName){
 
         mPresenter = presenter;
 
         mContext = context;
 
         db = DBConnection.getInstance(context);
+
+        this.tableName = tableName;
     }
 
     public void changeEmail(final String newEmail){
@@ -51,8 +53,8 @@ abstract class EditProfileModel {
             mPresenter.onFail("Please enter valid email form!");
             return;
         }
-        String query = "UPDATE Users SET Email = '%s' WHERE ID = %d";
-        query = String.format(Locale.ENGLISH,query,newEmail, Authenticator.getID());
+        String query = "UPDATE Users SET Email = '%s' WHERE Email = '%s'";
+        query = String.format(Locale.ENGLISH,query,newEmail, Authenticator.getEmail());
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
@@ -114,8 +116,8 @@ abstract class EditProfileModel {
             mPresenter.onFail("Password should be at least 6 characters!");
             return;
         }
-        String query = "UPDATE Users SET Password = '%s' WHERE ID = %d";
-        query = String.format(Locale.ENGLISH,query, PasswordEncrypter.encrypt(newPassword), Authenticator.getID());
+        String query = "UPDATE Users SET Password = '%s' WHERE Email = '%s'";
+        query = String.format(Locale.ENGLISH,query, PasswordEncrypter.encrypt(newPassword), Authenticator.getEmail());
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override

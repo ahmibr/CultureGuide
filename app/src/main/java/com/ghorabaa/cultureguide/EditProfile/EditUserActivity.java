@@ -27,11 +27,7 @@ public class EditUserActivity extends AppCompatActivity implements EditProfileCo
 
         progressBar = new ProgressDialog(this);
 
-        ArrayList<String> interests = new ArrayList<>();
 
-        interests.add("فن تجريدي");
-        interests.add("فنون تشكيلية");
-        ((EditUserPresenter)mPresenter).updateInterests(interests);
     }
 
 
