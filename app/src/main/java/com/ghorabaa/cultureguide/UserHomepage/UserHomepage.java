@@ -2,7 +2,6 @@ package com.ghorabaa.cultureguide.UserHomepage;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
@@ -12,7 +11,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -21,6 +19,8 @@ import com.ghorabaa.cultureguide.EventRetrievalType;
 import com.ghorabaa.cultureguide.MEvent;
 import com.ghorabaa.cultureguide.R;
 import com.ghorabaa.cultureguide.SignIn.MainActivity;
+import com.ghorabaa.cultureguide.UserSidebar.Favorites.FavoritesActivity;
+import com.ghorabaa.cultureguide.UserSidebar.Friends.FriendsActivity;
 import com.ghorabaa.cultureguide.Utilities.SectionsPagesAdapter;
 
 import java.util.ArrayList;
@@ -120,22 +120,21 @@ public class UserHomepage extends AppCompatActivity implements UserHomepageContr
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
+
+        //TODO use switch case better, Bassel
         if (id == R.id.nav_edit_profile) {
             startActivity(new Intent(UserHomepage.this, EditUserActivity.class));
         }
         else if(id == R.id.nav_friends) {
-
+            startActivity(new Intent(UserHomepage.this, FriendsActivity.class));
         }
         else if (id == R.id.nav_sign_out){
-            //Todo Attach signout in presenter
             startActivity(new Intent(UserHomepage.this, MainActivity.class));
             finish();
         }else if (id == R.id.nav_invitations){
             //Todo Add invitations logic
         }else if (id == R.id.nav_favorites){
-            //Todo Add favorites logic
-        }else if (id == R.id.nav_friends){
-            //Todo Add friends logic
+            startActivity(new Intent(UserHomepage.this, FavoritesActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.user_layout);

@@ -1,11 +1,8 @@
-package com.ghorabaa.cultureguide.UserEventPage;
+package com.ghorabaa.cultureguide.UserEventPage.EventPage;
 
 import android.content.Context;
 
-import com.ghorabaa.cultureguide.Friend;
 import com.ghorabaa.cultureguide.MEvent;
-
-import java.util.ArrayList;
 
 /**
  * Created by Ahmed Ibrahim on 4/28/18.

@@ -1,4 +1,4 @@
-package com.ghorabaa.cultureguide.UserEventPage;
+package com.ghorabaa.cultureguide.UserEventPage.InviteFriend;
 
 import android.content.Context;
 
@@ -79,7 +79,7 @@ public class InviteFriendsModel {
 
         int id;
         try {
-            id = friendsList.get(index).getId();
+            id = friendsList.get(index).getID();
         }catch (Exception e){
             mPresenter.onInviteFail("An error has occurred!");
             return;

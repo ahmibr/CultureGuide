@@ -1,9 +1,8 @@
-package com.ghorabaa.cultureguide.UserEventPage;
+package com.ghorabaa.cultureguide.UserEventPage.InviteFriend;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -15,7 +14,6 @@ import com.ghorabaa.cultureguide.Friend;
 import com.ghorabaa.cultureguide.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class InviteFriends extends AppCompatActivity implements InviteFriendsContract.View{
 

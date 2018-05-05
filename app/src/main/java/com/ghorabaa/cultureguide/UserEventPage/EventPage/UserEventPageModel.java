@@ -1,11 +1,10 @@
-package com.ghorabaa.cultureguide.UserEventPage;
+package com.ghorabaa.cultureguide.UserEventPage.EventPage;
 
 import android.content.Context;
 import android.util.Log;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.ghorabaa.cultureguide.Friend;
 import com.ghorabaa.cultureguide.MEvent;
 import com.ghorabaa.cultureguide.Utilities.Authenticator;
 import com.ghorabaa.cultureguide.Utilities.DBConnection;
@@ -14,7 +13,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.Locale;
 
 /**

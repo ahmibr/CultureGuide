@@ -71,18 +71,20 @@
             <!-- </intent-filter> -->
         </activity>
         <activity android:name=".UserHomepage.Main3Activity" />
-        <activity android:name=".UserHomepage.UserHomepage"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
-        <activity android:name=".UserEventPage.UserEventPage" />
+        <activity
+            android:name=".UserHomepage.UserHomepage"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".UserEventPage.EventPage.UserEventPage" />
         <activity android:name=".AdminHomepage.AdminHomepageActivity" />
         <activity android:name=".AdminViewCategory.AdminViewCategoryActivity" />
         <activity android:name=".AdminViewUser.AdminViewUserActivity" />
         <activity android:name=".AdminViewAdmins.AdminViewAdminActivity" />
         <activity android:name=".AdminViewOrganization.AdminViewOrganizationActivity" />
-        <activity android:name=".AdminViewEvent.AdminViewEventActivity"></activity>
-        <activity android:name=".UserEventPage.InviteFriends"/>
+        <activity android:name=".AdminViewEvent.AdminViewEventActivity" />
+        <activity android:name=".UserEventPage.InviteFriend.InviteFriends" />
+        <activity android:name=".UserSidebar.Friends.FriendsActivity" />
+        <activity android:name=".UserSidebar.Favorites.FavoritesActivity" />
+        <activity android:name=".UserSidebar.Invitations.InvitationsActivity"></activity>
     </application>
 
 </manifest>

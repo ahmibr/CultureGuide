@@ -1,4 +1,4 @@
-package com.ghorabaa.cultureguide.UserEventPage;
+package com.ghorabaa.cultureguide.UserEventPage.EventPage;
 
 import com.ghorabaa.cultureguide.Friend;
 import com.ghorabaa.cultureguide.MEvent;

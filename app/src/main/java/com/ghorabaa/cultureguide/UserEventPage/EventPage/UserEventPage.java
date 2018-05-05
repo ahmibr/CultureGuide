@@ -1,4 +1,4 @@
-package com.ghorabaa.cultureguide.UserEventPage;
+package com.ghorabaa.cultureguide.UserEventPage.EventPage;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,11 +8,9 @@ import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
-import com.ghorabaa.cultureguide.Friend;
 import com.ghorabaa.cultureguide.MEvent;
 import com.ghorabaa.cultureguide.R;
-
-import java.util.ArrayList;
+import com.ghorabaa.cultureguide.UserEventPage.InviteFriend.InviteFriends;
 
 public class UserEventPage extends AppCompatActivity implements UserEventPageContract.View {
 

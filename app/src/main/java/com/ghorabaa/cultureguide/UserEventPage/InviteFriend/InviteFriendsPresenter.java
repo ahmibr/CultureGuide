@@ -1,4 +1,4 @@
-package com.ghorabaa.cultureguide.UserEventPage;
+package com.ghorabaa.cultureguide.UserEventPage.InviteFriend;
 
 import android.content.Context;
 
