@@ -42,14 +42,14 @@
             android:textStyle="bold"
             />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/attend"
-            android:layout_gravity="right"
-            android:drawableRight="@drawable/ic_event_black_24dp"
-            android:id="@+id/post_attend"
-            />
+        <!--<Button-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/attend"-->
+            <!--android:layout_gravity="right"-->
+            <!--android:drawableRight="@drawable/ic_event_black_24dp"-->
+            <!--android:id="@+id/post_attend"-->
+            <!--/>-->
 
     </LinearLayout>
 

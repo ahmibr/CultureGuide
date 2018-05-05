@@ -2,6 +2,7 @@ package com.ghorabaa.cultureguide.UserHomepage;
 
 import android.content.Context;
 import android.text.format.Time;
+import android.util.Log;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -14,6 +15,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by Ahmed Ibrahim on 4/28/18.
@@ -23,11 +25,12 @@ public class UserHomepageModel {
     private UserHomepagePresenter mPresenter;
     private Context mContext;
     private DBConnection db;
-
+    private ArrayList<MEvent> currentEvents;
     UserHomepageModel(UserHomepagePresenter presenter,Context context){
         mPresenter = presenter;
         mContext = context;
         db = DBConnection.getInstance(context);
+        currentEvents = new ArrayList<>();
     }
 
     private void getEvents(String query){
@@ -35,14 +38,14 @@ public class UserHomepageModel {
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                ArrayList<MEvent> currentEvents = new ArrayList<>();
+                currentEvents.clear();
                 try {
                     JSONArray result = new JSONArray(response);
                     for(int i=0;i<result.length();++i){
                         MEvent added = new MEvent();
                         JSONObject event = result.getJSONObject(i);
                         added.SetID(event.getInt("EID"));
-                        added.SetDescription(event.getString("Description"));
+                        added.setDescription(event.getString("Description"));
                         added.SetOrgID(event.getInt("OID"));
                         added.SetTitle(event.getString("Title"));
                         currentEvents.add(added);
@@ -69,7 +72,8 @@ public class UserHomepageModel {
         currentTime.setToNow();
         long lCurrentTime = currentTime.toMillis(false);
 
-        query = String.format(query,lCurrentTime, Authenticator.getID());
+        query = String.format(Locale.ENGLISH,query,lCurrentTime, Authenticator.getID());
+        Log.e("query",query);
         getEvents(query);
     }
 
@@ -80,7 +84,7 @@ public class UserHomepageModel {
         currentTime.setToNow();
         long lCurrentTime = currentTime.toMillis(false);
 
-        query = String.format(query,lCurrentTime, Authenticator.getID());
+        query = String.format(Locale.ENGLISH,query,lCurrentTime, Authenticator.getID());
 
         getEvents(query);
     }
@@ -92,7 +96,7 @@ public class UserHomepageModel {
         currentTime.setToNow();
         long lCurrentTime = currentTime.toMillis(false);
 
-        query = String.format(query,lCurrentTime, Authenticator.getID());
+        query = String.format(Locale.ENGLISH,query,lCurrentTime, Authenticator.getID());
 
         getEvents(query);
     }

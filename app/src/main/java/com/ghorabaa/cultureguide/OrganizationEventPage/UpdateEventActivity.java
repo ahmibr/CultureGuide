@@ -1,15 +1,9 @@
-package com.ghorabaa.cultureguide.EventPage;
+package com.ghorabaa.cultureguide.OrganizationEventPage;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.Toast;
 
-import com.ghorabaa.cultureguide.MEvent;
 import com.ghorabaa.cultureguide.R;
 
 public class UpdateEventActivity extends EventMainActivity {
@@ -23,7 +17,7 @@ public class UpdateEventActivity extends EventMainActivity {
         int funcid=1;
         String title="art";
         int eventid=1;
-        mpresenter.UpdatePresenterFun(funcid,title,eventid);
+        ((EventOrgPresnter)mpresenter).UpdatePresenterFun(funcid,title);
 
 
     }

@@ -22,19 +22,19 @@
         </activity>
         <activity android:name=".SignUp.SignUpActivity" />
         <activity
-            android:name=".EventPage.CreateEventActivity"
+            android:name=".OrganizationEventPage.CreateEventActivity"
             android:label="@string/title_activity_addevent"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".EventPage.EventMainActivity"
+            android:name=".OrganizationEventPage.EventMainActivity"
             android:label="@string/title_activity_event_main_activty"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".EventPage.RemoveEventActivity">
+        <activity android:name=".OrganizationEventPage.RemoveEventActivity">
             android:label="@string/title_activity_remove_event"
             android:theme="@style/AppTheme.NoActionBar"
         </activity>
         <activity
-            android:name=".EventPage.UpdateEventActivity"
+            android:name=".OrganizationEventPage.UpdateEventActivity"
             android:label="@string/title_activity_update_event_activty"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -80,6 +80,7 @@
         <activity android:name=".AdminViewAdmins.AdminViewAdminActivity" />
         <activity android:name=".AdminViewOrganization.AdminViewOrganizationActivity" />
         <activity android:name=".AdminViewEvent.AdminViewEventActivity"></activity>
+        <activity android:name=".UserEventPage.InviteFriends"/>
     </application>
 
 </manifest>

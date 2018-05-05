@@ -45,6 +45,10 @@
     <string name="confirmNewPassword">Confirm Password</string>
     <string name="categories">Categories</string>
     <string name="organizationName">Organization Name</string>
+    <string name="userName">User Name</string>
+    <string name="organization">Organization</string>
+    <string name="sign_up_as">Sign up as</string>
+    <string name="user">User</string>
     <string name="description">Description</string>
     <string name="briefDescription">You can add organization vision, interests and activities</string>
     <string name="title_activity_edit_profile_organization">Edit Profile Organization</string>

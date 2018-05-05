@@ -1,10 +1,7 @@
 package com.ghorabaa.cultureguide.Utilities;
 
 import android.content.Context;
-import android.os.Handler;
-import android.service.notification.NotificationListenerService;
-import android.support.design.widget.Snackbar;
-import android.support.v4.graphics.ColorUtils;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,15 +10,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ghorabaa.cultureguide.MEvent;
 import com.ghorabaa.cultureguide.R;
+import com.ghorabaa.cultureguide.UserEventPage.UserEventPage;
 
-import java.sql.Struct;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.TimerTask;
 
 import static android.content.ContentValues.TAG;
 
@@ -116,12 +110,10 @@ public class HomePagePosts extends RecyclerView.Adapter<HomePagePosts.EventPost>
             implements View.OnClickListener {
 
         //The views in the frameLayout
-        TextView postTitle;
-        TextView postTime;
+        TextView mPostTitle;
+        TextView mPostTime;
 
-        ImageButton postAppearance;
-
-        Button attendButton;
+        ImageButton mPostAppearance;
 
         int id;
 
@@ -131,30 +123,23 @@ public class HomePagePosts extends RecyclerView.Adapter<HomePagePosts.EventPost>
         public EventPost(View itemView) {
             super(itemView);
 
-            postTitle = (TextView) itemView.findViewById(R.id.post_title);
-            postAppearance = (ImageButton) itemView.findViewById(R.id.post_image);
-            attendButton = (Button) itemView.findViewById(R.id.post_attend);
-            postTime = (TextView) itemView.findViewById(R.id.post_time);
+            mPostTitle = (TextView) itemView.findViewById(R.id.post_title);
+            mPostAppearance = (ImageButton) itemView.findViewById(R.id.post_image);
+            mPostTime = (TextView) itemView.findViewById(R.id.post_time);
 
-            attendButton.setClickable(false);
-
-            initialContent = postTitle.getText().toString();
+            initialContent = mPostTitle.getText().toString();
 
             itemView.setOnClickListener(this);
 
-            attendButton.setOnClickListener( new View.OnClickListener(){
+            mPostAppearance.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view) {
-
-                    String toastText = organizationsEventsInfo.get(position).GetTitle() + " created " + organizationsEventsInfo.get(position).GetTitle();
-                    Toast.makeText(view.getContext(),toastText,Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(view.getContext() , UserEventPage.class);
+                    Log.d("Bassel" , id + "");
+                    intent.putExtra("eventId", id);
+                    view.getContext().startActivity(intent);
                 }
             } );
-        }
-
-        //Call this if the user of the app is an organization
-        public void ViewerIsOrganiztion(){
-            attendButton.setClickable(false);
         }
 
         /**
@@ -163,22 +148,22 @@ public class HomePagePosts extends RecyclerView.Adapter<HomePagePosts.EventPost>
          * @param eventName
          */
         public void setPostValues(String orgnizationName, String eventName, String eventTime){
-            postTitle.setText(orgnizationName + " " + initialContent + " " + eventName);
-            postTime.setText(eventTime);
+            mPostTitle.setText(orgnizationName + " " + initialContent + " " + eventName);
+            mPostTime.setText(eventTime);
         }
 
         public void bindValue ( int position ) {
             this.position = position;
 
-            id = organizationsEventsInfo.get(position).GetID();
+            id = organizationsEventsInfo.get(position).getID();
 
             String date = "";
-            if(organizationsEventsInfo.get(position).GetDate() != null){
-                date = organizationsEventsInfo.get(position).GetDate().toString();
+            if(organizationsEventsInfo.get(position).getDate() != null){
+                date = organizationsEventsInfo.get(position).getDate().toString();
             }
 
             setPostValues( Authenticator.getName()
-                    , organizationsEventsInfo.get(position).GetTitle()
+                    , organizationsEventsInfo.get(position).getTitle()
                     , date);
         }
 

@@ -1,11 +1,10 @@
-package com.ghorabaa.cultureguide.EventPage;
+package com.ghorabaa.cultureguide.OrganizationEventPage;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.widget.Toast;
 
 
-import com.ghorabaa.cultureguide.MEvent;
 import com.ghorabaa.cultureguide.R;
 
 public class RemoveEventActivity extends EventMainActivity{
@@ -17,7 +16,7 @@ public class RemoveEventActivity extends EventMainActivity{
         mpresenter=new EventPresenter( this,super.Appcontext);
         int ID=2;
 
-        mpresenter.RemoveEventFun(2);
+        ((EventOrgPresnter) mpresenter).RemoveEventFun();
 
     }
 

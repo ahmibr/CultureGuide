@@ -32,5 +32,9 @@
     <string name="title_activity_edit_profile_organization">تعديل حساب المؤسسة</string>
     <string name="edit">تعديل</string>
     <string name="refreshPosts">تحديث</string>
+    <string name="userName">اسم المستخدم</string>
+    <string name="organization">مؤسسة</string>
+    <string name="user">مستخدم</string>
+    <string name="sign_up_as">تسجيل دخول كـ</string>
 
 </resources>

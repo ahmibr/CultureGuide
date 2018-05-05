@@ -17,6 +17,7 @@ public class UserEventPagePresenter implements UserEventPageContract.Presenter {
     private UserEventPageModel mModel;
 
     public UserEventPagePresenter(UserEventPageContract.View view, Context context, int id) {
+        mView = view;
         mModel = new UserEventPageModel(this, context, id);
     }
 
@@ -30,15 +31,7 @@ public class UserEventPagePresenter implements UserEventPageContract.Presenter {
         mModel.rateEvent(rate);
     }
 
-    @Override
-    public void retrieveFriendsList() {
-        mModel.retrieveFriendsList();
-    }
 
-    @Override
-    public void inviteFriend(int index) {
-
-    }
 
     @Override
     public void updateRate() {
@@ -70,13 +63,6 @@ public class UserEventPagePresenter implements UserEventPageContract.Presenter {
         mView.onRateFail(errorMessage);
     }
 
-    public void onInviteSuccess() {
-        mView.onInviteSuccess();
-    }
-
-    public void onInviteFail(String errorMessage) {
-        mView.onInviteFail(errorMessage);
-    }
 
     public void onRetrieveRate(int rate) {
         mView.onRetrieveRate(rate);
@@ -91,6 +77,11 @@ public class UserEventPagePresenter implements UserEventPageContract.Presenter {
         mModel.checkOrgState();
     }
 
+    @Override
+    public void checkAttendState() {
+     mModel.checkAttendState();
+    }
+
     public void onAddOrgSuccess() {
         mView.onAddOrgSuccess();
     }
@@ -99,16 +90,11 @@ public class UserEventPagePresenter implements UserEventPageContract.Presenter {
         mView.onAddOrgFail(errorMessage);
     }
 
-    public void onRetrieveFriendsList(ArrayList<Friend> friendsList) {
-        mView.onRetrieveFriendsList(friendsList);
-    }
-
-
     public void showAddOrg() {
-        mView.showAddOrg();
+        mView.showAddOrgButton();
     }
 
-    public void onRetrieveFriendsListFail(String errorMessage) {
-        mView.onRetrieveFriendsListFail(errorMessage);
+    public void showAttendButton() {
+        mView.showAttendButton();
     }
 }

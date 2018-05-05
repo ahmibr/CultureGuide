@@ -9,6 +9,8 @@ import com.ghorabaa.cultureguide.Utilities.DBConnection;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.util.Locale;
+
 /**
  * Created by megem on 4/30/18.
  */
@@ -27,7 +29,7 @@ public class AdminHomepageModel {
     public void testQuery() {
 
         String query = "INSERT INTO Users VALUES('%s',%d,'%s')";
-        query = String.format(query, "ahmed@gmail.com", 20, "ahmed");
+        query = String.format(Locale.ENGLISH,query, "ahmed@gmail.com", 20, "ahmed");
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override

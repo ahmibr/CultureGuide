@@ -17,14 +17,13 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.ghorabaa.cultureguide.EditProfile.EditOrgActivity;
-import com.ghorabaa.cultureguide.EventPage.EventContract;
+import com.ghorabaa.cultureguide.OrganizationEventPage.*;
 import com.ghorabaa.cultureguide.SignIn.MainActivity;
 import com.ghorabaa.cultureguide.Utilities.Authenticator;
 import com.ghorabaa.cultureguide.Utilities.HomePagePosts;
 
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public  class HomePage extends AppCompatActivity
@@ -33,6 +32,7 @@ public  class HomePage extends AppCompatActivity
 
     //TODO remove this toast after testing
     //Used for Testing Processes
+
     private Toast mToast;
     RecyclerView mPosts;
     HomePagePosts mAdapter;
@@ -40,8 +40,9 @@ public  class HomePage extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        Toast.makeText(getApplicationContext(), Authenticator.getEmail(),Toast.LENGTH_LONG).show();
         super.onCreate(savedInstanceState);
+        Toast.makeText(getApplicationContext(), Authenticator.getEmail(), Toast.LENGTH_LONG).show();
+
         setContentView(R.layout.activity_home_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -54,7 +55,6 @@ public  class HomePage extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
         mPosts = (RecyclerView) findViewById(R.id.HomepageEvents);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -66,14 +66,46 @@ public  class HomePage extends AppCompatActivity
          */
         mAdapter = new HomePagePosts(0, this);
         mPosts.setAdapter(mAdapter);
+        EventOrgPresnter mpresenter = new EventOrgPresnter(this, getApplicationContext());
+
+// for testing
+      /*  MEvent Event = new MEvent();
+        Event.setDescription("Animation movie ");
+        try {
+            Event.setEventDate("2018-06-27 09:31:00 GMT-04:00");
+        } catch (Exception e) {
+
+            Log.w("home page error:", e.getMessage());
+        }
+
+        Event.setLocation("Cairo");
+        Event.SetTitle("the princess and the frog");
+        Event.setCatID(5);
+        Event.SetOrgID(Authenticator.getID());
+        mpresenter.CreatePresenterFun(Event);
+
+       mpresenter.RemoveEventFun();
+
+
+        mpresenter.UpdatePresenterFun(1, "HunchBack of NotreDame  ");
+        mpresenter.UpdatePresenterFun(2,"4");
+        mpresenter.UpdatePresenterFun(3,"Disney Animation movie ");
+        mpresenter.UpdatePresenterFun(4,"Luxor");
+        mpresenter.UpdatePresenterFun(5,"2018-06-27 09:31:00 GMT-04:00");
+        mpresenter.UpdatePresenterFun(1, "وبكينا يوم غني الاخرون    ");*/
+
+
+        //mpresenter.getMostCrowded();
+        //mpresenter.getMostrated();
+        mpresenter.getRate();
+         //mpresenter.getEventFun();
 
 
 
 
     }
 
-    @Override
-    public void onBackPressed() {
+        public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
@@ -214,9 +246,59 @@ public  class HomePage extends AppCompatActivity
     }
 
     @Override
+    public void onSuccess(String msg) {
+        mToast=Toast.makeText(this,msg, Toast.LENGTH_LONG);
+
+        mToast.show();
+
+
+    }
+
+    @Override
+    public void onFail(String msg) {
+
+        mToast=Toast.makeText(this,msg, Toast.LENGTH_LONG);
+
+        mToast.show();
+
+    }
+
+    @Override
     public void onFail() {
 
     }
+
+    @Override
+    public void onRetrive(MEvent event) {
+    mToast=Toast.makeText(this,event.getCatName() , Toast.LENGTH_LONG);
+
+        mToast.show();
+        mToast=Toast.makeText(this,event.getOrgName() , Toast.LENGTH_LONG);
+        mToast.show();
+
+        mToast=Toast.makeText(this,event.getTitle() , Toast.LENGTH_LONG);
+        mToast.show();
+
+
+    }
+// To be exchanged with the EventID through intents and passed to presenter
+    @Override
+    public int geteventID() {
+
+        return 16;
+    }
+
+    @Override
+    public void onRetrive(int ID) {
+
+
+        mToast=Toast.makeText(this,"the most crowded event is"+ID , Toast.LENGTH_LONG);
+        mToast.show();
+
+
+
+    }
+
 
 
 }

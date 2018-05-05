@@ -1,17 +1,12 @@
-package com.ghorabaa.cultureguide.EventPage;
+package com.ghorabaa.cultureguide.OrganizationEventPage;
 
 import android.os.Bundle;
 
 import android.support.v7.app.AppCompatActivity;
 import android.content.Context;
-import android.os.Bundle;
-
-import android.widget.Toast;
 
 import com.ghorabaa.cultureguide.MEvent;
 import com.ghorabaa.cultureguide.R;
-
-import java.util.List;
 
 
 public class EventMainActivity extends AppCompatActivity implements EventContract.EventView {
@@ -29,7 +24,22 @@ public class EventMainActivity extends AppCompatActivity implements EventContrac
         mpresenter=new EventPresenter(this,Appcontext);
     }
 
+@Override
+public void  onRetrive(MEvent event)
+{
 
+
+}
+
+    @Override
+    public int geteventID() {
+        return 0;
+    }
+
+    @Override
+    public void onRetrive(int ID) {
+
+    }
 
     @Override
     public void onSuccess() {
@@ -37,10 +47,15 @@ public class EventMainActivity extends AppCompatActivity implements EventContrac
     }
 
     @Override
-    public void onFail() {
+    public void onSuccess(String msg) {
 
     }
 
+    @Override
+    public void onFail(String msg) {
+
+    }
+   public void onFail(){};
 
 
 }
