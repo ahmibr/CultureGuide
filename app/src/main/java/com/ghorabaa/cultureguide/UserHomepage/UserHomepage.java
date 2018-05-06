@@ -21,6 +21,7 @@ import com.ghorabaa.cultureguide.R;
 import com.ghorabaa.cultureguide.SignIn.MainActivity;
 import com.ghorabaa.cultureguide.UserSidebar.Favorites.FavoritesActivity;
 import com.ghorabaa.cultureguide.UserSidebar.Friends.FriendsActivity;
+import com.ghorabaa.cultureguide.UserSidebar.Invitations.InvitationsActivity;
 import com.ghorabaa.cultureguide.Utilities.SectionsPagesAdapter;
 
 import java.util.ArrayList;
@@ -132,7 +133,7 @@ public class UserHomepage extends AppCompatActivity implements UserHomepageContr
             startActivity(new Intent(UserHomepage.this, MainActivity.class));
             finish();
         }else if (id == R.id.nav_invitations){
-            //Todo Add invitations logic
+            startActivity(new Intent(UserHomepage.this, InvitationsActivity.class));
         }else if (id == R.id.nav_favorites){
             startActivity(new Intent(UserHomepage.this, FavoritesActivity.class));
         }
