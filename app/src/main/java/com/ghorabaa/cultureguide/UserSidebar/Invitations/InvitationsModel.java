@@ -11,7 +11,6 @@ import com.ghorabaa.cultureguide.Utilities.Authenticator;
 import com.ghorabaa.cultureguide.Utilities.DBConnection;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -59,9 +58,9 @@ public class InvitationsModel {
                         String eventTitle = result.getJSONObject(i).getString("Title");
 
                         MEvent event = new MEvent();
-                        event.SetID(eventID);
-                        event.SetEventDate(eventDate);
-                        event.SetTitle(eventTitle);
+                        event.setID(eventID);
+                        event.setDate(eventDate);
+                        event.setTitle(eventTitle);
 
                         invitationsList.add(new Pair<String, MEvent>(friendName,event));
                     }

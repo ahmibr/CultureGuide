@@ -20,10 +20,10 @@ public class CreateEventActivity extends EventMainActivity {
         Event.setDescription("art event");
 
 
-       // Event.SetEventDate( (long)2018103012);
+       // Event.setDate( (long)2018103012);
 
         Event.setLocation("Giza");
-        Event.SetTitle("Applied art");
+        Event.setTitle("Applied art");
         Event.setCatName("ARTS");
         ((EventOrgPresnter)mpresenter).CreatePresenterFun(Event);*/
 

@@ -4,11 +4,6 @@ package com.ghorabaa.cultureguide;
  * Created by ruba on 18/03/18.
  */
 
-import android.util.Log;
-
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.json.JSONException;
@@ -16,158 +11,140 @@ import org.json.JSONObject;
 
 public class MEvent {
 
-   private String description;
-   private String title;
-   private String location;
+    private String description;
+    private String title;
+    private String location;
     private int rating;
-    private Long EventDate;
+    private Date eventDate;
     private int ID;
-    private int OrgID;
-    private int CatID;
-    private String CatName;
-    private  String OrgName;
+    private int orgID;
+    private int catID;
+    private String catName;
+    private String orgName;
 
-    public MEvent(){};
+    public MEvent() {
+    }
 
-     public MEvent(JSONObject Event) throws Exception {
+    public MEvent(JSONObject Event) throws JSONException {
 
-         try {
+        String title = Event.getString("Title");
+        String description = Event.getString("Description");
+        String location = Event.getString("Location");
+        long date = Event.getLong("Date");
+        int categoryID = Event.getInt("CatID");
+        String categoryName = Event.getString("CatName");
+        int orgID = Event.getInt("OrgID");
+        String orgName = Event.getString("Name");
 
-             String Title = Event.getString("Title");
-             String Description = Event.getString("Description");
-             String location = Event.getString("Location");
-             String Date = Event.getString("Date");
-             String CategoryID=Event.getString("CatID");
-             String CategoryName=Event.getString("CatName");
-             String OrgID=Event.getString("OrgID");
-             String OrgName=Event.getString("Name");
+        setTitle(title);
+        setDescription(description);
+        setLocation(location);
+        setDate(date);
+        setCatID(categoryID);
+        setCatName(categoryName);
+        setOrgName(orgName);
+        setOrgID(orgID);
 
-             SetTitle(Title);
-             setDescription(Description);
-             setLocation(location);
-             SetEventDate(Long.parseLong( Date ));
-            setCatID(Integer.parseInt(CategoryID));
-            setCatName( CategoryName);
-            setOrgName( OrgName);
-            setOrgID(Integer.parseInt(OrgID));
+    }
 
+    /*
+    *   Checks if date is after now
+    *
+     */
+    public static boolean isValidDate(Date date) {
+        Date now = new Date();
+        if (date.after(now))
+            return true;
+        else
+            return false;
+    }
 
-         }
-         catch (JSONException e) {
-             Log.w("error msg",e.getMessage());
-         }
+    public String getDescription() {
+        return this.description;
+    }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-     }
-
-    public String getDescrption()
-    {
-     return this.description;
-     }
-
-    public String getTitle()
-    {
+    public String getTitle() {
         return this.title;
     }
-    public String getLocation()
-    {
+
+    public void setTitle(String Title) {
+        this.title = Title;
+    }
+
+    public String getLocation() {
         return this.location;
     }
-    public int getRating()
-    {
+
+    public void setLocation(String Location) {
+        this.location = Location;
+    }
+
+    public int getRating() {
         return this.rating;
     }
-    public long getDate()
-    {
 
-         return EventDate;}
-
-
-
-    public void setDescription(String descrption)
-    {
-        this.description=descrption;
-    }
-    public void SetID(int ID){this.ID=ID;}
-    public int getID(){return ID;}
-    public void SetTitle(String Title)
-    {
-        this.title=Title;
-    }
-    public void setLocation(String Location)
-    {
-      this.location=Location;
-    }
-    public void setRating(int rating)
-    {
-       if(rating>=0&&rating<=5)
-
-       {this.rating=rating;}
-
-
-    }
-    public void SetEventDate(long EventDate) throws Exception {
-
-
-        Date dummy= new Date(EventDate);
-        this.EventDate= validateDate(dummy);
-
-
-
-    }
-    public int getOrgID(){return OrgID;}
-    public int getCatID(){return CatID;}
-    public void setCatName(String CatName)
-    {
-        this.CatName=CatName;
-    }
-    public void SetOrgID(int OrgID){this.OrgID=OrgID;}
-    public String getCatName(){ return CatName;}
-    public void setCatID(int ID)
-    {
-        this.CatID=ID;
-    }
-    public void  setEventDate(String Date) throws Exception {
-
-        DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss z");
-        try {
-            Date date = format.parse(Date);
-
-              this.EventDate= validateDate(date);
-
-        } catch (ParseException e) {
-            Log.w("setEventDate error ",e.getMessage());
-        }
-
-
-
-
+    public void setRating(int rating) {
+        if (rating >= 0 && rating <= 5)
+            this.rating = rating;
     }
 
-    public   static  Long  validateDate(Date date) throws Exception {
-
-        Long dummyLong=date.getTime();
-        Date dummy =new Date(dummyLong);
-        Date now= new Date();
-        if(dummy.after(now))
-
-        {
-           return dummyLong ;
-
-        }
-        else
-            throw (new Exception("this date has passed") );
-
+    public Date getDate(){
+        return eventDate;
     }
 
-    public void setOrgName(String OrgName)
-    {
-        this.OrgName=OrgName;
+    public long getDateLong() {
+        return eventDate.getTime();
     }
 
-    public String getOrgName ()
-    {
-        return this.OrgName;
+    public int getID() {
+        return ID;
     }
-    public void setOrgID(int ID){this.OrgID=ID;}
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public void setDate(long eventDate) {
+        this.eventDate = new Date(eventDate);
+    }
+
+    public int getOrgID() {
+        return orgID;
+    }
+
+    public void setOrgID(int ID) {
+        this.orgID = ID;
+    }
+
+    public int getCatID() {
+        return catID;
+    }
+
+    public void setCatID(int ID) {
+        this.catID = ID;
+    }
+
+    public String getCatName() {
+        return catName;
+    }
+
+    public void setCatName(String catName) {
+        this.catName = catName;
+    }
+
+    public void setDate(Date date) {
+        this.eventDate = date;
+    }
+
+    public String getOrgName() {
+        return this.orgName;
+    }
+
+    public void setOrgName(String orgName) {
+        this.orgName = orgName;
+    }
 }

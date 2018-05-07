@@ -73,7 +73,7 @@ public class UserEventPage extends AppCompatActivity implements UserEventPageCon
         //TODO show event data
 
         mTitle.setText( mEvent.getTitle() );
-        mDescription.setText( mEvent.getDescrption() );
+        mDescription.setText( mEvent.getDescription() );
         mLocation.setText( mEvent.getLocation() );
         mDate.setText( mEvent.getDate().toString() );
         mRating.setText( mEvent.getRating() );
