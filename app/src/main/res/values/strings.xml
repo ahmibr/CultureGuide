@@ -79,5 +79,11 @@
     <string name="rate_event">Rate Event</string>
     <string name="invite_friend">Invite Friends</string>
     <string name="invite">Invite</string>
+    <string name="remove">Remove</string>
+    <string name="update">Update</string>
+
+    <!--SideBar-->
+    <string name="invited">invited you to attend</string>
+    <string name="no_invitations">No invitations</string>
 
 </resources>
