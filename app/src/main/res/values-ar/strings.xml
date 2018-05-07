@@ -57,5 +57,7 @@
     <string name="invitations">الدعوات</string>
     <string name="invited">دعاك الي حضور</string>
     <string name="no_invitations">لا يوجد دعوات</string>
+    <string name="add">اضف</string>
+    <string name="remove">احذف</string>
 
 </resources>

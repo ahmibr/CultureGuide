@@ -75,7 +75,7 @@ public class FriendsModel {
     }
 
     public void removeFriend(int index) {
-        String query = "DELETE FROM Favorite WHERE UID = %d AND FUID = %d";
+        String query = "DELETE FROM Friend WHERE UID = %d AND FUID = %d";
         try {
             query = String.format(Locale.ENGLISH, query, Authenticator.getID(), friendsList.get(index).getID());
         } catch (Exception e) {
