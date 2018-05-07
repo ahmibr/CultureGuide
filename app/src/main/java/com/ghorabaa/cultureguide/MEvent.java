@@ -45,8 +45,7 @@ public class MEvent {
              SetTitle(Title);
              setDescription(Description);
              setLocation(location);
-
-            setEventDate(Date);
+             SetEventDate(Long.parseLong( Date ));
             setCatID(Integer.parseInt(CategoryID));
             setCatName( CategoryName);
             setOrgName( OrgName);
@@ -78,7 +77,7 @@ public class MEvent {
     {
         return this.rating;
     }
-    public Long getDate()
+    public long getDate()
     {
 
          return EventDate;}
