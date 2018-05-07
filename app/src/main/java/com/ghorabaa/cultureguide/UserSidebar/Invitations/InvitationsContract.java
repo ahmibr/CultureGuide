@@ -19,5 +19,6 @@ public interface InvitationsContract {
 
     interface Presenter{
         void retrieveInvitations();
+        boolean isExpired(int index);
     }
 }

@@ -23,6 +23,7 @@ public class InvitationsActivity extends AppCompatActivity implements Invitation
 
     ArrayAdapter<String> mArrayAdapter;
     ListView mListView;
+    private ArrayList<Pair<String, MEvent>> invitations;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +40,13 @@ public class InvitationsActivity extends AppCompatActivity implements Invitation
     @Override
     public void onRetrieveInvitations(ArrayList<Pair<String, MEvent>> invitations) {
 
-        if (invitations.size() == 0){
-            Toast.makeText(this,"No Invitaions",Toast.LENGTH_LONG).show();
+        if (invitations.isEmpty()){
+            Toast.makeText(this,"No Invitations",Toast.LENGTH_LONG).show();
 
             return;
         }
 
+        this.invitations = invitations;
         String[] listItems = new String[invitations.size()];
 
         //testing
@@ -66,14 +68,14 @@ public class InvitationsActivity extends AppCompatActivity implements Invitation
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-        //TODO use i as index in array
-        Toast.makeText(getApplicationContext(), i + "", Toast.LENGTH_LONG).show();
         if(mPresenter.isExpired(i))
             Toast.makeText(this, "Invitation is expired, please refresh the page",Toast.LENGTH_LONG).show();
         else
         {
             Intent intent = new Intent(InvitationsActivity.this, UserEventPage.class);
-            intent.putExtra("eventID",0);
+            MEvent event = invitations.get(i).second;
+            int eventID = event.getID();
+            intent.putExtra("eventId",eventID);
             startActivity(intent);
         }
 

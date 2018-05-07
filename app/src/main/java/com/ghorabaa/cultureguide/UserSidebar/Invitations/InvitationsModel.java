@@ -84,4 +84,15 @@ public class InvitationsModel {
 
         db.executeQuery(query, onSuccess, onFail);
     }
+
+    public boolean isExpired(int index) {
+        try{
+            MEvent event = invitationsList.get(index).second;
+            return !MEvent.isValidDate(event.getDate());
+        }
+        catch (Exception e)
+        {
+            return true;
+        }
+    }
 }

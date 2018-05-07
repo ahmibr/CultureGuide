@@ -24,6 +24,11 @@ public class InvitationsPresenter implements InvitationsContract.Presenter {
         mModel.retrieveInvitations();
     }
 
+    @Override
+    public boolean isExpired(int index) {
+        return mModel.isExpired(index);
+    }
+
     void onRetrieveInvitations(ArrayList<Pair<String,MEvent> > invitations){
         mView.onRetrieveInvitations(invitations);
     }
