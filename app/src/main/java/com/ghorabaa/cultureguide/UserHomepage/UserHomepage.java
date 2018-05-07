@@ -44,7 +44,6 @@ public class UserHomepage extends AppCompatActivity implements UserHomepageContr
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_homepage);
-        startActivity(new Intent(this, InterestsActivity.class));
         mPresenter = new UserHomepagePresenter(this,getApplicationContext());
 
         mPresenter.retrieveEvents(EventRetrievalType.Upcoming);
