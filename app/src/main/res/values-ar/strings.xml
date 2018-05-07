@@ -59,5 +59,7 @@
     <string name="no_invitations">لا يوجد دعوات</string>
     <string name="add">اضف</string>
     <string name="remove">احذف</string>
+    <string name="Interests">اهتمامات</string>
+    <string name="search">ابحث</string>
 
 </resources>

@@ -120,9 +120,7 @@ public class UserHomepage extends AppCompatActivity implements UserHomepageContr
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-
-
-        //TODO use switch case better, Bassel
+        
         if (id == R.id.nav_edit_profile) {
             startActivity(new Intent(UserHomepage.this, EditUserActivity.class));
         }
@@ -132,10 +130,15 @@ public class UserHomepage extends AppCompatActivity implements UserHomepageContr
         else if (id == R.id.nav_sign_out){
             startActivity(new Intent(UserHomepage.this, MainActivity.class));
             finish();
-        }else if (id == R.id.nav_invitations){
+        }
+        else if (id == R.id.nav_invitations){
             startActivity(new Intent(UserHomepage.this, InvitationsActivity.class));
-        }else if (id == R.id.nav_favorites){
+        }
+        else if (id == R.id.nav_favorites){
             startActivity(new Intent(UserHomepage.this, FavoritesActivity.class));
+        }
+        else if (id == R.id.nav_interests){
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.user_layout);
