@@ -84,7 +84,8 @@
         <activity android:name=".UserEventPage.InviteFriend.InviteFriends" />
         <activity android:name=".UserSidebar.Friends.FriendsActivity" />
         <activity android:name=".UserSidebar.Favorites.FavoritesActivity" />
-        <activity android:name=".UserSidebar.Invitations.InvitationsActivity"></activity>
+        <activity android:name=".UserSidebar.Invitations.InvitationsActivity" />
+        <activity android:name=".UserSidebar.Interests.InterestsActivity"></activity>
     </application>
 
 </manifest>

@@ -21,6 +21,7 @@ import com.ghorabaa.cultureguide.R;
 import com.ghorabaa.cultureguide.SignIn.MainActivity;
 import com.ghorabaa.cultureguide.UserSidebar.Favorites.FavoritesActivity;
 import com.ghorabaa.cultureguide.UserSidebar.Friends.FriendsActivity;
+import com.ghorabaa.cultureguide.UserSidebar.Interests.InterestsActivity;
 import com.ghorabaa.cultureguide.UserSidebar.Invitations.InvitationsActivity;
 import com.ghorabaa.cultureguide.Utilities.SectionsPagesAdapter;
 
@@ -43,7 +44,7 @@ public class UserHomepage extends AppCompatActivity implements UserHomepageContr
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_homepage);
-
+        startActivity(new Intent(this, InterestsActivity.class));
         mPresenter = new UserHomepagePresenter(this,getApplicationContext());
 
         mPresenter.retrieveEvents(EventRetrievalType.Upcoming);
