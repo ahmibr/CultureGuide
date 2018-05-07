@@ -6,4 +6,7 @@
 
     <color name="backGround">#f4cf7f</color>
     <color name="backGroundDark">#b69a5e</color>
+
+    <color name="toggleTrue">#96beff</color>
+    <color name="toggleFalse">#428aff</color>
 </resources>
