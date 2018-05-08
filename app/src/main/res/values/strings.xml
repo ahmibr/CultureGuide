@@ -8,7 +8,7 @@
     <string name="emailHint">example@Example.com</string>
     <string name="password">Password</string>
     <string name="createAccount">Don\'t have an account? Create One</string>
-    <string name="title_activity_addevent">Addevent</string>
+    <string name="title_activity_addevent">Create Event</string>
     <string name="title_activity_event_main_activty">EventMainActivty</string>
     <string name="title_activity_create_event_activty">CreateEventActivty</string>
     <string name="title_activity_remove_event">RemoveEvent</string>
@@ -83,6 +83,7 @@
     <string name="update">Update</string>
     <string name="created_by">Created by</string>
     <string name="add_favorite">Add to favorites</string>
+    <string name="event_title">Event Title</string>
 
     <!--SideBar-->
     <string name="invited">invited you to attend</string>
