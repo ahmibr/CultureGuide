@@ -20,6 +20,8 @@ public class UserEventPage extends AppCompatActivity implements UserEventPageCon
 
     private boolean mIsPastEvent;
 
+    private boolean hasAttended;
+
     NumberPicker mRatePicker;
 
     TextView mOrganization;
@@ -71,13 +73,15 @@ public class UserEventPage extends AppCompatActivity implements UserEventPageCon
         });
 
         mAttend = (Button) findViewById(R.id.event_page_attend);
+        mAttend.setVisibility(View.GONE);
 
         mAddFavorites = (Button) findViewById(R.id.event_page_add_favorites);
+        mAddFavorites.setVisibility(View.GONE);
 
         if(mIsPastEvent){
-            mAttend.setVisibility(View.GONE);
-
             mPresenter.updateRate();
+
+            mInviteFriend.setVisibility(View.GONE);
         }
         else
         {
@@ -85,6 +89,8 @@ public class UserEventPage extends AppCompatActivity implements UserEventPageCon
             mRatingTitle.setVisibility(View.GONE);
 
             mRatingBlock.setVisibility(View.GONE);
+
+            mPresenter.checkAttendState();
         }
 
 
@@ -112,18 +118,18 @@ public class UserEventPage extends AppCompatActivity implements UserEventPageCon
                 mPresenter.rate(i);
             }
         });
-
     }
 
     @Override
     public void onRetrieveSuccess(MEvent mEvent) {
-        //TODO show event data
 
         mTitle.setText( mEvent.getTitle() );
         mDescription.setText( mEvent.getDescription() );
         mLocation.setText( mEvent.getLocation() );
         mDate.setText( mEvent.getDate().toString() );
         mOrganization.setText( mEvent.getOrgName() );
+
+        mPresenter.checkOrgState();
     }
 
     @Override
@@ -133,8 +139,7 @@ public class UserEventPage extends AppCompatActivity implements UserEventPageCon
 
     @Override
     public void onAttendSuccess() {
-        //lock the button
-        mAttend.setActivated(false);
+        mAttend.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_clear_black_24dp,0);
     }
 
     @Override
@@ -145,7 +150,7 @@ public class UserEventPage extends AppCompatActivity implements UserEventPageCon
 
     @Override
     public void onRateSuccess() {
-        Toast.makeText(this, "Rated successfully", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Rated successfully", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -162,7 +167,7 @@ public class UserEventPage extends AppCompatActivity implements UserEventPageCon
 
     @Override
     public void onAddOrgSuccess() {
-        //mAddFavorites.setEnabled(false);
+        mAddFavorites.setEnabled(false);
     }
 
     @Override
@@ -173,12 +178,12 @@ public class UserEventPage extends AppCompatActivity implements UserEventPageCon
 
     @Override
     public void showAddOrgButton() {
-
+        mAddFavorites.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void showAttendButton() {
-
+        mAttend.setVisibility(View.VISIBLE);
     }
 
 }

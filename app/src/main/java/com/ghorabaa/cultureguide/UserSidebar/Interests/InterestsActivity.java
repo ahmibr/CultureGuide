@@ -59,7 +59,7 @@ public class InterestsActivity extends AppCompatActivity implements InterestsCon
 
     @Override
     public void onAddSuccess() {
-        Toast.makeText(this,"Interest added successfully",Toast.LENGTH_LONG).show();
+        Toast.makeText(this,"Interest added successfully",Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -69,7 +69,7 @@ public class InterestsActivity extends AppCompatActivity implements InterestsCon
 
     @Override
     public void onRemoveSuccess() {
-        Toast.makeText(this,"Interest removed successfully",Toast.LENGTH_LONG).show();
+        Toast.makeText(this,"Interest removed successfully",Toast.LENGTH_SHORT).show();
     }
 
     @Override
