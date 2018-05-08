@@ -27,6 +27,7 @@ public interface UserEventPageContract {
     interface Presenter{
         void retrieveEvent();
         void rate(int rate);
+        void attendEvent();
         void updateRate();
         void addOrgToFavorite();
         void checkOrgState();

@@ -1,4 +1,4 @@
-package com.ghorabaa.cultureguide.OrganizationEventPage;
+package com.ghorabaa.cultureguide.OrganizationEvent;
 
 import android.os.Bundle;
 
@@ -12,7 +12,7 @@ import com.ghorabaa.cultureguide.R;
 import java.util.ArrayList;
 
 
-public class EventMainActivity extends AppCompatActivity implements EventContract.EventView {
+public class OrganizationHomepage extends AppCompatActivity implements EventContract.EventView {
     private static final String TAG = "EventActivity";
 
      protected EventPresenter mpresenter;

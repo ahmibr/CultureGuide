@@ -28,6 +28,10 @@ public class UserEventPagePresenter implements UserEventPageContract.Presenter {
         mModel.rateEvent(rate);
     }
 
+    @Override
+    public void attendEvent() {
+        mModel.attendEvent();
+    }
 
 
     @Override
