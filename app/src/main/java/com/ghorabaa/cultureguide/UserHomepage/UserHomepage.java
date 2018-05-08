@@ -138,7 +138,7 @@ public class UserHomepage extends AppCompatActivity implements UserHomepageContr
             startActivity(new Intent(UserHomepage.this, FavoritesActivity.class));
         }
         else if (id == R.id.nav_interests){
-
+            startActivity(new Intent(UserHomepage.this,InterestsActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.user_layout);
