@@ -23,8 +23,7 @@
         <activity android:name=".SignUp.SignUpActivity" />
         <activity
             android:name=".OrganizationEvent.CreateEvent.CreateEventActivity"
-            android:label="@string/title_activity_addevent"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/title_activity_addevent" />
         <activity
             android:name=".OrganizationEvent.UpdateEventActivity"
             android:label="@string/title_activity_update_event_activty"

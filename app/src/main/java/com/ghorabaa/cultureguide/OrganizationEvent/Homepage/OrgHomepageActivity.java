@@ -136,8 +136,7 @@ public  class OrgHomepageActivity extends AppCompatActivity
     }
 
     public void refreshPosts(View view){
-        //eventOrgPresenter mpresenter = new eventOrgPresenter(this, getApplicationContext());
-        //mpresenter.retrieveEvents();
+        mPresenter.retrieveEvents();
     }
 
     /**

@@ -65,5 +65,7 @@
     <string name="not_interested">غير مهتم</string>
     <string name="created_by">نظم من قبل</string>
     <string name="add_favorite">اضف للتفضيلات</string>
+    <string name="title_activity_addevent">انشأ ايفينت</string>
+    <string name="event_title">عنوان الايفنت</string>
 
 </resources>
