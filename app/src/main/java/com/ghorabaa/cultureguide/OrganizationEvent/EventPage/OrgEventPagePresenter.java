@@ -5,7 +5,7 @@ import android.content.Context;
 import com.ghorabaa.cultureguide.MEvent;
 
 /**
- * Created by Ahmed Ibrahim on 5/8/18.
+ * Created by Roba Gamal on 4/5/18.
  */
 
 public class OrgEventPagePresenter implements OrgEventPageContract.Presenter{

@@ -14,7 +14,8 @@ import org.json.JSONObject;
 import java.util.Locale;
 
 /**
- * Created by Ahmed Ibrahim on 5/8/18.
+ * Created by Roba Gamal on 4/5/18.
+ *
  */
 
 public class OrgEventPageModel {

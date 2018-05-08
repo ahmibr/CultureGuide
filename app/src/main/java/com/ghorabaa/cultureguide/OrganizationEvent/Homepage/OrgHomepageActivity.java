@@ -1,4 +1,4 @@
-package com.ghorabaa.cultureguide;
+package com.ghorabaa.cultureguide.OrganizationEvent.Homepage;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,17 +17,16 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.ghorabaa.cultureguide.EditProfile.EditOrgActivity;
+import com.ghorabaa.cultureguide.MEvent;
 import com.ghorabaa.cultureguide.OrganizationEvent.CreateEvent.CreateEventActivity;
-import com.ghorabaa.cultureguide.OrganizationEvent.Homepage.OrgHomepageContract;
-import com.ghorabaa.cultureguide.OrganizationEvent.Homepage.OrgHomepagePresenter;
+import com.ghorabaa.cultureguide.R;
 import com.ghorabaa.cultureguide.SignIn.MainActivity;
-import com.ghorabaa.cultureguide.Utilities.Authenticator;
 import com.ghorabaa.cultureguide.Utilities.HomePagePosts;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public  class HomePage extends AppCompatActivity
+public  class OrgHomepageActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener  , HomePagePosts.ListItemClickListener ,OrgHomepageContract.View{
 
 
@@ -107,11 +106,11 @@ public  class HomePage extends AppCompatActivity
         Log.d("Bassel","choosed " + id);
 
         if (id == R.id.nav_edit_profile) {
-            startActivity(new Intent(HomePage.this, EditOrgActivity.class));
+            startActivity(new Intent(OrgHomepageActivity.this, EditOrgActivity.class));
         }
         else if (id == R.id.nav_sign_out){
             //Todo Attach signout in presenter
-            startActivity(new Intent(HomePage.this, MainActivity.class));
+            startActivity(new Intent(OrgHomepageActivity.this, MainActivity.class));
             finish();
         }else if (id == R.id.nav_create_event){
             createEvent(null);
@@ -123,7 +122,7 @@ public  class HomePage extends AppCompatActivity
     }
 
     void createEvent(View view){
-        startActivity(new Intent(HomePage.this, CreateEventActivity.class));
+        startActivity(new Intent(OrgHomepageActivity.this, CreateEventActivity.class));
     }
 
     /**

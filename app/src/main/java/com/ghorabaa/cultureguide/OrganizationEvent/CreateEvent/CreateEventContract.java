@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * Created by Ahmed Ibrahim on 5/8/18.
+ * Created by Roba Gamal on 3/26/18.
+ *
  */
 
 public interface CreateEventContract {
