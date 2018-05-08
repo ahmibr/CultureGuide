@@ -11,6 +11,7 @@ public interface AdminViewAdminContract {
 
         void onRetrieve(ArrayList<String> admins);
         void onFail(String errorMessage);
+        void onSuccess();
     }
 
     interface Presenter{

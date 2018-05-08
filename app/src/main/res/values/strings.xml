@@ -92,5 +92,9 @@
     <string name="Interests">Interests</string>
     <string name="interested">INTERESTED</string>
     <string name="not_interested">NOT INTERESTED</string>
+    <string name="admin_email">E-mail</string>
+    <string name="admin_password">Password</string>
+    <string name="admin_password_confirm">Confirm Password</string>
+    <string name="add_admin">Add New Admin</string>
 
 </resources>
