@@ -67,11 +67,42 @@
                             android:text="@string/attend"
                             android:drawableRight="@drawable/ic_event_black_24dp"
                             android:textSize="15sp"
-                            android:layout_gravity="center"/>
+                            android:layout_gravity="center"
+                            android:id="@+id/event_page_attend"/>
 
                     </LinearLayout>
 
                 </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:text="@string/created_by"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:text=""
+                    android:id="@+id/event_page_organiztion"
+                    android:layout_gravity="center"
+                    />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_favorite"
+                    android:layout_gravity="center"
+                    android:id="@+id/event_page_add_favorites"/>
 
             </LinearLayout>
 
@@ -130,6 +161,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="30sp"
                 android:text="@string/rating"
+                android:id="@+id/event_page_rating_title"
                 />
 
             <TextView
@@ -148,7 +180,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:id="@+id/event_page_rating_view">
 
                 <TextView
                     android:layout_width="wrap_content"
