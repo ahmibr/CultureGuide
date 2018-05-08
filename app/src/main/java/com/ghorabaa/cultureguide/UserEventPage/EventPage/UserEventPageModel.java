@@ -95,7 +95,7 @@ public class UserEventPageModel {
     }
 
     void attendEvent(){
-        String query = "INSERT INTO ATTEND(UID,EID) VALUES(?,?)";
+        String query = "INSERT INTO ATTEND(UID,EID) VALUES(%d,%d)";
         query = String.format(Locale.ENGLISH,query,Authenticator.getID(),eventID);
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {

@@ -35,7 +35,9 @@ public class MEvent {
         String categoryName = Event.getString("CatName");
         int orgID = Event.getInt("OrgID");
         String orgName = Event.getString("Name");
+        int eventID = Event.getInt("EID");
 
+        setID(eventID);
         setTitle(title);
         setDescription(description);
         setLocation(location);
