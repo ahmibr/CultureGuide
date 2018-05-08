@@ -72,7 +72,7 @@ public class UserEventPageModel {
 
     void rateEvent(int rate){
         String query = "INSERT INTO Rate(UID, EID, Rate) VALUES(%d, %d, %d) ON DUPLICATE KEY UPDATE Rate = %d";
-        query = String.format(Locale.ENGLISH,query, Authenticator.getID(),mEvent.getID(),rate);
+        query = String.format(Locale.ENGLISH,query, Authenticator.getID(),mEvent.getID(),rate,rate);
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
@@ -96,7 +96,7 @@ public class UserEventPageModel {
 
     void attendEvent(){
         String query = "INSERT INTO ATTEND(UID,EID) VALUES(?,?)";
-        query = String.format(Locale.ENGLISH,query,Authenticator.getID(),mEvent.getID());
+        query = String.format(Locale.ENGLISH,query,Authenticator.getID(),eventID);
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
