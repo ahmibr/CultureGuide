@@ -1,5 +1,6 @@
 package com.ghorabaa.cultureguide.OrganizationEvent.CreateEvent;
 
+import android.os.Build;
 import android.os.Bundle;
 
 import android.support.v7.app.AppCompatActivity;
@@ -80,9 +81,14 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
 
         Calendar calender = Calendar.getInstance();
 
-        calender.set(Calendar.HOUR, mEventTime.getHour() - 12);
-        calender.set(Calendar.MINUTE, mEventTime.getMinute());
-
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            calender.set(Calendar.HOUR, mEventTime.getHour() - 12);
+            calender.set(Calendar.MINUTE, mEventTime.getMinute());
+        }
+        else {
+            calender.set(Calendar.HOUR, mEventTime.getCurrentHour() - 12);
+            calender.set(Calendar.MINUTE, mEventTime.getCurrentMinute());
+        }
         calender.set(Calendar.DAY_OF_MONTH, mEventDate.getDayOfMonth());
         calender.set(Calendar.MONTH, mEventDate.getMonth());
         calender.set(Calendar.YEAR, mEventDate.getYear());

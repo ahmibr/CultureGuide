@@ -1,5 +1,6 @@
 package com.ghorabaa.cultureguide.OrganizationEvent.EventPage;
 
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -85,8 +86,8 @@ public class OrgEventPageActivity extends AppCompatActivity implements OrgEventP
 
         Calendar calender = Calendar.getInstance();
 
-        calender.set(Calendar.HOUR, mEventTime.getHour() - 12);
-        calender.set(Calendar.MINUTE, mEventTime.getMinute());
+        calender.set(Calendar.HOUR, mEventTime.getCurrentHour() - 12);
+        calender.set(Calendar.MINUTE, mEventTime.getCurrentMinute());
 
         calender.set(Calendar.DAY_OF_MONTH, mEventDate.getDayOfMonth());
         calender.set(Calendar.MONTH, mEventDate.getMonth());
@@ -113,9 +114,14 @@ public class OrgEventPageActivity extends AppCompatActivity implements OrgEventP
         Calendar calender = Calendar.getInstance();
         calender.setTime(mEvent.getDate());
 
-        mEventTime.setHour(calender.get(Calendar.HOUR));
-        mEventTime.setMinute(calender.get(Calendar.MINUTE));
-
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            mEventTime.setHour(calender.get(Calendar.HOUR));
+            mEventTime.setMinute(calender.get(Calendar.MINUTE));
+        }
+        else {
+            mEventTime.setCurrentHour(calender.get(Calendar.HOUR));
+            mEventTime.setCurrentMinute(calender.get(Calendar.MINUTE));
+        }
         mEventDate.updateDate(calender.get(Calendar.YEAR),calender.get(Calendar.MONTH),calender.get(Calendar.DAY_OF_MONTH));
     }
 
