@@ -63,5 +63,7 @@
     <string name="search">ابحث</string>
     <string name="interested">مهتم</string>
     <string name="not_interested">غير مهتم</string>
+    <string name="created_by">نظم من قبل</string>
+    <string name="add_favorite">اضف للتفضيلات</string>
 
 </resources>

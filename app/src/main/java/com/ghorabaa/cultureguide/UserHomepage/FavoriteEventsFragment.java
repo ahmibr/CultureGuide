@@ -70,7 +70,7 @@ public class FavoriteEventsFragment extends Fragment
     }
 
     public void showCards(List<MEvent> cardsInfo){
-        mAdapter = new HomePagePosts(cardsInfo,this);
+        mAdapter = new HomePagePosts(cardsInfo,this , false);
         mPosts.setAdapter(mAdapter);
     }
 

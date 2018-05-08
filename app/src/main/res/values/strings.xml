@@ -81,6 +81,8 @@
     <string name="invite">Invite</string>
     <string name="remove">Remove</string>
     <string name="update">Update</string>
+    <string name="created_by">Created by</string>
+    <string name="add_favorite">Add to favorites</string>
 
     <!--SideBar-->
     <string name="invited">invited you to attend</string>
