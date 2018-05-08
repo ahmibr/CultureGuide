@@ -9,4 +9,6 @@
 
     <color name="toggleTrue">#96beff</color>
     <color name="toggleFalse">#428aff</color>
+    <color name="white">#FFFFFF</color>
+    <color name="item">#303F9F</color>
 </resources>

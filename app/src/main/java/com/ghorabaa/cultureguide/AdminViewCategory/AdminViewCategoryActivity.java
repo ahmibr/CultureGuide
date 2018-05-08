@@ -5,10 +5,10 @@ import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.ghorabaa.cultureguide.R;
 
 import java.util.ArrayList;
@@ -17,10 +17,17 @@ public class AdminViewCategoryActivity extends AppCompatActivity implements Admi
 
     private AdminViewCategoryContract.Presenter mPresenter;
 
+    private LinearLayout mainLinLay;
+    private LinearLayout linLay;
+
+    private int previousViewsCnt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_view_category);
+
+        previousViewsCnt = 0;
 
         mPresenter = new AdminViewCategoryPresenter(this, getApplicationContext());
         mPresenter.retrieveCategories();
@@ -28,9 +35,14 @@ public class AdminViewCategoryActivity extends AppCompatActivity implements Admi
 
     public void onRetrieve(ArrayList<Pair<Integer, String> > categoriesList){
 
+        mainLinLay = findViewById(R.id.view_category);
+
         for (int i=0; i<categoriesList.size(); i++)
         {
-            Toast.makeText(getApplicationContext(),categoriesList.get(i).second,Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(),categoriesList.get(i).second,Toast.LENGTH_LONG).show();
+            linLay = (LinearLayout) View.inflate(this, R.layout.content_admin_view, null);
+            ((TextView) linLay.findViewById(R.id.entity)).setText("ID: " + categoriesList.get(i).first + System.lineSeparator() + "Name: " + categoriesList.get(i).second);
+            mainLinLay.addView(linLay);
         }
     }
 
