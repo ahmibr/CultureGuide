@@ -50,7 +50,7 @@ implements HomePagePosts.ListItemClickListener
         mPosts.setLayoutManager(layoutManager);
 
 
-        mAdapter = new HomePagePosts(0,this);
+        mAdapter = new HomePagePosts(0,this );
         mPosts.setAdapter(mAdapter);
 
         mRefreshButtons = (Button) view.findViewById(R.id.past_events_refresh);
@@ -71,7 +71,7 @@ implements HomePagePosts.ListItemClickListener
     }
 
     public void showCards(List<MEvent> cardsInfo){
-        mAdapter = new HomePagePosts(cardsInfo,this);
+        mAdapter = new HomePagePosts(cardsInfo,this , true);
         mPosts.setAdapter(mAdapter);
     }
 

@@ -29,7 +29,7 @@ public class Friend {
         this.name = name;
     }
 
-    public int getId() {
+    public int getID() {
         return id;
     }
 

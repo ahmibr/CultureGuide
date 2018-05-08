@@ -44,10 +44,10 @@ public class UserHomepageModel {
                     for(int i=0;i<result.length();++i){
                         MEvent added = new MEvent();
                         JSONObject event = result.getJSONObject(i);
-                        added.SetID(event.getInt("EID"));
+                        added.setID(event.getInt("EID"));
                         added.setDescription(event.getString("Description"));
-                        added.SetOrgID(event.getInt("OID"));
-                        added.SetTitle(event.getString("Title"));
+                        added.setOrgID(event.getInt("OID"));
+                        added.setTitle(event.getString("Title"));
                         currentEvents.add(added);
                     }
                     mPresenter.onRetrievingEvents(currentEvents);
@@ -67,7 +67,7 @@ public class UserHomepageModel {
 
     }
     public void getUpcomingEvents(){
-        String query = "SELECT * FROM Event WHERE (Date > %d) AND (CategoryID IN (SELECT CID FROM Subscription WHERE UID = %d) )";
+        String query = "SELECT * FROM Event WHERE (Date > %d) AND (CategoryID IN (SELECT CID FROM Subscription WHERE UID = %d) ) ORDER BY Date";
         final Time currentTime = new Time();
         currentTime.setToNow();
         long lCurrentTime = currentTime.toMillis(false);
@@ -78,7 +78,7 @@ public class UserHomepageModel {
     }
 
     public void getPastEvent(){
-        String query = "SELECT * FROM Event WHERE (Date < %d) AND (EID IN (SELECT DISTINCT EID FROM Attend WHERE UID = %d) )";
+        String query = "SELECT * FROM Event WHERE (Date < %d) AND (EID IN (SELECT EID FROM Attend WHERE UID = %d) ) ORDER BY Date";
 
         final Time currentTime = new Time();
         currentTime.setToNow();
@@ -90,7 +90,7 @@ public class UserHomepageModel {
     }
 
     public void getFavouriteEvent(){
-        String query = "SELECT * FROM Event WHERE (Date > %d) AND OID IN (SELECT OID FROM Favorite WHERE UID = %d)";
+        String query = "SELECT * FROM Event WHERE (Date > %d) AND OID IN (SELECT OID FROM Favorite WHERE UID = %d) ORDER BY Date";
 
         final Time currentTime = new Time();
         currentTime.setToNow();

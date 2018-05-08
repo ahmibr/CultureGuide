@@ -13,7 +13,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ghorabaa.cultureguide.HomePage;
+import com.ghorabaa.cultureguide.OrganizationEvent.Homepage.OrgHomepageActivity;
 import com.ghorabaa.cultureguide.R;
 import com.ghorabaa.cultureguide.SignIn.MainActivity;
 import com.ghorabaa.cultureguide.UserHomepage.UserHomepage;
@@ -88,7 +88,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
 
-        startActivity(new Intent(SignUpActivity.this, HomePage.class));
+        startActivity(new Intent(SignUpActivity.this, OrgHomepageActivity.class));
         finish();
     }
 
@@ -119,18 +119,18 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
         String confirmPassword = ((EditText)findViewById(R.id.organization_password_confirm)).getText().toString();
 
         if(name.isEmpty()||email.isEmpty()||password.isEmpty()||confirmPassword.isEmpty()) {
-            String errorMessage = "Please fill blank fields";
+            String errorMessage = getResources().getString(R.string.blank_field);
             Toast.makeText(view.getContext(), errorMessage, Toast.LENGTH_LONG).show();
             return;
         }
 
         if(!password.equals(confirmPassword)){
-            String errorMessage = "Passwords doesn't match";
+            String errorMessage = getResources().getString(R.string.password_not_matching);
             Toast.makeText(view.getContext(), errorMessage, Toast.LENGTH_LONG).show();
             return;
         }
 
-        showProgressBar("Signing up","Please wait while signing up...");
+        showProgressBar(getResources().getString(R.string.signing_up),getResources().getString(R.string.wait));
         mPresenter.signUp(name,email,password,mUserType);
     }
 
@@ -149,7 +149,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
 
     @Override
     public void routeOrganization() {
-        startActivity(new Intent(this, HomePage.class));
+        startActivity(new Intent(this, OrgHomepageActivity.class));
         finish();
     }
 }

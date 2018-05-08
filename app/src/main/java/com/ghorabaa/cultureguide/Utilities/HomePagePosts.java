@@ -7,14 +7,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.ghorabaa.cultureguide.MEvent;
+import com.ghorabaa.cultureguide.OrganizationEvent.EventPage.OrgEventPageActivity;
 import com.ghorabaa.cultureguide.R;
-import com.ghorabaa.cultureguide.UserEventPage.UserEventPage;
+import com.ghorabaa.cultureguide.UserEventPage.EventPage.UserEventPage;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import static android.content.ContentValues.TAG;
@@ -49,6 +50,9 @@ public class HomePagePosts extends RecyclerView.Adapter<HomePagePosts.EventPost>
 
     List<MEvent> organizationsEventsInfo;
 
+    boolean mIsPastEvent;
+
+    boolean mIsOrgView = false;
 
     /**
      * Constructor for HomeAdapter that accepts a number of items to display and the specification
@@ -70,8 +74,29 @@ public class HomePagePosts extends RecyclerView.Adapter<HomePagePosts.EventPost>
         mOnClickListener = listener;
         viewHolderCount = 0;
 
-        //TODO delete this chunk of test code after testing and merging with back
         organizationsEventsInfo = cardsInfo;
+    }
+
+    public HomePagePosts(List<MEvent> cardsInfo , ListItemClickListener listener, boolean pastEvent) {
+        mNumberItems = cardsInfo.size();
+        mOnClickListener = listener;
+        viewHolderCount = 0;
+
+        mIsPastEvent = pastEvent;
+
+        organizationsEventsInfo = cardsInfo;
+    }
+
+    public HomePagePosts(List<MEvent> cardsInfo , ListItemClickListener listener, boolean pastEvent, boolean isOrganization) {
+        mNumberItems = cardsInfo.size();
+        mOnClickListener = listener;
+        viewHolderCount = 0;
+
+        mIsPastEvent = pastEvent;
+
+        organizationsEventsInfo = cardsInfo;
+
+        mIsOrgView = isOrganization;
     }
 
     @Override
@@ -134,9 +159,19 @@ public class HomePagePosts extends RecyclerView.Adapter<HomePagePosts.EventPost>
             mPostAppearance.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view) {
+
+                    if(mIsOrgView){
+                        Intent intent = new Intent(view.getContext() , OrgEventPageActivity.class);
+                        Log.d("Bassel" , id + " of event");
+                        intent.putExtra("eventId", id);
+                        view.getContext().startActivity(intent);
+                        return;
+                    }
+
                     Intent intent = new Intent(view.getContext() , UserEventPage.class);
-                    Log.d("Bassel" , id + "");
+                    Log.d("Bassel" , id + " of event");
                     intent.putExtra("eventId", id);
+                    intent.putExtra("isPast", mIsPastEvent);
                     view.getContext().startActivity(intent);
                 }
             } );
@@ -148,7 +183,7 @@ public class HomePagePosts extends RecyclerView.Adapter<HomePagePosts.EventPost>
          * @param eventName
          */
         public void setPostValues(String orgnizationName, String eventName, String eventTime){
-            mPostTitle.setText(orgnizationName + " " + initialContent + " " + eventName);
+            mPostTitle.setText(/*orgnizationName + " " + initialContent + " " +*/eventName);
             mPostTime.setText(eventTime);
         }
 
@@ -157,10 +192,11 @@ public class HomePagePosts extends RecyclerView.Adapter<HomePagePosts.EventPost>
 
             id = organizationsEventsInfo.get(position).getID();
 
-            String date = "";
-            if(organizationsEventsInfo.get(position).getDate() != null){
-                date = organizationsEventsInfo.get(position).getDate().toString();
-            }
+            String date = "";//new SimpleDateFormat("MM/dd/yyyy").format( organizationsEventsInfo.get(position).getDate() );
+            /*Long dateLong = (Long)organizationsEventsInfo.get(position).getDate();
+            if(dateLong != null){
+                date = dateLong.toString();
+            }*/
 
             setPostValues( Authenticator.getName()
                     , organizationsEventsInfo.get(position).getTitle()

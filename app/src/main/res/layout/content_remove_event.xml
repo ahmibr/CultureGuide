@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.ghorabaa.cultureguide.OrganizationEventPage.RemoveEventActivty"
+    tools:context="com.ghorabaa.cultureguide.OrganizationEvent.RemoveEventActivty"
     tools:showIn="@layout/activity_remove_event">
 
 </android.support.constraint.ConstraintLayout>

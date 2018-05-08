@@ -22,23 +22,15 @@
         </activity>
         <activity android:name=".SignUp.SignUpActivity" />
         <activity
-            android:name=".OrganizationEventPage.CreateEventActivity"
+            android:name=".OrganizationEvent.CreateEvent.CreateEventActivity"
             android:label="@string/title_activity_addevent"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".OrganizationEventPage.EventMainActivity"
-            android:label="@string/title_activity_event_main_activty"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".OrganizationEventPage.RemoveEventActivity">
-            android:label="@string/title_activity_remove_event"
-            android:theme="@style/AppTheme.NoActionBar"
-        </activity>
-        <activity
-            android:name=".OrganizationEventPage.UpdateEventActivity"
+            android:name=".OrganizationEvent.UpdateEventActivity"
             android:label="@string/title_activity_update_event_activty"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".HomePage"
+            android:name=".OrganizationEvent.Homepage.OrgHomepageActivity"
             android:label="@string/title_activity_home_page"
             android:theme="@style/AppTheme.NoActionBar">
 
@@ -52,8 +44,7 @@
         </activity>
         <activity
             android:name=".EditProfile.EditOrgActivity"
-            android:label="@string/title_activity_edit_profile_organization"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:label="@string/title_activity_edit_profile_organization">
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
@@ -72,15 +63,22 @@
             <!-- </intent-filter> -->
         </activity>
         <activity android:name=".UserHomepage.Main3Activity" />
-        <activity android:name=".UserHomepage.UserHomepage" />
-        <activity android:name=".UserEventPage.UserEventPage" />
+        <activity
+            android:name=".UserHomepage.UserHomepage"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".UserEventPage.EventPage.UserEventPage" />
         <activity android:name=".AdminHomepage.AdminHomepageActivity" />
         <activity android:name=".AdminViewCategory.AdminViewCategoryActivity" />
         <activity android:name=".AdminViewUser.AdminViewUserActivity" />
         <activity android:name=".AdminViewAdmins.AdminViewAdminActivity" />
         <activity android:name=".AdminViewOrganization.AdminViewOrganizationActivity" />
-        <activity android:name=".AdminViewEvent.AdminViewEventActivity"></activity>
-        <activity android:name=".UserEventPage.InviteFriends"/>
+        <activity android:name=".AdminViewEvent.AdminViewEventActivity" />
+        <activity android:name=".UserEventPage.InviteFriend.InviteFriends" />
+        <activity android:name=".UserSidebar.Friends.FriendsActivity" />
+        <activity android:name=".UserSidebar.Favorites.FavoritesActivity" />
+        <activity android:name=".UserSidebar.Invitations.InvitationsActivity" />
+        <activity android:name=".UserSidebar.Interests.InterestsActivity" />
+        <activity android:name=".OrganizationEvent.EventPage.OrgEventPageActivity"></activity>
     </application>
 
 </manifest>

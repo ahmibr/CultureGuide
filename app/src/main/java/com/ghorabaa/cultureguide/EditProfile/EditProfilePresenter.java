@@ -6,7 +6,7 @@ package com.ghorabaa.cultureguide.EditProfile;
 
 abstract class EditProfilePresenter implements EditProfileContract.EditProfilePresenter {
 
-    protected EditProfileModel mModel;
+    protected EditProfileBaseModel mModel;
 
     private EditProfileContract.EditProfileView mView;
 

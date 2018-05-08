@@ -94,9 +94,9 @@ public class SignInModel {
                     String name = result.getJSONObject(0).getString("Name");
                     int id = result.getJSONObject(0).getInt("ID");
                     String email = result.getJSONObject(0).getString("Email");
-
-                    mPresenter.onSignInSuccess(UserType.Regular);
                     cacheUserData(id,name,email);
+                    mPresenter.onSignInSuccess(UserType.Regular);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -121,9 +121,9 @@ public class SignInModel {
                     String name = result.getJSONObject(0).getString("Name");
                     int id = result.getJSONObject(0).getInt("ID");
                     String email = result.getJSONObject(0).getString("Email");
-
-                    mPresenter.onSignInSuccess(UserType.Organization);
                     cacheUserData(id,name,email);
+                    mPresenter.onSignInSuccess(UserType.Organization);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.ghorabaa.cultureguide.OrganizationEventPage.CreateEventActivty"
+    tools:context="com.ghorabaa.cultureguide.OrganizationEvent.CreateEventActivty"
     tools:showIn="@layout/activity_create_event_activty">
 
 </android.support.constraint.ConstraintLayout>
