@@ -6,4 +6,11 @@
     android:layout_height="match_parent"
     tools:context="com.ghorabaa.cultureguide.UserSidebar.Interests.InterestsActivity">
 
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/interests_list">
+
+    </ListView>
+
 </android.support.constraint.ConstraintLayout>

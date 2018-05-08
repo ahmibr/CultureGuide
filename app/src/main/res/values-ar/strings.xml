@@ -61,5 +61,7 @@
     <string name="remove">احذف</string>
     <string name="Interests">اهتمامات</string>
     <string name="search">ابحث</string>
+    <string name="interested">مهتم</string>
+    <string name="not_interested">غير مهتم</string>
 
 </resources>
