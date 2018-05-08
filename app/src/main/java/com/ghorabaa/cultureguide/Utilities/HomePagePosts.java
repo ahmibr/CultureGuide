@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.ghorabaa.cultureguide.MEvent;
+import com.ghorabaa.cultureguide.OrganizationEvent.EventPage.OrgEventPageActivity;
 import com.ghorabaa.cultureguide.R;
 import com.ghorabaa.cultureguide.UserEventPage.EventPage.UserEventPage;
 
@@ -86,6 +87,18 @@ public class HomePagePosts extends RecyclerView.Adapter<HomePagePosts.EventPost>
         organizationsEventsInfo = cardsInfo;
     }
 
+    public HomePagePosts(List<MEvent> cardsInfo , ListItemClickListener listener, boolean pastEvent, boolean isOrganization) {
+        mNumberItems = cardsInfo.size();
+        mOnClickListener = listener;
+        viewHolderCount = 0;
+
+        mIsPastEvent = pastEvent;
+
+        organizationsEventsInfo = cardsInfo;
+
+        mIsOrgView = isOrganization;
+    }
+
     @Override
     public HomePagePosts.EventPost onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         Context context = viewGroup.getContext();
@@ -146,6 +159,15 @@ public class HomePagePosts extends RecyclerView.Adapter<HomePagePosts.EventPost>
             mPostAppearance.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view) {
+
+                    if(mIsOrgView){
+                        Intent intent = new Intent(view.getContext() , OrgEventPageActivity.class);
+                        Log.d("Bassel" , id + " of event");
+                        intent.putExtra("eventId", id);
+                        view.getContext().startActivity(intent);
+                        return;
+                    }
+
                     Intent intent = new Intent(view.getContext() , UserEventPage.class);
                     Log.d("Bassel" , id + " of event");
                     intent.putExtra("eventId", id);

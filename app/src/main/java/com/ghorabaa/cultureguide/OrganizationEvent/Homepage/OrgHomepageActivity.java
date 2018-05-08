@@ -148,7 +148,7 @@ public  class OrgHomepageActivity extends AppCompatActivity
      * @param cardsInfo array of MEvents classes
      */
     public void showCards(List<MEvent> cardsInfo){
-        mAdapter = new HomePagePosts(cardsInfo,this);
+        mAdapter = new HomePagePosts(cardsInfo,this , true, true );
         mPosts.setAdapter(mAdapter);
     }
 
