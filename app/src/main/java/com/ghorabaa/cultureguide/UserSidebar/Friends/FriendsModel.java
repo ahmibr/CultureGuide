@@ -7,6 +7,7 @@ import com.android.volley.VolleyError;
 import com.ghorabaa.cultureguide.Friend;
 import com.ghorabaa.cultureguide.Utilities.Authenticator;
 import com.ghorabaa.cultureguide.Utilities.DBConnection;
+import com.ghorabaa.cultureguide.Utilities.EmailValidator;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -112,7 +113,10 @@ public class FriendsModel {
             mPresenter.onAddFail("You can't add yourself!");
             return;
         }
-
+        if(!EmailValidator.validate(email)){
+            mPresenter.onAddFail("Please enter valid email form!");
+            return;
+        }
         String query = "INSERT INTO Friend(UID,FUID) VALUES(%d,(SELECT ID FROM AppUser WHERE Email = '%s'))";
         query = String.format(Locale.ENGLISH,query,Authenticator.getID(),email);
 

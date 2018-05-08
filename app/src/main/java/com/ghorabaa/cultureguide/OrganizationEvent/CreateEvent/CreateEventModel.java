@@ -7,6 +7,7 @@ import com.android.volley.VolleyError;
 import com.ghorabaa.cultureguide.MEvent;
 import com.ghorabaa.cultureguide.Utilities.Authenticator;
 import com.ghorabaa.cultureguide.Utilities.DBConnection;
+import com.ghorabaa.cultureguide.Utilities.SQLInjectionEscaper;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -50,6 +51,10 @@ public class CreateEventModel {
             mPresenter.onCreateEventFail("An error has occurred!");
             return;
         }
+        title = SQLInjectionEscaper.escapeString(title);
+        description = SQLInjectionEscaper.escapeString(description);
+        location = SQLInjectionEscaper.escapeString(location);
+
         String query = "INSERT INTO Event(OID, Title, CategoryID, Date, Description, Location) Values(%d,'%s',%d,%d,'%s','%s')";
         query = String.format(Locale.ENGLISH, query, Authenticator.getID(), title, cID, date.getTime(), description, location);
 

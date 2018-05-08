@@ -13,6 +13,7 @@ import com.ghorabaa.cultureguide.Utilities.Authenticator;
 import com.ghorabaa.cultureguide.Utilities.DBConnection;
 import com.ghorabaa.cultureguide.Utilities.EmailValidator;
 import com.ghorabaa.cultureguide.Utilities.PasswordEncrypter;
+import com.ghorabaa.cultureguide.Utilities.SQLInjectionEscaper;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -82,9 +83,9 @@ abstract class EditProfileBaseModel {
     }
 
     public void changeName(final String newName){
-
+        String escapedNewName = SQLInjectionEscaper.escapeString(newName);
         String query = "UPDATE %s SET Name = '%s' WHERE ID = %d";
-        query = String.format(Locale.ENGLISH,query,tableName,newName, Authenticator.getID());
+        query = String.format(Locale.ENGLISH,query,tableName,escapedNewName, Authenticator.getID());
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override

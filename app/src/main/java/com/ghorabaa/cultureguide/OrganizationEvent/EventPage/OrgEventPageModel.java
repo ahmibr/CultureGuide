@@ -6,6 +6,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.ghorabaa.cultureguide.MEvent;
 import com.ghorabaa.cultureguide.Utilities.DBConnection;
+import com.ghorabaa.cultureguide.Utilities.SQLInjectionEscaper;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -135,6 +136,7 @@ public class OrgEventPageModel {
 
     public void updateEventTitle(String title) {
 
+        title = SQLInjectionEscaper.escapeString(title);
         String query = "UPDATE Event SET Title ='%s' WHERE EID = %d";
         query = String.format(Locale.ENGLISH, query, title, eventID);
 
@@ -161,6 +163,7 @@ public class OrgEventPageModel {
     }
 
     public void updateEventLocation(String location) {
+        location = SQLInjectionEscaper.escapeString(location);
         String query = "UPDATE Event SET Location ='%s' WHERE EID = %d";
         query = String.format(Locale.ENGLISH, query, location, eventID);
 
@@ -189,6 +192,7 @@ public class OrgEventPageModel {
 
 
     public void updateEventDescription(String description) {
+        description = SQLInjectionEscaper.escapeString(description);
         String query = "UPDATE Event SET Description = '%s' WHERE EID = %d";
         query = String.format(Locale.ENGLISH, query, description, eventID);
 

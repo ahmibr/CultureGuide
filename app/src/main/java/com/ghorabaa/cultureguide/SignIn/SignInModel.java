@@ -7,6 +7,7 @@ import com.android.volley.VolleyError;
 import com.ghorabaa.cultureguide.UserType;
 import com.ghorabaa.cultureguide.Utilities.Authenticator;
 import com.ghorabaa.cultureguide.Utilities.DBConnection;
+import com.ghorabaa.cultureguide.Utilities.EmailValidator;
 import com.ghorabaa.cultureguide.Utilities.PasswordEncrypter;
 
 import org.json.JSONArray;
@@ -38,6 +39,12 @@ public class SignInModel {
     }
 
     public void SignIn(final String email, String password){
+
+        if(!EmailValidator.validate(email)){
+            mPresenter.onSignInFail("Please enter valid email form!");
+            return;
+        }
+
         String query = "SELECT * FROM Users WHERE Email = '"+email+"' AND Password = '"
                 + PasswordEncrypter.encrypt(password)+"'";
 
