@@ -207,7 +207,7 @@ public class UserEventPageModel {
 
     void checkAttendState(){
         String query = "SELECT * FROM Attend WHERE UID = %d AND EID = %d";
-        query = String.format(Locale.ENGLISH,query,Authenticator.getID(),mEvent.getID());
+        query = String.format(Locale.ENGLISH,query,Authenticator.getID(),eventID);
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
