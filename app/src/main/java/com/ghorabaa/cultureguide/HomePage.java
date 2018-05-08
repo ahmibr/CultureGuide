@@ -17,30 +17,32 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.ghorabaa.cultureguide.EditProfile.EditOrgActivity;
-import com.ghorabaa.cultureguide.OrganizationEventPage.*;
+import com.ghorabaa.cultureguide.OrganizationEvent.CreateEvent.CreateEventActivity;
+import com.ghorabaa.cultureguide.OrganizationEvent.Homepage.OrgHomepageContract;
+import com.ghorabaa.cultureguide.OrganizationEvent.Homepage.OrgHomepagePresenter;
 import com.ghorabaa.cultureguide.SignIn.MainActivity;
 import com.ghorabaa.cultureguide.Utilities.Authenticator;
 import com.ghorabaa.cultureguide.Utilities.HomePagePosts;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
 public  class HomePage extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener  , HomePagePosts.ListItemClickListener ,EventContract.EventView{
+        implements NavigationView.OnNavigationItemSelectedListener  , HomePagePosts.ListItemClickListener ,OrgHomepageContract.View{
 
 
     private Toast mToast;
     RecyclerView mPosts;
     HomePagePosts mAdapter;
 
+    private OrgHomepageContract.Presenter mPresenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        Toast.makeText(getApplicationContext(), Authenticator.getEmail(), Toast.LENGTH_LONG).show();
-
         setContentView(R.layout.activity_home_page);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -64,9 +66,8 @@ public  class HomePage extends AppCompatActivity
         mPosts.setAdapter(mAdapter);
 
 
-        EventOrgPresnter mpresenter = new EventOrgPresnter(this, getApplicationContext());
-        mpresenter.retrieveEvents();
-
+        mPresenter = new OrgHomepagePresenter(this,getApplicationContext());
+        mPresenter.retrieveEvents();
     }
 
     public void onBackPressed() {
@@ -136,8 +137,8 @@ public  class HomePage extends AppCompatActivity
     }
 
     public void refreshPosts(View view){
-        EventOrgPresnter mpresenter = new EventOrgPresnter(this, getApplicationContext());
-        mpresenter.retrieveEvents();
+        //eventOrgPresenter mpresenter = new eventOrgPresenter(this, getApplicationContext());
+        //mpresenter.retrieveEvents();
     }
 
     /**
@@ -152,57 +153,14 @@ public  class HomePage extends AppCompatActivity
         mPosts.setAdapter(mAdapter);
     }
 
-    @Override
-    public void onSuccess() {
-
-    }
 
     @Override
-    public void onSuccess(String msg) {
-        mToast=Toast.makeText(this,msg, Toast.LENGTH_LONG);
-
-        mToast.show();
-    }
-
-    @Override
-    public void onFail(String msg) {
-
-        mToast=Toast.makeText(this,msg, Toast.LENGTH_LONG);
-
-        mToast.show();
-    }
-
-    @Override
-    public void onFail() {
-
-    }
-
-    @Override
-    public void onRetrieve(MEvent event) {
-        mToast=Toast.makeText(this,event.getCatName() , Toast.LENGTH_LONG);
-
-        mToast.show();
-        mToast=Toast.makeText(this,event.getOrgName() , Toast.LENGTH_LONG);
-        mToast.show();
-
-        mToast=Toast.makeText(this,event.getTitle() , Toast.LENGTH_LONG);
-        mToast.show();
-    }
-
-    @Override
-    public void onRetrieve(ArrayList<MEvent> events) {
+    public void onRetrieveEvents(ArrayList<MEvent> events) {
         showCards(events);
     }
 
-    // To be exchanged with the EventID through intents and passed to presenter
     @Override
-    public int geteventID() {
-        return 16;
-    }
-
-    @Override
-    public void onRetrieve(int ID) {
-        mToast=Toast.makeText(this,"the most crowded event is"+ID , Toast.LENGTH_LONG);
-        mToast.show();
+    public void onRetrieveFail(String errorMessage) {
+        Toast.makeText(getApplicationContext(),errorMessage,Toast.LENGTH_LONG);
     }
 }
