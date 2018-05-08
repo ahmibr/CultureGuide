@@ -57,70 +57,13 @@
 //
 
 //
-//    public void UpdateEventTitle(String Title) {
-//
-//        String query = "UPDATE Event SET Title ='%s' WHERE EID = %d";
-//        query = String.format(Locale.ENGLISH, query, Title, eventID);
-//
-//
-//        Response.Listener<String> onSuccess = new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//                if (response.equals("true"))
-//
-//                    mPresenter.onSuccess("event updated");
-//
-//                else if (response.equals("false"))
-//                    mPresenter.onFail("please enter a valid event ID");
-//                else
-//                    mPresenter.onFail("no response");
-//
-//
-//            }
-//
-//        };
-//
-//        db.executeQuery(query, onSuccess, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                mPresenter.onFail("connection error");
-//
-//            }
-//        });
+
 //
 //
 //    }
 //
 //
-//    public void UpdateEventLocation(String location) {
-//        String query = "UPDATE Event SET Location ='%s' WHERE EID = %d";
-//        query = String.format(Locale.ENGLISH, query, location, eventID);
-//
-//
-//        Response.Listener<String> onSuccess = new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//                if (response.equals("true"))
-//
-//                    mPresenter.onSuccess("event updated");
-//
-//                else if (response.equals("false"))
-//                    mPresenter.onFail("there is no event with this ID");
-//                else
-//                    mPresenter.onFail("no response");
-//            }
-//
-//        };
-//
-//        db.executeQuery(query, onSuccess, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                mPresenter.onFail("connection error");
-//            }
-//        });
-//
-//
-//    }
+
 //
 //
 //    public void UpdateEventCat(String category) {
@@ -155,88 +98,10 @@
 //
 //    }
 //
-//    public void UpdateEventDes(String description) {
-//        String query = "UPDATE Event SET Description = '%s' WHERE EID = %d";
-//        query = String.format(Locale.ENGLISH, query, description, eventID);
+
 //
 //
-//        Response.Listener<String> onSuccess = new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//                if (response.equals("true"))
-//
-//                    mPresenter.onSuccess("event updated");
-//
-//                else if (response.equals("false"))
-//                    mPresenter.onFail("there is no event with this ID");
-//                else
-//                    mPresenter.onFail("no response ");
-//
-//
-//            }
-//
-//        };
-//
-//        db.executeQuery(query, onSuccess, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                mPresenter.onFail("connection error ");
-//
-//            }
-//        });
-//
-//
-//    }
-//
-//
-//    public void UpdateEventDate(String sDate){
-//
-//        DateFormat df = new SimpleDateFormat("EEE MMM dd kk:mm:ss z yyyy", Locale.ENGLISH);
-//        Date date;
-//
-//        try {
-//            date = df.parse(sDate);
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//            mPresenter.onFail("Invalid date form!");
-//            return;
-//        }
-//
-//        if (!MEvent.isValidDate(date))
-//        {
-//            mPresenter.onFail("Invalid date!");
-//            return;
-//        }
-//
-//        String query = "UPDATE Event SET Date = %d WHERE EID = %d ";
-//        query = String.format(Locale.ENGLISH, query, date.getTime(), eventID);
-//
-//
-//        Response.Listener<String> onSuccess = new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//                if (response.equals("true"))
-//
-//                    mPresenter.onSuccess("event updated");
-//
-//                else if (response.equals("false"))
-//                    mPresenter.onFail("there is no event with this ID");
-//                else
-//                    mPresenter.onFail("no response ");
-//
-//
-//            }
-//
-//        };
-//
-//        db.executeQuery(query, onSuccess, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                mPresenter.onFail("connection error ");
-//
-//            }
-//        });
-//    }
+
 //
 //
 //    public void GetEventRate() {
