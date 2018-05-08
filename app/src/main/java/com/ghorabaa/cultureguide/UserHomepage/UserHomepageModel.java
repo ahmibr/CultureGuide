@@ -67,7 +67,7 @@ public class UserHomepageModel {
 
     }
     public void getUpcomingEvents(){
-        String query = "SELECT * FROM Event WHERE (Date > %d) AND (CategoryID IN (SELECT CID FROM Subscription WHERE UID = %d) )";
+        String query = "SELECT * FROM Event WHERE (Date > %d) AND (CategoryID IN (SELECT CID FROM Subscription WHERE UID = %d) ) ORDER BY Date";
         final Time currentTime = new Time();
         currentTime.setToNow();
         long lCurrentTime = currentTime.toMillis(false);
@@ -78,7 +78,7 @@ public class UserHomepageModel {
     }
 
     public void getPastEvent(){
-        String query = "SELECT * FROM Event WHERE (Date < %d) AND (EID IN (SELECT DISTINCT EID FROM Attend WHERE UID = %d) )";
+        String query = "SELECT * FROM Event WHERE (Date < %d) AND (EID IN (SELECT EID FROM Attend WHERE UID = %d) ) ORDER BY Date";
 
         final Time currentTime = new Time();
         currentTime.setToNow();
@@ -90,7 +90,7 @@ public class UserHomepageModel {
     }
 
     public void getFavouriteEvent(){
-        String query = "SELECT * FROM Event WHERE (Date > %d) AND OID IN (SELECT OID FROM Favorite WHERE UID = %d)";
+        String query = "SELECT * FROM Event WHERE (Date > %d) AND OID IN (SELECT OID FROM Favorite WHERE UID = %d) ORDER BY Date";
 
         final Time currentTime = new Time();
         currentTime.setToNow();
