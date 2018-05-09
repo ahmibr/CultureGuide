@@ -132,4 +132,42 @@ public class AdminViewCategoryModel {
 
         db.executeQuery(query, onSuccess, onFail);
     }
+
+    public void removeCategory(Integer first) {
+
+        String query = "DELETE FROM Category WHERE ID = %d";
+        query = String.format(query, first);
+
+        Response.Listener<String> onSuccess = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                switch (response) {
+
+                    case "true":
+                        mPresenter.onSuccess();
+                        break;
+
+                    case "false":
+                        mPresenter.onFail("Database Not Affected");
+                        break;
+
+                    default:
+                        mPresenter.onFail("An error has occurred");
+                        break;
+                }
+            }
+        };
+
+        Response.ErrorListener onFail = new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                mPresenter.onFail("Connection Error");
+            }
+        };
+
+        db.executeQuery(query, onSuccess, onFail);
+
+    }
 }

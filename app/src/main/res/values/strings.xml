@@ -101,5 +101,7 @@
     <string name="search_event">Enter Event ID</string>
     <string name="search_organization">Enter Organization E-mail</string>
     <string name="search_user">Enter User E-mail</string>
+    <string name="category_name">Enter Category Name</string>
+    <string name="add_category">Add Category</string>
 
 </resources>

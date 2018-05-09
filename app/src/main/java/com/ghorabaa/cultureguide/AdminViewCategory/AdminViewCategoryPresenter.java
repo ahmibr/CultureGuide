@@ -45,4 +45,15 @@ public class AdminViewCategoryPresenter implements AdminViewCategoryContract.Pre
 
         mModel.getCategory(id);
     }
+
+    @Override
+    public void removeCategory(Integer first) {
+
+        mModel.removeCategory(first);
+    }
+
+    public void onSuccess() {
+
+        mView.onSuccess();
+    }
 }

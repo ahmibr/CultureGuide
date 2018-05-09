@@ -78,7 +78,8 @@
         <activity android:name=".UserSidebar.Invitations.InvitationsActivity" />
         <activity android:name=".UserSidebar.Interests.InterestsActivity" />
         <activity android:name=".OrganizationEvent.EventPage.OrgEventPageActivity" />
-        <activity android:name=".AdminViewAdmins.AddAdminActivity"></activity>
+        <activity android:name=".AdminViewAdmins.AddAdminActivity" />
+        <activity android:name=".AdminViewCategory.AddCategoryActivity"></activity>
     </application>
 
 </manifest>

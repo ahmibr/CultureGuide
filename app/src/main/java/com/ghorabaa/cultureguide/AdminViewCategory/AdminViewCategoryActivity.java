@@ -1,9 +1,11 @@
 package com.ghorabaa.cultureguide.AdminViewCategory;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -33,9 +35,10 @@ public class AdminViewCategoryActivity extends AppCompatActivity implements Admi
         mPresenter.retrieveCategories();
     }
 
-    public void onRetrieve(ArrayList<Pair<Integer, String> > categoriesList){
+    public void onRetrieve(final ArrayList<Pair<Integer, String> > categoriesList){
 
         mainLinLay = findViewById(R.id.view_category);
+        mainLinLay.removeViews(2, previousViewsCnt);
 
         for (int i=0; i<categoriesList.size(); i++)
         {
@@ -43,13 +46,24 @@ public class AdminViewCategoryActivity extends AppCompatActivity implements Admi
             linLay = (LinearLayout) View.inflate(this, R.layout.content_admin_view, null);
             ((TextView) linLay.findViewById(R.id.entity)).setText("ID: " + categoriesList.get(i).first + System.lineSeparator() + "Name: " + categoriesList.get(i).second);
             mainLinLay.addView(linLay);
+
+            Button removeButton = (Button)linLay.findViewById(R.id.remove_button);
+            removeButton.setTag(i);
+
+            removeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //Toast.makeText(getApplicationContext(), organizationList.get(Integer.parseInt(view.getTag().toString())).first ,Toast.LENGTH_LONG).show();
+                    mPresenter.removeCategory(categoriesList.get(Integer.parseInt(view.getTag().toString())).first);
+                }
+            });
         }
     }
 
-    public void onSuccess(String success){
+    public void onSuccess(){
 
-        //Toast.makeText(getApplicationContext(),,Toast.LENGTH_LONG).show();
-        //TODO Add locking remove button
+        Toast.makeText(getApplicationContext(),"Admin Removed Successfully",Toast.LENGTH_LONG).show();
+        mPresenter.retrieveCategories();
     }
 
     public void onFail(String errorMessage){
@@ -69,5 +83,18 @@ public class AdminViewCategoryActivity extends AppCompatActivity implements Admi
 
             Toast.makeText(getApplication(), "Please enter a valid ID", Toast.LENGTH_LONG).show();
         }
+    }
+
+
+    public void onAddCatClicked(View view) {
+
+        startActivity(new Intent(this, AddCategoryActivity.class));
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        mPresenter.retrieveCategories();
     }
 }

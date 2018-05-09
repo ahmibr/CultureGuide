@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public interface AdminViewCategoryContract {
     interface View{
         void onRetrieve(ArrayList<Pair<Integer, String> > categoriesList);
-        void onSuccess(String categories);
+        void onSuccess();
         void onFail(String errorMessage);
     }
     
@@ -21,5 +21,6 @@ public interface AdminViewCategoryContract {
         void onRetrieve(ArrayList<Pair<Integer, String> > categoriesList);
         void onFail(String errorMessage);
         void retrieveCategory(int id);
+        void removeCategory(Integer first);
     }
 }
