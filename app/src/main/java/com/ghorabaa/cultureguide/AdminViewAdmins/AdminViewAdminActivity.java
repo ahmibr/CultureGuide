@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -47,6 +48,14 @@ public class AdminViewAdminActivity extends AppCompatActivity implements AdminVi
             mainLinLay.addView(linLay);
             //linLay = mInflater.inflate(R.layout.content_admin_view, (ViewGroup) findViewById(R.id.viewAdmin));//(RelativeLayout) View.inflate(this, R.id.includedEntity, null);
             //mainLinLay.addView(linLay);
+            Button removeButton = (Button)linLay.findViewById(R.id.category_remove_button);
+            removeButton.setTag(admins.get(i));
+            removeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(getApplicationContext(), view.getTag().toString() ,Toast.LENGTH_LONG).show();
+                }
+            });
         }
 
         previousViewsCnt = admins.size();
