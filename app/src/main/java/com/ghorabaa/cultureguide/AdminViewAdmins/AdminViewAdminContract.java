@@ -20,5 +20,6 @@ public interface AdminViewAdminContract {
         void onRetrieve(ArrayList<String> admins);
         void onFail(String s);
         void retrieveAdmin(String email);
+        void removeAdmin(String email);
     }
 }

@@ -37,7 +37,7 @@ public class AdminViewAdminActivity extends AppCompatActivity implements AdminVi
     public void onRetrieve(ArrayList<String> admins) {
 
         mainLinLay = findViewById(R.id.view_admin);
-        //mainLinLay.removeViews(2, previousViewsCnt);
+        mainLinLay.removeViews(2, previousViewsCnt);
 
         for(int i=0; i<admins.size(); i++)
         {
@@ -53,7 +53,8 @@ public class AdminViewAdminActivity extends AppCompatActivity implements AdminVi
             removeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getApplicationContext(), view.getTag().toString() ,Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getApplicationContext(), view.getTag().toString() ,Toast.LENGTH_LONG).show();
+                    mPresenter.removeAdmin(view.getTag().toString());
                 }
             });
         }
@@ -72,23 +73,25 @@ public class AdminViewAdminActivity extends AppCompatActivity implements AdminVi
     public void onSuccess() {
 
         Toast.makeText(getApplicationContext(),"Admin Removed Successfully",Toast.LENGTH_LONG).show();
+        mPresenter.retrieveAdmins();
     }
 
     public void onSearchClicked(View view) {
 
         String email = ((EditText) findViewById(R.id.admin_email)).getText().toString();
-        mPresenter.retrieveAdmin(email);
-    }
 
-    public void onRemoveClicked(View view) {
-
-        String email = ((TextView) view.findViewById(R.id.entity)).getText().toString(); //((EditText)findViewById(R.id.organization_password)).getText().toString();
-        //mPresenter.removeAdmin(email);
     }
 
     public void onAddAdminClicked(View view) {
 
         //startActivity(new Intent(this, AddAdminActivity.class));
         startActivity(new Intent(this, AddAdminActivity.class));
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        mPresenter.retrieveAdmins();
     }
 }
