@@ -126,7 +126,7 @@ public class AdminViewEventModel {
 
     public void removeEvent(Integer id) {
 
-        String query = "DELETE FROM Event WHERE EID =%d";
+        String query = "DELETE FROM Event WHERE EID = %d";
         query = String.format(query, id);
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
