@@ -8,6 +8,9 @@ import java.security.MessageDigest;
  * Created by Ahmed Ibrahim on 4/27/18.
  */
 
+/**
+ * Helper class to encrypt password using SHA-256 Algorithm
+ */
 public class PasswordEncrypter {
 
     private PasswordEncrypter(){};

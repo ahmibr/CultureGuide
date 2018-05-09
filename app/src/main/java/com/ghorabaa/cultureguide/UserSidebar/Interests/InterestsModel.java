@@ -24,9 +24,14 @@ public class InterestsModel {
     private Context mContext;
     private InterestsPresenter mPresenter;
     private DBConnection db;
-    private ArrayList<Integer> categoryIDs;
-    private ArrayList<Pair<String, Boolean>> categoryList;
+    private ArrayList<Integer> categoryIDs; //IDs of categories in db
+    private ArrayList<Pair<String, Boolean>> categoryList; //First: Name Second: subscribed
 
+    /**
+     * Constructor of Interests Model
+     * @param presenter The presenter attached to the model, to handle callbacks
+     * @param context Application context to sync with
+     */
     public InterestsModel(InterestsPresenter presenter, Context context) {
         mContext = context;
         mPresenter = presenter;
@@ -35,6 +40,9 @@ public class InterestsModel {
         db = DBConnection.getInstance(context);
     }
 
+    /**
+     * Retrieve user's interests from database
+     */
     public void retrieveInterests() {
 
         String query = "SELECT Category.ID,Category.Name,Subscription.UID FROM Category LEFT JOIN Subscription ON Category.ID = Subscription.CID AND Subscription.UID = %d";
@@ -75,6 +83,10 @@ public class InterestsModel {
         db.executeQuery(query, onSuccess, onFail);
     }
 
+    /**
+     * Add category to user's interests
+     * @param index category index in array list
+     */
     public void addInterests(int index) {
         String query = "INSERT INTO Subscription(UID,CID) VALUES(%d,%d)";
         try {
@@ -104,6 +116,10 @@ public class InterestsModel {
         db.executeQuery(query, onSuccess, onFail);
     }
 
+    /**
+     * Removes category from user's interests
+     * @param index index of category in array list
+     */
     public void removeInterest(int index) {
 
         String query = "DELETE FROM Subscription WHERE UID = %d AND CID = %d";

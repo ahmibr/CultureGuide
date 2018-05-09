@@ -21,6 +21,11 @@ import java.util.Date;
 
 public class OrgEventPageActivity extends AppCompatActivity implements OrgEventPageContract.View {
 
+    /**
+     * Activity That handles organizations homepage.
+     * Created by Ruba
+     */
+
     OrgEventPageContract.Presenter mPresenter;
     int mEventID;
 
@@ -130,11 +135,10 @@ public class OrgEventPageActivity extends AppCompatActivity implements OrgEventP
 
         String[] categoriesStrings = new String[categoryList.size()];
 
-        //testing
-        for(int i=0;i<categoryList.size();++i) {
-            Toast.makeText(getApplicationContext(), categoryList.get(i), Toast.LENGTH_LONG);
+
+        for(int i=0;i<categoryList.size();++i)
             categoriesStrings[i] = categoryList.get(i);
-        }
+
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 R.layout.spinner_layout_style, categoriesStrings);
@@ -144,7 +148,8 @@ public class OrgEventPageActivity extends AppCompatActivity implements OrgEventP
 
     @Override
     public void onRetrieveFail(String errorMessage) {
-
+        Toast.makeText(this,errorMessage,Toast.LENGTH_LONG).show();
+        finish();
     }
 
     @Override

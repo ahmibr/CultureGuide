@@ -19,6 +19,11 @@ import java.util.ArrayList;
 
 public class InvitationsActivity extends AppCompatActivity implements InvitationsContract.View, AdapterView.OnItemClickListener{
 
+    /**
+     * Activity That handles Invitations.
+     * Created by Bassel
+     */
+
     InvitationsContract.Presenter mPresenter;
 
     ArrayAdapter<String> mArrayAdapter;
@@ -37,6 +42,9 @@ public class InvitationsActivity extends AppCompatActivity implements Invitation
         //mArrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1);
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onRetrieveInvitations(ArrayList<Pair<String, MEvent>> invitations) {
 
@@ -59,12 +67,18 @@ public class InvitationsActivity extends AppCompatActivity implements Invitation
         mListView.setAdapter(mArrayAdapter);
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onRetrieveInvitationsFail(String errorMessage) {
         Toast.makeText(getApplicationContext(),errorMessage,Toast.LENGTH_LONG).show();
         finish();
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 

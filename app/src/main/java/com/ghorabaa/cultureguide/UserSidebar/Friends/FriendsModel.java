@@ -26,6 +26,11 @@ public class FriendsModel {
     private DBConnection db;
     private ArrayList<Friend> friendsList;
 
+    /**
+     * Constructor of SignUp Model
+     * @param presenter The presenter attached to the model, to handle callbacks
+     * @param context Application context to sync with
+     */
     public FriendsModel(FriendsPresenter presenter, Context context) {
         mPresenter = presenter;
         mContext = context;

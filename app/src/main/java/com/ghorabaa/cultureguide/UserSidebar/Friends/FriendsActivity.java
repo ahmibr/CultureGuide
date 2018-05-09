@@ -17,6 +17,11 @@ import java.util.ArrayList;
 
 public class FriendsActivity extends AppCompatActivity implements FriendsContract.View , AdapterView.OnItemClickListener{
 
+    /**
+     * Activity That handles Friends logic.
+     * Created by Bassel
+     */
+
     private FriendsContract.Presenter mPresenter;
 
     private TextView mEmailText;
@@ -45,6 +50,9 @@ public class FriendsActivity extends AppCompatActivity implements FriendsContrac
         });
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onRetrieveFriendsList(ArrayList<Friend> friendsList) {
 
@@ -64,32 +72,50 @@ public class FriendsActivity extends AppCompatActivity implements FriendsContrac
         mFriendListView.setAdapter(mArrayAdapter);
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onRetrieveFriendsListFail(String errorMessage) {
         Toast.makeText(getApplicationContext(),errorMessage,Toast.LENGTH_LONG).show();
         finish();
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onRemoveSuccess() {
         Toast.makeText(getApplicationContext(),"Friend removed successfully",Toast.LENGTH_LONG).show();
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onRemoveFail(String errorMessage) {
         Toast.makeText(getApplicationContext(),errorMessage,Toast.LENGTH_LONG).show();
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onAddSuccess() {
         Toast.makeText(getApplicationContext(),"Friend added successfully!",Toast.LENGTH_LONG).show();
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onAddFail(String errorMessage) {
         Toast.makeText(getApplicationContext(),errorMessage,Toast.LENGTH_LONG).show();
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         mPresenter.removeFriend(i);

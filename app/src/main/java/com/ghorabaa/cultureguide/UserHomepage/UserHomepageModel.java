@@ -25,7 +25,14 @@ public class UserHomepageModel {
     private UserHomepagePresenter mPresenter;
     private Context mContext;
     private DBConnection db;
-    private ArrayList<MEvent> currentEvents;
+
+    private ArrayList<MEvent> currentEvents; //current shown events
+
+    /**
+     * Constructor of User homepage Model
+     * @param presenter The presenter attached to the model, to handle callbacks
+     * @param context Application context to sync with
+     */
     UserHomepageModel(UserHomepagePresenter presenter,Context context){
         mPresenter = presenter;
         mContext = context;
@@ -33,6 +40,11 @@ public class UserHomepageModel {
         currentEvents = new ArrayList<>();
     }
 
+    /**
+     * Helper function to retrieve events based on which query(past,upcoming,favourite)
+     * @param query
+     *
+     */
     private void getEvents(String query){
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
@@ -66,6 +78,10 @@ public class UserHomepageModel {
 
 
     }
+
+    /**
+     * Retrieves upcoming events
+     */
     public void getUpcomingEvents(){
         String query = "SELECT * FROM Event WHERE (Date > %d) AND (CategoryID IN (SELECT CID FROM Subscription WHERE UID = %d) ) ORDER BY Date";
         final Time currentTime = new Time();
@@ -77,6 +93,9 @@ public class UserHomepageModel {
         getEvents(query);
     }
 
+    /**
+     * Retrieves past events
+     */
     public void getPastEvent(){
         String query = "SELECT * FROM Event WHERE (Date < %d) AND (EID IN (SELECT EID FROM Attend WHERE UID = %d) ) ORDER BY Date";
 
@@ -89,6 +108,9 @@ public class UserHomepageModel {
         getEvents(query);
     }
 
+    /**
+     * Retrieves events from favourite organizations
+     */
     public void getFavouriteEvent(){
         String query = "SELECT * FROM Event WHERE (Date > %d) AND OID IN (SELECT OID FROM Favorite WHERE UID = %d) ORDER BY Date";
 

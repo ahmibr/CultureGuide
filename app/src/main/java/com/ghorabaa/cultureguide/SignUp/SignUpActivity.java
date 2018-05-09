@@ -21,6 +21,10 @@ import com.ghorabaa.cultureguide.UserType;
 
 public class SignUpActivity extends AppCompatActivity implements SignUpContract.View {
 
+    /**
+     * Activity That handles SignUp.
+     * Created by Bassel
+     */
 
     private static final String TAG = "SignUpActivity";
 
@@ -102,12 +106,19 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
         toast.show();
     }
 
+    /**
+     * CallBack from android back
+     */
     @Override
     public void onBackPressed() {
        startActivity(new Intent(SignUpActivity.this,MainActivity.class));
        finish();
     }
 
+    /**
+     * Pressed after all sign up button is pressed
+     * Handling empty text
+     */
     public void doneSignUp(android.view.View view){
 
         String name = ((EditText)findViewById(R.id.organization_name)).getText().toString();
@@ -141,12 +152,18 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
         progressBar.show();
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void routeRegular() {
         startActivity(new Intent(this, UserHomepage.class));
         finish();
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void routeOrganization() {
         startActivity(new Intent(this, OrgHomepageActivity.class));

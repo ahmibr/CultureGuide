@@ -23,6 +23,11 @@ import java.util.ArrayList;
 
 public class InterestsActivity extends AppCompatActivity implements InterestsContract.View {
 
+    /**
+     * Activity That handles Interests.
+     * Created by Bassel
+     */
+
     InterestsContract.Presenter mPresenter;
 
     private ListView mInterestListView;
@@ -43,6 +48,9 @@ public class InterestsActivity extends AppCompatActivity implements InterestsCon
         mInterestListView = (ListView) findViewById(R.id.interests_list);
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onRetrieveInterests(ArrayList<Pair<String, Boolean>> interestsList) {
 
@@ -52,29 +60,44 @@ public class InterestsActivity extends AppCompatActivity implements InterestsCon
         mInterestListView.setAdapter(mAdapter);
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onRetrieveInterestsFail(String errorMessage) {
-
+        Toast.makeText(this,errorMessage,Toast.LENGTH_LONG).show();
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onAddSuccess() {
         Toast.makeText(this,"Interest added successfully",Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onAddFail(String errorMessage) {
-
+        Toast.makeText(this,errorMessage,Toast.LENGTH_LONG).show();
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onRemoveSuccess() {
         Toast.makeText(this,"Interest removed successfully",Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onRemoveFail(String errorMessage) {
-
+        Toast.makeText(this,errorMessage,Toast.LENGTH_LONG).show();
     }
 
     class InterestsAdapter extends BaseAdapter {
@@ -111,8 +134,6 @@ public class InterestsActivity extends AppCompatActivity implements InterestsCon
                 @Override
                 public void onClick(View view) {
                     int id = chosenIndex;
-
-                    //Toast.makeText(getApplicationContext(), view.getTag().toString(),Toast.LENGTH_LONG).show();
 
                     Log.d("Bassel" , view.getTag() + " ");
 

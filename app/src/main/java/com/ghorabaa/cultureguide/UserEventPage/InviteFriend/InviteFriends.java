@@ -17,6 +17,11 @@ import java.util.ArrayList;
 
 public class InviteFriends extends AppCompatActivity implements InviteFriendsContract.View{
 
+    /**
+     * Activity That handles Invite friends page.
+     * Created by Bassel
+     */
+
     LinearLayout mFriendParent;
     private InviteFriendsContract.Presenter mPresenter;
     @Override
@@ -64,6 +69,9 @@ public class InviteFriends extends AppCompatActivity implements InviteFriendsCon
         }
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onRetrieveFriendsListFail(String errorMessage) {
         //make a toast and close activity
@@ -71,12 +79,18 @@ public class InviteFriends extends AppCompatActivity implements InviteFriendsCon
         finish();
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onInviteSuccess() {
         //make a toast, lock invite for user
         Toast.makeText(this, "Friend Invited" , Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onInviteFail(String errorMessage) {
         //make a toast, lock invite for user

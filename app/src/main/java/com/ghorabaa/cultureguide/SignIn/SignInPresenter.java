@@ -15,7 +15,11 @@ public class SignInPresenter implements SignInContract.Presenter {
     private SignInContract.View mView; //reference to view
     private final static String TAG = "LoginModule"; //Tag for log
 
-
+    /**
+     * Constructor of SignIn Presenter
+     * @param view The view attached to the presenter, to send updates
+     * @param context Application context to sync with
+     */
     public SignInPresenter(SignInContract.View view, Context context)
     {
         mView = view;
@@ -23,11 +27,20 @@ public class SignInPresenter implements SignInContract.Presenter {
         mModel = new SignInModel(this,context);
     }
 
-
+    /**
+     * Asks the model to check user's credentials
+     * @param email user's email
+     * @param password  user's password
+     */
     public void signIn(String email,String password){
         mModel.SignIn(email,password);
     }
 
+    /**
+     * Call back from model in case sign in success
+     * Routes view to the appropriate homepage
+     * @param type which user type has logged in
+     */
     public void onSignInSuccess(UserType type){
         mView.onSignInSuccess();
         switch (type){
@@ -45,6 +58,11 @@ public class SignInPresenter implements SignInContract.Presenter {
         }
     }
 
+    /**
+     * Call back from model in case sign in fail
+     * Send the view the error message
+     * @param errorMessage
+     */
     public void onSignInFail(String errorMessage){
         mView.onSignInFail(errorMessage);
     }

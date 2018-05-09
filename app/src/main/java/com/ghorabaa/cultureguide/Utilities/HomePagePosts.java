@@ -65,8 +65,6 @@ public class HomePagePosts extends RecyclerView.Adapter<HomePagePosts.EventPost>
         mNumberItems = numberOfItems;
         mOnClickListener = listener;
         viewHolderCount = 0;
-
-        //TODO delete this chunk of test code after testing and merging with back
     }
 
     public HomePagePosts(List<MEvent> cardsInfo , ListItemClickListener listener) {
@@ -202,8 +200,6 @@ public class HomePagePosts extends RecyclerView.Adapter<HomePagePosts.EventPost>
                     , organizationsEventsInfo.get(position).getTitle()
                     , date);
         }
-
-        //TODO please implement the onClick of the imageButton and attend + find a way of saving the event in the view
 
 
         @Override

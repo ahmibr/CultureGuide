@@ -4,6 +4,9 @@ package com.ghorabaa.cultureguide.Utilities;
  * Created by Ahmed Ibrahim on 4/27/18.
  */
 
+/**
+ * Helper class to cache user data to be used allover the application
+ */
 public class Authenticator {
 
     private static int id;
@@ -11,6 +14,7 @@ public class Authenticator {
     private static String name = "";
     private static boolean loggedIn = false;
 
+    //Don't instantiate
     private Authenticator(){};
 
     public static void setID(int newID){

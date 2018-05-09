@@ -29,6 +29,10 @@ import java.util.List;
 public  class OrgHomepageActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener  , HomePagePosts.ListItemClickListener ,OrgHomepageContract.View{
 
+    /**
+     * Activity That handles organizations homepage.
+     * Created by Ruba
+     */
 
     private Toast mToast;
     RecyclerView mPosts;
@@ -103,13 +107,10 @@ public  class OrgHomepageActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        Log.d("Bassel","choosed " + id);
-
         if (id == R.id.nav_edit_profile) {
             startActivity(new Intent(OrgHomepageActivity.this, EditOrgActivity.class));
         }
         else if (id == R.id.nav_sign_out){
-            //Todo Attach signout in presenter
             startActivity(new Intent(OrgHomepageActivity.this, MainActivity.class));
             finish();
         }else if (id == R.id.nav_create_event){
@@ -127,6 +128,8 @@ public  class OrgHomepageActivity extends AppCompatActivity
 
     /**
      * This callback is invoked when you click on an item in the list.
+     *
+     * Not needed because of image button inside post
      *
      * @param clickedItemIndex Index in the list of the item that was clicked.
      */
@@ -151,12 +154,17 @@ public  class OrgHomepageActivity extends AppCompatActivity
         mPosts.setAdapter(mAdapter);
     }
 
-
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onRetrieveEvents(ArrayList<MEvent> events) {
         showCards(events);
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onRetrieveFail(String errorMessage) {
         Toast.makeText(getApplicationContext(),errorMessage,Toast.LENGTH_LONG);

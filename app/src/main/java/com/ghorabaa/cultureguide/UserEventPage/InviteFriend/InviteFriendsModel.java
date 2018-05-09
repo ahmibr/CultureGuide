@@ -22,10 +22,17 @@ public class InviteFriendsModel {
     private InviteFriendsPresenter mPresenter;
     private Context mContext;
     private DBConnection db;
-    private int eventID;
+    private int eventID; //eventID to be invited to
 
+    //User's friends
     private ArrayList<Friend> friendsList;
 
+    /**
+     * Constructor of Invite friends Model
+     * @param presenter The presenter attached to the model, to handle callbacks
+     * @param context Application context to sync with
+     * @param eventID to be invited to
+     */
     InviteFriendsModel(InviteFriendsPresenter presenter,Context context,int eventID){
         mPresenter = presenter;
         mContext = context;
@@ -34,6 +41,11 @@ public class InviteFriendsModel {
         friendsList = new ArrayList<>();
     }
 
+    /**
+     * Retrieves users friend
+     *
+     * Calls presenter.OnRetrieveFriendsList with the list
+     */
     void retrieveFriendsList(){
         String query = "SELECT * FROM Friend,AppUser WHERE UID = %d AND FUID = AppUser.ID";
         query = String.format(Locale.ENGLISH,query, Authenticator.getID());
@@ -75,6 +87,10 @@ public class InviteFriendsModel {
 
     }
 
+    /**
+     * invites user to following event
+     * @param index index of friend to be invited
+     */
     public void inviteFriend(int index){
 
         int id;

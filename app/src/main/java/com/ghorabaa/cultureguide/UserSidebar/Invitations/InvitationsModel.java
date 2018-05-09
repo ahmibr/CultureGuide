@@ -24,8 +24,13 @@ public class InvitationsModel {
     private InvitationsPresenter mPresenter;
     private Context mContext;
     private DBConnection db;
-    private ArrayList<Pair<String,MEvent>> invitationsList;
+    private ArrayList<Pair<String,MEvent>> invitationsList; //First: Sender Name Second:Event
 
+    /**
+     * Constructor of Invitation Model
+     * @param presenter The presenter attached to the model, to handle callbacks
+     * @param context Application context to sync with
+     */
     public InvitationsModel(InvitationsPresenter presenter, Context context) {
         mPresenter = presenter;
         mContext = context;
@@ -33,7 +38,9 @@ public class InvitationsModel {
         invitationsList = new ArrayList<>();
     }
 
-
+    /**
+     * Retrieve users fresh invitations
+     */
     public void retrieveInvitations() {
         final Time currentTime = new Time();
         currentTime.setToNow();
@@ -85,6 +92,11 @@ public class InvitationsModel {
         db.executeQuery(query, onSuccess, onFail);
     }
 
+    /**
+     * Helper method to check if invitation is expired
+     * @param index index of invitation
+     * @return  true of invitation is expired
+     */
     public boolean isExpired(int index) {
         try{
             MEvent event = invitationsList.get(index).second;

@@ -8,7 +8,12 @@ import android.content.Context;
 
 public class EditOrgPresenter extends EditProfilePresenter{
 
-    public EditOrgPresenter(EditProfileContract.EditProfileView view, Context context){
+    /**
+     * Constructor of EditOrg Presenter
+     * @param view The view attached to the presenter, to send updates
+     * @param context Application context to sync with
+     */
+    EditOrgPresenter(EditProfileContract.EditProfileView view, Context context){
         super(view);
 
         mModel = new EditOrgModel(this,context);
