@@ -5,6 +5,11 @@ import android.content.Context;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.ghorabaa.cultureguide.Utilities.DBConnection;
+import com.ghorabaa.cultureguide.Utilities.EmailValidator;
+import com.ghorabaa.cultureguide.Utilities.PasswordEncrypter;
+import com.ghorabaa.cultureguide.Utilities.SQLInjectionEscaper;
+
+import java.util.Locale;
 
 public class AddAdminModel {
 
@@ -21,9 +26,17 @@ public class AddAdminModel {
 
 
     public void addAdmin(String email, String password) {
-
+        if(password.length()<6){
+            mPresenter.onFail("Password should be at least 6 characters!");
+            return;
+        }
+        if(!EmailValidator.validate(email)){
+            mPresenter.onFail("Please enter valid email form!");
+            return;
+        }
+        password = SQLInjectionEscaper.escapeString(password);
         String query = "INSERT INTO Users VALUES('%s', '%s', 'Admin')";
-        query = String.format(query, email, password);
+        query = String.format(Locale.ENGLISH,query, email, PasswordEncrypter.encrypt(password));
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
@@ -36,7 +49,7 @@ public class AddAdminModel {
                         break;
 
                     case "false":
-                        mPresenter.onFail("Database Not Affected");
+                        mPresenter.onFail("This email is already registered!");
                         break;
 
                     default:

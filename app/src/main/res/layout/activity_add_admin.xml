@@ -50,6 +50,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:hint="******"
+                android:inputType="textPassword"
                 android:id="@+id/admin_password"/>
 
             <TextView
@@ -68,6 +69,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:hint="******"
+                android:inputType="textPassword"
                 android:id="@+id/admin_password_confirm"/>
 
             <Button
