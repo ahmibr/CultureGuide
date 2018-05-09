@@ -21,7 +21,7 @@ public class AdminViewEventModel {
     
     private Context mContext;
     private DBConnection db;
-    private AdminViewEventContract.Presenter mPresenter;
+    private AdminViewEventPresenter mPresenter;
 
 
     public AdminViewEventModel(AdminViewEventPresenter presenter, Context context) {
@@ -119,6 +119,43 @@ public class AdminViewEventModel {
                 mPresenter.onFail("Connection Error");
             }
 
+        };
+
+        db.executeQuery(query, onSuccess, onFail);
+    }
+
+    public void removeEvent(Integer id) {
+
+        String query = "DELETE FROM Event WHERE EID = %d";
+        query = String.format(query, id);
+
+        Response.Listener<String> onSuccess = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                switch (response) {
+
+                    case "true":
+                        mPresenter.onSuccess();
+                        break;
+
+                    case "false":
+                        mPresenter.onFail("Database Not Affected");
+                        break;
+
+                    default:
+                        mPresenter.onFail("An error has occurred");
+                        break;
+                }
+            }
+        };
+
+        Response.ErrorListener onFail = new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                mPresenter.onFail("Connection Error");
+            }
         };
 
         db.executeQuery(query, onSuccess, onFail);

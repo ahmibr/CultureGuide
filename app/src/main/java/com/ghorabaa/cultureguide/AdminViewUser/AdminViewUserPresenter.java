@@ -44,4 +44,15 @@ public class AdminViewUserPresenter implements AdminViewUserContract.Presenter {
 
         mModel.getUser(email);
     }
+
+    @Override
+    public void removeUser(String email) {
+
+        mModel.removeUser(email);
+    }
+
+    public void onSuccess() {
+
+        mView.onSuccess();
+    }
 }

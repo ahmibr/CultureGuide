@@ -13,6 +13,7 @@ public interface AdminViewEventContract {
     {
         void onRetrieve(ArrayList<Pair<Integer, String>> events);
         void onFail(String errorMessage);
+        void onSuccess();
     }
 
     interface Presenter
@@ -22,5 +23,6 @@ public interface AdminViewEventContract {
         void onRetrieve(ArrayList<Pair<Integer, String>> events);
         void onFail(String errorMessage);
         void retrieveEvent(int id);
+        void removeEvent(Integer id);
     }
 }

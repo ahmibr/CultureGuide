@@ -38,4 +38,15 @@ public class AdminViewAdminPresenter implements AdminViewAdminContract.Presenter
 
         mModel.getAdmin(email);
     }
+
+    @Override
+    public void removeAdmin(String email) {
+
+        mModel.removeAdmin(email);
+    }
+
+    public void onSuccess() {
+
+        mView.onSuccess();
+    }
 }

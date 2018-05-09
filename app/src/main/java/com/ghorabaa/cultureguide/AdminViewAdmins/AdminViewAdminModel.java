@@ -20,9 +20,9 @@ public class AdminViewAdminModel {
 
     private Context mContext;
     private DBConnection db;
-    private AdminViewAdminContract.Presenter mPresenter;
+    private AdminViewAdminPresenter mPresenter;
 
-    public AdminViewAdminModel(AdminViewAdminContract.Presenter presenter, Context context) {
+    public AdminViewAdminModel(AdminViewAdminPresenter presenter, Context context) {
 
         mContext = context;
         mPresenter = presenter;
@@ -115,5 +115,42 @@ public class AdminViewAdminModel {
         };
 
         db.executeQuery(query,onSuccess,onFail);
+    }
+
+    public void removeAdmin(String email) {
+
+        String query = "DELETE FROM Users Where Email = '%s'";
+        query = String.format(query, email);
+
+        Response.Listener<String> onSuccess = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                switch (response) {
+
+                    case "true":
+                        mPresenter.onSuccess();
+                        break;
+
+                    case "false":
+                        mPresenter.onFail("Database Not Affected");
+                        break;
+
+                    default:
+                        mPresenter.onFail("An error has occurred");
+                        break;
+                }
+            }
+        };
+
+        Response.ErrorListener onFail = new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                mPresenter.onFail("Connection Error");
+            }
+        };
+
+        db.executeQuery(query, onSuccess, onFail);
     }
 }
