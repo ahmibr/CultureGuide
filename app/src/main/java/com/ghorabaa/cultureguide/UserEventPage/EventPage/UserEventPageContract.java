@@ -25,7 +25,7 @@ public interface UserEventPageContract {
     }
 
     interface Presenter{
-        void retrieveEvent();
+        void retrieveEvent(boolean isPastEvent);
         void rate(int rate);
         void attendEvent();
         void updateRate();

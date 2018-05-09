@@ -19,8 +19,8 @@ public class UserEventPagePresenter implements UserEventPageContract.Presenter {
     }
 
     @Override
-    public void retrieveEvent() {
-        mModel.retrieveEvent();
+    public void retrieveEvent(boolean isPastEvent) {
+        mModel.retrieveEvent(isPastEvent);
     }
 
     @Override

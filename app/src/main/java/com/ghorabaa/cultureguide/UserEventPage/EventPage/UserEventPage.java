@@ -48,7 +48,7 @@ public class UserEventPage extends AppCompatActivity implements UserEventPageCon
         mIsPastEvent = getIntent().getExtras().getBoolean("isPast");
 
         mPresenter = new UserEventPagePresenter(this, getApplicationContext(), mEventID);
-        mPresenter.retrieveEvent();
+        mPresenter.retrieveEvent(mIsPastEvent);
 
         mRatePicker = (NumberPicker) findViewById(R.id.event_page_rate);
 
@@ -134,7 +134,8 @@ public class UserEventPage extends AppCompatActivity implements UserEventPageCon
 
     @Override
     public void onRetrieveFail(String errorMessage) {
-        //event is deleted, or connection error. make a toast and finish activity
+        Toast.makeText(getApplicationContext(),errorMessage,Toast.LENGTH_LONG).show();
+        finish();
     }
 
     @Override
