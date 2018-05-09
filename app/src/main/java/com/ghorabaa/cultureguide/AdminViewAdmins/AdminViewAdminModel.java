@@ -11,6 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by megem on 5/1/2018.
@@ -76,7 +77,7 @@ public class AdminViewAdminModel {
     public void getAdmin(String email) {
 
         String query = "SELECT Email FROM Users WHERE Email = '%s'";
-        query = String.format(query, email);
+        query = String.format(Locale.ENGLISH,query, email);
 
         Response.Listener onSuccess = new Response.Listener<String>() {
 
@@ -120,7 +121,7 @@ public class AdminViewAdminModel {
     public void removeAdmin(String email) {
 
         String query = "DELETE FROM Users Where Email = '%s'";
-        query = String.format(query, email);
+        query = String.format(Locale.ENGLISH,query, email);
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override

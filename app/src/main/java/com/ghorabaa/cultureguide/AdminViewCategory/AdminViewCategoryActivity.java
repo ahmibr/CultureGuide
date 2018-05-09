@@ -38,8 +38,8 @@ public class AdminViewCategoryActivity extends AppCompatActivity implements Admi
     public void onRetrieve(final ArrayList<Pair<Integer, String> > categoriesList){
 
         mainLinLay = findViewById(R.id.view_category);
-        mainLinLay.removeViews(2, previousViewsCnt);
 
+        mainLinLay.removeViews(2, previousViewsCnt);
         for (int i=0; i<categoriesList.size(); i++)
         {
             //Toast.makeText(getApplicationContext(),categoriesList.get(i).second,Toast.LENGTH_LONG).show();
@@ -58,6 +58,7 @@ public class AdminViewCategoryActivity extends AppCompatActivity implements Admi
                 }
             });
         }
+        previousViewsCnt = categoriesList.size();
     }
 
     public void onSuccess(){
@@ -74,8 +75,12 @@ public class AdminViewCategoryActivity extends AppCompatActivity implements Admi
     public void onSearchClicked(View view) {
 
         try {
-
-            int id = Integer.parseInt(((EditText) findViewById(R.id.category_id)).getText().toString());
+            String inputID = ((EditText) findViewById(R.id.category_id)).getText().toString();
+            if(inputID.isEmpty()){
+                mPresenter.retrieveCategories();
+                return;
+            }
+            int id = Integer.parseInt(inputID);
             mPresenter.retrieveCategory(id);
         }
 

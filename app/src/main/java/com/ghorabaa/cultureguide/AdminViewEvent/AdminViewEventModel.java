@@ -12,6 +12,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by megem on 5/1/2018.
@@ -80,7 +81,7 @@ public class AdminViewEventModel {
     public void getEvent(int id) {
 
         String query = "SELECT EID, Title FROM Event WHERE EID = %d";
-        query = String.format(query, id);
+        query = String.format(Locale.ENGLISH,query, id);
 
         Response.Listener onSuccess = new Response.Listener<String>() {
 
@@ -127,7 +128,7 @@ public class AdminViewEventModel {
     public void removeEvent(Integer id) {
 
         String query = "DELETE FROM Event WHERE EID = %d";
-        query = String.format(query, id);
+        query = String.format(Locale.ENGLISH,query, id);
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override

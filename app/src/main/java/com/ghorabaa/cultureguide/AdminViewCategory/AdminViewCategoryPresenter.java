@@ -35,7 +35,6 @@ public class AdminViewCategoryPresenter implements AdminViewCategoryContract.Pre
 
     }
 
-    @Override
     public void onFail(String errorMessage) {
 
         mView.onFail(errorMessage);

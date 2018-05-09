@@ -13,6 +13,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by megem on 4/30/18.
@@ -92,7 +93,7 @@ public class AdminViewCategoryModel {
 
 
         String query = "SELECT * FROM Category WHERE ID = %d";
-        query = String.format(query, id);
+        query = String.format(Locale.ENGLISH,query, id);
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
@@ -136,7 +137,7 @@ public class AdminViewCategoryModel {
     public void removeCategory(Integer first) {
 
         String query = "DELETE FROM Category WHERE ID = %d";
-        query = String.format(query, first);
+        query = String.format(Locale.ENGLISH,query, first);
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override

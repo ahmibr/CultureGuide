@@ -12,6 +12,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by megem on 5/1/2018.
@@ -80,7 +81,7 @@ public class AdminViewOrganizationModel {
     public void getOrganization(String email) {
 
         String query = "SELECT Email, Name FROM Organization WHERE Email = '%s";
-        query = String.format(query, email);
+        query = String.format(Locale.ENGLISH,query, email);
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
 
@@ -128,7 +129,7 @@ public class AdminViewOrganizationModel {
     public void removeOrganization(String email) {
 
         String query = "DELETE FROM Users WHERE Email = '%s'";
-        query = String.format(query, email);
+        query = String.format(Locale.ENGLISH,query, email);
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override

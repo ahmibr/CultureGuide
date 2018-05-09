@@ -18,8 +18,6 @@ public interface AdminViewCategoryContract {
     interface Presenter{
 
         void retrieveCategories();
-        void onRetrieve(ArrayList<Pair<Integer, String> > categoriesList);
-        void onFail(String errorMessage);
         void retrieveCategory(int id);
         void removeCategory(Integer first);
     }

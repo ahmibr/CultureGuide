@@ -6,6 +6,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.ghorabaa.cultureguide.Utilities.DBConnection;
 
+import java.util.Locale;
+
 public class AddCategoryModel {
     private Context mContext;
     private DBConnection db;
@@ -21,8 +23,8 @@ public class AddCategoryModel {
     public void addCategory(String name)
 
     {
-        String query = "INSERT INTO Category VALUES('%s')";
-        query = String.format(query, name);
+        String query = "INSERT INTO Category(Name) VALUES('%s')";
+        query = String.format(Locale.ENGLISH,query, name);
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override

@@ -12,6 +12,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by megem on 5/1/2018.
@@ -34,7 +35,7 @@ public class AdminViewUserModel {
     {
         String query = "SELECT Email, Name FROM AppUser";
 
-        Response.Listener onSucccess = new Response.Listener<String>() {
+        Response.Listener onSuccess = new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
@@ -71,13 +72,13 @@ public class AdminViewUserModel {
             }
         };
 
-        db.executeQuery(query, onSucccess, onFail);
+        db.executeQuery(query, onSuccess, onFail);
     }
 
     public void getUser(String email)
     {
         String query = "SELECT Email, Name FROM AppUser WHERE Email = %s";
-        query = String.format(query, email);
+        query = String.format(Locale.ENGLISH,query, email);
 
         Response.Listener onSucccess = new Response.Listener<String>() {
 
@@ -122,7 +123,7 @@ public class AdminViewUserModel {
     public void removeUser(String email) {
 
         String query = "DELETE FROM Users WHERE Email = '%s'";
-        query = String.format(query, email);
+        query = String.format(Locale.ENGLISH,query, email);
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
