@@ -41,4 +41,15 @@ public class AdminViewOrganizationPresenter implements AdminViewOrganizationCont
     public void retrieveOrganization(String email) {
         mModel.getOrganization(email);
     }
+
+    @Override
+    public void removeOrganization(String email) {
+
+        mModel.removeOrganization(email);
+    }
+
+    public void onSuccess() {
+
+        mView.onSuccess();
+    }
 }

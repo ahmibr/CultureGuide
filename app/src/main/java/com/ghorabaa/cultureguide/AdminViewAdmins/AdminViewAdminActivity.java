@@ -44,12 +44,11 @@ public class AdminViewAdminActivity extends AppCompatActivity implements AdminVi
             //Toast.makeText(getApplicationContext(), admins.get(i), Toast.LENGTH_LONG).show();
             linLay = (LinearLayout) View.inflate(this, R.layout.content_admin_view, null);
             ((TextView) linLay.findViewById(R.id.entity)).setText(admins.get(i));
-            //linLay.setId(i);
             mainLinLay.addView(linLay);
-            //linLay = mInflater.inflate(R.layout.content_admin_view, (ViewGroup) findViewById(R.id.viewAdmin));//(RelativeLayout) View.inflate(this, R.id.includedEntity, null);
-            //mainLinLay.addView(linLay);
-            Button removeButton = (Button)linLay.findViewById(R.id.category_remove_button);
+
+            Button removeButton = (Button)linLay.findViewById(R.id.remove_button);
             removeButton.setTag(admins.get(i));
+
             removeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

@@ -13,6 +13,7 @@ public interface AdminViewOrganizationContract {
 
         void onRetrieve(ArrayList<Pair<String, String>> organizations);
         void onFail(String errorMessage);
+        void onSuccess();
     }
 
     interface Presenter{
@@ -21,5 +22,6 @@ public interface AdminViewOrganizationContract {
         void onRetrieve(ArrayList<Pair<String, String> > organizations);
         void onFail(String errorMessage);
         void retrieveOrganization(String email);
+        void removeOrganization(String first);
     }
 }

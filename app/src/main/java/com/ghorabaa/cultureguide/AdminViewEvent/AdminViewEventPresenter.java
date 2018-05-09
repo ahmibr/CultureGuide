@@ -43,4 +43,15 @@ public class AdminViewEventPresenter implements AdminViewEventContract.Presenter
 
         mModel.getEvent(id);
     }
+
+    @Override
+    public void removeEvent(Integer id) {
+
+        mModel.removeEvent(id);
+    }
+
+    public void onSuccess() {
+
+        mView.onSuccess();
+    }
 }

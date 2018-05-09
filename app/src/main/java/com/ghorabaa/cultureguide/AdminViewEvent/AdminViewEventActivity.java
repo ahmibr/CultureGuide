@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -34,9 +35,10 @@ public class AdminViewEventActivity extends AppCompatActivity implements AdminVi
     }
 
     @Override
-    public void onRetrieve(ArrayList<Pair<Integer, String>> events) {
+    public void onRetrieve(final ArrayList<Pair<Integer, String>> events) {
 
         mainLay = findViewById(R.id.view_event);
+        mainLay.removeViews(1, previousViewsCnt);
 
         for(int i=0; i<events.size(); i++)
         {
@@ -44,13 +46,32 @@ public class AdminViewEventActivity extends AppCompatActivity implements AdminVi
             linLay = (LinearLayout) View.inflate(this, R.layout.content_admin_view, null);
             ((TextView) linLay.findViewById(R.id.entity)).setText("ID: " + events.get(i).first + System.lineSeparator() + "Name: " + events.get(i).second);
             mainLay.addView(linLay);
+
+            Button removeButton = (Button)linLay.findViewById(R.id.remove_button);
+            removeButton.setTag(i);
+
+            removeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //Toast.makeText(getApplicationContext(), organizationList.get(Integer.parseInt(view.getTag().toString())).first ,Toast.LENGTH_LONG).show();
+                    mPresenter.removeEvent(events.get(Integer.parseInt(view.getTag().toString())).first);
+                }
+            });
         }
+
+        previousViewsCnt = events.size();
     }
 
     @Override
     public void onFail(String errorMessage) {
 
         Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onSuccess() {
+        Toast.makeText(getApplicationContext(),"Event Removed Successfully",Toast.LENGTH_LONG).show();
+        mPresenter.retrieveEvents();
     }
 
     public void onSearchClicked(View view) {

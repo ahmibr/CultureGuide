@@ -21,7 +21,7 @@ public class AdminViewUserModel {
 
     Context mContext;
     DBConnection db;
-    AdminViewUserContract.Presenter mPresenter;
+    AdminViewUserPresenter mPresenter;
 
     public AdminViewUserModel(AdminViewUserPresenter presenter, Context context) {
 
@@ -117,5 +117,42 @@ public class AdminViewUserModel {
         };
 
         db.executeQuery(query, onSucccess, onFail);
+    }
+
+    public void removeUser(String email) {
+
+        String query = "DELETE FROM Users WHERE Email = '%s'";
+        query = String.format(query, email);
+
+        Response.Listener<String> onSuccess = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                switch (response) {
+
+                    case "true":
+                        mPresenter.onSuccess();
+                        break;
+
+                    case "false":
+                        mPresenter.onFail("Database Not Affected");
+                        break;
+
+                    default:
+                        mPresenter.onFail("An error has occurred");
+                        break;
+                }
+            }
+        };
+
+        Response.ErrorListener onFail = new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                mPresenter.onFail("Connection Error");
+            }
+        };
+
+        db.executeQuery(query, onSuccess, onFail);
     }
 }
