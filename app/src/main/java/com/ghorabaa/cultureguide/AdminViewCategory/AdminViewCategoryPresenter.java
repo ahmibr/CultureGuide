@@ -32,6 +32,7 @@ public class AdminViewCategoryPresenter implements AdminViewCategoryContract.Pre
 
         mView.onRetrieve(categoriesList);
 
+
     }
 
     @Override
