@@ -22,7 +22,7 @@ import java.util.Locale;
 
 public class OrgEventPageModel {
     private DBConnection db;
-    private Context mContext;
+    private Context mContext;//App context
     private OrgEventPagePresenter mPresenter;
     private int eventID;
     private MEvent mEvent;
@@ -42,7 +42,7 @@ public class OrgEventPageModel {
         String query = " SELECT Event.EID,Title,Description,Event.Date,Location,Category.Name as CatName,Category.ID as CatID,Organization.Name,Organization.ID as OrgID FROM `Event`,`Category`,`Organization` WHERE Event.CategoryID=Category.ID&& Event.OID=Organization.ID&& Event.EID= %d";
         query = String.format(Locale.ENGLISH, query, eventID);
 
-
+//wait for response from database
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

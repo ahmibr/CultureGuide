@@ -25,7 +25,7 @@ public class MEvent {
     public MEvent() {
     }
 
-    public MEvent(JSONObject Event) throws JSONException {
+    public MEvent(JSONObject Event) throws JSONException {// constructor accepting json object to help in data retrivel
 
         String title = Event.getString("Title");
         String description = Event.getString("Description");
