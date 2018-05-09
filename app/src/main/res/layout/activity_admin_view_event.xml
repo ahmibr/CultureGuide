@@ -21,15 +21,11 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/events"/>
-
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:maxLines="1"
+                android:hint="@string/search_event"
                 android:layout_alignParentLeft="true"
                 android:id="@+id/event_id" />
 

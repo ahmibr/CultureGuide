@@ -20,12 +20,10 @@ public class AddAdminActivity extends AppCompatActivity implements AddAdminContr
         mPresenter = new AddAdminPresenter(this, getApplicationContext());
     }
 
-
-
     @Override
     public void onSuccess() {
 
-        Toast.makeText(getApplicationContext(), "Added Successully", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Added Successfully", Toast.LENGTH_LONG).show();
         finish();
     }
 
@@ -56,3 +54,4 @@ public class AddAdminActivity extends AppCompatActivity implements AddAdminContr
         mPresenter.addAdmin(email, password);
     }
 }
+

@@ -28,17 +28,20 @@ public class AddAdminModel {
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+
                 switch (response) {
+
                     case "true":
                         mPresenter.onInsertion();
                         break;
+
                     case "false":
                         mPresenter.onFail("Database Not Affected");
                         break;
+
                     default:
                         mPresenter.onFail("An error has occurred");
                         break;
-
                 }
             }
         };

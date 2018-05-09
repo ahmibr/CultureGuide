@@ -11,6 +11,7 @@ import com.ghorabaa.cultureguide.AdminViewEvent.AdminViewEventActivity;
 import com.ghorabaa.cultureguide.AdminViewOrganization.AdminViewOrganizationActivity;
 import com.ghorabaa.cultureguide.AdminViewUser.AdminViewUserActivity;
 import com.ghorabaa.cultureguide.R;
+import com.ghorabaa.cultureguide.SignIn.MainActivity;
 
 public class AdminHomepageActivity extends AppCompatActivity implements AdminHomepageContract.View {
 
@@ -48,5 +49,10 @@ public class AdminHomepageActivity extends AppCompatActivity implements AdminHom
     public void onViewEventsClicked(View view) {
 
         startActivity(new Intent(this, AdminViewEventActivity.class));
+    }
+
+    public void onSignOutClicked(View view) {
+
+        startActivity(new Intent(this, MainActivity.class));
     }
 }

@@ -67,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:hint="@string/emailHint"
+                android:hint="******"
                 android:id="@+id/admin_password_confirm"/>
 
             <Button
@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/add_admin"
                 android:id="@+id/add_admin"
-                android:gravity="right"
+                android:layout_gravity="right"
                 android:onClick="onAddAdminClicked"/>
 
 

@@ -47,6 +47,13 @@
             android:onClick="onViewAdminsClicked"
             android:text="@string/admins"/>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="@string/sign_out"
+            android:onClick="onSignOutClicked"/>
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

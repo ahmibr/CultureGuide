@@ -20,9 +20,9 @@ public class AddAdminPresenter implements AddAdminContract.Presenter{
     }
 
     @Override
-    public void onFail(String errorMesage) {
+    public void onFail(String errorMessage) {
 
-        mView.onFail(errorMesage);
+        mView.onFail(errorMessage);
     }
 
     @Override

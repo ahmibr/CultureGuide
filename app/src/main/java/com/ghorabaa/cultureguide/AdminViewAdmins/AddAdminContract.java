@@ -11,7 +11,7 @@ public interface AddAdminContract {
     interface Presenter{
 
         void onInsertion();
-        void onFail(String errorMesage);
+        void onFail(String errorMessage);
         void addAdmin(String email, String password);
     }
 }

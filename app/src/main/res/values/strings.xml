@@ -96,5 +96,10 @@
     <string name="admin_password">Password</string>
     <string name="admin_password_confirm">Confirm Password</string>
     <string name="add_admin">Add New Admin</string>
+    <string name="search_admin">Enter Admin E-mail</string>
+    <string name="search_category">Enter Category ID</string>
+    <string name="search_event">Enter Event ID</string>
+    <string name="search_organization">Enter Organization E-mail</string>
+    <string name="search_user">Enter User E-mail</string>
 
 </resources>

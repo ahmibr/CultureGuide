@@ -1,5 +1,6 @@
 package com.ghorabaa.cultureguide.AdminViewAdmins;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -75,10 +76,10 @@ public class AdminViewAdminActivity extends AppCompatActivity implements AdminVi
         String email = ((TextView) view.findViewById(R.id.entity)).getText().toString(); //((EditText)findViewById(R.id.organization_password)).getText().toString();
         //mPresenter.removeAdmin(email);
     }
-/*
-    public void onSearchClicked(View view) {
 
-        //String email = ((EditText)findViewById(R.id.admin_email)).getText().toString();
-        mPresenter.retrieveAdmin(email);
-    }*/
+    public void onAddAdminClicked(View view) {
+
+        //startActivity(new Intent(this, AddAdminActivity.class));
+        startActivity(new Intent(this, AddAdminActivity.class));
+    }
 }
