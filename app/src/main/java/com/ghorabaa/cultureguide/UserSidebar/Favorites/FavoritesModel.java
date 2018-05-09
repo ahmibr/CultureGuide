@@ -22,8 +22,14 @@ public class FavoritesModel {
     private FavoritesPresenter mPresenter;
     private Context mContext;
     private DBConnection db;
-    private ArrayList<Integer> favoritesIDs;
+    private ArrayList<Integer> favoritesIDs; //organization ids
 
+
+    /**
+     * Constructor of Favorites Model
+     * @param presenter The presenter attached to the model, to handle callbacks
+     * @param context Application context to sync with
+     */
     public FavoritesModel(FavoritesPresenter presenter, Context context) {
         mPresenter = presenter;
         mContext = context;
@@ -31,7 +37,9 @@ public class FavoritesModel {
         favoritesIDs = new ArrayList<>();
     }
 
-
+    /**
+     * Retrieve favourites from database
+     */
     public void retrieveFavorites() {
         String query = "SELECT Name,OID FROM Favorite,Organization WHERE UID = %d AND OID = ID";
         query = String.format(Locale.ENGLISH, query, Authenticator.getID());
@@ -66,6 +74,10 @@ public class FavoritesModel {
         db.executeQuery(query, onSuccess, onFail);
     }
 
+    /**
+     * remove organization from favourites
+     * @param index index of organization in the array list
+     */
     public void removeFavorite(int index) {
         String query = "DELETE FROM Favorite WHERE UID = %d AND OID = %d";
         try {

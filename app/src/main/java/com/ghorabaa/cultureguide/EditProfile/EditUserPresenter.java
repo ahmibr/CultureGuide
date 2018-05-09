@@ -11,15 +11,15 @@ import java.util.ArrayList;
 
 public class EditUserPresenter extends EditProfilePresenter {
 
-
+    /**
+     * Constructor of SignUp Model
+     * @param view The view attached to the model, to handle callbacks
+     * @param context Application context to sync with
+     */
     public EditUserPresenter(EditProfileContract.EditProfileView view,Context context){
         super(view);
 
         mModel = new EditUserModel(this,context);
-    }
-
-    public void updateInterests(ArrayList<String> interests){
-        //((EditUserModel)mModel).updateInterest(interests);
     }
 
 }

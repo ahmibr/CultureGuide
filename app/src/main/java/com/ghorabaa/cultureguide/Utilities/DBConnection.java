@@ -19,10 +19,13 @@ import java.util.Map;
  * Created by Ahmed Ibrahim on 4/27/18.
  */
 
+/**
+ * Helper class to handle connection to online database
+ */
 public class DBConnection {
 
     private static final String URL = "http://medo4cross.000webhostapp.com/execute.php";
-    private static final String DB_PASSWORD = "password";
+    private static final String DB_PASSWORD = "password"; //for authentication
     private static Context context = null;
     private static DBConnection myInstance = null;
 
@@ -40,7 +43,14 @@ public class DBConnection {
         return myInstance;
     }
 
+    /**
+     * Sends query to online database, and call backs after executing
+     * @param query query to be send
+     * @param onSuccess Async class to retrieve result
+     * @param onFail  Async class in case connection isn't established
+     */
     public void executeQuery(final String query, Response.Listener<String> onSuccess, Response.ErrorListener onFail){
+        //send request to server
         StringRequest request =  new StringRequest(Request.Method.POST,URL,onSuccess,onFail){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
@@ -51,6 +61,7 @@ public class DBConnection {
             }
         };
 
+        //retry connection in case of timeout
         request.setRetryPolicy(new DefaultRetryPolicy(
                 5000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
@@ -58,6 +69,10 @@ public class DBConnection {
         mRequestQueue.add(request);
     }
 
+    /**
+     * Sends query to database without feedback
+     * @param query query to be executed
+     */
     public void executeQuery(final String query){
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
@@ -74,6 +89,7 @@ public class DBConnection {
             }
         };
 
+        //send request to server
         StringRequest request =  new StringRequest(Request.Method.POST,URL,onSuccess,onFail ){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
@@ -84,6 +100,7 @@ public class DBConnection {
             }
         };
 
+        //retry connection in case of timeout
         request.setRetryPolicy(new DefaultRetryPolicy(
                 5000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,

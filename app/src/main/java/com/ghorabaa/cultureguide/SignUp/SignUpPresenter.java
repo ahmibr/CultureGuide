@@ -29,16 +29,13 @@ public class SignUpPresenter implements SignUpContract.Presenter {
     }
 
     /**
-     * Registers new user in authentication web service and database
+     * Asks model to register user
      * @param name name of the registered user
      * @param email email of the registered user
      * @param password password of the registered user
      * @param type type of user (Regular,Organization,Admin)
      * @see UserType Enum
      *
-     * @callback view.onSuccessRegister: In case of Success
-     * @callback presenter.onFailRegister: In case of Failure, with Error message
-     * @return none
      */
     public void signUp(final String name,final String email, String password,final UserType type){
 
@@ -47,6 +44,7 @@ public class SignUpPresenter implements SignUpContract.Presenter {
 
     /**
      * Callback from Model, when sign up succeeds
+     * @param type type of user
      */
     public void onSignUpSuccess(UserType type){
         mView.onSignUpSuccess();

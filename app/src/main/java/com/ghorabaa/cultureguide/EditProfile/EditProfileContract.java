@@ -5,11 +5,11 @@ package com.ghorabaa.cultureguide.EditProfile;
  */
 
 public interface EditProfileContract {
-    public interface EditProfileView {
+    interface EditProfileView {
         void onSuccess(String successMessage);
         void onFail(String failMessage);
     }
-    public interface EditProfilePresenter {
+    interface EditProfilePresenter {
         public void changeEmail(String email);
         public void changePassword(String password);
         public void changeName(String name);

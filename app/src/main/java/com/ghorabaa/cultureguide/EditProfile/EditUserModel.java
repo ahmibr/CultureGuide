@@ -8,14 +8,13 @@ import android.content.Context;
 
 public class EditUserModel extends EditProfileBaseModel {
 
+    /**
+     * Constructor of SignUp Model
+     * @param presenter The presenter attached to the model, to handle callbacks
+     * @param context Application context to sync with
+     */
     public EditUserModel(EditUserPresenter presenter, Context context) {
         super(presenter,context,"AppUser");
     }
 
-    public void getInterests(){
-
-    }
-    public void addInterest(int index){
-
-    }
 }

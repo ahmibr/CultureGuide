@@ -33,17 +33,18 @@ public class SignUpModel {
     //Tag for Log(Debugging)
     final static private String TAG = "SignUpModel";
 
-    final Response.ErrorListener onFail = new Response.ErrorListener() {
+    //on connection fail response
+    Response.ErrorListener onFail = new Response.ErrorListener() {
         @Override
         public void onErrorResponse(VolleyError error) {
-            mPresenter.onSignUpFail("Connection error");
+            mPresenter.onSignUpFail("Connection error!");
         }
     };
 
     /**
      * Constructor of SignUp Model
      * @param presenter The presenter attached to the model, to handle callbacks
-     *
+     * @param context Application context to sync with
      */
     public SignUpModel(SignUpPresenter presenter, Context context){
         mPresenter = presenter;
@@ -74,10 +75,11 @@ public class SignUpModel {
             return;
         }
 
+        String query = "INSERT INTO Users VALUES ('%s','%s','%s')";
+        query = String.format(Locale.ENGLISH,query,email, PasswordEncrypter.encrypt(password),type.toString());
 
 
-
-        Response.Listener<String> onCheckEmail = new Response.Listener<String>() {
+        Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 switch (response){
@@ -94,14 +96,18 @@ public class SignUpModel {
             }
         };
 
-        String query = "INSERT INTO Users VALUES ('%s','%s','%s')";
-        query = String.format(Locale.ENGLISH,query,email, PasswordEncrypter.encrypt(password),type.toString());
 
-        db.executeQuery(query,onCheckEmail,onFail);
+        db.executeQuery(query,onSuccess,onFail);
 
 
     }
 
+    /**
+     * Helper function to insert users info by appropriate function
+     * @param name
+     * @param email
+     * @param type
+     */
     private void insertByType(String name,String email,UserType type) {
         switch (type) {
             case Regular:
@@ -121,8 +127,6 @@ public class SignUpModel {
     /**
      * Saves new Regular user info into the database
      * @param name  name of the user
-     *
-     * @return none
      */
     private void registerRegular(final String name,final String email){
         String query = "INSERT INTO AppUser(Name,Email) VALUES('%s','%s')";
@@ -155,11 +159,10 @@ public class SignUpModel {
         db.executeQuery(getInfo, onSuccess,onFail);
 
     }
+
     /**
      * Saves new Organization user info into the database
      * @param name  name of the user
-     *
-     * @return none
      */
     private void registerOrganization(final String name,final String email){
         String query = "INSERT INTO Organization(Name,Email) VALUES('%s','%s')";

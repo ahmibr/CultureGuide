@@ -26,17 +26,25 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Locale;
 
+//base model for edit profile
 abstract class EditProfileBaseModel {
 
 
     protected EditProfilePresenter mPresenter;
 
+    //table name in db for that type of user
     protected String tableName;
 
     protected Context mContext;
 
     protected DBConnection db;
 
+    /**
+     * Constructor of SignUp Model
+     * @param presenter The presenter attached to the model, to handle callbacks
+     * @param context Application context to sync with
+     * @param tableName Table name in db for that user
+     */
     public EditProfileBaseModel(EditProfilePresenter presenter, Context context, String tableName){
 
         mPresenter = presenter;
@@ -48,6 +56,13 @@ abstract class EditProfileBaseModel {
         this.tableName = tableName;
     }
 
+    /**
+     * Changes email address of the user
+     * @param newEmail
+     *
+     * @callback presenter.onSuccess: In case of Success
+     * @callback presenter.onFail: In case of Failure, with Error message
+     */
     public void changeEmail(final String newEmail){
 
         if(!EmailValidator.validate(newEmail)){
@@ -82,7 +97,16 @@ abstract class EditProfileBaseModel {
         db.executeQuery(query,onSuccess,onFail);
     }
 
+    /**
+     * Changes email address of the user
+     * @param newName
+     *
+     * @callback presenter.onSuccess: In case of Success
+     * @callback presenter.onFail: In case of Failure, with Error message
+     */
     public void changeName(final String newName){
+
+        //be safe better than sorry
         String escapedNewName = SQLInjectionEscaper.escapeString(newName);
         String query = "UPDATE %s SET Name = '%s' WHERE ID = %d";
         query = String.format(Locale.ENGLISH,query,tableName,escapedNewName, Authenticator.getID());
@@ -111,6 +135,13 @@ abstract class EditProfileBaseModel {
 
     }
 
+    /**
+     * Changes password of user after hashing it
+     * @param newPassword
+     *
+     * @callback presenter.onSuccess: In case of Success
+     * @callback presenter.onFail: In case of Failure, with Error message
+     */
     public void changePassword(final String newPassword){
 
         if(newPassword.length()<6){

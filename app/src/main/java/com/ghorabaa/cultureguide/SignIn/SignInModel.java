@@ -38,6 +38,11 @@ public class SignInModel {
         db = DBConnection.getInstance(context);
     }
 
+    /**
+     * Sign in user with given email and password
+     * @param email user email
+     * @param password user password
+     */
     public void SignIn(final String email, String password){
 
         if(!EmailValidator.validate(email)){
@@ -45,6 +50,7 @@ public class SignInModel {
             return;
         }
 
+        //hash the password and login with it
         String query = "SELECT * FROM Users WHERE Email = '"+email+"' AND Password = '"
                 + PasswordEncrypter.encrypt(password)+"'";
 
@@ -53,6 +59,8 @@ public class SignInModel {
             public void onResponse(String response) {
                 try {
                     JSONArray result = new JSONArray(response);
+
+                    //this email is not registered before
                     if(result.length()!=0){
                         String type = result.getJSONObject(0).getString("Type");
                         switch (type){
@@ -69,6 +77,7 @@ public class SignInModel {
                                 break;
                         }
                     }
+
                     else
                         mPresenter.onSignInFail("Wrong Email or Wrong Password!");
                 } catch (JSONException e) {
@@ -90,6 +99,10 @@ public class SignInModel {
     }
 
 
+    /**
+     * Helper function to insert regular user in it's table
+     * @param email email of the user
+     */
     private void routeRegular(String email){
         String getInfo = "SELECT * FROM AppUser WHERE Email = '"+email+"'";
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
@@ -117,6 +130,10 @@ public class SignInModel {
         });
     }
 
+    /**
+     * Helper function to insert organization user in it's table
+     * @param email email of the user
+     */
     private void routeOrganization(String email){
         String getInfo = "SELECT * FROM Organization WHERE Email = '"+email+"'";
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
@@ -144,10 +161,21 @@ public class SignInModel {
         });
     }
 
+    /**
+     * Helper function to insert admin user in it's table
+     * @param email email of the user
+     */
     private void routeAdmin(String email){
         Authenticator.setEmail(email);
         mPresenter.onSignInSuccess(UserType.Admin);
     }
+
+    /**
+     * Helper function to cache user info to user it in the app
+     * @param id user's id in database
+     * @param name user's name
+     * @param email user's email
+     */
     private void cacheUserData(final int id,final String name,final String email){
         Authenticator.setEmail(email);
         Authenticator.setID(id);

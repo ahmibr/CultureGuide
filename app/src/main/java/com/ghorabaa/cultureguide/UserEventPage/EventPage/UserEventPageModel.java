@@ -22,11 +22,16 @@ import java.util.Locale;
 public class UserEventPageModel {
 
     private UserEventPagePresenter mPresenter;
-    private Context mContext;
-    private DBConnection db;
-    private MEvent mEvent;
-    private int eventID;
+    private Context mContext;   //Application context to sync with
+    private DBConnection db;    //database reference
+    private MEvent mEvent;  //event info after being retrieved
+    private int eventID; //event id to be retrieved
 
+    /**
+     * Constructor of SignUp Model
+     * @param presenter The presenter attached to the model, to handle callbacks
+     * @param context Application context to sync with
+     */
     UserEventPageModel(UserEventPagePresenter presenter, Context context, int eventID) {
         mPresenter = presenter;
         mContext = context;
@@ -34,6 +39,10 @@ public class UserEventPageModel {
         this.eventID = eventID;
     }
 
+    /**
+     * Retrieves event info
+     * @param isPastEvent to know if the event is past, to check if it's expired
+     */
     void retrieveEvent(final boolean isPastEvent) {
         String query = "SELECT Event.EID,Title,Description,Event.Date,Location,Category.Name as CatName,Category.ID as CatID,Organization.Name,Organization.ID as OrgID FROM `Event`,`Category`,`Organization` WHERE Event.EID= %d && Event.CategoryID=Category.ID && Event.OID=Organization.ID";
         query = String.format(Locale.ENGLISH, query, eventID);
@@ -46,6 +55,8 @@ public class UserEventPageModel {
                     JSONArray result = new JSONArray(response);
                     JSONObject objectResult = result.getJSONObject(0);
                     mEvent = new MEvent(objectResult);
+
+                    //if it's expired
                     if (!isPastEvent && !MEvent.isValidDate(mEvent.getDate()))
                         mPresenter.onRetrieveFail("This event is expired, please refresh the page");
                     else
@@ -72,7 +83,10 @@ public class UserEventPageModel {
 
     }
 
-
+    /**
+     * Update rate for event in database
+     * @param rate
+     */
     void rateEvent(int rate) {
         String query = "INSERT INTO Rate(UID, EID, Rate) VALUES(%d, %d, %d) ON DUPLICATE KEY UPDATE Rate = %d";
         query = String.format(Locale.ENGLISH, query, Authenticator.getID(), mEvent.getID(), rate, rate);
@@ -97,6 +111,9 @@ public class UserEventPageModel {
         db.executeQuery(query, onSuccess, onFail);
     }
 
+    /**
+     * Registers user in event's attendees
+     */
     void attendEvent() {
         String query = "INSERT INTO Attend(UID,EID) VALUES(%d,%d)";
         query = String.format(Locale.ENGLISH, query, Authenticator.getID(), eventID);
@@ -123,7 +140,9 @@ public class UserEventPageModel {
         db.executeQuery(query, onSuccess, onFail);
     }
 
-
+    /**
+     * Get the event rate from database
+     */
     public void retrieveRate() {
         String query = "SELECT AVG(Rate) AS Average FROM Rate WHERE EID = %d";
         query = String.format(Locale.ENGLISH, query, eventID);
@@ -153,6 +172,9 @@ public class UserEventPageModel {
         db.executeQuery(query, onSuccess, onFail);
     }
 
+    /**
+     * Adds organization to user's favourite list
+     */
     public void addOrgToFavorite() {
         String query = "INSERT INTO Favorite(UID,OID) VALUES(%d,%d)";
         query = String.format(Locale.ENGLISH, query, Authenticator.getID(), mEvent.getOrgID());
@@ -179,6 +201,9 @@ public class UserEventPageModel {
         db.executeQuery(query, onSuccess, onFail);
     }
 
+    /**
+     * Checks if organization is in users favourites or not
+     */
     public void checkOrgState() {
         String query = "SELECT * FROM Favorite WHERE UID = %d AND OID = %d";
         query = String.format(Locale.ENGLISH, query, Authenticator.getID(), mEvent.getOrgID());
@@ -208,6 +233,9 @@ public class UserEventPageModel {
         db.executeQuery(query, onSuccess, onFail);
     }
 
+    /**
+     * Checks if user attended the event or not
+     */
     void checkAttendState() {
         String query = "SELECT * FROM Attend WHERE UID = %d AND EID = %d";
         query = String.format(Locale.ENGLISH, query, Authenticator.getID(), eventID);

@@ -4,6 +4,9 @@ package com.ghorabaa.cultureguide.Utilities;
  * Created by Ahmed Ibrahim on 5/8/18.
  */
 
+/**
+ * Helper class to escape symbols to avoid sql injection and errors
+ */
 public class SQLInjectionEscaper {
 
     public static String escapeString(String x) {
