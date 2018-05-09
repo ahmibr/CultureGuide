@@ -26,13 +26,11 @@ public class AdminViewUserPresenter implements AdminViewUserContract.Presenter {
         mModel.getUsers();
     }
 
-    @Override
     public void onRetrieve(ArrayList<Pair<String, String>> users) {
 
         mView.onRetrieve(users);
     }
 
-    @Override
     public void onFail(String errorMessage) {
 
         mView.onFail(errorMessage);

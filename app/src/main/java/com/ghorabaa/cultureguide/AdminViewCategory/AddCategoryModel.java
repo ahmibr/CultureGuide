@@ -5,6 +5,7 @@ import android.content.Context;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.ghorabaa.cultureguide.Utilities.DBConnection;
+import com.ghorabaa.cultureguide.Utilities.SQLInjectionEscaper;
 
 import java.util.Locale;
 
@@ -23,6 +24,7 @@ public class AddCategoryModel {
     public void addCategory(String name)
 
     {
+        name = SQLInjectionEscaper.escapeString(name);
         String query = "INSERT INTO Category(Name) VALUES('%s')";
         query = String.format(Locale.ENGLISH,query, name);
 

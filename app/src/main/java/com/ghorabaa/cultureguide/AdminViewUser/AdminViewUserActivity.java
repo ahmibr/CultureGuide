@@ -32,7 +32,7 @@ public class AdminViewUserActivity extends AppCompatActivity implements AdminVie
         previousViewsCnt = 0;
 
         mPresenter = new AdminViewUserPresenter(this, getApplicationContext());
-        //mPresenter.retrieveUsers();
+        mPresenter.retrieveUsers();
     }
 
     @Override
@@ -53,7 +53,6 @@ public class AdminViewUserActivity extends AppCompatActivity implements AdminVie
             removeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getApplicationContext(), users.get(Integer.parseInt(view.getTag().toString())).first ,Toast.LENGTH_LONG).show();
                     mPresenter.removeUser(users.get(Integer.parseInt(view.getTag().toString())).first);
                 }
             });
@@ -78,6 +77,11 @@ public class AdminViewUserActivity extends AppCompatActivity implements AdminVie
     public void onSearchClicked(View view) {
 
         String email = ((EditText) findViewById(R.id.user_email)).getText().toString();
+        if(email.isEmpty())
+        {
+            mPresenter.retrieveUsers();
+            return;
+        }
         mPresenter.retrieveUser(email);
     }
 

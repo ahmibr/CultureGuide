@@ -31,7 +31,7 @@ public class AdminViewOrganizationPresenter implements AdminViewOrganizationCont
         mView.onRetrieve(organizations);
     }
 
-    @Override
+
     public void onFail(String errorMessage) {
 
         mView.onFail(errorMessage);

@@ -19,8 +19,6 @@ public interface AdminViewUserContract {
     interface Presenter{
 
         void retrieveUsers();
-        void onRetrieve(ArrayList<Pair<String, String>> users);
-        void onFail(String errorMessage);
         void retrieveUser(String email);
         void removeUser(String s);
     }

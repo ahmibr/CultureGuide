@@ -1,11 +1,13 @@
 package com.ghorabaa.cultureguide.AdminViewUser;
 
 import android.content.Context;
+import android.util.Log;
 import android.util.Pair;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.ghorabaa.cultureguide.Utilities.DBConnection;
+import com.ghorabaa.cultureguide.Utilities.EmailValidator;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -77,10 +79,14 @@ public class AdminViewUserModel {
 
     public void getUser(String email)
     {
-        String query = "SELECT Email, Name FROM AppUser WHERE Email = %s";
+        if(!EmailValidator.validate(email)){
+            mPresenter.onFail("Please enter valid email form!");
+            return;
+        }
+        String query = "SELECT Email, Name FROM AppUser WHERE Email = '%s'";
         query = String.format(Locale.ENGLISH,query, email);
 
-        Response.Listener onSucccess = new Response.Listener<String>() {
+        Response.Listener onSuccess = new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
@@ -117,12 +123,13 @@ public class AdminViewUserModel {
             }
         };
 
-        db.executeQuery(query, onSucccess, onFail);
+        db.executeQuery(query, onSuccess, onFail);
     }
 
     public void removeUser(String email) {
 
         String query = "DELETE FROM Users WHERE Email = '%s'";
+        Log.d("Remove user",query);
         query = String.format(Locale.ENGLISH,query, email);
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {

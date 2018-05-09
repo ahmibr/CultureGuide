@@ -77,6 +77,10 @@ public class AdminViewOrganizationActivity extends AppCompatActivity implements 
     public void onSearchClicked(View view) {
 
         String email = ((EditText) findViewById(R.id.organization_email)).getText().toString();
+        if(email.isEmpty()){
+            mPresenter.retrieveOrganizations();
+            return;
+        }
         mPresenter.retrieveOrganization(email);
     }
 

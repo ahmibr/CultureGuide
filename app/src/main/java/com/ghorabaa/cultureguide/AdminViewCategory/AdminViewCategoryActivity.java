@@ -53,7 +53,6 @@ public class AdminViewCategoryActivity extends AppCompatActivity implements Admi
             removeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //Toast.makeText(getApplicationContext(), organizationList.get(Integer.parseInt(view.getTag().toString())).first ,Toast.LENGTH_LONG).show();
                     mPresenter.removeCategory(categoriesList.get(Integer.parseInt(view.getTag().toString())).first);
                 }
             });
@@ -63,7 +62,7 @@ public class AdminViewCategoryActivity extends AppCompatActivity implements Admi
 
     public void onSuccess(){
 
-        Toast.makeText(getApplicationContext(),"Admin Removed Successfully",Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(),"Category Removed Successfully",Toast.LENGTH_LONG).show();
         mPresenter.retrieveCategories();
     }
 

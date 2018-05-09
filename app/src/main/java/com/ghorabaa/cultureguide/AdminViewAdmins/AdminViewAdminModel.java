@@ -4,7 +4,9 @@ import android.content.Context;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.ghorabaa.cultureguide.Utilities.Authenticator;
 import com.ghorabaa.cultureguide.Utilities.DBConnection;
+import com.ghorabaa.cultureguide.Utilities.EmailValidator;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -75,7 +77,10 @@ public class AdminViewAdminModel {
     }
 
     public void getAdmin(String email) {
-
+        if(!EmailValidator.validate(email)){
+            mPresenter.onFail("Please enter valid email form!");
+            return;
+        }
         String query = "SELECT Email FROM Users WHERE Email = '%s'";
         query = String.format(Locale.ENGLISH,query, email);
 
@@ -119,7 +124,10 @@ public class AdminViewAdminModel {
     }
 
     public void removeAdmin(String email) {
-
+        if(email.toLowerCase().equals(Authenticator.getEmail().toLowerCase())){
+            mPresenter.onFail("You can't remove yourself!");
+            return;
+        }
         String query = "DELETE FROM Users Where Email = '%s'";
         query = String.format(Locale.ENGLISH,query, email);
 

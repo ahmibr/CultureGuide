@@ -28,7 +28,7 @@ public class AdminViewAdminPresenter implements AdminViewAdminContract.Presenter
         mView.onRetrieve(admins);
     }
 
-    @Override
+
     public void onFail(String errorMessage) {
         mView.onFail(errorMessage);
     }

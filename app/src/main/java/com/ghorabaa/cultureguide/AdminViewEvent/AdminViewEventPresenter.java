@@ -26,13 +26,11 @@ public class AdminViewEventPresenter implements AdminViewEventContract.Presenter
         mModel.getEvents();
     }
 
-    @Override
     public void onRetrieve(ArrayList<Pair<Integer, String>> events) {
 
         mView.onRetrieve(events);
     }
 
-    @Override
     public void onFail(String errorMessage) {
 
         mView.onFail(errorMessage);

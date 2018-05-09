@@ -78,7 +78,10 @@ public class AdminViewAdminActivity extends AppCompatActivity implements AdminVi
     public void onSearchClicked(View view) {
 
         String email = ((EditText) findViewById(R.id.admin_email)).getText().toString();
-
+        if(email.isEmpty())
+            mPresenter.retrieveAdmins();
+        else
+            mPresenter.retrieveAdmin(email);
     }
 
     public void onAddAdminClicked(View view) {

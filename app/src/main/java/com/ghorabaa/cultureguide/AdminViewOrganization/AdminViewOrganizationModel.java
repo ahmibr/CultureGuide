@@ -6,6 +6,7 @@ import android.util.Pair;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.ghorabaa.cultureguide.Utilities.DBConnection;
+import com.ghorabaa.cultureguide.Utilities.EmailValidator;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -79,8 +80,11 @@ public class AdminViewOrganizationModel {
     }
 
     public void getOrganization(String email) {
-
-        String query = "SELECT Email, Name FROM Organization WHERE Email = '%s";
+        if(!EmailValidator.validate(email)){
+            mPresenter.onFail("Please enter valid email form!");
+            return;
+        }
+        String query = "SELECT Email, Name FROM Organization WHERE Email = '%s'";
         query = String.format(Locale.ENGLISH,query, email);
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {

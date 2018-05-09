@@ -77,7 +77,12 @@ public class AdminViewEventActivity extends AppCompatActivity implements AdminVi
     public void onSearchClicked(View view) {
 
         try{
-            int id = Integer.parseInt(((EditText) findViewById(R.id.event_id)).getText().toString());
+            String inputID = ((EditText) findViewById(R.id.event_id)).getText().toString();
+            if(inputID.isEmpty()){
+                mPresenter.retrieveEvents();
+                return;
+            }
+            int id = Integer.parseInt(inputID);
             mPresenter.retrieveEvent(id);
         }
 
