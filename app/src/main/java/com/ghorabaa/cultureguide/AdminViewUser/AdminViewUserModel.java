@@ -77,7 +77,7 @@ public class AdminViewUserModel {
 
     public void getUser(String email)
     {
-        String query = "SELECT Email, Name FROM AppUser WHERE Email = %s";
+        String query = "SELECT Email, Name FROM AppUser WHERE Email = '%s'";
         query = String.format(Locale.ENGLISH,query, email);
 
         Response.Listener onSucccess = new Response.Listener<String>() {
@@ -122,7 +122,7 @@ public class AdminViewUserModel {
 
     public void removeUser(String email) {
 
-        String query = "DELETE FROM Users WHERE Email = '%s'";
+        String query = "DELETE FROM Users Where Email = '%s'";
         query = String.format(Locale.ENGLISH,query, email);
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {

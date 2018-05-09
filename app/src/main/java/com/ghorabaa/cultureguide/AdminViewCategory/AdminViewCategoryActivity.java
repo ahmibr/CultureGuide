@@ -63,7 +63,7 @@ public class AdminViewCategoryActivity extends AppCompatActivity implements Admi
 
     public void onSuccess(){
 
-        Toast.makeText(getApplicationContext(),"Admin Removed Successfully",Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(),"Category Removed Successfully",Toast.LENGTH_LONG).show();
         mPresenter.retrieveCategories();
     }
 
