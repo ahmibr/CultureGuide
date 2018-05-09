@@ -39,6 +39,8 @@ public class CreateEventModel {
     }
 
     public void createEvent(String title, String description, String location, Date date, int cIndex) {
+
+        //check if date hasn't passed yet
         if (!MEvent.isValidDate(date)) {
             mPresenter.onCreateEventFail("Invalid date!");
             return;

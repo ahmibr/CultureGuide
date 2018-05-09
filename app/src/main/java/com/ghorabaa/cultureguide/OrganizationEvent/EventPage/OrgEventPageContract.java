@@ -11,7 +11,7 @@ import java.util.Date;
  */
 
 public interface OrgEventPageContract {
-
+//the contract between view and presenter
     interface View{
         void onRetrieveEvent(MEvent mEvent);
         void onRetrieveFail(String errorMessage);
@@ -21,7 +21,7 @@ public interface OrgEventPageContract {
         void onUpdateFail(String errorMessage);
         void onRetrieveCategories(ArrayList<String> categoryList);
     }
-
+//the contract between presenter and model
     interface Presenter{
         void retrieveEvent();
         void retrieveCategories();
