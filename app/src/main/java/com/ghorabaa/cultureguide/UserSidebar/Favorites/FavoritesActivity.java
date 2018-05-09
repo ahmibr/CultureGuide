@@ -14,6 +14,11 @@ import java.util.ArrayList;
 
 public class FavoritesActivity extends AppCompatActivity implements FavoritesContract.View, AdapterView.OnItemClickListener{
 
+    /**
+     * Activity That handles Favorites.
+     * Created by Bassel
+     */
+
     FavoritesContract.Presenter mPresenter;
 
     private ListView mFavoriteList;
@@ -32,7 +37,9 @@ public class FavoritesActivity extends AppCompatActivity implements FavoritesCon
         mFavoriteList.setOnItemClickListener(this);
     }
 
-
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onRetrieveFavorites(ArrayList<String> favoritesList) {
 
@@ -44,7 +51,6 @@ public class FavoritesActivity extends AppCompatActivity implements FavoritesCon
 
         String[] favoritesListStrings = new String[favoritesList.size()];
 
-        //for testing
         for(int i=0;i<favoritesList.size();++i){
             favoritesListStrings[i] = getResources().getString(R.string.remove) + " " + favoritesList.get(i);
         }
@@ -54,22 +60,34 @@ public class FavoritesActivity extends AppCompatActivity implements FavoritesCon
         mFavoriteList.setAdapter(mArrayAdapter);
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onRetrieveFail(String errorMessage) {
         Toast.makeText(getApplicationContext(),errorMessage,Toast.LENGTH_LONG).show();
         finish();
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onRemoveSuccess() {
         Toast.makeText(getApplicationContext(),"Favorite removed successfully!",Toast.LENGTH_LONG).show();
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onRemoveFail(String errorMessage) {
         Toast.makeText(getApplicationContext(),errorMessage,Toast.LENGTH_LONG).show();
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         mPresenter.removeFavorite(i);

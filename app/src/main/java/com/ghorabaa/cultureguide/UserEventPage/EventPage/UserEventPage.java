@@ -16,6 +16,11 @@ import com.ghorabaa.cultureguide.UserEventPage.InviteFriend.InviteFriends;
 
 public class UserEventPage extends AppCompatActivity implements UserEventPageContract.View {
 
+    /**
+     * Activity That handles User Event.
+     * Created by Bassel
+     */
+
     private UserEventPageContract.Presenter mPresenter;
 
     private boolean mIsPastEvent;
@@ -120,6 +125,9 @@ public class UserEventPage extends AppCompatActivity implements UserEventPageCon
         });
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onRetrieveSuccess(MEvent mEvent) {
 
@@ -132,56 +140,84 @@ public class UserEventPage extends AppCompatActivity implements UserEventPageCon
         mPresenter.checkOrgState();
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onRetrieveFail(String errorMessage) {
         Toast.makeText(getApplicationContext(),errorMessage,Toast.LENGTH_LONG).show();
         finish();
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onAttendSuccess() {
         mAttend.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_clear_black_24dp,0);
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onAttendFail(String errorMessage) {
         //event is deleted, or connection error. make a toast
         Toast.makeText(this,errorMessage,Toast.LENGTH_LONG).show();
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onRateSuccess() {
         Toast.makeText(this, "Rated successfully", Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onRateFail(String errorMessage) {
         Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
     }
 
-
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onRetrieveRate(int rate) {
         //update rate
         mRating.setText( rate + "" );
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onAddOrgSuccess() {
         mAddFavorites.setEnabled(false);
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onAddOrgFail(String errorMessage) {
         Toast.makeText(this,errorMessage,Toast.LENGTH_LONG).show();
     }
 
-
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void showAddOrgButton() {
         mAddFavorites.setVisibility(View.VISIBLE);
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void showAttendButton() {
         mAttend.setVisibility(View.VISIBLE);

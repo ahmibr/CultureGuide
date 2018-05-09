@@ -21,6 +21,11 @@ import java.util.Date;
 
 public class OrgEventPageActivity extends AppCompatActivity implements OrgEventPageContract.View {
 
+    /**
+     * Activity That handles organizations homepage.
+     * Created by Ruba
+     */
+
     OrgEventPageContract.Presenter mPresenter;
     int mEventID;
 

@@ -55,24 +55,37 @@ public class MainActivity extends AppCompatActivity implements SignInContract.Vi
         printToast(errorMessage,duration);
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void routeRegular() {
         startActivity(new Intent(this, UserHomepage.class));
         finish();
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void routeOrganization() {
         startActivity(new Intent(MainActivity.this, OrgHomepageActivity.class));
         finish();
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void routeAdmin() {
         startActivity(new Intent(MainActivity.this, AdminHomepageActivity.class));
         finish();
     }
 
+    /**
+     * After sign in is clicked
+     * handling empty text
+     */
     public void onSignInClicked(android.view.View view){
 
         String email = ((EditText)findViewById(R.id.sign_in_email)).getText().toString();
@@ -93,6 +106,9 @@ public class MainActivity extends AppCompatActivity implements SignInContract.Vi
         mPresenter.signIn(email,password);
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     public void onSignUpClicked(android.view.View view){
 
         startActivity(new Intent(MainActivity.this, SignUpActivity.class));

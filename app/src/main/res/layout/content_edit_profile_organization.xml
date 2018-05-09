@@ -142,50 +142,6 @@
                     />
             </LinearLayout>
 
-            <!--TODO add this commented section-->
-
-            <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginLeft="8dp"-->
-            <!--android:layout_marginRight="8dp"-->
-            <!--android:layout_marginTop="16dp"-->
-            <!--android:text="@string/categories"-->
-            <!--android:textSize="18sp"-->
-            <!--android:textStyle="bold" />-->
-
-            <!--<Spinner-->
-            <!--android:id="@+id/spinner1"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:background="@android:drawable/btn_dropdown"-->
-            <!--android:spinnerMode="dropdown"/>-->
-
-            <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginLeft="8dp"-->
-            <!--android:layout_marginRight="8dp"-->
-            <!--android:layout_marginTop="16dp"-->
-            <!--android:text="@string/description"-->
-            <!--android:textSize="18sp"-->
-            <!--android:textStyle="bold" />-->
-
-            <!--<EditText-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginLeft="16dp"-->
-            <!--android:layout_marginRight="16dp"-->
-            <!--android:hint="@string/briefDescription" />-->
-
-            <!--<Button-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="center"-->
-            <!--android:text="@string/editProfile"-->
-            <!--android:onClick="test"-->
-            <!--/>-->
-
         </LinearLayout>
 
     </ScrollView>

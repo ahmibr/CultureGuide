@@ -17,6 +17,11 @@ public class EditOrgActivity extends AppCompatActivity
 
     private ProgressDialog progressBar;
 
+    /**
+     * Activity That handles organizations editing their account.
+     * Created by Ruba
+     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,9 +46,6 @@ public class EditOrgActivity extends AppCompatActivity
         progressBar.dismiss();
         printToast(failMessage,Toast.LENGTH_LONG);
     }
-
-
-    //Todo change name email password
 
     public void changeOrgName(View view){
         String newName = ((TextView) findViewById(R.id.edit_org_name)).getText().toString();

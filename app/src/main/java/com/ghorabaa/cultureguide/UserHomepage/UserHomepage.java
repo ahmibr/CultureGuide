@@ -30,6 +30,11 @@ import java.util.ArrayList;
 public class UserHomepage extends AppCompatActivity implements UserHomepageContract.View,
         NavigationView.OnNavigationItemSelectedListener {
 
+    /**
+     * Activity That handles HomePage.
+     * Created by Bassel
+     */
+
     private UserHomepageContract.Presenter mPresenter;
 
     private ViewPager mViewPager;
@@ -72,6 +77,9 @@ public class UserHomepage extends AppCompatActivity implements UserHomepageContr
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onRetrieve(ArrayList<MEvent> events) {
         switch (requestedType){
@@ -87,6 +95,9 @@ public class UserHomepage extends AppCompatActivity implements UserHomepageContr
         }
     }
 
+    /**
+     * To set Tabs in android
+     */
     private void setupViewPager (ViewPager viewPager){
         SectionsPagesAdapter adapter = new SectionsPagesAdapter(getSupportFragmentManager());
 
@@ -112,11 +123,17 @@ public class UserHomepage extends AppCompatActivity implements UserHomepageContr
         requestedType = EventRetrievalType.Past;
     }
 
+    /**
+     * CallBack function from BackEnd
+     */
     @Override
     public void onFail(String errorMessage) {
         Toast.makeText(getApplicationContext(),errorMessage,Toast.LENGTH_LONG).show();
     }
 
+    /**
+     * CallBack function from Android
+     */
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
@@ -146,6 +163,9 @@ public class UserHomepage extends AppCompatActivity implements UserHomepageContr
         return true;
     }
 
+    /**
+     * CallBack function from Android
+     */
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 

@@ -45,9 +45,6 @@ public class EditUserActivity extends AppCompatActivity implements EditProfileCo
         printToast(failMessage,Toast.LENGTH_LONG);
     }
 
-
-    //Todo change name email password
-
     public void changeOrgName(View view){
         String newName = ((TextView) findViewById(R.id.edit_org_name)).getText().toString();
 

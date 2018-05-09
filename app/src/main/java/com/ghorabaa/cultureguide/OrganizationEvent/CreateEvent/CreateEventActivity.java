@@ -25,6 +25,11 @@ public class CreateEventActivity extends AppCompatActivity implements CreateEven
 {
     CreateEventContract.Presenter mPresenter;
 
+    /**
+     * Activity That handles organizations creating event.
+     * Created by Ruba
+     */
+
     private EditText mEventTitle;
     private EditText mEventAbout;
     private EditText mEventLocation;
