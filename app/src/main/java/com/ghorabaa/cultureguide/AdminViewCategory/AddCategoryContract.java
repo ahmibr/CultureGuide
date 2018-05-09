@@ -7,6 +7,7 @@ public interface AddCategoryContract {
         void onFail(String errorMesage);
     }
 
+
     interface Presenter{
 
         void onInsertion();

@@ -19,6 +19,7 @@ public class AddCategoryModel {
     }
 
     public void addCategory(String name)
+
     {
         String query = "INSERT INTO Category VALUES('%s')";
         query = String.format(query, name);

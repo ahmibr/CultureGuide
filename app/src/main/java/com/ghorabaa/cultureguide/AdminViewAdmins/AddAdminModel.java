@@ -33,8 +33,11 @@ public class AddAdminModel {
         if(!EmailValidator.validate(email)){
             mPresenter.onFail("Please enter valid email form!");
             return;
+
+
         }
 
+        password = SQLInjectionEscaper.escapeString(password);
         String query = "INSERT INTO Users VALUES('%s', '%s', 'Admin')";
         query = String.format(Locale.ENGLISH,query, email, PasswordEncrypter.encrypt(password));
 

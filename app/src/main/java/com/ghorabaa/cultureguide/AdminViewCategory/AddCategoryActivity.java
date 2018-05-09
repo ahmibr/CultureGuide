@@ -31,6 +31,7 @@ public class AddCategoryActivity extends AppCompatActivity implements AddCategor
     public void onFail(String errorMesage) {
 
         Toast.makeText(getApplicationContext(), errorMesage, Toast.LENGTH_LONG).show();
+
     }
 
 
@@ -44,6 +45,7 @@ public class AddCategoryActivity extends AppCompatActivity implements AddCategor
             Toast.makeText(view.getContext(), errorMessage, Toast.LENGTH_LONG).show();
             return;
         }
+
 
         mPresenter.addCategory(category);
     }

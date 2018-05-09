@@ -9,6 +9,7 @@ public class AddCategoryPresenter implements AddCategoryContract.Presenter{
 
     public AddCategoryPresenter(AddCategoryContract.View view, Context context) {
 
+
         mView = view;
         mModel = new AddCategoryModel(this, context);
     }
