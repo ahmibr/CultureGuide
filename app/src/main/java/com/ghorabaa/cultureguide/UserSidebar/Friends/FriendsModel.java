@@ -112,14 +112,13 @@ public class FriendsModel {
     }
 
     public void addFriend(String email) {
-
-        if(email.equals(Authenticator.getEmail())){
-            //forever alone
-            mPresenter.onAddFail("You can't add yourself!");
-            return;
-        }
         if(!EmailValidator.validate(email)){
             mPresenter.onAddFail("Please enter valid email form!");
+            return;
+        }
+        if(email.toLowerCase().equals(Authenticator.getEmail())){
+            //forever alone
+            mPresenter.onAddFail("You can't add yourself!");
             return;
         }
         String query = "INSERT INTO Friend(UID,FUID) VALUES(%d,(SELECT ID FROM AppUser WHERE Email = '%s'))";
