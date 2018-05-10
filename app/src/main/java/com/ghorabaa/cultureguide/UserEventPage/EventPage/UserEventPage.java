@@ -155,7 +155,7 @@ public class UserEventPage extends AppCompatActivity implements UserEventPageCon
      */
     @Override
     public void onAttendSuccess() {
-        mAttend.setClickable(false);
+        mAttend.setEnabled(false);
     }
 
     /**

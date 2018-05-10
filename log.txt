@@ -1,0 +1,1107 @@
+commit 8e9a44be60145e8695d8bc0795e7e13ce7006fb2
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Thu May 10 03:42:31 2018 +0200
+
+    Fix minor bug in rating showing
+
+commit 11c502965d9dcfa19979544a777a9e85baef01b5
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Thu May 10 03:06:50 2018 +0200
+
+    Add lower casing to add friend
+
+commit dc566fad479cc6158926f067d384162aacf22ae2
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Thu May 10 02:14:16 2018 +0200
+
+    Force email to be in lower case
+
+commit f7d52325d3eaa507653d3bdd2b2eaf7783d26cbf
+Merge: c3fb56c dc2bca8
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Thu May 10 02:01:06 2018 +0200
+
+    Fix conflict
+
+commit c3fb56c95aee70ab3d2d791bd101656e4a09f762
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Thu May 10 01:54:52 2018 +0200
+
+    Add some enhacements
+
+commit dc2bca83e4cd8983fe6faee7e5ee6b07ffd5731e
+Author: HaneenWally <megemen2020@gmail.com>
+Date:   Thu May 10 01:21:11 2018 +0200
+
+    "fix typo"
+
+commit feb8197cd809c90a0480a5f02a098ee73453c664
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Thu May 10 00:57:25 2018 +0200
+
+    Fix admin query for arabic phones
+
+commit a55286eb7acf5549ade3ced76aba515d035a5a10
+Author: HaneenWally <megemen2020@gmail.com>
+Date:   Wed May 9 23:51:23 2018 +0200
+
+    Merge branch 'master' of https://github.com/ahmibr/CultureGuide
+    
+    # Please enter a commit message to explain why this merge is necessary,
+    # especially if it merges an updated upstream into a topic branch.
+    #
+    # Lines starting with '#' will be ignored, and an empty message aborts
+    # the commit.
+
+commit 683129f017fc83bcce56b922f751de097347c1ef
+Author: HaneenWally <megemen2020@gmail.com>
+Date:   Wed May 9 23:48:34 2018 +0200
+
+    Merge branch 'master' of https://github.com/ahmibr/CultureGuide
+    
+    # Please enter a commit message to explain why this merge is necessary,
+    # especially if it merges an updated upstream into a topic branch.
+    #
+    # Lines starting with '#' will be ignored, and an empty message aborts
+    # the commit.
+
+commit 16be05f63c98cf8bd93437e00d17cd3c21e384b0
+Merge: af977f0 2f24e31
+Author: HaneenWally <megemen2020@gmail.com>
+Date:   Wed May 9 23:41:21 2018 +0200
+
+    Merge branch 'master' of https://github.com/ahmibr/CultureGuide
+    
+    # Please enter a commit message to explain why this merge is necessary,
+    # especially if it merges an updated upstream into a topic branch.
+    #
+    # Lines starting with '#' will be ignored, and an empty message aborts
+    # the commit.
+
+commit af977f00105890621e752c01763e1ec4249bdc95
+Author: HaneenWally <megemen2020@gmail.com>
+Date:   Wed May 9 23:36:17 2018 +0200
+
+    "Admin Finish"
+
+commit 2f24e3108d701e3916f6dfc9ce24e1e4b01a13e0
+Author: Bassel Mostafa <bassel.ahmed97@eng-st.cu.edu.eg>
+Date:   Wed May 9 23:35:50 2018 +0200
+
+    Documenting Activities
+
+commit 5d576a40fe085f84628ee153632944a23e1c9eed
+Author: HaneenWally <megemen2020@gmail.com>
+Date:   Wed May 9 23:34:52 2018 +0200
+
+    "Admin Finish"
+
+commit 1f7899b8f0df83c0c930db502bf23119ed565c2d
+Merge: ddd2522 26ce334
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Wed May 9 23:05:19 2018 +0200
+
+    Merge branch 'master' of https://github.com/ahmibr/CultureGuide
+
+commit ddd25223f195448ae17ed4b60304108d251c8637
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Wed May 9 23:05:12 2018 +0200
+
+    Adding comments in javadoc form
+
+commit 26ce33469e41ce22e4b0e702b8e5338749e550e9
+Author: HaneenWally <megemen2020@gmail.com>
+Date:   Wed May 9 22:52:54 2018 +0200
+
+    "fix a typo"
+
+commit cc66d69e786c406ea554fd4e607e91a8ff0aec97
+Author: HaneenWally <megemen2020@gmail.com>
+Date:   Wed May 9 22:50:22 2018 +0200
+
+    "Complete AdminViewOrganization, User and Event functionality"
+
+commit 6eb8e411a42f5a4fe49efcefdc7a8a14f6e88870
+Author: HaneenWally <megemen2020@gmail.com>
+Date:   Wed May 9 20:35:30 2018 +0200
+
+    "Complete AdminViewAdmin functionality"
+
+commit 5e51dfaa83281bd87a4d9983834db02db2980532
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Wed May 9 20:31:34 2018 +0200
+
+    Add onretrieve fail in org
+
+commit ac35472764c6eb94c4944d32200fc15516ddadbc
+Author: Bassel Mostafa <bassel.ahmed97@eng-st.cu.edu.eg>
+Date:   Wed May 9 19:32:05 2018 +0200
+
+    Admin view Admin empty remove button logic
+
+commit 677023d5e0926e4fb83f6f96626b1b8065caee5a
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Wed May 9 19:22:45 2018 +0200
+
+    Add event page expire test
+
+commit 557f4c61d99886805091aaf93428012ab369289a
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Wed May 9 19:14:15 2018 +0200
+
+    Add build gradle to gitignore
+
+commit f165807908b830e3e8800c73f99e2d36396de943
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Wed May 9 19:08:20 2018 +0200
+
+    Fix admin registration
+
+commit 9ee2393453db98a7fdcc92feef4ba3f751fc7871
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Wed May 9 18:56:18 2018 +0200
+
+    Fix gradle
+
+commit d172c7073f94b18bb8387e6d5ed1a965a2da1769
+Merge: 052f240 c64f93d
+Author: Roba Gamal <eng.robagamal@gmail.com>
+Date:   Wed May 9 18:11:41 2018 +0200
+
+    Merge pull request #11 from ahmibr/EventmoduleFinal
+    
+    add comments
+
+commit c64f93d33d29dc1f3b6e6c093fe7632152dc36c0
+Author: Roba Gamal <eng.robagamal@gmail.com>
+Date:   Wed May 9 18:09:52 2018 +0200
+
+    add comments
+
+commit 052f2403f33939344979d917b758562ad4a1b295
+Author: Bassel Mostafa <bassel.ahmed97@eng-st.cu.edu.eg>
+Date:   Wed May 9 17:17:01 2018 +0200
+
+    Gradle file repair ?
+
+commit 2d702b69e0577187e569acaa3aaf633a2836c6e0
+Author: HaneenWally <megemen2020@gmail.com>
+Date:   Wed May 9 14:42:30 2018 +0200
+
+    "Add Admin Forum with enhancement in XML files"
+
+commit 32e2962a7e15cc8560d5d5a0b6c27fb5baae1e0e
+Merge: d23a8fe 4c4dd45
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Tue May 8 22:53:00 2018 +0200
+
+    Merge branch 'master' of https://github.com/ahmibr/CultureGuide
+
+commit d23a8fe70c7a2c7830f6201603ed27deec9e5764
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Tue May 8 22:52:44 2018 +0200
+
+    Add SQLInjection checker
+
+commit 4c4dd45fe590f7960e298ab74bda4b0826e5d340
+Author: HaneenWally <megemen2020@gmail.com>
+Date:   Tue May 8 22:24:31 2018 +0200
+
+    "Add content admin view"
+
+commit 8d99dbf6f1d787d807fadb9311ac64a6634a3440
+Merge: b98ebca 78b98a9
+Author: HaneenWally <megemen2020@gmail.com>
+Date:   Tue May 8 22:16:16 2018 +0200
+
+    Merge remote-tracking branch 'origin/master'
+
+commit b98ebca520c31191f7a68b53cd7fc9c8dd21bdcb
+Author: HaneenWally <megemen2020@gmail.com>
+Date:   Tue May 8 22:15:42 2018 +0200
+
+    "Improve Admin"
+
+commit 78b98a93994e8e8c30e5d5d15dc7c8746c2f042a
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Tue May 8 22:04:11 2018 +0200
+
+    Fix timer picker for lolipop version
+
+commit 4b2cbb590a96874726f581814808f5218f99bbf3
+Author: Bassel Mostafa <bassel.ahmed97@eng-st.cu.edu.eg>
+Date:   Tue May 8 20:59:29 2018 +0200
+
+    Finished Create/Update event
+
+commit 15b4234a968f71b26b10bae14b1bb9afe697dfdd
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Tue May 8 18:56:11 2018 +0200
+
+    Add event Update
+
+commit b3d66347004e5bec824a14c3c61afdb4bbeae880
+Merge: 39ffd9a 265a462
+Author: Haneen Wally <Haneen@Gabys-MBP.localdomain>
+Date:   Tue May 8 18:19:28 2018 +0200
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 39ffd9a3219d922483769d1e4370de3ca209f48a
+Author: Haneen Wally <Haneen@Gabys-MBP.localdomain>
+Date:   Tue May 8 18:02:45 2018 +0200
+
+    Improved Admin
+
+commit 265a462c4a55b2a22503875b257fdb2aef41aa05
+Author: Bassel Mostafa <bassel.ahmed97@eng-st.cu.edu.eg>
+Date:   Tue May 8 17:25:13 2018 +0200
+
+    HomePage user/organization posts seperation
+
+commit efd2b04e011a46b468a0045eb7781586585a09af
+Author: Bassel Mostafa <bassel.ahmed97@eng-st.cu.edu.eg>
+Date:   Tue May 8 17:13:01 2018 +0200
+
+    Finished user events past/upcoming
+
+commit 2c34303d5cb522f0efac787dbae5b1dbc108bb46
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Tue May 8 17:00:09 2018 +0200
+
+    Fix attend sql query
+
+commit 2039f8a7e1f9999203a5dd082fa29317222b1273
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Tue May 8 16:57:47 2018 +0200
+
+    Fix Mevent constructor
+
+commit 64013b9caacb5c9fbbdc21a2bdd3b6c020192955
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Tue May 8 16:44:18 2018 +0200
+
+    Fix attend model again
+
+commit 3d9325154e8841e367d8f813260dec31d24baea7
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Tue May 8 16:41:39 2018 +0200
+
+    Fix attend model
+
+commit f3d8620427a6f4859887b85b27a9b76849fb57a6
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Tue May 8 16:20:39 2018 +0200
+
+    move org homepage to package
+
+commit 58607c0e199f151a2cff729c8595bc97acce54aa
+Merge: f7ce1c7 3e4edd8
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Tue May 8 16:10:47 2018 +0200
+
+    Merge branch 'master' of https://github.com/ahmibr/CultureGuide
+
+commit f7ce1c7e69941b92a5e2b4f822c69f7b96762d00
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Tue May 8 16:10:38 2018 +0200
+
+    refactor org
+
+commit 3e4edd85b91e86ca28c3fdbbe3c69ff5168aa821
+Author: Bassel Mostafa <bassel.ahmed97@eng-st.cu.edu.eg>
+Date:   Tue May 8 14:09:36 2018 +0200
+
+    Added past/upcoming events logic
+
+commit d22f21442504bcffa3c22599aebde89b793f85c8
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Tue May 8 13:45:35 2018 +0200
+
+    add attend action
+
+commit 890df6dfeec8bfa031aa9b0daff1e878ecfb7887
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Tue May 8 12:11:47 2018 +0200
+
+    Optimize events retrieval
+
+commit de21027b09db45d21c220f60f45baeccb029064b
+Merge: e602265 aa35a3a
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Tue May 8 11:44:39 2018 +0200
+
+    Fix conflict
+
+commit e60226582e691d444c8f6783de7eb548f44ab8a7
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Tue May 8 11:29:18 2018 +0200
+
+    Add interests routing
+
+commit 6531da7ab0bc318826c2e898ba63b872c7407b8b
+Author: Haneen Wally <Haneen@Gabys-MBP.localdomain>
+Date:   Tue May 8 08:36:36 2018 +0200
+
+    Improve Features
+
+commit aa35a3aa15d0014ef8c7ce8018b58d25bac76c15
+Author: Bassel Mostafa <bassel.ahmed97@eng-st.cu.edu.eg>
+Date:   Tue May 8 00:26:20 2018 +0200
+
+    Added Interests
+
+commit 51774574283c7ce57831cee87d86743253398702
+Merge: b238329 b1760e4
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Mon May 7 21:13:05 2018 +0200
+
+    Merge branch 'master' of https://github.com/ahmibr/CultureGuide
+
+commit b238329dc7d855d4c232b434cb8e867bba3bdaf4
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Mon May 7 21:12:49 2018 +0200
+
+    Fix type
+
+commit 33bcf74fbf8d416d25cf41cc1bfa22924eb6bde7
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Mon May 7 21:11:51 2018 +0200
+
+    Add change interests
+
+commit b1760e447aaadc7791aefc155f4073ed753c245b
+Author: Bassel Mostafa <bassel.ahmed97@eng-st.cu.edu.eg>
+Date:   Mon May 7 21:06:25 2018 +0200
+
+    Added Interests in sidebar
+
+commit 3093f7f24219a4d38c7a94b8f46abf954cff4318
+Author: Bassel Mostafa <bassel.ahmed97@eng-st.cu.edu.eg>
+Date:   Mon May 7 20:53:40 2018 +0200
+
+    Favorites done
+
+commit 96aad5d8778fa216049a3a3beafb56e082b239c3
+Author: Bassel Mostafa <bassel.ahmed97@eng-st.cu.edu.eg>
+Date:   Mon May 7 20:37:56 2018 +0200
+
+    Friends Activity done
+
+commit 922c830d6f067fd015c5ed738517e170254e80c2
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Mon May 7 19:13:23 2018 +0200
+
+    Add event expiration test
+
+commit 93f176772ee89540c06736cdf4ada3ce5cd1e900
+Author: Haneen Wally <Haneen@Gabys-MBP.localdomain>
+Date:   Mon May 7 18:52:28 2018 +0200
+
+    Improve Admin
+
+commit 83d77134784f9931fef2b3ec03dfa7357564d7dd
+Author: Bassel Mostafa <bassel.ahmed97@eng-st.cu.edu.eg>
+Date:   Mon May 7 18:50:26 2018 +0200
+
+    Invitations
+
+commit 7193d176c3468c2c6967a25d85b09d33570ce426
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Mon May 7 18:37:25 2018 +0200
+
+    Reorganize MEvent
+
+commit 9b70d70e7e238814723b83a5b1ac9a1a6c45e6ac
+Author: Bassel Mostafa <bassel.ahmed97@eng-st.cu.edu.eg>
+Date:   Mon May 7 16:52:50 2018 +0200
+
+    MEvent minor changes
+
+commit 483a8db545059e8322c1e67d50d35e34887fc46d
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Sun May 6 23:20:12 2018 +0200
+
+    Add recieved invitations
+
+commit f59a3240f8939e6001ddbc4f8225a2049f5d5c23
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Sun May 6 01:50:08 2018 +0200
+
+    Add user sidebar favorite and friends
+
+commit 671e34ff255d05079a013c4ef2147c0a0cdaaf91
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Sun May 6 00:13:56 2018 +0200
+
+    Fix minor bug in edit profile
+
+commit f608a698946bbf0fa86147868e97a0b211bced89
+Author: Bassel Mostafa <bassel.ahmed97@eng-st.cu.edu.eg>
+Date:   Sat May 5 23:34:03 2018 +0200
+
+    User/Organizrions sidebars plus Some translations
+
+commit 815d0f2801de0ec652aeec9a0d7759c070ceb20c
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Sat May 5 22:20:56 2018 +0200
+
+    Fix org homepage
+
+commit 49de8a2d39068491c299b7648cc56c345f10d93e
+Merge: e57679a 1c594ff
+Author: HaneenWally <megemen2020@gmail.com>
+Date:   Sat May 5 17:58:19 2018 +0200
+
+    Merge branch 'master' of https://github.com/ahmibr/CultureGuide
+
+commit e57679a0d4a9255a8535102770987e5db93b7a23
+Author: HaneenWally <megemen2020@gmail.com>
+Date:   Sat May 5 17:57:28 2018 +0200
+
+    Fix some func.
+
+commit ad1d434f8d5e00b155daa4f67eb2ef281c24a349
+Author: HaneenWally <megemen2020@gmail.com>
+Date:   Fri May 4 23:28:18 2018 +0200
+
+    "Add Search"
+
+commit 1c594ff7790203c9daf9c47f189d40809eecc34f
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Fri May 4 23:17:45 2018 +0200
+
+    fix conflict
+
+commit a501de2143d6c10ec50cd56f0f5c477faceed216
+Merge: 3b789b7 4a40658
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Fri May 4 23:06:33 2018 +0200
+
+    fix conflict
+
+commit 3b789b749f439a91560ac16f0cef420e9f8d9e07
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Fri May 4 23:00:43 2018 +0200
+
+    Fix arabic numerical
+
+commit 4a406583ca1e75df6fcc95311da8023c4b1af28e
+Merge: d2e5f57 6a3ee7a
+Author: Roba Gamal <eng.robagamal@gmail.com>
+Date:   Fri May 4 22:29:40 2018 +0200
+
+    Merge pull request #10 from ahmibr/EventmoduleFinal
+    
+    event module done
+
+commit 6a3ee7a9746e2bc14c48163a00b15dd57b27ffda
+Author: Roba Gamal <eng.robagamal@gmail.com>
+Date:   Fri May 4 22:26:24 2018 +0200
+
+    event module done
+
+commit d2e5f57856d9127c629dfd21c954083a483eb6c0
+Merge: 5e0264f b990efc
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Fri May 4 21:02:47 2018 +0200
+
+    Merge branch 'master' of https://github.com/ahmibr/CultureGuide
+
+commit 5e0264f226033e50918236eb9528eeaaafe98586
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Fri May 4 20:58:25 2018 +0200
+
+    Remove unused variables in userhomepage
+
+commit b990efcf61f0ab0d605c56b2dfc8eb1556cee66e
+Author: Bassel Mostafa <bassel.ahmed97@eng-st.cu.edu.eg>
+Date:   Fri May 4 20:43:42 2018 +0200
+
+    Added Categories
+
+commit 17e9680423495ceabe642c6b3f587f38e2690daa
+Author: Bassel Mostafa <bassel.ahmed97@eng-st.cu.edu.eg>
+Date:   Fri May 4 19:46:26 2018 +0200
+
+    The not useless error message
+
+commit 59a7eb5da34e361231436de68ff4adb1e226c01a
+Author: Bassel Mostafa <bassel.ahmed97@eng-st.cu.edu.eg>
+Date:   Fri May 4 19:43:25 2018 +0200
+
+    Invite Friends stats toast
+
+commit 0c383ea1180f839aca678b9b0dbd35a37d131bb4
+Author: Bassel Mostafa <bassel.ahmed97@eng-st.cu.edu.eg>
+Date:   Fri May 4 19:36:47 2018 +0200
+
+    Invite Friends front end integration
+
+commit 58b71e837daef886355913eb643755aebc1966b8
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Fri May 4 18:40:19 2018 +0200
+
+    fix friends name
+
+commit 6338905f59d1471c0ba062ad70474f4682fa23b0
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Fri May 4 17:42:37 2018 +0200
+
+    Add Invite friends backend
+
+commit e509e5b9bfd3f54a3a4c2c8cd83f0a0faa0d0736
+Author: Bassel Mostafa <bassel.ahmed97@eng-st.cu.edu.eg>
+Date:   Fri May 4 17:09:07 2018 +0200
+
+    Event page with invite friends Activity
+
+commit e03348149edc782c56ede34f2e69e4698dbaa7b7
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Fri May 4 16:49:37 2018 +0200
+
+    Fix eventpage bug
+
+commit 25cb1b202790f0e2b9c6a4a85bbb7b2c639cdf68
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Fri May 4 16:39:24 2018 +0200
+
+    Add show attend
+
+commit 47dde434640636dbf8fa0d9e3e2269c882f71448
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Fri May 4 16:36:20 2018 +0200
+
+    Add show attend
+
+commit 8a7560c700e7807041911aa31ee35086bc0d5779
+Merge: 66aa927 a08ee44
+Author: Roba Gamal <eng.robagamal@gmail.com>
+Date:   Fri May 4 12:54:40 2018 +0200
+
+    Merge pull request #9 from ahmibr/EventmoduleFinal
+    
+    Eventmodule final
+
+commit a08ee444d01ef492d015717bbd20289546db4995
+Author: Roba Gamal <eng.robagamal@gmail.com>
+Date:   Fri May 4 12:51:32 2018 +0200
+
+     reorganization
+
+commit 982028cf981c67a68688ac9ee31e8b9f64220b82
+Author: Roba Gamal <eng.robagamal@gmail.com>
+Date:   Fri May 4 12:46:24 2018 +0200
+
+    adding another presenter
+
+commit 66aa9278af26234f63b6ebfd97c8f34ae3f9bf93
+Merge: e9896b2 8340dcd
+Author: Roba Gamal <eng.robagamal@gmail.com>
+Date:   Fri May 4 09:36:36 2018 +0200
+
+    Merge pull request #8 from ahmibr/EventmoduleFinal
+    
+    Eventmodule final
+
+commit 8340dcdbe51676ae8030077723947cc3dde6fb8f
+Author: Roba Gamal <eng.robagamal@gmail.com>
+Date:   Fri May 4 09:20:42 2018 +0200
+
+    eventmodel in divided into 2 classess
+
+commit b9b5d82fa2063d0f01b8ebb4a4e8a5410005c864
+Merge: ab2f156 e9896b2
+Author: HaneenWally <megemen2020@gmail.com>
+Date:   Thu May 3 11:56:09 2018 +0200
+
+    Merge branch 'master' of https://github.com/ahmibr/CultureGuide
+
+commit e9896b28162a8c062add519d8d7e9fb977e85cec
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Thu May 3 00:16:49 2018 +0200
+
+    Add email form validator
+
+commit 9b05a1774ecd5df8de845dfb7cc1d47019796d56
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Thu May 3 00:04:57 2018 +0200
+
+    Fix rename problem
+
+commit 1ce6c7e4f6506ce360e9ddffbeef3dc361099a58
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Wed May 2 23:29:49 2018 +0200
+
+    Modify Editprofile
+
+commit c2f4b7b3b8680977f757fc74af96d7f209fc04ef
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Wed May 2 22:54:29 2018 +0200
+
+    Fix typos
+
+commit e05312faefe077741e86c6f2ed6381a308137629
+Author: Roba Gamal <eng.robagamal@gmail.com>
+Date:   Wed May 2 22:37:36 2018 +0200
+
+    event module finished
+
+commit 140e6ebac88268852e2e32df2f0c2b33c70d7ef0
+Merge: e9d18d2 2502dea
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Wed May 2 22:34:04 2018 +0200
+
+    Merge branch 'master' of https://github.com/ahmibr/CultureGuide
+
+commit e9d18d236490c3e03b5a79aea61cb305db225945
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Wed May 2 22:33:36 2018 +0200
+
+    Add UserEventPage
+
+commit db8442c55291de96a021ceea5f0958ec6f2bd130
+Author: Roba Gamal <eng.robagamal@gmail.com>
+Date:   Tue May 1 23:07:19 2018 +0200
+
+    not finalized yet
+
+commit ab2f156bd79839f9f750cb2c9620a5d545c0de54
+Author: HaneenWally <megemen2020@gmail.com>
+Date:   Tue May 1 20:30:45 2018 +0200
+
+    "Fix a typo in strings.xml"
+
+commit 2502dea7dfab5f933aec96c7b690d4c21908b7e7
+Author: HaneenWally <megemen2020@gmail.com>
+Date:   Tue May 1 20:20:33 2018 +0200
+
+    Add AdminViewEvent related files
+
+commit 35535ccec15ecfc3daf16b52b7f4475126108c20
+Author: HaneenWally <megemen2020@gmail.com>
+Date:   Tue May 1 20:16:43 2018 +0200
+
+    "Add AdminViewUser and AdminViewEvent"
+
+commit 5a745266f137521acf074b76fe94e8f6e77edbd4
+Author: HaneenWally <megemen2020@gmail.com>
+Date:   Tue May 1 17:53:46 2018 +0200
+
+    "ReAdd Admin View Organization and Admin"
+
+commit 6297f4f52324632a987f606bd5e07871470cf969
+Author: HaneenWally <megemen2020@gmail.com>
+Date:   Tue May 1 17:41:14 2018 +0200
+
+    Admin View Organizations
+
+commit 3f84fa37bb998706caff85d03b522c366b53e1dd
+Author: HaneenWally <megemen2020@gmail.com>
+Date:   Tue May 1 16:02:08 2018 +0200
+
+    Add admin view admins
+
+commit b66b533d2519b671e92a99ca2db600fd3c144e42
+Author: Bassel Mostafa <bassel.ahmed97@eng-st.cu.edu.eg>
+Date:   Tue May 1 13:06:32 2018 +0200
+
+    Added user Homepage
+    
+    With 3 tabs for 3 categories
+
+commit 3493f5b7cc9935257f118bd452a7c3227686c7a4
+Author: HaneenWally <megemen2020@gmail.com>
+Date:   Tue May 1 12:39:51 2018 +0200
+
+    Add admin categories
+
+commit d118d1dd7e85d4cdf31e041f210e83b1638dca1d
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Tue May 1 11:39:53 2018 +0200
+
+    Add retrieve events
+
+commit 878d6f4e9a50ba856422a02d2ee913eb53597f01
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Tue May 1 11:20:07 2018 +0200
+
+    Add admin routing
+
+commit bda5a5c1f2101933a75cde023a6bdedd688561e0
+Author: Roba Gamal <eng.robagamal@gmail.com>
+Date:   Tue May 1 11:17:20 2018 +0200
+
+    finalizing event module
+
+commit 5a9ff8a9220564f2298c4d54384affe589c63551
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Mon Apr 30 15:54:51 2018 +0200
+
+    Increase db timeout
+
+commit 5bfc3d018387ec1e5f17c07358eefef7e317866f
+Merge: ce74fe2 d73ee6c
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Sun Apr 29 21:56:00 2018 +0200
+
+    Merge branch 'master' of https://github.com/ahmibr/CultureGuide
+
+commit ce74fe2dcb96a115d4b57203ac7a1277b37c429a
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Sun Apr 29 21:55:56 2018 +0200
+
+    Add userhomepage xml
+
+commit d73ee6c1923e0d8507663b19de9457f480786ec8
+Merge: b774236 f182e97
+Author: Roba Gamal <eng.robagamal@gmail.com>
+Date:   Sun Apr 29 14:35:31 2018 +0200
+
+    Merge branch 'master' of https://github.com/ahmibr/CultureGuide
+
+commit b774236d0e98d08875bae62231e446fe2ea01aff
+Author: Roba Gamal <eng.robagamal@gmail.com>
+Date:   Sun Apr 29 14:34:03 2018 +0200
+
+    event module
+
+commit f182e9762aef8f1c6f1dc04d9b891e4ba2a3cd55
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Sat Apr 28 23:21:08 2018 +0200
+
+    Fix signup routing
+
+commit d602e6a4c2ca079c8ca6b43a6586f7c818693345
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Sat Apr 28 23:08:57 2018 +0200
+
+    Optimize registration
+
+commit 68a7a27bd1c0b576d68e211b84d52b61c243a847
+Merge: 9150f67 9c7384a
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Sat Apr 28 21:46:22 2018 +0200
+
+    Merge branch 'User_Homepage'
+
+commit 9c7384a310feb59b8348433184456c3fd391db78
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Sat Apr 28 21:38:54 2018 +0200
+
+    Add Userhome page retrieval
+
+commit 9150f67af1fb1b62a99c7eecd428b1b2e67e38bd
+Author: Roba Gamal <eng.robagamal@gmail.com>
+Date:   Fri Apr 27 23:23:29 2018 +0200
+
+    Database migration-event module
+
+commit 7eb30d04a6ce4300fd2ba9bd00ed643abc0bdb63
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Fri Apr 27 19:20:30 2018 +0200
+
+    Remake login
+
+commit ac298b14b6e41e20dc2798cf08d9ab74fed2638a
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Fri Apr 27 13:49:35 2018 +0200
+
+    Add db manager
+
+commit 1ec88826c6c494976777fb6c8000af3d60705b4e
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Sat Apr 21 20:58:57 2018 +0200
+
+    Refactor edit profile
+
+commit 845000a5ba65102dee24aad7c47775dc335c5d1a
+Author: Bassel Mostafa <bassel.ahmed97@eng-st.cu.edu.eg>
+Date:   Fri Apr 13 18:53:48 2018 +0200
+
+    Fixed Blank Fields
+
+commit 49b503f338a7968149875d3ffe43bf04d919c147
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Tue Apr 10 21:37:11 2018 +0200
+
+    Remove landscape
+
+commit de8441c69c28f52b0a623307767300efc033c07e
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Tue Apr 10 21:33:03 2018 +0200
+
+    Fix hang bug in sign in
+
+commit 01132ee73bd43acc8a179c45004aae593be40010
+Merge: a185763 9648226
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Tue Apr 10 21:12:17 2018 +0200
+
+    Merge branch 'master' of https://github.com/ahmibr/CultureGuide
+
+commit a185763dd5e78dc0c082151b183b8d0d6fc8bd3e
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Tue Apr 10 21:12:05 2018 +0200
+
+    Enhance master
+
+commit 96482261deb9ccf657495f6dcbfecd7a91b1a73f
+Author: Bassel Mostafa <bassel.ahmed97@eng-st.cu.edu.eg>
+Date:   Tue Apr 10 19:48:18 2018 +0200
+
+    Password invisible in Sign Up/ Edit
+
+commit 39494f72987136fbbf15a03ce8e1bd79c5228aaa
+Author: Bassel Mostafa <bassel.ahmed97@eng-st.cu.edu.eg>
+Date:   Tue Apr 10 19:43:21 2018 +0200
+
+    Corrected Manifest routing and Made password field invisible '*'
+
+commit dd77f5d38eb2f7ef94b8ff5da34d215015049932
+Author: Bassel Mostafa <bassel.ahmed97@eng-st.cu.edu.eg>
+Date:   Tue Apr 10 19:32:19 2018 +0200
+
+    Added Homepage posts hard coded testing
+
+commit 66a297e28a64a401366805459d7af7d9d024e577
+Merge: 63b761b fa228fa
+Author: Roba Gamal <eng.robagamal@gmail.com>
+Date:   Mon Apr 9 08:55:02 2018 +0200
+
+    Merge pull request #6 from ahmibr/Database-manipulation
+    
+    retrieval through 3 function calls as discussed
+
+commit fa228fa3082c528eb2d10defad34333adc8acacd
+Author: Roba Gamal <eng.robagamal@gmail.com>
+Date:   Mon Apr 9 08:51:24 2018 +0200
+
+    retrieval through 3 function calls as discussed
+
+commit 63b761bca8e39e7cbe0ae7d49e7e55bad58259a9
+Merge: 50fa015 cccb6fd
+Author: Roba Gamal <eng.robagamal@gmail.com>
+Date:   Sun Apr 8 22:31:21 2018 +0200
+
+    Merge pull request #5 from ahmibr/Database-manipulation
+    
+    Retrieve event
+
+commit cccb6fdd32d5f1d4952bb35c6f9868e99b27e856
+Author: Roba Gamal <eng.robagamal@gmail.com>
+Date:   Sun Apr 8 22:28:39 2018 +0200
+
+    Retrieve event
+
+commit 50fa015e881354ae979a290f23f08a91cbf2087e
+Merge: eef0eec cbc808a
+Author: Roba Gamal <eng.robagamal@gmail.com>
+Date:   Sat Apr 7 16:36:36 2018 +0200
+
+    Merge pull request #4 from ahmibr/Database-manipulation
+    
+    adding retrieve function
+
+commit cbc808a8a0a72aff8c5073f522727f16a98b918e
+Author: Roba Gamal <eng.robagamal@gmail.com>
+Date:   Sat Apr 7 16:31:27 2018 +0200
+
+    adding retrieve function
+
+commit eef0eecf2e50b48705c0d39ed09d9e6868071d6f
+Author: Bassel Mostafa <bassel.ahmed97@eng-st.cu.edu.eg>
+Date:   Sat Apr 7 12:59:52 2018 +0200
+
+    Added Home posts functionalities
+    
+    Roba Gamal : Added organizationCreatedIt in MEVENTS
+
+commit 87491b5709835b1e881e047e8958bf645818feeb
+Author: Bassel Mostafa <bassel.ahmed97@eng-st.cu.edu.eg>
+Date:   Fri Apr 6 23:28:18 2018 +0200
+
+    Edit Organization profile done
+
+commit 88a86aaa839177704d83820dd6d59a101e85571d
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Fri Apr 6 21:04:54 2018 +0200
+
+    Fix Contracts
+
+commit b2b9e4765d5f8064c7bcb6269be32c6aa74ae625
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Fri Apr 6 20:50:50 2018 +0200
+
+    Modify organization edit profile
+
+commit 350090ff88d31d25105314d014a743dfd3270461
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Fri Apr 6 20:23:34 2018 +0200
+
+    Attach signup back and front
+
+commit 58552f3e44189843c0a0edf8ab2c0c8410acb706
+Author: Bassel Mostafa <bassel.ahmed97@eng-st.cu.edu.eg>
+Date:   Fri Apr 6 17:47:41 2018 +0200
+
+    Sign Up / Edit profile Front
+
+commit d822634fc8de7fa9551d16d286346e94e5ec47a1
+Author: Bassel Mostafa <bassel.ahmed97@eng-st.cu.edu.eg>
+Date:   Fri Apr 6 16:15:22 2018 +0200
+
+    SignIn merged with back end
+
+commit a4d787d8dd6e97ade63e4ef87f1c5a84a8f81cc7
+Merge: 42beba0 ddfe624
+Author: Bassel Mostafa <bassel.ahmed97@eng-st.cu.edu.eg>
+Date:   Fri Apr 6 15:22:44 2018 +0200
+
+    Merge branch 'master' of https://github.com/ahmibr/CultureGuide
+    
+    oltof bena Ya rab
+
+commit 42beba0e32bdcffe21696a0dac7b917cd2329316
+Author: Bassel Mostafa <bassel.ahmed97@eng-st.cu.edu.eg>
+Date:   Fri Apr 6 15:10:55 2018 +0200
+
+    Home Page Added with navigation drawer
+    
+    And Posts System and adapter file
+
+commit ddfe62453785952f0a2f52fe703302cf375bd85d
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Fri Apr 6 15:06:01 2018 +0200
+
+    Refactor Sign Up
+
+commit 2e6d241d97e162e4661b77794531a773172f3645
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Thu Apr 5 22:10:34 2018 +0200
+
+    Add Edit Organization base Structure
+
+commit e5bdf0a6374bca3c5f62c8ac4d57cc4136d71bef
+Merge: 64cc3e7 3b54629
+Author: Roba Gamal <eng.robagamal@gmail.com>
+Date:   Thu Mar 29 21:33:24 2018 +0200
+
+    Merge pull request #3 from ahmibr/Database-manipulation
+    
+    finanlizing Event module
+
+commit 3b546291c3de6989d6346440929fed365aaee4dc
+Author: Roba Gamal <eng.robagamal@gmail.com>
+Date:   Thu Mar 29 21:26:23 2018 +0200
+
+    finanlizing Event module
+
+commit 64cc3e72ab08ff22bca3e60f1c88ac9725c698d6
+Merge: 00f5f55 c7719e9
+Author: Roba Gamal <eng.robagamal@gmail.com>
+Date:   Mon Mar 26 16:33:22 2018 +0200
+
+    Merge pull request #2 from ahmibr/Database-manipulation
+    
+    Database manipulation
+
+commit c7719e9b40b4ce99341e1820347fb4fc9ecc297f
+Author: Roba <eng.robagamal@gmail.com>
+Date:   Mon Mar 26 16:25:47 2018 +0200
+
+    Event-manipulation package added
+
+commit ee346b98b34298b0cf23945ba6e398f911af770d
+Author: Roba <eng.robagamal@gmail.com>
+Date:   Mon Mar 26 16:22:29 2018 +0200
+
+    Event-manipulation package added and updated
+
+commit 00f5f555e22a0af4d7581bed861afdcdbbfd413d
+Merge: d6b2a56 95d4794
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Tue Mar 20 15:40:46 2018 +0200
+
+    Merge branch 'Authentication'
+
+commit 95d479487cc7d8437feaa63d95a17b3ec8630e9a
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Tue Mar 20 15:27:08 2018 +0200
+
+    Add Sign Up and Clean Directories
+
+commit 18eec304d9b3d565c5e7717b3776f61c91ac2ad2
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Mon Mar 19 22:55:23 2018 +0200
+
+    Add MVP Pattern
+
+commit d6b2a560434e85bbf3deba074917eab45a393e08
+Merge: 57e33ad 380bf99
+Author: Roba Gamal <eng.robagamal@gmail.com>
+Date:   Sun Mar 18 21:52:08 2018 +0200
+
+    Merge pull request #1 from ahmibr/Database-manipulation
+    
+     adding the event database module
+
+commit 380bf99f266104ad9deeca2331025b160571131d
+Author: Roba <eng.robagamal@gmail.com>
+Date:   Sun Mar 18 21:46:26 2018 +0200
+
+     adding the event database module
+
+commit 50c7dbb90e986670f673d5e45513129f376dc62b
+Merge: 01d062e e2874ac
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Sun Mar 18 18:00:30 2018 +0200
+
+    Merge remote-tracking branch 'origin/Authentication' into Authentication
+
+commit 01d062e98573be30e8e49d26c9fae22932abb033
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Sun Mar 18 17:59:38 2018 +0200
+
+    Modify login structure (Add listener)
+
+commit c3271a93f1bfd5517ed14fdbf96f0b30e9fe090f
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Fri Mar 16 19:00:52 2018 +0200
+
+    Add login class
+
+commit e2874ac9af9bab4a930e597b6d2dc060bedbb05e
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Fri Mar 16 19:00:52 2018 +0200
+
+    Add login class
+
+commit 57e33ad088070f813983ff4cbe1877ceb573cf1b
+Merge: 5605e16 29ac0fb
+Author: Bassel Mostafa <bassel.ahmed97@eng-st.cu.edu.eg>
+Date:   Fri Mar 16 18:39:49 2018 +0200
+
+    Merge branch 'master' of https://github.com/ahmibr/CultureGuide
+
+commit 29ac0fb187198d716049aaff9852262c999313b8
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Fri Mar 16 13:08:26 2018 +0200
+
+    Add Firebase Module
+
+commit 5605e16b764766b679e116d5d908111fb5f71c4f
+Author: Bassel Mostafa <bassel.ahmed97@eng-st.cu.edu.eg>
+Date:   Thu Mar 15 23:48:06 2018 +0200
+
+    Login Page Languages
+    
+    Supports Portrait and landscape
+    Supports arabic and english in values-ar folder
+    To-Do create Account Page -Hanin
+
+commit 312f4c7bf5540cc0663d87eeb5bdea303c4a95d3
+Author: Ahmed Ibrahim <ahmed.abdelnaby98@eng-st.cu.edu.eg>
+Date:   Mon Mar 12 19:51:00 2018 +0200
+
+    Initial Commit
