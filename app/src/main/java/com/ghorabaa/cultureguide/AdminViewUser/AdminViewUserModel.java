@@ -129,7 +129,6 @@ public class AdminViewUserModel {
     public void removeUser(String email) {
 
         String query = "DELETE FROM Users WHERE Email = '%s'";
-        Log.d("Remove user",query);
         query = String.format(Locale.ENGLISH,query, email);
 
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
