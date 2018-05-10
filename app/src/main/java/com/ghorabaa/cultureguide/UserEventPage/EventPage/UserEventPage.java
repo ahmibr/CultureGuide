@@ -120,7 +120,8 @@ public class UserEventPage extends AppCompatActivity implements UserEventPageCon
         mRatePicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker numberPicker, int i, int i1) {
-                mPresenter.rate(i);
+                //zero-based
+                mPresenter.rate(i+1);
             }
         });
     }
@@ -154,7 +155,7 @@ public class UserEventPage extends AppCompatActivity implements UserEventPageCon
      */
     @Override
     public void onAttendSuccess() {
-        mAttend.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_clear_black_24dp,0);
+        mAttend.setClickable(false);
     }
 
     /**

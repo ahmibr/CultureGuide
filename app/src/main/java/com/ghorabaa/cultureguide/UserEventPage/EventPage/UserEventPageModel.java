@@ -152,8 +152,12 @@ public class UserEventPageModel {
             public void onResponse(String response) {
                 try {
                     JSONArray result = new JSONArray(response);
-                    int rate = result.getJSONObject(0).getInt("Average");
-                    mPresenter.onRetrieveRate(rate);
+                    if(!result.getJSONObject(0).isNull("Average")) {
+                        int rate = result.getJSONObject(0).getInt("Average");
+                        mPresenter.onRetrieveRate(rate);
+                    }
+                    else
+                        mPresenter.onRetrieveRate(0);
                 } catch (JSONException e) {
                     e.printStackTrace();
                     mPresenter.onRetrieveFail("Event has been deleted!");
