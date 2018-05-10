@@ -63,7 +63,7 @@ public class SignUpModel {
      * @callback presenter.onFailRegister: In case of Failure, with Error message
      * @return none
      */
-    public void register(final String name, final String email, final String password, final UserType type){
+    public void register(final String name, String email, final String password, final UserType type){
 
         if(!EmailValidator.validate(email)){
             mPresenter.onSignUpFail("Please enter valid email form!");
@@ -75,16 +75,18 @@ public class SignUpModel {
             return;
         }
 
+        email = email.toLowerCase();
         String query = "INSERT INTO Users VALUES ('%s','%s','%s')";
         query = String.format(Locale.ENGLISH,query,email, PasswordEncrypter.encrypt(password),type.toString());
 
 
+        final String finalEmail = email;
         Response.Listener<String> onSuccess = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 switch (response){
                     case "true":
-                        insertByType(name,email,type);
+                        insertByType(name, finalEmail,type);
                         break;
                     case "false":
                         mPresenter.onSignUpFail("This email is already registered!");
